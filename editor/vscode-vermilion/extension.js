@@ -2,9 +2,10 @@
 // with Dafny-style look and feel.
 //
 // Verification runs automatically when you OPEN a Rust file containing a
-// `verus!` macro and when you SAVE any Rust file in the workspace, and on
-// demand via Cmd+Shift+R (macOS) / Ctrl+Shift+R (elsewhere) or the status-bar
-// click. A file with an example run.sh next to it is driven through that; any
+// `verus!` macro whose stored verdict is missing or older than the source
+// (a current verdict is painted from disk without re-running the pipeline),
+// when you SAVE any Rust file in the workspace, and on demand via
+// Cmd+Shift+R (macOS) / Ctrl+Shift+R (elsewhere) or the status-bar click. A file with an example run.sh next to it is driven through that; any
 // other Rust file is driven directly through scripts/run_example.sh (no
 // run.sh required). Runs are silent — no terminal; output goes to the
 // "Vermilion" output channel.
@@ -23,8 +24,11 @@
 //     surfaced at their spans; rust-analyzer is deliberately not consulted;
 //   - the status bar reports the active file only.
 //
-// Nothing is shown from stale artifacts: results appear only after a
-// verification has run in this session.
+// Results are read from the artifacts on disk, so a file is highlighted as
+// soon as it is opened if it has been judged before — by an earlier session,
+// another window, or (for a vendored case-study source) the study's own
+// driver. A verdict older than the source it judged is reported as stale
+// rather than shown as current.
 
 const vscode = require('vscode');
 const childProcess = require('child_process');
@@ -33,49 +37,112 @@ const path = require('path');
 const {
   contractClauseAtLine,
   dependencyImportRange,
+  collectFunctionMarks,
+  manifestOwnedElsewhere,
+  manifestCoversRustFile,
+  manifestSearchDirs,
   obligationForContractClause,
   obligationRecordForFunction,
   parseFunctionRanges,
   refusalFunctionRanges,
+  sameSourceFile,
   specNamespaceForFunction,
 } = require('./core');
+
+/**
+ * Read-through file cache keyed by mtime. `refresh()` resolves the twin
+ * link of every diagnostic it paints, and each resolution used to re-read
+ * the whole twin from disk: with a big case study judged (dalek-lite: ~2000
+ * diagnostics over multi-MB twins) one refresh did ~10s of synchronous
+ * reads on the extension-host thread — every jump between editors stalled.
+ * A stat per lookup keeps the cache honest against pipeline rewrites.
+ */
+const textCache = new Map(); // path -> { mtimeMs, text }
+function readTextCached(filePath) {
+  let mtimeMs;
+  try {
+    mtimeMs = fs.statSync(filePath).mtimeMs;
+  } catch {
+    textCache.delete(filePath);
+    return null;
+  }
+  const hit = textCache.get(filePath);
+  if (hit && hit.mtimeMs === mtimeMs) return hit.text;
+  let text;
+  try {
+    text = fs.readFileSync(filePath, 'utf8');
+  } catch {
+    textCache.delete(filePath);
+    return null;
+  }
+  textCache.set(filePath, { mtimeMs, text });
+  return text;
+}
 
 /**
  * Where the manual proof goes in the twin: the exact position of `sorry`
  * inside the obligation's block if present, otherwise the first
  * non-whitespace character of the line after the theorem's `:= by`.
  * Returns { line, character }, 1-based line / 0-based character, or null.
+ *
+ * Looked up through a per-file index built in ONE pass over the twin: the
+ * refresh path resolves this for every diagnostic, and a per-file-mode twin
+ * holds hundreds of obligations in one multi-MB module — scanning it afresh
+ * per obligation multiplied into seconds of work per refresh.
  */
-function twinGoalPosition(twinPath, obligation) {
-  let text;
-  try {
-    text = fs.readFileSync(twinPath, 'utf8');
-  } catch {
-    return null;
-  }
-  const beginMarker = `-- vrml:begin ${obligation} `;
-  const endMarker = `-- vrml:end ${obligation}`;
+const goalIndexCache = new Map(); // path -> { text, index: Map(obligation -> pos) }
+function twinGoalIndex(twinPath) {
+  const text = readTextCached(twinPath);
+  if (text === null) return null;
+  const hit = goalIndexCache.get(twinPath);
+  if (hit && hit.text === text) return hit.index;
+  const index = new Map();
   const lines = text.split('\n');
-  let inside = false;
+  let current = null; // obligation whose block encloses this line
   let bodyStart = null;
-  for (let index = 0; index < lines.length; index += 1) {
-    const line = lines[index];
-    if (!inside) {
-      if (line.startsWith(beginMarker)) inside = true;
+  let settled = false; // a sorry already pinned this block's position
+  const close = () => {
+    if (current !== null && !index.has(current) && bodyStart !== null) {
+      index.set(current, bodyStart);
+    }
+    current = null;
+  };
+  for (let i = 0; i < lines.length; i += 1) {
+    const line = lines[i];
+    const begin = line.match(/^-- vrml:begin (\S+) /);
+    if (begin) {
+      close();
+      current = begin[1];
+      bodyStart = null;
+      settled = index.has(current);
       continue;
     }
-    if (line.startsWith(endMarker)) break;
+    if (current === null) continue;
+    if (line.startsWith(`-- vrml:end ${current}`)) {
+      close();
+      continue;
+    }
+    if (settled) continue;
     const sorryColumn = line.search(/\bsorry\b/);
     if (sorryColumn >= 0) {
-      return { line: index + 1, character: sorryColumn };
+      index.set(current, { line: i + 1, character: sorryColumn });
+      settled = true;
+      continue;
     }
     if (bodyStart === null && line.trimEnd().endsWith(':= by')) {
-      const next = lines[index + 1] || '';
+      const next = lines[i + 1] || '';
       const column = Math.max(0, next.search(/\S/));
-      bodyStart = { line: index + 2, character: column };
+      bodyStart = { line: i + 2, character: column };
     }
   }
-  return bodyStart;
+  close();
+  goalIndexCache.set(twinPath, { text, index });
+  return index;
+}
+function twinGoalPosition(twinPath, obligation) {
+  const index = twinGoalIndex(twinPath);
+  if (!index) return null;
+  return index.get(obligation) || null;
 }
 
 /**
@@ -85,12 +152,8 @@ function twinGoalPosition(twinPath, obligation) {
  * clause or `assert` lands — its own theorem/VC.
  */
 function twinTheoremPosition(leanPath, obligation) {
-  let text;
-  try {
-    text = fs.readFileSync(leanPath, 'utf8');
-  } catch {
-    return null;
-  }
+  const text = readTextCached(leanPath);
+  if (text === null) return null;
   const beginMarker = `-- vrml:begin ${obligation} `;
   const endMarker = `-- vrml:end ${obligation}`;
   const lines = text.split('\n');
@@ -114,12 +177,8 @@ function twinTheoremPosition(leanPath, obligation) {
  * disambiguation picker when several VCs share a Rust span.
  */
 function obligationGoal(leanPath, obligation) {
-  let text;
-  try {
-    text = fs.readFileSync(leanPath, 'utf8');
-  } catch {
-    return null;
-  }
+  const text = readTextCached(leanPath);
+  if (text === null) return null;
   const beginMarker = `-- vrml:begin ${obligation} `;
   const endMarker = `-- vrml:end ${obligation}`;
   const lines = text.split('\n');
@@ -144,12 +203,8 @@ function obligationGoal(leanPath, obligation) {
  * disambiguation picker's markers.
  */
 function obligationStatus(leanPath, obligation) {
-  let text;
-  try {
-    text = fs.readFileSync(leanPath, 'utf8');
-  } catch {
-    return 'auto';
-  }
+  const text = readTextCached(leanPath);
+  if (text === null) return 'auto';
   const beginMarker = `-- vrml:begin ${obligation} `;
   const endMarker = `-- vrml:end ${obligation}`;
   const lines = text.split('\n');
@@ -213,12 +268,82 @@ function runnerForFile(directory, documentPath) {
   return null;
 }
 
-function readJson(filePath) {
+/** Modification time in ms, or null when the path cannot be stat'ed. */
+function mtimeOf(filePath) {
   try {
-    return JSON.parse(fs.readFileSync(filePath, 'utf8'));
+    return fs.statSync(filePath).mtimeMs;
   } catch {
     return null;
   }
+}
+
+// Parsed-JSON companion to `readTextCached`: manifests are re-resolved for
+// every open Rust document on every refresh, and a case-study manifest is
+// hundreds of KB — parse each version once. Callers treat the result as
+// read-only.
+const jsonCache = new Map(); // path -> { text, value }
+function readJson(filePath) {
+  const text = readTextCached(filePath);
+  if (text === null) return null;
+  const hit = jsonCache.get(filePath);
+  if (hit && hit.text === text) return hit.value;
+  let value;
+  try {
+    value = JSON.parse(text);
+  } catch {
+    value = null;
+  }
+  jsonCache.set(filePath, { text, value });
+  return value;
+}
+
+/**
+ * The manifest that owns a Rust file's obligations, with the directory and
+ * stem its Lean artifacts are keyed by.
+ *
+ * The co-located layout (`<dir>/generated/<stem>.json` beside `<stem>.rs`) is
+ * the fast path and stays authoritative for examples. It is not the only
+ * layout: a case study that verifies a vendored crate lowers a whole
+ * dependency cone, so the sources that produced the obligations sit deep
+ * inside the checkout while `generated/` lives at the study root. For those,
+ * walk up to the nearest ancestor whose `generated/` holds a manifest that
+ * actually mentions this file, so navigation works from the source the
+ * obligations came from rather than only from the lowering entry point.
+ */
+function resolveManifestContext(root, documentPath) {
+  const stem = path.basename(documentPath, '.rs');
+  for (const directory of manifestSearchDirs(root, documentPath)) {
+    const generated = path.join(directory, 'generated');
+    if (!fs.existsSync(generated)) continue;
+    // Same-stem manifest first: it is the co-located example layout, and for
+    // a vendored source it is still the likeliest owner (one manifest per
+    // lowered module keeps the module's own name).
+    const preferred = path.join(generated, `${stem}.json`);
+    const candidates = [preferred];
+    let entries = [];
+    try {
+      entries = fs.readdirSync(generated);
+    } catch {
+      entries = [];
+    }
+    for (const entry of entries) {
+      if (!entry.endsWith('.json')) continue;
+      const candidate = path.join(generated, entry);
+      if (candidate !== preferred) candidates.push(candidate);
+    }
+    for (const candidate of candidates) {
+      const manifest = readJson(candidate);
+      if (!manifestCoversRustFile(manifest, documentPath)) continue;
+      return {
+        manifest,
+        exampleDir: directory,
+        stem: path.basename(candidate, '.json'),
+      };
+    }
+  }
+  // No manifest yet (never verified, or an ad-hoc file): keep the co-located
+  // guess so callers report "run a verification first" rather than misfiling.
+  return { manifest: null, exampleDir: path.dirname(documentPath), stem };
 }
 
 /** The user-owned proofs twin of a generated path (file or directory). */
@@ -249,14 +374,14 @@ function leanFilesForObligation(root, exampleDir, stem, record) {
 
 /** Parse one check file: failure/covered diagnostics per Rust file. */
 function collectDiagnostics(root, checkPath, manifest, byFile, tally) {
-  let text;
-  try {
-    text = fs.readFileSync(checkPath, 'utf8');
-  } catch {
-    return { failedObligations: new Set() };
-  }
+  const text = readTextCached(checkPath);
+  if (text === null) return { failedObligations: new Set() };
   const failedObligations = new Set();
-  const fallbackTwin = manifest
+  // `lean_file` is present in every manifest the pipeline writes, but a
+  // manifest is now resolved in more situations (whole-crate judging, open
+  // files) — so treat it as optional rather than letting one odd manifest
+  // throw and take down all painting.
+  const fallbackTwin = manifest && manifest.lean_file
     ? path.join(root, manifest.lean_file.replace('/generated/', '/proofs/'))
     : null;
   for (const line of text.split('\n')) {
@@ -328,53 +453,7 @@ function collectDiagnostics(root, checkPath, manifest, byFile, tally) {
  * declaration line of the enclosing function (parsed from the source),
  * carrying the function's full range and whether any goal failed.
  */
-function collectFunctionMarks(root, manifest, failedObligations, marksByFile) {
-  if (!manifest || !Array.isArray(manifest.obligations)) return;
-  const file = path.isAbsolute(manifest.rust_file)
-    ? manifest.rust_file
-    : path.join(root, manifest.rust_file);
-  let source = '';
-  try {
-    source = fs.readFileSync(file, 'utf8');
-  } catch {
-    return;
-  }
-  const ranges = parseFunctionRanges(source);
-  const enclosing = (zeroBasedLine) => {
-    let best = null;
-    for (const range of ranges) {
-      if (range.start <= zeroBasedLine && zeroBasedLine <= range.end) {
-        best = range;
-      }
-    }
-    return best;
-  };
-  const perFunction = new Map();
-  for (const record of manifest.obligations) {
-    if (!perFunction.has(record.namespace)) {
-      perFunction.set(record.namespace, { failed: false, min: Infinity });
-    }
-    const entry = perFunction.get(record.namespace);
-    if (failedObligations.has(record.name)) entry.failed = true;
-    const span = record.rust_span || {};
-    if (span.start_line && span.start_line < entry.min) {
-      entry.min = span.start_line;
-    }
-  }
-  for (const [, entry] of perFunction) {
-    if (entry.min === Infinity) continue;
-    const range = enclosing(entry.min - 1);
-    if (!range) continue;
-    if (!marksByFile.has(file)) marksByFile.set(file, []);
-    marksByFile.get(file).push({
-      verified: !entry.failed,
-      stale: false,
-      line: range.line,
-      start: range.start,
-      end: range.end,
-    });
-  }
-}
+// `collectFunctionMarks` lives in core.js (pure, unit-tested).
 
 /** rustc front-end errors in pipeline output: `error...: --> file:l:c`. */
 function parseFrontEndErrors(root, log) {
@@ -492,8 +571,9 @@ function activate(context) {
     status
   );
 
-  // Results are shown only once a verification has run in this session —
-  // never from stale artifacts at startup.
+  // Set once a verification completes in this session. Painting no longer
+  // depends on it (artifacts on disk are authoritative), but the run/refusal
+  // bookkeeping still tracks whether this session produced the results.
   let sessionHasResults = false;
   let running = 0;
   // file -> [{ verified, line, start, end }] from the latest manifests.
@@ -504,6 +584,8 @@ function activate(context) {
   // per-file outcome and gutter marks independently across `refresh()`.
   const refusalsByFile = new Map();
   const refusalMarksByFile = new Map();
+  // Files whose displayed verdict predates their last edit.
+  const staleFiles = new Set();
   // Files currently under verification: file -> [{ start, end }] ranges.
   const verifying = new Map();
   let zigzagPhase = 0;
@@ -554,8 +636,7 @@ function activate(context) {
     }
     const editor = vscode.window.activeTextEditor;
     const active = editor && editor.document.uri.fsPath;
-    const result =
-      active && sessionHasResults ? resultsByFile.get(active) : null;
+    const result = active ? resultsByFile.get(active) : null;
     if (!result) {
       status.text = '$(circle-outline) vermilion';
       status.tooltip =
@@ -574,6 +655,15 @@ function activate(context) {
       return;
     }
     const name = path.basename(active);
+    if (staleFiles.has(active)) {
+      status.text = `$(history) vermilion: ${name} edited since it was verified`;
+      status.tooltip =
+        'The displayed verdict predates your edits — save (or press ' +
+        'Cmd/Ctrl+Shift+R) to re-verify.';
+      status.backgroundColor = undefined;
+      status.show();
+      return;
+    }
     if (result.failed > 0) {
       status.text = `$(error) vermilion: ${result.failed} failed in ${name}`;
       status.tooltip =
@@ -594,6 +684,7 @@ function activate(context) {
   const refresh = () => {
     const byFile = new Map();
     const tally = { failed: 0, covered: 0, checks: 0 };
+    staleFiles.clear();
     marksByFile = new Map(
       [...refusalMarksByFile].map(([file, marks]) => [
         file,
@@ -601,7 +692,24 @@ function activate(context) {
       ])
     );
     resultsByFile = new Map(refusalsByFile);
-    if (sessionHasResults && fs.existsSync(checkDir)) {
+    // Artifacts on disk are shown as soon as they exist — a file whose
+    // obligations were judged by an earlier run (or by another window, or by
+    // the study's own driver) is highlighted the moment it is opened, without
+    // requiring a run in this session. Results that a later source edit
+    // invalidated are marked stale below instead of being displayed as
+    // current.
+    if (fs.existsSync(checkDir)) {
+      // Manifests reachable from the files currently open: this is what makes
+      // whole-crate case studies work, where one run judges every manifest
+      // under a study's generated/ (check files named `ga-<manifest>`) and no
+      // per-source run status is written at all.
+      const manifestsByStem = new Map();
+      for (const document of vscode.workspace.textDocuments) {
+        if (document.languageId !== 'rust') continue;
+        if (document.uri.scheme !== 'file') continue;
+        const context = resolveManifestContext(root, document.uri.fsPath);
+        if (context.manifest) manifestsByStem.set(context.stem, context.manifest);
+      }
       for (const name of fs.readdirSync(checkDir)) {
         if (!name.endsWith('-check.json')) continue;
         const stem = name.replace(/-check\.json$/, '');
@@ -622,8 +730,13 @@ function activate(context) {
           );
           if (fs.existsSync(candidate)) manifest = readJson(candidate);
         }
+        // Whole-crate judging writes `ga-<manifest stem>-check.json` with no
+        // matching run status; resolve those through the open files' own
+        // manifests.
+        if (!manifest) {
+          manifest = manifestsByStem.get(stem.replace(/^ga-/, '')) || null;
+        }
         tally.checks += 1;
-        const before = { failed: tally.failed, covered: tally.covered };
         const { failedObligations } = collectDiagnostics(
           root,
           path.join(checkDir, name),
@@ -631,15 +744,59 @@ function activate(context) {
           byFile,
           tally
         );
+        const marksBefore = new Map(
+          [...marksByFile].map(([file, marks]) => [file, marks.length])
+        );
         collectFunctionMarks(root, manifest, failedObligations, marksByFile);
-        if (manifest && manifest.rust_file) {
-          const file = path.isAbsolute(manifest.rust_file)
-            ? manifest.rust_file
-            : path.join(root, manifest.rust_file);
-          resultsByFile.set(file, {
-            failed: tally.failed - before.failed,
-            covered: tally.covered - before.covered,
-          });
+        // A verdict older than the source it judged is not current. Keep the
+        // marks (so the file still shows what was proved) but flag them stale:
+        // `paintEditors` withholds stale checkmarks exactly as it does for a
+        // function the user just edited, and the status line says so.
+        const judgedAt = mtimeOf(path.join(checkDir, name));
+        for (const [file, marks] of marksByFile) {
+          const sourceAt = mtimeOf(file);
+          if (sourceAt === null || judgedAt === null || sourceAt <= judgedAt) {
+            continue;
+          }
+          for (let index = marksBefore.get(file) || 0; index < marks.length; index += 1) {
+            marks[index].stale = true;
+          }
+          staleFiles.add(file);
+        }
+        // Attribute the outcome to every source this check file judged, not
+        // just the manifest's entry point (a whole-crate manifest covers a
+        // cone of sources, each of which can be the active editor).
+        const judgedFiles = new Set();
+        if (manifest && Array.isArray(manifest.obligations)) {
+          for (const record of manifest.obligations) {
+            const span = record.rust_span || {};
+            const file = span.file || manifest.rust_file;
+            if (file) {
+              judgedFiles.add(
+                path.isAbsolute(file) ? file : path.join(root, file)
+              );
+            }
+          }
+        } else if (manifest && manifest.rust_file) {
+          judgedFiles.add(
+            path.isAbsolute(manifest.rust_file)
+              ? manifest.rust_file
+              : path.join(root, manifest.rust_file)
+          );
+        }
+        for (const file of judgedFiles) {
+          // Per file, straight from its own diagnostics: failures are Errors,
+          // obligations discharged by a twin proof are Information. Counting
+          // them here (rather than splitting the run-wide tally) keeps the
+          // status line right for every source a manifest covers.
+          const entries = byFile.get(file) || [];
+          const failed = entries.filter(
+            (entry) => entry.severity === vscode.DiagnosticSeverity.Error
+          ).length;
+          const covered = entries.filter(
+            (entry) => entry.code === 'discharged-interactively'
+          ).length;
+          resultsByFile.set(file, { failed, covered });
         }
       }
     }
@@ -659,6 +816,21 @@ function activate(context) {
     updateStatus();
   };
 
+  // Event-driven refreshes are coalesced: a pipeline run rewrites hundreds
+  // of generated/twin files in a burst (one watcher event each), and
+  // navigation opens/closes documents in quick succession — running the
+  // full refresh once per event serialized seconds of repeated work on the
+  // extension-host thread. One trailing refresh per quiet 200ms repaints
+  // exactly the same final state.
+  let refreshTimer = null;
+  const requestRefresh = () => {
+    if (refreshTimer) clearTimeout(refreshTimer);
+    refreshTimer = setTimeout(() => {
+      refreshTimer = null;
+      refresh();
+    }, 200);
+  };
+
   // The pipeline touches the check file first and the twin last; watching
   // all three keeps the diagnostics and their twin links current.
   for (const pattern of [
@@ -672,11 +844,11 @@ function activate(context) {
     const watcher = vscode.workspace.createFileSystemWatcher(pattern);
     const onEvent = () => {
       sessionHasResults = true;
-      refresh();
+      requestRefresh();
     };
     watcher.onDidChange(onEvent);
     watcher.onDidCreate(onEvent);
-    watcher.onDidDelete(refresh);
+    watcher.onDidDelete(requestRefresh);
     context.subscriptions.push(watcher);
   }
   context.subscriptions.push(
@@ -685,8 +857,8 @@ function activate(context) {
       paintEditors();
       updateStatus();
     }),
-    vscode.workspace.onDidOpenTextDocument(refresh),
-    vscode.workspace.onDidCloseTextDocument(refresh)
+    vscode.workspace.onDidOpenTextDocument(requestRefresh),
+    vscode.workspace.onDidCloseTextDocument(requestRefresh)
   );
 
   // Editing a function makes its verdict stale: drop its checkmark
@@ -885,6 +1057,19 @@ function activate(context) {
     if (localRunner) {
       command = `'${localRunner}'`;
       runner = localRunner;
+    } else if (
+      manifestOwnedElsewhere(
+        resolveManifestContext(root, documentPath).exampleDir,
+        documentPath
+      )
+    ) {
+      // A source that only contributes obligations to another entry point's
+      // manifest (a member of a vendored crate a case study lowers) is not a
+      // runnable program: the shared driver would fail on it as a file, and
+      // that failure is not the user's. Its verdicts already come from the
+      // study's own run, and ⌘⇧J navigates its obligations, so leave the
+      // diagnostics alone instead of painting a spurious failure.
+      return false;
     } else if (
       fs.existsSync(sharedRunner) &&
       documentPath.startsWith(root + path.sep)
@@ -1190,10 +1375,24 @@ function activate(context) {
   // should not spin up the pipeline. `verify`'s own inFlight guard makes a
   // redundant trigger a no-op.
   const hasVerusMacro = (document) => /verus!\s*\{/.test(document.getText());
+  // …but only when there is something new to learn: VSCode re-fires
+  // onDidOpenTextDocument every time navigation revisits a closed document,
+  // and each pipeline run costs a Verus front-end pass plus a Lean check
+  // whose file rewrites make any open twin re-elaborate. If the stored
+  // verdict already postdates the source, `refresh()` paints it as-is and
+  // no run is owed. Saving and ⌘⇧R verify unconditionally, and refresh()
+  // flags any verdict older than the source as stale.
+  const verdictIsCurrent = (documentPath) => {
+    const stem = path.basename(documentPath, '.rs');
+    const judgedAt = mtimeOf(path.join(checkDir, `${stem}-check.json`));
+    const sourceAt = mtimeOf(documentPath);
+    return judgedAt !== null && sourceAt !== null && sourceAt <= judgedAt;
+  };
   const verifyIfVerus = (document) => {
     if (document.languageId !== 'rust') return;
     if (document.uri.scheme !== 'file') return; // skip diff/virtual documents
     if (!hasVerusMacro(document)) return;
+    if (verdictIsCurrent(document.uri.fsPath)) return;
     verify(document.uri.fsPath, document);
   };
   context.subscriptions.push(
@@ -1228,9 +1427,30 @@ function activate(context) {
       if (
         !verify(editor.document.uri.fsPath, editor.document, { force: true })
       ) {
-        vscode.window.showInformationMessage(
-          'Vermilion: this file is outside the workspace, or scripts/run_example.sh is missing.'
+        // Not runnable as a file of its own. Say why, and — when the file is
+        // part of a case study that lowers it — name the driver that does
+        // verify it, instead of blaming a missing script.
+        const documentPath = editor.document.uri.fsPath;
+        const { exampleDir, manifest } = resolveManifestContext(
+          root,
+          documentPath
         );
+        if (manifest && manifestOwnedElsewhere(exampleDir, documentPath)) {
+          const owner = path.relative(root, exampleDir) || '.';
+          const runner = fs.existsSync(path.join(exampleDir, 'run.sh'))
+            ? `${owner}/run.sh`
+            : owner;
+          refresh();
+          vscode.window.showInformationMessage(
+            `Vermilion: ${path.basename(documentPath)} is verified as part of ` +
+              `${owner} — run ${runner} to re-verify it. Showing the results ` +
+              'of its last run.'
+          );
+        } else {
+          vscode.window.showInformationMessage(
+            'Vermilion: this file is outside the workspace, or scripts/run_example.sh is missing.'
+          );
+        }
       }
     })
   );
@@ -1245,8 +1465,6 @@ function activate(context) {
         return;
       }
       const documentPath = editor.document.uri.fsPath;
-      const stem = path.basename(documentPath, '.rs');
-      const exampleDir = path.dirname(documentPath);
       const cursorLine = editor.selection.active.line;
       const text = editor.document.getText();
       const enclosing = parseFunctionRanges(text).find(
@@ -1266,13 +1484,22 @@ function activate(context) {
       // mode obligation blocks live in the function's own unit file and
       // spec-fn/datatype definitions in the shared Specs module.
       const root =
-        (vscode.workspace.workspaceFolders || [])[0]?.uri.fsPath || exampleDir;
-      const manifest = readJson(path.join(exampleDir, 'generated', `${stem}.json`));
+        (vscode.workspace.workspaceFolders || [])[0]?.uri.fsPath ||
+        path.dirname(documentPath);
+      const { manifest, exampleDir, stem } = resolveManifestContext(
+        root,
+        documentPath
+      );
       const blockTargets = [];
       const definitionTargets = [];
       let emittedFunctionName = `${stem}.${name}`;
       if (manifest && manifest.mode === 'per-function') {
-        const record = obligationRecordForFunction(manifest, name, enclosing);
+        const record = obligationRecordForFunction(
+          manifest,
+          name,
+          enclosing,
+          documentPath
+        );
         if (record && record.namespace) emittedFunctionName = record.namespace;
         blockTargets.push(...leanFilesForObligation(root, exampleDir, stem, record));
         if (manifest.specs_lean) {
@@ -1486,8 +1713,6 @@ function activate(context) {
         return;
       }
       const documentPath = editor.document.uri.fsPath;
-      const stem = path.basename(documentPath, '.rs');
-      const exampleDir = path.dirname(documentPath);
       const cursorLine = editor.selection.active.line + 1; // spans are 1-based
       const sourceText = editor.document.getText();
       const sourceRange = parseFunctionRanges(sourceText).find(
@@ -1499,26 +1724,18 @@ function activate(context) {
         : '';
       const functionName = (declaration.match(/fn\s+([A-Za-z0-9_]+)/) || [])[1];
       const root =
-        (vscode.workspace.workspaceFolders || [])[0]?.uri.fsPath || exampleDir;
+        (vscode.workspace.workspaceFolders || [])[0]?.uri.fsPath ||
+        path.dirname(documentPath);
+      const { manifest, exampleDir, stem } = resolveManifestContext(
+        root,
+        documentPath
+      );
       // Each obligation's own Lean home (its unit twin in per-function
       // mode, the module twin in per-file mode), generated as fallback.
       const twinFor = (o) =>
         leanFilesForObligation(root, exampleDir, stem, o)[0] || null;
       // The obligation whose Rust span most tightly encloses the cursor.
-      let manifest = null;
-      let obligations = [];
-      try {
-        manifest = JSON.parse(
-          fs.readFileSync(
-            path.join(exampleDir, 'generated', `${stem}.json`),
-            'utf8'
-          )
-        );
-        obligations = manifest.obligations || [];
-      } catch {
-        manifest = null;
-        obligations = [];
-      }
+      const obligations = (manifest && manifest.obligations) || [];
       // Every obligation whose Rust span encloses the cursor, tightest
       // first — one Verus construct can produce several VCs (e.g. a loop
       // invariant's entry and preserve checks share a span).
@@ -1526,6 +1743,10 @@ function activate(context) {
         .filter(
           (o) =>
             o.rust_span &&
+            // A manifest can span several sources (the lowering pulls in a
+            // whole dependency cone), so line numbers alone would match an
+            // obligation from a different file at the same line.
+            sameSourceFile(documentPath, o.rust_span.file || '') &&
             o.rust_span.start_line <= cursorLine &&
             cursorLine <= o.rust_span.end_line
         )
@@ -1568,7 +1789,8 @@ function activate(context) {
             manifest,
             functionName,
             sourceRange,
-            clause
+            clause,
+            documentPath
           )
         : null;
       if (contractObligation && jumpTo(contractObligation)) return;

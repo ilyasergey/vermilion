@@ -3,10 +3,13 @@
 Vermilion verifies Verus-annotated Rust using Lean as the proof engine, and
 this extension brings the results into the editor:
 
-- **verification runs when you open a Rust file with a `verus!` macro**, on
-  save for any Rust file in the workspace, and on demand (**⌘⇧R /
-  Ctrl+Shift+R**, or the status-bar click) — silently in the background, no
-  terminal; output lands in the *Vermilion* output channel. A file with an
+- **verification runs when you open a Rust file with a `verus!` macro**
+  (only if its stored verdict is missing or older than the source — a
+  current verdict is painted straight from disk, so jumping between
+  already-verified files never re-runs the pipeline), on save for any Rust
+  file in the workspace, and on demand (**⌘⇧R / Ctrl+Shift+R**, or the
+  status-bar click) — silently in the background, no terminal; output lands
+  in the *Vermilion* output channel. A file with an
   example `run.sh` next to it goes through that; every other Rust file is
   driven directly through `scripts/run_example.sh`, so **no `run.sh` needs to
   exist** for a file to verify. Files that do not type-check fail in the

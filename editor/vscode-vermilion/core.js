@@ -1,5 +1,6 @@
 'use strict';
 
+const fs = require('node:fs');
 const path = require('node:path');
 
 /**
@@ -111,13 +112,18 @@ function startsWithComponents(path, prefix) {
  * per-function Lean unit.  The Rust span disambiguates methods with the same
  * name in different impl blocks.
  */
-function obligationRecordForFunction(manifest, name, range) {
+function obligationRecordForFunction(manifest, name, range, sourceFile) {
   if (!manifest || !Array.isArray(manifest.obligations)) return null;
   const suffix = `.${name}`;
   const candidates = manifest.obligations.filter(
     (record) =>
       typeof record.namespace === 'string' &&
-      (record.namespace === name || record.namespace.endsWith(suffix))
+      (record.namespace === name || record.namespace.endsWith(suffix)) &&
+      // One manifest can cover a whole dependency cone, where the same
+      // function name recurs across sources; the open file disambiguates.
+      (!sourceFile ||
+        (record.rust_span &&
+          sameSourceFile(sourceFile, record.rust_span.file || '')))
   );
   if (!range) return candidates[0] || null;
   const inFunction = candidates.find((record) => {
@@ -199,9 +205,14 @@ function contractClauseAtLine(text, range, cursorLine) {
   return null;
 }
 
-function obligationForContractClause(manifest, name, range, clause) {
+function obligationForContractClause(manifest, name, range, clause, sourceFile) {
   if (!clause) return null;
-  const representative = obligationRecordForFunction(manifest, name, range);
+  const representative = obligationRecordForFunction(
+    manifest,
+    name,
+    range,
+    sourceFile
+  );
   if (!representative) return null;
   const records = manifest.obligations.filter(
     (record) =>
@@ -214,6 +225,130 @@ function sameSourceFile(left, right) {
   const a = path.normalize(left).replaceAll('\\', '/');
   const b = path.normalize(right).replaceAll('\\', '/');
   return a === b || a.endsWith(`/${b}`) || b.endsWith(`/${a}`);
+}
+
+/**
+ * Gutter marks per source file: one entry per emitted function, verified
+ * unless one of its obligations failed. Reads each source to find the
+ * function ranges, so it needs `fs`; it is otherwise pure.
+ */
+function collectFunctionMarks(root, manifest, failedObligations, marksByFile) {
+  if (!manifest || !Array.isArray(manifest.obligations)) return;
+  const absolute = (file) =>
+    path.isAbsolute(file) ? file : path.join(root, file);
+  // Each obligation is attributed to the source its span names, falling back
+  // to the manifest's entry point. One manifest can cover several sources
+  // (the lowering pulls in a dependency cone), so marks must not all land on
+  // the entry point's file.
+  const perFunction = new Map();
+  for (const record of manifest.obligations) {
+    const span = record.rust_span || {};
+    const file = absolute(span.file || manifest.rust_file || '');
+    if (!file) continue;
+    const key = `${file}\u0000${record.namespace}`;
+    if (!perFunction.has(key)) {
+      perFunction.set(key, { file, failed: false, min: Infinity });
+    }
+    const entry = perFunction.get(key);
+    if (failedObligations.has(record.name)) entry.failed = true;
+    if (span.start_line && span.start_line < entry.min) {
+      entry.min = span.start_line;
+    }
+  }
+  const rangesByFile = new Map();
+  const rangesFor = (file) => {
+    if (rangesByFile.has(file)) return rangesByFile.get(file);
+    let ranges = null;
+    try {
+      ranges = parseFunctionRanges(fs.readFileSync(file, 'utf8'));
+    } catch {
+      ranges = null;
+    }
+    rangesByFile.set(file, ranges);
+    return ranges;
+  };
+  for (const [, entry] of perFunction) {
+    if (entry.min === Infinity) continue;
+    const ranges = rangesFor(entry.file);
+    if (!ranges) continue;
+    const zeroBasedLine = entry.min - 1;
+    let range = null;
+    for (const candidate of ranges) {
+      if (candidate.start <= zeroBasedLine && zeroBasedLine <= candidate.end) {
+        range = candidate;
+      }
+    }
+    // Macro-generated items (`pub proof fn $name` inside a `macro_rules!`
+    // body) have no `fn <name>` in the source: the obligations' spans point
+    // at the macro INVOCATION, which encloses no parsed function range. Mark
+    // that line itself — it is where the reader looks for the verdict —
+    // rather than dropping the verdict on the floor.
+    const mark = range
+      ? { line: range.line, start: range.start, end: range.end }
+      : { line: zeroBasedLine, start: zeroBasedLine, end: zeroBasedLine };
+    if (!marksByFile.has(entry.file)) marksByFile.set(entry.file, []);
+    marksByFile.get(entry.file).push({
+      verified: !entry.failed,
+      stale: false,
+      ...mark,
+    });
+  }
+}
+
+/**
+ * True when a manifest describes obligations lowered from this Rust file —
+ * either because the file is the manifest's own lowering entry point, or
+ * because it is one of the sources reached through it. The call-graph-aware
+ * lowering pulls in whole dependency cones, so a case study that verifies a
+ * vendored crate keeps `generated/` at the study root while the `.rs` files
+ * that produced the obligations live deep inside the (gitignored) checkout.
+ */
+function manifestCoversRustFile(manifest, documentPath) {
+  if (!manifest) return false;
+  if (manifest.rust_file && sameSourceFile(documentPath, manifest.rust_file)) {
+    return true;
+  }
+  return (manifest.obligations || []).some(
+    (record) =>
+      record.rust_span &&
+      record.rust_span.file &&
+      sameSourceFile(documentPath, record.rust_span.file)
+  );
+}
+
+/**
+ * True when a file's Lean artifacts are owned by a directory other than its
+ * own — the vendored-crate layout, where a study's driver (its `run.sh`, with
+ * the crate root and any `--verus-extern` it needs) lowers a cone of sources
+ * that live elsewhere and writes every manifest under the study's
+ * `generated/`. Such a file has obligations to navigate to, but it is a crate
+ * member rather than a self-contained program: pointing the shared driver at
+ * the file itself would fail on the crate structure, and that failure is not
+ * the user's to see.
+ */
+function manifestOwnedElsewhere(exampleDir, documentPath) {
+  if (!exampleDir) return false;
+  return path.resolve(exampleDir) !== path.resolve(path.dirname(documentPath));
+}
+
+/**
+ * Directories that can own the manifest for a Rust source, nearest first:
+ * the file's own directory (the one-example-one-directory layout), then each
+ * ancestor up to and including the workspace root. Anything outside the root
+ * is not ours to search.
+ */
+function manifestSearchDirs(root, documentPath) {
+  const normalizedRoot = path.resolve(root);
+  const dirs = [];
+  let current = path.resolve(path.dirname(documentPath));
+  while (true) {
+    dirs.push(current);
+    if (current === normalizedRoot) break;
+    const parent = path.dirname(current);
+    if (parent === current) break; // filesystem root: the file is outside `root`
+    current = parent;
+  }
+  return dirs;
 }
 
 /**
@@ -310,11 +445,16 @@ function dependencyImportRange(text, dependencyFile) {
 }
 
 module.exports = {
+  collectFunctionMarks,
   contractClauseAtLine,
   dependencyImportRange,
+  manifestOwnedElsewhere,
+  manifestCoversRustFile,
+  manifestSearchDirs,
   obligationForContractClause,
   obligationRecordForFunction,
   parseFunctionRanges,
   refusalFunctionRanges,
+  sameSourceFile,
   specNamespaceForFunction,
 };

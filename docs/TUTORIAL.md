@@ -329,8 +329,10 @@ Install the bundled VS Code extension once:
 ```
 
 **Opening a Rust file that contains a `verus!` macro verifies it
-automatically**, as does **saving any Rust file** (silently, in the
-background — no terminal; see the *Vermilion* output channel). **⌘⇧R**
+automatically** when its stored verdict is missing or older than the source
+(a current verdict is shown straight from disk, without re-running the
+pipeline), as does **saving any Rust file** (silently, in the background —
+no terminal; see the *Vermilion* output channel). **⌘⇧R**
 (macOS) / **Ctrl+Shift+R** (Linux/Windows) or the status-bar click do the
 same on demand. You do **not** need to author a `run.sh`: a file with an
 example `run.sh` next to it is driven through that (so its `--lib` twin
