@@ -7,6 +7,23 @@ set_option linter.dupNamespace false
 set_option linter.unusedTactic false
 set_option linter.unreachableTactic false
 
+-- vrml:user:begin
+private theorem ofInt_toNat8 (x : BitVec 8) : BitVec.ofInt 8 (x.toNat : Int) = x := by
+  simp [BitVec.ofInt_natCast]
+
+private theorem shl16_one (p : Int) (h0 : 0 ≤ p) (h : p < 16) :
+    Vermilion.Bits.shl 16 1 p = 2 ^ p.toNat := by
+  have hp : p.toNat < 16 := by omega
+  simp only [Vermilion.Bits.shl]
+  rw [show BitVec.ofInt 16 1 = 1#16 from by decide]
+  rw [BitVec.toNat_shiftLeft]
+  simp only [BitVec.toNat_ofNat, Nat.shiftLeft_eq]
+  rw [Nat.mod_eq_of_lt (show 1 < 2 ^ 16 by norm_num), one_mul,
+    Nat.mod_eq_of_lt (Nat.pow_lt_pow_right (a := 2) (by norm_num) hp)]
+  push_cast
+  rfl
+-- vrml:user:end
+
 namespace layer_a.lemmas.common_lemmas.bit_lemmas.lemma_mask_bound_implies_bit_clean
 
 -- vrml:begin layer_a.lemmas.common_lemmas.bit_lemmas.lemma_mask_bound_implies_bit_clean.assert_0 d66a4e37900c06c4
@@ -191,8 +208,40 @@ def assert_bv_5_0_meta : Vermilion.ObligationMeta := {
     (loop_0_iteration_5 : j ≥ bound_shift)
     (loop_0_iteration_6 : (mask % 65536) < Vermilion.Bits.shl 16 1 (bound_shift % 65536)) :
     Vermilion.Bits.band 8 mask (Vermilion.Bits.shl 8 1 j) = 0 := by
-  -- TODO(vermilion): automation failed; prove this obligation.
-  sorry
+  obtain ⟨hm0, hm1⟩ := loop_0_iteration_0
+  obtain ⟨hb0, hb1⟩ := loop_0_iteration_1
+  obtain ⟨hj0, hj1⟩ := loop_0_iteration_2
+  have hm1' : mask < 256 := by norm_num at hm1; exact hm1
+  rw [show bound_shift % 65536 = bound_shift from by omega,
+    shl16_one bound_shift hb0 (by omega),
+    show mask % 65536 = mask from by omega] at loop_0_iteration_6
+  simp only [Vermilion.Bits.band, Vermilion.Bits.shl, ofInt_toNat8]
+  rw [show BitVec.ofInt 8 1 = 1#8 from by decide]
+  have hM : ((BitVec.ofInt 8 mask).toNat : Int) = mask :=
+    Vermilion.Bits.toNat_ofInt_of_range 8 mask hm0 hm1
+  have hMn : (BitVec.ofInt 8 mask).toNat < 2 ^ j.toNat := by
+    have hle : (2 : Int) ^ bound_shift.toNat ≤ 2 ^ j.toNat := by
+      apply pow_le_pow_right₀ (by norm_num); omega
+    have h : mask < (2 : Int) ^ j.toNat := lt_of_lt_of_le loop_0_iteration_6 hle
+    rw [← hM] at h
+    exact_mod_cast h
+  have hz : (BitVec.ofInt 8 mask &&& 1#8 <<< j.toNat) = 0#8 := by
+    apply BitVec.eq_of_toNat_eq
+    rw [BitVec.toNat_and, BitVec.toNat_shiftLeft]
+    simp only [BitVec.toNat_ofNat, Nat.shiftLeft_eq]
+    rw [Nat.mod_eq_of_lt (show 1 < 2 ^ 8 by norm_num), one_mul,
+      Nat.mod_eq_of_lt (Nat.pow_lt_pow_right (a := 2) (by norm_num) (show j.toNat < 8 by omega)),
+      Nat.zero_mod]
+    apply Nat.eq_of_testBit_eq
+    intro i
+    simp only [Nat.testBit_and, Nat.zero_testBit, Nat.testBit_two_pow]
+    by_cases hij : j.toNat = i
+    · subst hij
+      rw [Nat.testBit_lt_two_pow hMn]
+      simp
+    · simp [hij]
+  rw [hz]
+  rfl
 -- vrml:end layer_a.lemmas.common_lemmas.bit_lemmas.lemma_mask_bound_implies_bit_clean.assert_bv_5_0
 
 -- vrml:begin layer_a.lemmas.common_lemmas.bit_lemmas.lemma_mask_bound_implies_bit_clean.ensures_4 ef11dcf98743f95a

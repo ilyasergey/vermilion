@@ -102,6 +102,46 @@ and the CryptoProver comparison live in
 whole-crate runs is tracked in the `whole-crate-acquisition-generated-root`
 issue.
 
+## What is verified today (2026-08-19, Lean 4.33)
+
+Every claim below is a Lean theorem checked by the Lean kernel — Lean is
+the only verifier; Verus runs `--no-verify` as the front end.
+
+**The whole acquired field cone is proven: 5,215 clause-level verification
+conditions across 416 functions, with zero `sorry`.** A VC is one `ensures`
+conjunct, `assert`, callee-precondition instance, or loop-invariant step,
+emitted as its own theorem in the per-function twins under
+[`proofs/`](proofs/) (library `CaseDalekLiteLayerA`, 436 unit modules).
+5,182 VCs (99.4%) close on the `vrml` automation ladder; the remaining 33
+carry hand-written interactive proofs in 20 unit twins — first-class
+verification per project policy, and the residue of what was a
+2,191-`sorry` interactive backlog at the DL8 handover (closed 2026-08-19 by
+the Lean 4.33 toolchain move, new kernel-checked `Bits`/`Seq` library
+lemmas, and 21 hand proofs; see
+`logs/2026-08-19-lean-4.33-veil-removal.md`).
+
+What that covers, concretely: the crate's shipping field arithmetic modulo
+p = 2²⁵⁵ − 19 — `mul`, `square`/`pow2k`, `reduce`, `from_bytes`/`as_bytes`,
+negation, and the constant-time conditional operations in
+[`field_u64.rs`](field_u64.rs) — plus the 13 field-lemma, 8 common-lemma,
+and 5 spec modules written upstream to prove it, all verbatim from the pin.
+Functional-correctness contracts are the crate's own (limb bounds,
+`u64_5_as_nat` value identities, byte-encoding round trips), re-verified
+through the Lean kernel rather than Z3.
+
+**Not yet verified:** the 38/454 refused functions (37 blocked on the
+cross-module recursive-spec-fn termination gap, 1 on the substitution
+budget — span-mapped, issues filed); the crate's 48 `axiom_*` trusted
+floor, scheduled to be *proved* against Mathlib `ZMod` (DL10); and
+everything above the field layer — Scalar52, Montgomery/Edwards, Ristretto
+(DL9). One emitter defect keeps two `by (bit_vector)` VCs of
+`lemma_or_bit` under a marked namespace stopgap
+(`docs/issues/bit-vector-assert-id-collision.md`); their proofs are real.
+
+The running comparison against CryptoProver (which verifies the same crate
+with Z3 and the axiom floor trusted) is
+[`docs/reports/dalek-lite-layer-a-scoreboard.md`](../../docs/reports/dalek-lite-layer-a-scoreboard.md).
+
 ## Running
 
 ```console
@@ -111,5 +151,7 @@ issue.
 ./case-studies/dalek-lite/run.sh              # Layer Set A acquisition (DL8): whole field cone through the pipeline
 ```
 
-Twins live in [`probes/proofs/`](probes/proofs/) (library `CaseDalekLite`);
-interactive proofs there are first-class verification, per project policy.
+Probe twins live in [`probes/proofs/`](probes/proofs/) (library
+`CaseDalekLite`); the Layer Set A twins live in [`proofs/`](proofs/)
+(library `CaseDalekLiteLayerA`). Interactive proofs in either are
+first-class verification, per project policy.

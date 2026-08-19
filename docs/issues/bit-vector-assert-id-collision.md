@@ -2,7 +2,7 @@
 title: Bit-vector assert obligations collide on their emitted declaration name
 labels: [bug, vcgen]
 state: open
-github: null
+github: 56
 ---
 
 Found by the DL8 Layer Set A acquisition (`case-studies/dalek-lite/layer_a.rs`)
@@ -37,3 +37,11 @@ back from the DL8 phase-2 commit for exactly this reason (see
 + `Render`/`Vcgen` change (unique bit-vector assert ids), after which
 re-emitting and re-running the per-obligation adjudication recovers both
 units automatically.
+
+Update (2026-08-19, Lean 4.33 migration): `lemma_or_bit`'s twin hits the same
+collision (two `bv_5_0` blocks). Both obligations now carry real interactive
+proofs, and the unit is kept buildable by a stopgap `namespace
+collision_635d62c1` wrapper around the second block, marked with
+`-- vrml:user:begin/end` in
+`case-studies/dalek-lite/proofs/bit_lemmas/layer_a_lemmas_common_lemmas_bit_lemmas_lemma_or_bit.lean`.
+Remove that wrapper when the emitter emits unique ids.

@@ -39,8 +39,12 @@ def assert_0_meta : Vermilion.ObligationMeta := {
     (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs b))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs b) vrml_i0))))
     (requires_4 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs a) i = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs b) i)))) :
     layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs a = layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs b := by
-  -- TODO(vermilion): automation failed; prove this obligation.
-  sorry
+  -- Interactive twin proof (Lean 4.33 migration): sequence extensionality,
+  -- the ladder's known missing rung (docs/issues, Seq extensionality).
+  apply Vermilion.Seq.ext
+  · rw [requires_0, requires_2]
+  · intro i hi0 hilt
+    exact requires_4 i ⟨hi0, by rwa [requires_0] at hilt⟩
 -- vrml:end layer_a.lemmas.field_lemmas.add_lemmas.lemma_field_element51_eq_from_limbs_eq.assert_0
 
 -- vrml:begin layer_a.lemmas.field_lemmas.add_lemmas.lemma_field_element51_eq_from_limbs_eq.assert_1 1ef6badad4848b95
@@ -74,8 +78,13 @@ def assert_1_meta : Vermilion.ObligationMeta := {
     (requires_4 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs a) i = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs b) i))))
     (assert_0 : layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs a = layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs b) :
     a = b := by
-  -- TODO(vermilion): automation failed; prove this obligation.
-  sorry
+  -- Interactive twin proof (Lean 4.33 migration): FieldElement51 is a
+  -- single-field structure, so equal limbs give equal values.
+  cases a
+  cases b
+  simp only [layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs]
+    at assert_0
+  rw [assert_0]
 -- vrml:end layer_a.lemmas.field_lemmas.add_lemmas.lemma_field_element51_eq_from_limbs_eq.assert_1
 
 -- vrml:begin layer_a.lemmas.field_lemmas.add_lemmas.lemma_field_element51_eq_from_limbs_eq.ensures_2 cfa95b45a600bb4e

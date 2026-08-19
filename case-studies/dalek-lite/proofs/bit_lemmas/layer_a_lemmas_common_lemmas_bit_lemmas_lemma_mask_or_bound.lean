@@ -7,6 +7,48 @@ set_option linter.dupNamespace false
 set_option linter.unusedTactic false
 set_option linter.unreachableTactic false
 
+-- vrml:user:begin
+private theorem ofInt_toNat8 (x : BitVec 8) : BitVec.ofInt 8 (x.toNat : Int) = x := by
+  simp [BitVec.ofInt_natCast]
+
+private theorem shl16_one (p : Int) (h0 : 0 ≤ p) (h : p < 16) :
+    Vermilion.Bits.shl 16 1 p = 2 ^ p.toNat := by
+  have hp : p.toNat < 16 := by omega
+  simp only [Vermilion.Bits.shl]
+  rw [show BitVec.ofInt 16 1 = 1#16 from by decide]
+  rw [BitVec.toNat_shiftLeft]
+  simp only [BitVec.toNat_ofNat, Nat.shiftLeft_eq]
+  rw [Nat.mod_eq_of_lt (show 1 < 2 ^ 16 by norm_num), one_mul,
+    Nat.mod_eq_of_lt (Nat.pow_lt_pow_right (a := 2) (by norm_num) hp)]
+  push_cast
+  rfl
+
+private theorem bor_one_shl_lt (mask pos : Int) (hm0 : 0 ≤ mask) (hm1 : mask < 2 ^ 8)
+    (hp0 : 0 ≤ pos) (hp : pos < 8) (hlt : mask < 2 ^ pos.toNat) :
+    Vermilion.Bits.bor 8 mask (Vermilion.Bits.shl 8 1 pos) < 2 ^ (pos.toNat + 1) := by
+  simp only [Vermilion.Bits.bor, Vermilion.Bits.shl, ofInt_toNat8]
+  rw [show BitVec.ofInt 8 1 = 1#8 from by decide]
+  have hM : ((BitVec.ofInt 8 mask).toNat : Int) = mask :=
+    Vermilion.Bits.toNat_ofInt_of_range 8 mask hm0 hm1
+  have hMn : (BitVec.ofInt 8 mask).toNat < 2 ^ pos.toNat := by
+    have h := hlt
+    rw [← hM] at h
+    exact_mod_cast h
+  have hSn : (1#8 <<< pos.toNat).toNat = 2 ^ pos.toNat := by
+    rw [BitVec.toNat_shiftLeft]
+    simp only [BitVec.toNat_ofNat, Nat.shiftLeft_eq]
+    rw [Nat.mod_eq_of_lt (show 1 < 2 ^ 8 by norm_num), one_mul]
+    exact Nat.mod_eq_of_lt (Nat.pow_lt_pow_right (a := 2) (by norm_num) (by omega))
+  have key : (BitVec.ofInt 8 mask).toNat ||| 2 ^ pos.toNat < 2 ^ (pos.toNat + 1) := by
+    apply Nat.or_lt_two_pow
+    · exact lt_of_lt_of_le hMn (Nat.pow_le_pow_right (by norm_num) (Nat.le_succ _))
+    · exact Nat.pow_lt_pow_right (by norm_num) (Nat.lt_succ_self _)
+  have hfin : ((BitVec.ofInt 8 mask ||| 1#8 <<< pos.toNat)).toNat < 2 ^ (pos.toNat + 1) := by
+    rw [BitVec.toNat_or, hSn]
+    exact key
+  exact_mod_cast hfin
+-- vrml:user:end
+
 namespace layer_a.lemmas.common_lemmas.bit_lemmas.lemma_mask_or_bound
 
 -- vrml:begin layer_a.lemmas.common_lemmas.bit_lemmas.lemma_mask_or_bound.assert_0 240974b4e9613183
@@ -148,8 +190,28 @@ def assert_bv_4_0_meta : Vermilion.ObligationMeta := {
     (loop_0_iteration_4 : (val = 0) ∨ (val = 1))
     (loop_0_iteration_5 : (mask % 65536) < Vermilion.Bits.shl 16 1 (pos % 65536)) :
     ((Vermilion.Bits.bor 8 mask (Vermilion.Bits.shl 8 val pos)) % 65536) < Vermilion.Bits.shl 16 1 ((pos + 1) % 65536) := by
-  -- TODO(vermilion): automation failed; prove this obligation.
-  sorry
+  obtain ⟨hm0, hm1⟩ := loop_0_iteration_0
+  obtain ⟨hp0, hp1⟩ := loop_0_iteration_2
+  have hm1' : mask < 256 := by norm_num at hm1; exact hm1
+  have hp1' : pos < 256 := by norm_num at hp1; exact hp1
+  rw [show pos % 65536 = pos from by omega, shl16_one pos hp0 (by omega),
+    show mask % 65536 = mask from by omega] at loop_0_iteration_5
+  rw [show (pos + 1) % 65536 = pos + 1 from by omega,
+    shl16_one (pos + 1) (by omega) (by omega),
+    show (pos + 1).toNat = pos.toNat + 1 from by omega]
+  have hbor0 := Vermilion.Bits.bor_nonneg 8 mask (Vermilion.Bits.shl 8 val pos)
+  have hbor1 := Vermilion.Bits.bor_lt 8 mask (Vermilion.Bits.shl 8 val pos)
+  norm_num at hbor1
+  rw [show (Vermilion.Bits.bor 8 mask (Vermilion.Bits.shl 8 val pos)) % 65536
+      = Vermilion.Bits.bor 8 mask (Vermilion.Bits.shl 8 val pos) from by omega]
+  rcases loop_0_iteration_4 with rfl | rfl
+  · have hz : Vermilion.Bits.shl 8 0 pos = 0 := by
+      simp [Vermilion.Bits.shl]
+    rw [hz, Vermilion.Bits.bor_zero 8 mask hm0 hm1]
+    calc mask < 2 ^ pos.toNat := loop_0_iteration_5
+      _ ≤ 2 ^ (pos.toNat + 1) := by
+        apply pow_le_pow_right₀ (by norm_num) (Nat.le_succ _)
+  · exact bor_one_shl_lt mask pos hm0 hm1 hp0 loop_0_iteration_3 loop_0_iteration_5
 -- vrml:end layer_a.lemmas.common_lemmas.bit_lemmas.lemma_mask_or_bound.assert_bv_4_0
 
 -- vrml:begin layer_a.lemmas.common_lemmas.bit_lemmas.lemma_mask_or_bound.ensures_3 590e71f38e4b3ebe

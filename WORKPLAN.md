@@ -17,7 +17,8 @@ locked architecture is:
   semantics in Lean and make VC generation foundational — derived and proved
   sound against that semantics — instead of the current syntactic generator;
 - emit explicit, readable, discharger-independent Lean theorem statements;
-- use Lean 4.28.0 and Veil's manager/SMT stack;
+- use Lean 4.33.0, with Mathlib and lean-smt (cvc5) as the only foreign
+  Lake dependencies (the Veil carrier package was dropped 2026-08-19);
 - preserve Verus's CLI/JSON and executable-Rust contracts;
 - measure every milestone with differential, performance, and axiom ledgers.
 

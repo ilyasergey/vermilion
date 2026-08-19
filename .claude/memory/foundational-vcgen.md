@@ -18,9 +18,11 @@ VCs a checked artifact, aligning with the project's Lean-foundational goals.
 **How to apply:** Staged: (1) formal semantics of the neutral textual IR
 (small, versioned — `docs/ir.md`); (2) VC generation derived from and proved
 sound against it; (3) push the semantic boundary toward raw SST as the IR
-grows. Per the user (2026-07-12), build it on **Loom** (verse-lab; already a
-transitive Lake dependency via Veil) or a similar Lean program-logic
-framework, not from scratch. Recorded in plans/execution-plan.md (open
+grows. Per the user (2026-07-12), build it on **Loom** (verse-lab) or a
+similar Lean program-logic framework, not from scratch. Loom is no longer in
+the Lake dependency tree — the Veil package that carried it transitively was
+dropped on 2026-08-19 (Mathlib and lean-smt are required directly now) — so
+require Loom directly when this work starts. Recorded in plans/execution-plan.md (open
 design TODOs), WORKPLAN.md, DESIGN.md (TCB roadmap), and a TODO header in
 lean/Vermilion/Ir/Vcgen.lean. Related: [[lean-side-ir-parsing]],
 [[vermilion-conventions]].

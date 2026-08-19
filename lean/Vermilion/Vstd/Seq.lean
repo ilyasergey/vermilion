@@ -23,9 +23,17 @@ def len (xs : Seq α) : Int := xs.length
 
 def empty : Seq α := []
 
-@[simp] theorem len_empty : (empty : Seq α).len = 0 := rfl
+/- The `len`/`push` lemmas are `grind`-tagged as well as `@[simp]` (like the
+`add` family below). Since Lean 4.33, simp fails to APPLY a conditional
+lemma whose side condition needs a nested rewrite to discharge (the
+discharger proves e.g. `0 = Seq.empty.len` via `len_empty`, but the proof
+then "fails to assign" — `Simp.Rewrite`'s `.failedAssign`), so literal
+pushed-sequence goals like `(empty.push 7).index 0 < 100` no longer close
+on the simp rungs. `grind` e-matches these equations and proves the
+arithmetic side conditions in cutsat instead, restoring the first rung. -/
+@[simp, grind =] theorem len_empty : (empty : Seq α).len = 0 := rfl
 
-@[simp] theorem len_push (xs : Seq α) (x : α) :
+@[simp, grind =] theorem len_push (xs : Seq α) (x : α) :
     (xs.push x).len = xs.len + 1 := by
   simp [push, len]
 
@@ -50,7 +58,7 @@ theorem ext [Inhabited α] {a b : Seq α}
     simp only [index, h0, if_true, Int.toNat_natCast] at hi
     rwa [List.getD_eq_getElem _ _ hia, List.getD_eq_getElem _ _ hib] at hi
 
-@[simp] theorem index_push_last [Inhabited α] (xs : Seq α) (x : α) :
+@[simp, grind =] theorem index_push_last [Inhabited α] (xs : Seq α) (x : α) :
     (xs.push x).index xs.len = x := by
   simp [push, index, len]
 
@@ -58,7 +66,7 @@ theorem ext [Inhabited α] {a b : Seq α}
 *provably* the pushed sequence's last position even if written differently
 (e.g. `s.len + 1` against `(s.push a).len`), with simp discharging the
 side condition. -/
-@[simp] theorem index_push_at [Inhabited α] (xs : Seq α) (x : α) (i : Int)
+@[simp, grind =] theorem index_push_at [Inhabited α] (xs : Seq α) (x : α) (i : Int)
     (h : i = xs.len) : (xs.push x).index i = x := by
   subst h; exact index_push_last xs x
 
@@ -66,12 +74,38 @@ side condition. -/
 conditions: simp discharges them for the literal indices machine
 attempts produce and leaves the goal untouched otherwise; the rewrite
 strictly shrinks the sequence term, so it cannot loop. -/
-@[simp] theorem index_push_prefix [Inhabited α] (xs : Seq α) (x : α) (i : Int)
+@[simp, grind =] theorem index_push_prefix [Inhabited α] (xs : Seq α) (x : α) (i : Int)
     (low : 0 ≤ i) (high : i < xs.len) :
     (xs.push x).index i = xs.index i := by
   simp only [push, index, len, if_pos low] at *
   have : i.toNat < xs.length := by omega
   simp [List.getD, List.getElem?_append_left this]
+
+/-- Unconditional if-form of the push/index lemmas. On Lean ≥ 4.33 simp
+cannot APPLY a conditional lemma whose side condition needs a nested
+rewrite to discharge (the discharge proof "fails to assign"), so indexing
+into a literal pushed sequence stopped computing. This form needs no
+discharge: the `if` condition reduces by the unconditional `len` lemmas
+and `reduceIte`. Lower priority, so the targeted conditional lemmas above
+still fire first wherever their discharge succeeds. -/
+@[simp 900] theorem index_push [Inhabited α] (xs : Seq α) (x : α) (i : Int) :
+    (xs.push x).index i = if i = xs.len then x else xs.index i := by
+  by_cases h : i = xs.len
+  · simpa [h] using index_push_last xs x
+  · rcases (by omega : i < xs.len ∨ xs.len ≤ i) with hlt | hge
+    · rcases (by omega : 0 ≤ i ∨ i < 0) with h0 | h0
+      · simp [index_push_prefix xs x i h0 hlt, h]
+      · simp only [index, if_neg (by omega : ¬ 0 ≤ i)]
+        simp [h]
+    · -- past the end on both sides: both reads are the default
+      have hgt : xs.len < i := by omega
+      have hnn := len_nonneg xs
+      have hxs : xs.length < i.toNat := by simp only [len] at hgt hnn; omega
+      have happ : (xs ++ [x]).length ≤ i.toNat := by
+        simp only [List.length_append, List.length_cons, List.length_nil]; omega
+      simp only [index, push, if_pos (by omega : (0:Int) ≤ i), if_neg h,
+        List.getD_eq_getElem?_getD,
+        List.getElem?_eq_none happ, List.getElem?_eq_none (Nat.le_of_lt hxs)]
 
 /-- Sequence comprehension (vstd `Seq::new`): `new len f` has the values
 of `f` at `0 … len-1` (empty for nonpositive `len`). -/
@@ -184,7 +218,12 @@ rules below `grind` closes concatenation goals immediately instead. -/
   have hnn := len_nonneg s1
   have hi : 0 ≤ i := by omega
   have hd : 0 ≤ i - s1.len := by omega
-  simp only [add, index, len] at *
+  -- Unfold `len` before `index`: once `index`'s `ite` is in the goal,
+  -- rewriting `len` underneath it desynchronizes the guard proposition from
+  -- the `Decidable` instance baked into the `ite` (type-incorrect target on
+  -- Lean ≥ 4.33), and the `if_pos` rewrites stop matching.
+  simp only [add, len] at *
+  simp only [index]
   have hidx : i.toNat - s1.length = (i - (s1.length : Int)).toNat := by omega
   rw [if_pos hi, if_pos hd, List.getD_eq_getElem?_getD, List.getD_eq_getElem?_getD,
     List.getElem?_append_right (by omega), hidx]

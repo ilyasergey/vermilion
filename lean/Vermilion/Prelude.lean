@@ -38,6 +38,57 @@ noncomputable def emod (x y : Int) : Int :=
     emod x y = x % y := by
   simp [emod, h]
 
+/-! Machine-width remainder chains. Verus lowers every u64 (etc.)
+operation through an exact clip, so spec/impl comparisons pile up
+`((e % 2⁶⁴) % k) % 2⁶⁴`-style chains against a plain `e % k`. The three
+collapse lemmas below let the existing rungs normalize such chains
+(aeneas/sha3 `theta_d.ensures_7`, `impl__9.index_mut.ensures_3_1`,
+`impl__10.xor_byte_at.ensures_7` after the 4.33 toolchain move): the
+`grind` rung uses the two range-conditioned lemmas as rewrites with
+cutsat discharging the side conditions from the `inUnsignedRange`
+hypotheses Verus emits alongside each clip, and the omega-discharged
+simp rung fires `emod_eq_self_of_ediv_eq_zero` where the bounds are in
+context.
+
+Tagging discipline: neither range-conditioned lemma may be `@[simp]`.
+Their range side conditions are exactly what `simp_all` proves from the
+conjunction-split `inUnsignedRange` hypotheses (or decides outright for
+literals), so as simp lemmas they finish mod-collapses inside
+interactive twin proofs and close goals whose scripted continuations
+expect them open (sha3 `rho.invariant_preserve_0_3` and
+`theta_inner.invariant_preserve_0_2` script `have`s after a `simp_all`),
+and user twins are never edited to chase library growth. The simp side
+of the collapse is `emod_eq_self_of_ediv_eq_zero` below, whose
+division-form guard plain simp cannot discharge but the ladder's omega
+discharger can. -/
+
+/-- Collapse the outer remainder of `(a % b) % c` when `0 < b ≤ c`: the
+inner remainder already lies in `[0, b) ⊆ [0, c)`. In the machine-width
+chains both `b` and `c` are literals. -/
+@[grind =] theorem emod_emod_of_le (a b c : Int) (hb : 0 < b) (hbc : b ≤ c) :
+    a % b % c = a % b :=
+  Int.emod_eq_of_lt (Int.emod_nonneg a (by omega))
+    (lt_of_lt_of_le (Int.emod_lt_of_pos a hb) hbc)
+
+/-- A remainder that provably does not wrap is the identity (conditional
+form of `Int.emod_eq_of_lt`). -/
+@[grind =] theorem emod_eq_self_of_range (a b : Int) (h1 : 0 ≤ a) (h2 : a < b) :
+    a % b = a := Int.emod_eq_of_lt h1 h2
+
+/-- The same identity with the range packaged as `a / b = 0` (for `b > 0`
+this is exactly `0 ≤ a < b`). This is the `@[simp]` carrier of the
+collapse: the guard is provable by the `omega` discharger of the ladder's
+`simp_disch_omega` rung wherever the `inUnsignedRange` facts are in
+context, while plain `simp`/`simp_all`, whose discharger happily proves
+the *inequality* forms from split hypotheses, has no route from `a < b`
+to a division fact, so twin-proof `simp_all` behavior is unchanged.
+No positivity hypothesis is needed: for `b = 0` the guard holds
+(`a / 0 = 0`) but so does the conclusion (`a % 0 = a`), and in general
+`a % b = a - b * (a / b) = a`. -/
+@[simp] theorem emod_eq_self_of_ediv_eq_zero (a b : Int) (h : a / b = 0) :
+    a % b = a := by
+  rw [Int.emod_def, h, Int.mul_zero, Int.sub_zero]
+
 /-- Pure conditional for a Verus spec-level `if`. Verus requires the
 condition of an `if` to be `bool`, so the lowered condition is a
 proposition; taking the `Decidable` instance keeps the common case — a

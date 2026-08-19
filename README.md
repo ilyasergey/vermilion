@@ -45,9 +45,9 @@ future ordering, and completed work is indexed here:
 The separate [incrementality plan](plans/incremental-computation.md) records
 the long-term computation and proof-reuse design.
 
-The project is pinned to Lean 4.28.0, the Vermilion Verus fork at
-`0bb5732ae6a`, and Veil 2.0
-`8872eb7b462a`. The sequential Verus feature set is supported — generics,
+The project is pinned to Lean 4.33.0, the Vermilion Verus fork at
+`0bb5732ae6a`, Mathlib `v4.33.0`, and lean-smt
+`21aa44ce022f`. The sequential Verus feature set is supported — generics,
 datatypes, quantifiers, `Vec`, arrays, slices, `&mut`, traits, closures,
 const generics, broadcast lemmas, mutual recursion, `for` loops — plus
 Lean-native specialty proving (the `Bits` library, the `nlinarith` rung,
@@ -321,14 +321,41 @@ the Lean libraries) builds with one command:
 To reuse an existing Verus checkout instead of the automatic clone, set
 `VERUS_CHECKOUT=/path/to/verus`.
 
-The full test suite — Rust tests, every example, emission determinism, the
-incrementality matrix, the ill-typed and interactive-evidence lifecycle
-guarantees, and the 144-case
-differential corpus against Verus-as-oracle (with a live progress bar) —
-is one command:
+The test suite has three scopes. The full gate — Rust tests, every example,
+every case study, emission determinism, the incrementality matrix, the
+ill-typed and interactive-evidence lifecycle guarantees, the twin-library
+build, and the differential corpus against Verus-as-oracle (with a live
+progress bar) — is one command:
 
 ```console
 ./scripts/run_suite.sh
+```
+
+While iterating, the fast loop is the smoke scope — unit tests, all
+examples, emission determinism, and the pipeline contracts, skipping the
+case studies, the twin-library build, and the differential corpus:
+
+```console
+./scripts/run_suite.sh --smoke
+```
+
+Each case study also runs by itself (all of its runners, including a
+study's source-preservation guard and probe suites where it has them):
+
+```console
+./scripts/run_suite.sh --list-case-studies   # the valid names
+./scripts/run_suite.sh --case-study dalek-lite
+./scripts/run_suite.sh --case-study aeneas/sha3
+```
+
+The Verus conformance suite — the differential corpus, where every case
+runs through BOTH verifiers (Verus with its full SMT verification, the only
+place its Z3 verdict is consulted, and Vermilion with Lean judging) and the
+harness demands verdict *and* failure-span agreement in both directions —
+also runs by itself, with a live progress bar:
+
+```console
+./scripts/run_suite.sh --differential
 ```
 
 For an interactive edit loop outside the editor, keep one source under
@@ -501,7 +528,30 @@ Then, in any example's `.rs` file:
   and links to the dependency's exact span; all functions are marked
   unsupported because no per-function obligations were emitted;
 - the status bar tracks the active file: spinner while verifying, then
-  `✓ fully verified`, `✗ N failed`, or the explicit fragment warning.
+  `✓ fully verified`, `✗ N failed`, or the explicit fragment warning;
+- **results appear as soon as you open a file, without re-running.** Verdicts
+  are read from the artifacts on disk, so a file that was judged before — by an
+  earlier session, another window, or (for a vendored source) the study's own
+  driver — is highlighted immediately. A verdict older than the source it
+  judged is reported as such (`vermilion: <file> edited since it was verified`)
+  and its checkmarks are withheld, rather than shown as if current;
+- **macro-generated items get marks at their invocation.** Lemma factories
+  (`macro_rules!` bodies declaring `pub proof fn $name`) have no `fn <name>` in
+  the source, so their obligations' spans point at the macro invocation; the
+  mark lands there. curve25519-dalek's `shift_lemmas.rs` shows 68 such
+  checkmarks, one per generated lemma;
+- **vendored case-study sources navigate too.** A study that verifies an
+  upstream crate lowers a whole dependency cone: the obligations come from
+  `.rs` files deep inside the (gitignored) checkout, while every manifest
+  lands under the study's `generated/`. Opening such a file — e.g.
+  curve25519-dalek's `src/lemmas/common_lemmas/bit_lemmas.rs` — resolves its
+  manifest by walking up to the owning study, so `⌘⇧J` jumps to the Lean
+  obligations as usual. Those files are crate members rather than
+  self-contained programs, so saving one does *not* trigger a doomed
+  standalone run; their verdicts come from the study's own driver
+  (`case-studies/<study>/run.sh`). rust-analyzer is kept out of the vendored
+  trees (`.vscode/settings.json`): inside `verus! { … }` they are not Rust,
+  so it could only report false errors.
 
 Opening the generated/proofs `.lean` files is fast (~0.5 s): the repo
 ships a caching `lake` shim (`editor/bin/lake`, wired via
@@ -543,3 +593,7 @@ twinned by `proofs/simple/<function>.lean`) around the shared
 `Specs` module; `--per-file` collapses everything into the classic single
 `generated/simple.lean` / `proofs/simple.lean` pair. Start with the
 [hands-on tutorial](docs/TUTORIAL.md).
+
+## Contributors
+
+See [CONTRIBUTORS.md](CONTRIBUTORS.md).

@@ -5,5 +5,30 @@
   // which is otherwise paid on every .lean file open.
   "lean4.envPathExtensions": [
     "editor/bin"
+  ],
+  // Every Verus source tree is kept away from rust-analyzer: inside
+  // `verus! { … }` the syntax is not Rust — `proof fn`, `ensures`,
+  // `#![trigger …]`, `assert(…) by (bit_vector)` — and none of these files
+  // belong to the cargo workspace (some, like dalek-lite's field_u64.rs, are
+  // modules of a synthetic acquisition crate and do not even compile
+  // standalone). rust-analyzer can only report false errors on them; the
+  // pipeline's own front end is the authority on whether they type-check,
+  // and the Vermilion extension paints its verdicts. Ordinary Rust under
+  // crates/ stays fully analyzed. Verus-aware IDE support is tracked in
+  // docs/issues/vscode-coexist-with-rust-analyzer.md.
+  "rust-analyzer.files.excludeDirs": [
+    "case-studies",
+    "examples",
+    "tests"
+  ],
+  // Pin rust-analyzer to the repository's real Rust projects. Without this it
+  // auto-discovers an owner for ANY .rs file you open — a Verus source gets
+  // attached as a detached file and its `use crate::…` paths (which only
+  // resolve inside the synthetic acquisition crate) light up as unresolved.
+  // With linkedProjects set, files outside these manifests get no analysis
+  // at all, which is the intended state for Verus sources.
+  "rust-analyzer.linkedProjects": [
+    "Cargo.toml",
+    "crates/vermilion_direct/Cargo.toml"
   ]
 }

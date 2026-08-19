@@ -7,6 +7,18 @@ set_option linter.dupNamespace false
 set_option linter.unusedTactic false
 set_option linter.unreachableTactic false
 
+-- vrml:user:begin
+private theorem bv_or_ushiftRight {w : Nat} (x y : BitVec w) (n : Nat) :
+    (x ||| y) >>> n = (x >>> n) ||| (y >>> n) := by
+  ext i
+  simp
+
+private theorem bv_and_or_distrib {w : Nat} (x y m : BitVec w) :
+    (x ||| y) &&& m = (x &&& m) ||| (y &&& m) := by
+  ext i
+  simp [Bool.and_or_distrib_right]
+-- vrml:user:end
+
 namespace layer_a.lemmas.common_lemmas.bit_lemmas.lemma_u16_distribute_over_bit_or
 
 -- vrml:begin layer_a.lemmas.common_lemmas.bit_lemmas.lemma_u16_distribute_over_bit_or.call_requires_0 4625b87298cbac59
@@ -141,8 +153,8 @@ def assert_bv_4_0_meta : Vermilion.ObligationMeta := {
     (loop_0_iteration_2 : Vermilion.inUnsignedRange 16 c)
     (loop_0_iteration_3 : True) :
     Vermilion.Bits.shr 16 (Vermilion.Bits.bor 16 a b) c = Vermilion.Bits.bor 16 (Vermilion.Bits.shr 16 a c) (Vermilion.Bits.shr 16 b c) := by
-  -- TODO(vermilion): automation failed; prove this obligation.
-  sorry
+  simp only [Vermilion.Bits.shr, Vermilion.Bits.bor, BitVec.ofInt_natCast,
+    BitVec.ofNat_toNat, BitVec.setWidth_eq, bv_or_ushiftRight]
 -- vrml:end layer_a.lemmas.common_lemmas.bit_lemmas.lemma_u16_distribute_over_bit_or.assert_bv_4_0
 
 -- vrml:begin layer_a.lemmas.common_lemmas.bit_lemmas.lemma_u16_distribute_over_bit_or.assert_3 7d5e7f34ae44e57e
@@ -210,8 +222,8 @@ def assert_bv_7_0_meta : Vermilion.ObligationMeta := {
     (loop_1_iteration_2 : Vermilion.inUnsignedRange 16 c)
     (loop_1_iteration_3 : True) :
     Vermilion.Bits.band 16 (Vermilion.Bits.bor 16 a b) ((vstd.bits.low_bits_mask c) % 65536) = Vermilion.Bits.bor 16 (Vermilion.Bits.band 16 a ((vstd.bits.low_bits_mask c) % 65536)) (Vermilion.Bits.band 16 b ((vstd.bits.low_bits_mask c) % 65536)) := by
-  -- TODO(vermilion): automation failed; prove this obligation.
-  sorry
+  simp only [Vermilion.Bits.band, Vermilion.Bits.bor, BitVec.ofInt_natCast,
+    BitVec.ofNat_toNat, BitVec.setWidth_eq, bv_and_or_distrib]
 -- vrml:end layer_a.lemmas.common_lemmas.bit_lemmas.lemma_u16_distribute_over_bit_or.assert_bv_7_0
 
 -- vrml:begin layer_a.lemmas.common_lemmas.bit_lemmas.lemma_u16_distribute_over_bit_or.ensures_4_0 5de71f7447e1affc

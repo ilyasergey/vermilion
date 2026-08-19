@@ -228,7 +228,7 @@ if [[ -n "$generated_root" ]]; then
     # Sweep budget profile: the mounted lemma files carry large nonlinear
     # goals; the tight per-rung caps + cvc5 timeout keep the whole-crate
     # judging to minutes and never let one goal stall a manifest.
-    ./target/release/vrml_check "$m" \
+    ./target/debug/vrml_check "$m" \
       --rung-budget "${VRML_RUNG_BUDGET:-200}" \
       --saturate-budget "${VRML_SATURATE_BUDGET:-800}" \
       --smt-budget "${VRML_SMT_BUDGET:-200}" \
@@ -236,6 +236,20 @@ if [[ -n "$generated_root" ]]; then
       > ".vermilion/ga-$mstem-check.json" 2> ".vermilion/ga-$mstem-check.human"
     st=$?
     set -e
+    # Fail CLOSED on infrastructure errors: a checker that could not run at
+    # all (missing binary, crash before judging) exits nonzero WITHOUT
+    # emitting any diagnostics. That must never pass for "no failures" —
+    # `--expect-partial` tolerates failed OBLIGATIONS, not a failed CHECKER —
+    # and, worse, an empty failures file tells vrml_sync below to reclaim
+    # every sorry as if automation had succeeded. (This exact false green
+    # shipped once: the binary path said target/release while only
+    # target/debug is built; every sweep 'passed' and sync un-sorried the
+    # twins. See logs/2026-08-19-lean-4.33-veil-removal.md.)
+    if [[ "$st" -ne 0 && ! -s ".vermilion/ga-$mstem-check.json" ]]; then
+      echo "vrml_check could not judge $m (exit $st):" >&2
+      cat ".vermilion/ga-$mstem-check.human" >&2
+      exit 1
+    fi
     sync_flags=(); [[ "$manual_proofs" -eq 1 ]] && sync_flags+=(--fail-on-sorry)
     ./target/debug/vrml_sync "$m" --failures ".vermilion/ga-$mstem-check.json" \
       ${sync_flags[@]+"${sync_flags[@]}"} 2>&1 | tail -1 || agg=1

@@ -518,9 +518,19 @@ elab "vrml_ladder" : tactic => do
           unless (← getUnsolvedGoals).isEmpty do
             throwError "rung left goals open"
       else
-        evalTactic rung
-        unless (← getUnsolvedGoals).isEmpty do
-          throwError "rung left goals open"
+        -- Uncapped (`0`) must still REBASE the heartbeat baseline: without
+        -- this the rung runs in the declaration's original context, whose
+        -- budget the earlier rungs have already burned, so the "uncapped"
+        -- rung dies on the heartbeat limit before doing any work at all —
+        -- the interactive default made the final `smt` rung a no-op while
+        -- the budgeted sweeps (which take the branch above) let it run.
+        -- `maxHeartbeats := 0` is core's "no limit", the documented meaning.
+        let heartbeats ← IO.getNumHeartbeats
+        withTheReader Core.Context (fun ctx =>
+          { ctx with initHeartbeats := heartbeats, maxHeartbeats := 0 }) do
+          evalTactic rung
+          unless (← getUnsolvedGoals).isEmpty do
+            throwError "rung left goals open"
     -- A rung hitting its heartbeat cap (or recursion depth) throws a
     -- *runtime* exception, which ordinary `try`/`catch` (and `tryTactic?`)
     -- deliberately rethrows; catch it here so it registers as that rung's

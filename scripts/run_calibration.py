@@ -164,7 +164,7 @@ def main() -> int:
         json.dumps(
             {
                 "schema": 1,
-                "lean_toolchain": "leanprover/lean4:v4.28.0",
+                "lean_toolchain": (ROOT / "lean-toolchain").read_text().strip(),
                 "unavailable": UNAVAILABLE,
                 "results": [asdict(result) for result in results],
             },

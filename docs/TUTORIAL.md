@@ -12,7 +12,7 @@ verdict you see comes from the Lean kernel.
 
 ## 0. One-time setup
 
-Prerequisites: `rustup`, `git`, and elan/Lake for Lean 4.28. Then, from the
+Prerequisites: `rustup`, `git`, and elan/Lake for Lean 4.33. Then, from the
 repository root:
 
 ```console
@@ -24,7 +24,7 @@ checkout automatically** into `.verus-checkout` (commit `c569645bd37b0`),
 downloads the matching Z3, applies the 20-line VIR-export patch
 ([verus-patches/](../verus-patches/README.md)), builds Verus with its own
 pinned toolchain, builds the direct SST adapter, and compiles the Lean
-libraries. The first run is slow (Verus + Mathlib + Veil); everything after
+libraries. The first run is slow (Verus + Mathlib); everything after
 is incremental. If you already have a Verus checkout you want to reuse, set
 `VERUS_CHECKOUT=/path/to/verus` once and the scripts will link it instead of
 cloning.
@@ -57,11 +57,17 @@ IR** ([docs/ir.md](ir.md) — the entire Rust/Lean contract); the Lean
 generator `vrml_gen` parses that IR and emits readable Lean theorems into
 `generated/` (machine output — recreated on every run, safe to delete);
 `vrml_check` has Lean judge every obligation; and `vrml_sync` maintains the
-user-editable `proofs/` twin (next sections). To run everything at once (all
-examples plus the Rust test suite), use `./scripts/run_suite.sh` — it prints
-numbered phase banners, and the differential phase shows a live progress bar
-with the current case and pipeline stage. Cold runs re-measure everything;
-unchanged cases replay instantly from the verdict cache.
+user-editable `proofs/` twin (next sections). To run everything at once (the
+Rust test suite, every example, every case study, and the differential
+corpus), use `./scripts/run_suite.sh` — it prints numbered phase banners, and
+the differential phase shows a live progress bar with the current case and
+pipeline stage. Cold runs re-measure everything; unchanged cases replay
+instantly from the verdict cache. While iterating, the fast loop is
+`./scripts/run_suite.sh --smoke` (examples and pipeline contracts only), and
+one case study runs by itself with
+`./scripts/run_suite.sh --case-study <name>`
+(`--list-case-studies` prints the names), and the Verus conformance corpus
+alone with `./scripts/run_suite.sh --differential`.
 
 ## 2. Read the generated obligations
 
@@ -521,4 +527,4 @@ expect in `generated/`.
 - [examples/m1-widening/README.md](../examples/m1-widening/README.md) — the
   straight-line fragment: bools, mathematical integers, casts, calls, returns.
 - [plans/execution-plan.md](../plans/execution-plan.md) — what remains in M2
-  (vstd collections, the Veil manager, caching) and beyond.
+  (vstd collections, the discharger ladder, caching) and beyond.

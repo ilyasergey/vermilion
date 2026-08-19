@@ -7,6 +7,42 @@ set_option linter.dupNamespace false
 set_option linter.unusedTactic false
 set_option linter.unreachableTactic false
 
+-- vrml:user:begin
+private theorem ofInt_toNat8 (x : BitVec 8) : BitVec.ofInt 8 (x.toNat : Int) = x := by
+  simp [BitVec.ofInt_natCast]
+
+private theorem or_and_distrib8 (a b c : BitVec 8) :
+    (a ||| b) &&& c = (a &&& c) ||| (b &&& c) := by
+  bv_decide
+
+private theorem shl_and_shl_ne8 (p q : Nat) (hp : p < 8) (hq : q < 8) (hne : q ≠ p) :
+    (1#8 <<< p) &&& (1#8 <<< q) = 0#8 := by
+  interval_cases p <;> interval_cases q <;> first | (exact absurd rfl hne) | decide
+
+private theorem bv_or_and_ne8 (M V : BitVec 8) (p q : Nat) (hp : p < 8) (hq : q < 8)
+    (hne : q ≠ p) (hv : V = 0#8 ∨ V = 1#8) :
+    (M ||| V <<< p) &&& (1#8 <<< q) = M &&& (1#8 <<< q) := by
+  rcases hv with rfl | rfl
+  · simp
+  · rw [or_and_distrib8, shl_and_shl_ne8 p q hp hq hne, BitVec.or_zero]
+
+private theorem bv_or_self_bit8 (M : BitVec 8) (p : Nat) (hp : p < 8) :
+    ¬((M ||| 1#8 <<< p) &&& (1#8 <<< p) = 0#8) := by
+  interval_cases p <;> bv_decide
+-- vrml:user:end
+
+-- vrml:user:begin
+-- Stopgap for docs/issues/bit-vector-assert-id-collision.md: the emitter
+-- assigns this second `by (bit_vector)` assert the same id `bv_5_0` as the
+-- block above, so its declarations collide. Namespacing keeps the unit
+-- buildable until the emitter dedup fix lands; remove this wrapper then.
+namespace collision_635d62c1
+-- vrml:user:end
+
+-- vrml:user:begin
+end collision_635d62c1
+-- vrml:user:end
+
 namespace layer_a.lemmas.common_lemmas.bit_lemmas.lemma_or_bit
 
 -- vrml:begin layer_a.lemmas.common_lemmas.bit_lemmas.lemma_or_bit.assert_0 74a7cdf477cefc3e

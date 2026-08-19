@@ -362,13 +362,13 @@ def assert_6_meta : Vermilion.ObligationMeta := {
     (loop_1_iteration_1 : Vermilion.inUnsignedRange 32 e)
     (assume_2 : bv = bv) :
     Vermilion.natClip (bv * power_of_2.pow2 (Vermilion.natClip (e - 1))) = (bv * power_of_2.pow2 (Vermilion.natClip (e - 1))) := by
-  -- DL8 clip-form port: restore the iteP shapes this proof
-  -- was written against (natClip/sclip are their named forms).
-  simp only [Vermilion.natClip, Vermilion.sclip] at *
+  -- The clip is an identity on a provably nonnegative product; use the
+  -- prelude lemma directly instead of unfolding `natClip` to its `iteP`
+  -- form (on Lean ≥ 4.33 that unfold desynchronizes the `iteP` guard from
+  -- its `Decidable` instance and the `iteP_pos` rewrite stops matching).
   simp only [Vermilion.inUnsignedRange] at loop_1_iteration_0
-  have hprod : 0 ≤ bv * power_of_2.pow2 (Vermilion.iteP ((e - 1) ≥ 0) (e - 1) 0) :=
-    mul_nonneg loop_1_iteration_0.1 (power_of_2.pow2_nonneg _)
-  rw [Vermilion.iteP_pos hprod]
+  exact Vermilion.natClip_of_nonneg
+    (mul_nonneg loop_1_iteration_0.1 (power_of_2.pow2_nonneg _))
 -- vrml:end power_of_2.left_shift_is_pow2.assert_6
 
 -- vrml:begin power_of_2.left_shift_is_pow2.assert_8 6c71099942754f58

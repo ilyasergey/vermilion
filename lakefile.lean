@@ -25,9 +25,18 @@ def proofGlobs (roots : Array String × Array String) : Array Glob :=
   roots.1.map (fun root => .submodules (.mkSimple root)) ++
     roots.2.map fun root => .one (.mkSimple root)
 
-require veil from git
-  "https://github.com/verse-lab/veil.git" @
-  "8872eb7b462a58145a20087eead2b0bfeecad351"
+-- The two real foreign dependencies, required directly (Veil was dropped
+-- 2026-08-19: nothing here imported it — it only carried these transitively).
+-- Mathlib backs the proof libraries and the ladder's arithmetic rungs; its
+-- release tag is what pins the Lean toolchain (keep lean-toolchain in step).
+require mathlib from git
+  "https://github.com/leanprover-community/mathlib4.git" @ "v4.33.0"
+
+-- lean-smt provides the ladder's final `smt` rung (cvc5 + kernel-checked
+-- reconstruction). Pinned to the upstream main commit for Lean v4.33.0.
+require smt from git
+  "https://github.com/ufmg-smite/lean-smt.git" @
+  "21aa44ce022fa37e0e40ff571ddde9b052a81c0c"
 
 package vermilion where
   preferReleaseBuild := true

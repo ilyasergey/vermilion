@@ -216,9 +216,10 @@ judge of the functions actually covered.
 **Roadmap (user-directed):** replace item 3 — and progressively item 2 —
 with a *foundational* VC generator for the IR: a formal Lean semantics for
 the lowered fragment and a verified weakest-precondition construction proved
-sound against it, built on [Loom](https://github.com/verse-lab/loom) (already
-a transitive Lake dependency via Veil) or a similar Lean program-logic
-framework rather than from scratch. The current generation policy it must
+sound against it, built on [Loom](https://github.com/verse-lab/loom) (to be
+required as a direct Lake dependency when that work starts; the Veil
+dependency that used to carry it transitively was dropped 2026-08-19) or a
+similar Lean program-logic framework rather than from scratch. The current generation policy it must
 reproduce — the per-statement judgment and the soundness obligations to
 discharge — is specified in [docs/vcgen.md](docs/vcgen.md). Tracked
 prominently in [plans/execution-plan.md](plans/execution-plan.md).

@@ -1905,7 +1905,7 @@ fn lower_exp_impl(ctx: ExpCtx<'_>, env: &Env, exp: &Exp) -> Result<Expr, String>
                 let lowered_body = lower_exp(ctx, &extended, body)?;
                 Ok(Expr::Lambda(bound, Box::new(lowered_body)))
             }
-            other => Err(format!("unsupported SST binder {other:?}")),
+            // other => Err(format!("unsupported SST binder {other:?}")),
         },
         // Trigger annotations are SMT instantiation hints; the semantics
         // are exactly the body.

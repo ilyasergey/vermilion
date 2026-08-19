@@ -86,7 +86,7 @@ def algos.xor_lane_bytes_spec (buf : (Vermilion.Seq Int)) (src : (Vermilion.Seq 
     (if _h : (i < Vermilion.Seq.len src) then algos.xor_lane_bytes_spec (Vermilion.Seq.update buf i (Vermilion.Bits.bxor 8 (Vermilion.Seq.index buf i) (Vermilion.Seq.index src i))) src (i + 1) else buf)
   else default
 termination_by ((Vermilion.Seq.len src - i)).toNat
-decreasing_by all_goals first | omega | (simp_all; omega) | simp_all
+decreasing_by all_goals first | omega | (simp_all; omega) | (simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | (simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all
 
 -- vrml:spec algos.xor_lane_spec case-studies/aeneas/sha3/verification/src/algos.rs:197:13
 def algos.xor_lane_spec (dst : Int) (src : (Vermilion.Seq Int)) : Int :=
@@ -98,7 +98,7 @@ def algos.xor_spec_from (input : (Vermilion.Seq Int)) (other : (Vermilion.Seq In
     (if _h : (((8 * block_idx) + 8) ≤ Vermilion.Seq.len other) then algos.xor_spec_from (Vermilion.Seq.update input block_idx (algos.xor_lane_spec (Vermilion.Seq.index input block_idx) (Vermilion.Seq.subrange other (8 * block_idx) (8 * (block_idx + 1))))) other (block_idx + 1) else (if _h : ((8 * block_idx) < Vermilion.Seq.len other) then Vermilion.Seq.update input block_idx (algos.xor_lane_spec (Vermilion.Seq.index input block_idx) (Vermilion.Seq.subrange other (8 * block_idx) (Vermilion.Seq.len other))) else input))
   else default
 termination_by ((Vermilion.Seq.len other - (8 * block_idx))).toNat
-decreasing_by all_goals first | omega | (simp_all; omega) | simp_all
+decreasing_by all_goals first | omega | (simp_all; omega) | (simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | (simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all
 
 -- vrml:spec algos.impl__10.copy_to_spec_from case-studies/aeneas/sha3/verification/src/algos.rs:332:5
 def algos.impl__10.copy_to_spec_from (src : (Vermilion.Seq Int)) (input : (Vermilion.Seq Int)) (i : Int) : (Vermilion.Seq Int) :=
@@ -106,7 +106,7 @@ def algos.impl__10.copy_to_spec_from (src : (Vermilion.Seq Int)) (input : (Vermi
     (if _h : ((i < 25) ∧ ((8 * (i + 1)) < Vermilion.Seq.len input)) then algos.impl__10.copy_to_spec_from src (Vermilion.Seq.add (Vermilion.Seq.add (Vermilion.Seq.subrange input 0 (8 * i)) (Vermilion.Vstd.Bytes.u64ToLeBytes (Vermilion.Seq.index src i))) (Vermilion.Seq.subrange input (8 * (i + 1)) (Vermilion.Seq.len input))) (i + 1) else (if _h : ((i < 25) ∧ ((8 * i) < Vermilion.Seq.len input)) then Vermilion.Seq.add (Vermilion.Seq.subrange input 0 (8 * i)) (Vermilion.Seq.subrange (Vermilion.Vstd.Bytes.u64ToLeBytes (Vermilion.Seq.index src i)) 0 (Vermilion.Seq.len input - (8 * i))) else input))
   else default
 termination_by ((25 - i)).toNat
-decreasing_by all_goals first | omega | (simp_all; omega) | simp_all
+decreasing_by all_goals first | omega | (simp_all; omega) | (simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | (simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all
 
 -- vrml:spec algos.theta_c_spec case-studies/aeneas/sha3/verification/src/algos.rs:423:13
 def algos.theta_c_spec (input : (Vermilion.Seq Int)) (x : Int) : Int :=
@@ -122,7 +122,7 @@ def algos.theta_inner_spec (input : (Vermilion.Seq Int)) (res : (Vermilion.Seq I
     (if _h : (y < 5) then algos.theta_inner_spec input (Vermilion.Seq.update res ((5 * y) + x) (Vermilion.Bits.bxor 64 (Vermilion.Seq.index input ((5 * y) + x)) (algos.theta_d_spec input x))) x (y + 1) else res)
   else default
 termination_by ((5 - y)).toNat
-decreasing_by all_goals first | omega | (simp_all; omega) | simp_all
+decreasing_by all_goals first | omega | (simp_all; omega) | (simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | (simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all
 
 -- vrml:spec algos.theta_loop_spec case-studies/aeneas/sha3/verification/src/algos.rs:458:13
 def algos.theta_loop_spec (input : (Vermilion.Seq Int)) (res : (Vermilion.Seq Int)) (x : Int) : (Vermilion.Seq Int) :=
@@ -130,7 +130,7 @@ def algos.theta_loop_spec (input : (Vermilion.Seq Int)) (res : (Vermilion.Seq In
     (if _h : (x < 5) then algos.theta_loop_spec input (algos.theta_inner_spec input res x 0) (x + 1) else res)
   else default
 termination_by ((5 - x)).toNat
-decreasing_by all_goals first | omega | (simp_all; omega) | simp_all
+decreasing_by all_goals first | omega | (simp_all; omega) | (simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | (simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all
 
 -- vrml:spec algos.RHO_OFFSETS case-studies/aeneas/sha3/verification/src/algos.rs:584:1
 def algos.RHO_OFFSETS : (Vermilion.Seq (Vermilion.Seq Int)) :=
@@ -142,7 +142,7 @@ def algos.rho_loop_spec (input : (Vermilion.Seq Int)) (res : (Vermilion.Seq Int)
     (if _h : (t < 24) then algos.rho_loop_spec input (Vermilion.Seq.update res ((5 * y) + x) (Vermilion.Vstd.Rotate.u64_rotate_left (Vermilion.Seq.index input ((5 * y) + x)) (Vermilion.Seq.index (Vermilion.Seq.index algos.RHO_OFFSETS x) y))) (t + 1) y (((2 * x) + (3 * y)) % 5) else res)
   else default
 termination_by ((24 - t)).toNat
-decreasing_by all_goals first | omega | (simp_all; omega) | simp_all
+decreasing_by all_goals first | omega | (simp_all; omega) | (simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | (simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all
 
 -- vrml:spec algos.pi_inner_spec case-studies/aeneas/sha3/verification/src/algos.rs:657:13
 def algos.pi_inner_spec (input : (Vermilion.Seq Int)) (res : (Vermilion.Seq Int)) (x : Int) (y : Int) : (Vermilion.Seq Int) :=
@@ -150,7 +150,7 @@ def algos.pi_inner_spec (input : (Vermilion.Seq Int)) (res : (Vermilion.Seq Int)
     (if _h : (y < 5) then algos.pi_inner_spec input (Vermilion.Seq.update res ((5 * y) + x) (Vermilion.Seq.index input ((5 * x) + ((x + (3 * y)) % 5)))) x (y + 1) else res)
   else default
 termination_by ((5 - y)).toNat
-decreasing_by all_goals first | omega | (simp_all; omega) | simp_all
+decreasing_by all_goals first | omega | (simp_all; omega) | (simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | (simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all
 
 -- vrml:spec algos.pi_loop_spec case-studies/aeneas/sha3/verification/src/algos.rs:680:13
 def algos.pi_loop_spec (input : (Vermilion.Seq Int)) (res : (Vermilion.Seq Int)) (x : Int) : (Vermilion.Seq Int) :=
@@ -158,7 +158,7 @@ def algos.pi_loop_spec (input : (Vermilion.Seq Int)) (res : (Vermilion.Seq Int))
     (if _h : (x < 5) then algos.pi_loop_spec input (algos.pi_inner_spec input res x 0) (x + 1) else res)
   else default
 termination_by ((5 - x)).toNat
-decreasing_by all_goals first | omega | (simp_all; omega) | simp_all
+decreasing_by all_goals first | omega | (simp_all; omega) | (simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | (simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all
 
 -- vrml:spec algos.chi_inner_spec case-studies/aeneas/sha3/verification/src/algos.rs:755:13
 def algos.chi_inner_spec (input : (Vermilion.Seq Int)) (res : (Vermilion.Seq Int)) (x : Int) (y : Int) : (Vermilion.Seq Int) :=
@@ -166,7 +166,7 @@ def algos.chi_inner_spec (input : (Vermilion.Seq Int)) (res : (Vermilion.Seq Int
     (if _h : (y < 5) then algos.chi_inner_spec input (Vermilion.Seq.update res ((5 * y) + x) (Vermilion.Bits.bxor 64 (Vermilion.Seq.index input ((5 * y) + x)) (Vermilion.Bits.band 64 (Vermilion.Bits.bxor 64 (Vermilion.Seq.index input ((5 * y) + ((x + 1) % 5))) 18446744073709551615) (Vermilion.Seq.index input ((5 * y) + ((x + 2) % 5)))))) x (y + 1) else res)
   else default
 termination_by ((5 - y)).toNat
-decreasing_by all_goals first | omega | (simp_all; omega) | simp_all
+decreasing_by all_goals first | omega | (simp_all; omega) | (simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | (simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all
 
 -- vrml:spec algos.chi_loop_spec case-studies/aeneas/sha3/verification/src/algos.rs:781:13
 def algos.chi_loop_spec (input : (Vermilion.Seq Int)) (res : (Vermilion.Seq Int)) (x : Int) : (Vermilion.Seq Int) :=
@@ -174,7 +174,7 @@ def algos.chi_loop_spec (input : (Vermilion.Seq Int)) (res : (Vermilion.Seq Int)
     (if _h : (x < 5) then algos.chi_loop_spec input (algos.chi_inner_spec input res x 0) (x + 1) else res)
   else default
 termination_by ((5 - x)).toNat
-decreasing_by all_goals first | omega | (simp_all; omega) | simp_all
+decreasing_by all_goals first | omega | (simp_all; omega) | (simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | (simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all
 
 -- vrml:spec algos.IOTA_RC case-studies/aeneas/sha3/verification/src/algos.rs:855:1
 def algos.IOTA_RC : (Vermilion.Seq Int) :=
@@ -190,5 +190,5 @@ def algos.keccak_p_loop_spec (input : (Vermilion.Seq Int)) (ir : Int) : (Vermili
     (if _h : (ir < 24) then algos.keccak_p_loop_spec (algos.round_spec input ir) (ir + 1) else input)
   else default
 termination_by ((24 - ir)).toNat
-decreasing_by all_goals first | omega | (simp_all; omega) | simp_all
+decreasing_by all_goals first | omega | (simp_all; omega) | (simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | (simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all
 
