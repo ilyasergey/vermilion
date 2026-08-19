@@ -46,45 +46,20 @@ The separate [incrementality plan](plans/incremental-computation.md) records
 the long-term computation and proof-reuse design.
 
 The project is pinned to Lean 4.33.0, the Vermilion Verus fork at
-`0bb5732ae6a`, Mathlib `v4.33.0`, and lean-smt
-`21aa44ce022f`. The sequential Verus feature set is supported — generics,
-datatypes, quantifiers, `Vec`, arrays, slices, `&mut`, traits, closures,
-const generics, broadcast lemmas, mutual recursion, `for` loops — plus
-Lean-native specialty proving (the `Bits` library, the `nlinarith` rung,
-`by (compute)`, isolated `by (bit_vector)` and `by (nonlinear_arith)`
-queries), plus exact VIR machine-integer clipping, never SMT-facing encodings.
-Real verified case studies live in
-[case-studies/](case-studies/README.md); the first external-project study now
-pins Percolator and verifies 28 unchanged production function bodies (policy
-classification, Boolean/`Result` gates, persistent enum codecs, read-only
-active bitmaps, saturating multiplication, and U256 representation/bitwise basics).
-The adjacent [Aeneas research programme](case-studies/aeneas/README.md)
-verifies crypto against the same Lean specifications Aeneas uses: landed so
-far are [curve25519](case-studies/aeneas/curve25519/) (verbatim dalek limb
-multiplication, 38 obligations, spec bridge to their `asNat` theorem) and
-SymCrypt's ML-KEM `mont_mul`/`mod_reduce` (probe suite, spec bridge to
-`Symcrust.mont_reduce.spec`). The complete pinned `sha3.rs` Cargo project is
-also acquired as separate pristine and annotation-working copies. Tuple
-parameter patterns, custom tuple-keyed `IndexMut`, and its returned-`&mut`
-effect now lower through the fork and Vermilion. The source-preservation guard
-enforces the complete upstream Rust inventory and executable-token identity
-after typed annotation regions are erased. Statically resolved associated
-output projections normalize to their concrete impl type. The unchanged scalar
-permutation, prefix-XOR, and byte-copy layer are green: default/dereference
-support, θ/ρ/π/χ/ι, `round`, `keccak_p`, `xor_byte_at`, `xor_lane`, `xor`, and
-`copy_to` verify as 198 Lean obligations in 25 proof-twin units with no
-`sorry`; the source guard erases 86 typed regions back to pristine Rust.
-Pinned Verus reports 52 verified, 0 errors. This is the standalone
-AeneasVerif/sha3.rs target, not Microsoft SymCrypt/SymCRust SHA-3. Exact rotation,
-native u64 endian conversions, and immutable plus mutable executable
-`Range`/`RangeFrom` views are modeled across the two toolchains. Mutable views
-carry exact initial-subview and final-owner reconstruction contracts, and
-ordinary `copy_from_slice` composes with them. Checked assertions in loop-
-condition setup are proved before assuming the condition and remain guarded
-under short circuiting; c164–c181 bring the corpus to 180/180 verdict parity
-and 88/88 failure-span agreement. Absorb/squeeze, sponge, the six public
-functions, and their exact
-`Sha3.Spec` bridge remain research targets, as does the ML-KEM scalar core.
+`0bb5732ae6a`, Mathlib `v4.33.0`, and lean-smt `21aa44ce022f`. The sequential
+Verus feature set is supported — generics, datatypes, quantifiers, `Vec`,
+arrays, slices, `&mut`, traits, closures, const generics, broadcast lemmas,
+mutual recursion, `for` loops — plus Lean-native specialty proving (`Bits`,
+`nlinarith`, `by (compute)`, isolated `by (bit_vector)` and
+`by (nonlinear_arith)` queries) and exact VIR machine-integer clipping, never
+SMT-facing encodings. The differential corpus stands at 180/180 verdict parity
+with 88/88 failure-span agreement. Verified case studies — Percolator (28
+unchanged production functions) and the
+[Aeneas crypto programme](case-studies/aeneas/README.md) (curve25519 limb
+multiplication, ML-KEM `mont_mul`/`mod_reduce`, and the unchanged
+AeneasVerif/sha3.rs scalar permutation layer at 198 obligations with no
+`sorry`) — are tracked per-study in the
+[case-study registry](case-studies/README.md).
 
 **Active external benchmark — [dalek-lite](case-studies/dalek-lite/):** the
 production curve25519-dalek fork with a complete in-source Verus verification,
