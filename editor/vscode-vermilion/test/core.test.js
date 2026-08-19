@@ -16,7 +16,9 @@ const {
   obligationRecordForFunction,
   parseFunctionRanges,
   refusalFunctionRanges,
+  sourceMountedElsewhere,
   specNamespaceForFunction,
+  studyRunnerForFile,
 } = require('../core');
 
 const source = `verus!{
@@ -279,6 +281,80 @@ test('a vendored source is verified by its study, not as a file of its own', () 
     false
   );
   assert.equal(manifestOwnedElsewhere(null, '/repo/examples/x/y.rs'), false);
+});
+
+test('a #[path]-mounted module at the study root is recognized as mounted', () => {
+  // dalek-lite's field_u64.rs sits NEXT TO the study's generated/, so the
+  // directory test alone cannot see that it is a crate member. The manifest
+  // records the mount indirection in rust_file; the raw-string mismatch
+  // against the co-located path is the signal.
+  const root = '/repo';
+  const study = '/repo/case-studies/dalek-lite';
+  const mountedManifest = {
+    rust_file:
+      'case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs',
+  };
+  assert.equal(
+    sourceMountedElsewhere(
+      root,
+      study,
+      mountedManifest,
+      '/repo/case-studies/dalek-lite/field_u64.rs'
+    ),
+    true
+  );
+  // A vendored crate member is mounted through the directory test alone.
+  assert.equal(
+    sourceMountedElsewhere(
+      root,
+      study,
+      { rust_file: 'case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/common_lemmas/bit_lemmas.rs' },
+      '/repo/case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/common_lemmas/bit_lemmas.rs'
+    ),
+    true
+  );
+  // A co-located example (manifest records the plain repo-relative path)
+  // stays standalone-runnable, and a file with no manifest is not mounted.
+  assert.equal(
+    sourceMountedElsewhere(
+      root,
+      '/repo/examples/m1-pipeline',
+      { rust_file: 'examples/m1-pipeline/simple.rs' },
+      '/repo/examples/m1-pipeline/simple.rs'
+    ),
+    false
+  );
+  assert.equal(
+    sourceMountedElsewhere(root, study, null, '/repo/case-studies/dalek-lite/field_u64.rs'),
+    false
+  );
+});
+
+test('a mounted source resolves to its acquisition driver', () => {
+  const dir = fs.mkdtempSync(nodePath.join(os.tmpdir(), 'vrml-study-'));
+  fs.mkdirSync(nodePath.join(dir, 'generated'));
+  // The driver's entry point has a manifest under the study's generated/;
+  // a helper script's .rs mention (the rlib stub) and a comment mention of
+  // the mounted file itself must claim nothing.
+  fs.writeFileSync(nodePath.join(dir, 'generated', 'layer_a.json'), '{}');
+  fs.writeFileSync(
+    nodePath.join(dir, 'run.sh'),
+    '#!/usr/bin/env bash\n' +
+      '# field_u64.rs is #[path]-mounted into layer_a.rs\n' +
+      'rustc subtle_stub.rs -o stub.rlib\n' +
+      'run_example.sh "$here" layer_a.rs --lib CaseDalekLite\n'
+  );
+  const study = studyRunnerForFile(dir, nodePath.join(dir, 'field_u64.rs'));
+  assert.equal(study.script, nodePath.join(dir, 'run.sh'));
+  assert.equal(study.stem, 'layer_a');
+  // No manifest for the named entry point → no driver claimed.
+  fs.rmSync(nodePath.join(dir, 'generated', 'layer_a.json'));
+  assert.equal(
+    studyRunnerForFile(dir, nodePath.join(dir, 'field_u64.rs')),
+    null
+  );
+  assert.equal(studyRunnerForFile(null, '/repo/x.rs'), null);
+  fs.rmSync(dir, { recursive: true, force: true });
 });
 
 test('manifest search walks from the file up to the workspace root', () => {

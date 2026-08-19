@@ -332,6 +332,72 @@ function manifestOwnedElsewhere(exampleDir, documentPath) {
 }
 
 /**
+ * True when a source only contributes obligations to another entry point's
+ * pipeline run — it cannot be verified standalone. Two layouts qualify:
+ * the vendored crate member (its artifacts live in another directory,
+ * `manifestOwnedElsewhere`), and the `#[path]`-mounted module that sits AT
+ * the study root next to the manifests (dalek-lite's field_u64.rs). The
+ * mounted case is invisible to the directory test, but the manifest records
+ * how the lowering reached the file: a mount leaves an indirected path
+ * (`upstream/…/../../field_u64.rs`) where a standalone run records the plain
+ * repo-relative one, so a raw-string mismatch is the mount signal.
+ */
+function sourceMountedElsewhere(root, exampleDir, manifest, documentPath) {
+  if (!manifest) return false;
+  if (manifestOwnedElsewhere(exampleDir, documentPath)) return true;
+  if (!manifest.rust_file) return false;
+  const recorded = manifest.rust_file.replaceAll('\\', '/');
+  const colocated = path.relative(root, documentPath).replaceAll('\\', '/');
+  return recorded !== colocated;
+}
+
+/**
+ * The study driver that verifies a mounted or vendored source: the runner
+ * script in `exampleDir` whose entry point owns the `generated/` root this
+ * file's manifests live under. Such a file cannot be driven standalone (the
+ * front end fails on the crate structure), but re-running the study's own
+ * script re-judges the whole acquisition, this file included. A script
+ * qualifies when a non-comment line passes some other `.rs` entry whose
+ * manifest exists at `<exampleDir>/generated/<entry>.json` — evidence that
+ * the script drives the pipeline that produced this file's obligations.
+ * Returns `{ script, stem }` — `stem` is the entry point's, which is the
+ * stem the pipeline's `.vermilion` status files are keyed by — or null.
+ */
+function studyRunnerForFile(exampleDir, documentPath) {
+  if (!exampleDir) return null;
+  const documentBase = path.basename(documentPath);
+  let names;
+  try {
+    names = fs.readdirSync(exampleDir).filter((name) => name.endsWith('.sh'));
+  } catch {
+    return null;
+  }
+  names.sort((a, b) =>
+    a === 'run.sh' ? -1 : b === 'run.sh' ? 1 : a.localeCompare(b)
+  );
+  for (const name of names) {
+    let content;
+    try {
+      content = fs.readFileSync(path.join(exampleDir, name), 'utf8');
+    } catch {
+      continue;
+    }
+    for (const line of content.split('\n')) {
+      if (/^\s*#/.test(line)) continue; // a mention in a comment claims nothing
+      for (const match of line.matchAll(/[A-Za-z0-9_][A-Za-z0-9_.-]*\.rs\b/g)) {
+        const entry = match[0];
+        if (entry === documentBase) continue;
+        const stem = entry.slice(0, -'.rs'.length);
+        if (fs.existsSync(path.join(exampleDir, 'generated', `${stem}.json`))) {
+          return { script: path.join(exampleDir, name), stem };
+        }
+      }
+    }
+  }
+  return null;
+}
+
+/**
  * Directories that can own the manifest for a Rust source, nearest first:
  * the file's own directory (the one-example-one-directory layout), then each
  * ancestor up to and including the workspace root. Anything outside the root
@@ -452,6 +518,8 @@ module.exports = {
   manifestCoversRustFile,
   manifestSearchDirs,
   obligationForContractClause,
+  sourceMountedElsewhere,
+  studyRunnerForFile,
   obligationRecordForFunction,
   parseFunctionRanges,
   refusalFunctionRanges,

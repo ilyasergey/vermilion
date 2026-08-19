@@ -38,7 +38,6 @@ const {
   contractClauseAtLine,
   dependencyImportRange,
   collectFunctionMarks,
-  manifestOwnedElsewhere,
   manifestCoversRustFile,
   manifestSearchDirs,
   obligationForContractClause,
@@ -46,7 +45,9 @@ const {
   parseFunctionRanges,
   refusalFunctionRanges,
   sameSourceFile,
+  sourceMountedElsewhere,
   specNamespaceForFunction,
+  studyRunnerForFile,
 } = require('./core');
 
 /**
@@ -1054,32 +1055,53 @@ function activate(context) {
     const localRunner = runnerForFile(directory, documentPath);
     let command;
     let runner; // key for inFlight + the label shown in the output channel
+    // Stem the pipeline keys this run's `.vermilion` status files by — the
+    // document's own for local/ad-hoc runs, the study entry point's when a
+    // mounted source is re-verified through its acquisition driver. The
+    // acquisition writes per-manifest `ga-<stem>-check.json` files, hence
+    // the prefix.
+    let statusStem = path.basename(documentPath, '.rs');
+    let checkPrefix = '';
     if (localRunner) {
       command = `'${localRunner}'`;
       runner = localRunner;
-    } else if (
-      manifestOwnedElsewhere(
-        resolveManifestContext(root, documentPath).exampleDir,
-        documentPath
-      )
-    ) {
-      // A source that only contributes obligations to another entry point's
-      // manifest (a member of a vendored crate a case study lowers) is not a
-      // runnable program: the shared driver would fail on it as a file, and
-      // that failure is not the user's. Its verdicts already come from the
-      // study's own run, and ⌘⇧J navigates its obligations, so leave the
-      // diagnostics alone instead of painting a spurious failure.
-      return false;
-    } else if (
-      fs.existsSync(sharedRunner) &&
-      documentPath.startsWith(root + path.sep)
-    ) {
-      // Ad-hoc file: point the shared driver at this file's directory and
-      // basename. No --lib — no Lake library need exist for this file.
-      command = `'${sharedRunner}' '${directory}' '${path.basename(documentPath)}'`;
-      runner = documentPath;
     } else {
-      return false;
+      const context = resolveManifestContext(root, documentPath);
+      if (
+        sourceMountedElsewhere(root, context.exampleDir, context.manifest, documentPath)
+      ) {
+        // A source that only contributes obligations to another entry
+        // point's manifest — a member of a vendored crate, or a module
+        // `#[path]`-mounted at the study root (dalek-lite's field_u64.rs) —
+        // is not a runnable program: the shared driver would fail on the
+        // crate structure, and that failure is not the user's. Its verdicts
+        // come from the study's own run, so an EXPLICIT ⌘⇧R re-runs that
+        // driver (which re-judges the whole acquisition, this file
+        // included). Automatic triggers (open/save) never launch a
+        // whole-crate pass: they leave the recorded diagnostics alone.
+        const study = opts.force
+          ? studyRunnerForFile(context.exampleDir, documentPath)
+          : null;
+        if (!study) return false;
+        command = `'${study.script}'`;
+        runner = study.script;
+        statusStem = study.stem;
+        checkPrefix = 'ga-';
+        output.appendLine(
+          `[vermilion] ${path.basename(documentPath)} is mounted into ` +
+            `${study.stem}.rs — running ${path.relative(root, study.script)}`
+        );
+      } else if (
+        fs.existsSync(sharedRunner) &&
+        documentPath.startsWith(root + path.sep)
+      ) {
+        // Ad-hoc file: point the shared driver at this file's directory and
+        // basename. No --lib — no Lake library need exist for this file.
+        command = `'${sharedRunner}' '${directory}' '${path.basename(documentPath)}'`;
+        runner = documentPath;
+      } else {
+        return false;
+      }
     }
     if (inFlight.has(runner)) {
       // An automatic trigger (open + save firing together) dedupes — one run
@@ -1114,10 +1136,14 @@ function activate(context) {
     // .vermilion/<stem>-run.json: phase "front-end" means the program never
     // type-checked (nothing was generated or judged); phase "lean" carries
     // vrml_check's verdict. The check-file mtime remains only as a fallback
-    // for pipelines predating the status file.
-    const stem = path.basename(documentPath, '.rs');
-    const checkFile = path.join(checkDir, `${stem}-check.json`);
-    const runStatusFile = path.join(checkDir, `${stem}-run.json`);
+    // for pipelines predating the status file. Both are keyed by
+    // `statusStem`: the entry point's stem when a study driver runs on a
+    // mounted source's behalf, the document's own otherwise.
+    const checkFile = path.join(
+      checkDir,
+      `${checkPrefix}${statusStem}-check.json`
+    );
+    const runStatusFile = path.join(checkDir, `${statusStem}-run.json`);
     const checkStampBefore = fs.existsSync(checkFile)
       ? fs.statSync(checkFile).mtimeMs
       : 0;
@@ -1435,7 +1461,10 @@ function activate(context) {
           root,
           documentPath
         );
-        if (manifest && manifestOwnedElsewhere(exampleDir, documentPath)) {
+        if (sourceMountedElsewhere(root, exampleDir, manifest, documentPath)) {
+          // verify() found no study driver to redirect to (no run.sh, or
+          // none whose entry point owns this generated/ root) — name the
+          // owning study instead of blaming a missing script.
           const owner = path.relative(root, exampleDir) || '.';
           const runner = fs.existsSync(path.join(exampleDir, 'run.sh'))
             ? `${owner}/run.sh`

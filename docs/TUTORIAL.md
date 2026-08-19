@@ -338,7 +338,12 @@ same on demand. You do **not** need to author a `run.sh`: a file with an
 example `run.sh` next to it is driven through that (so its `--lib` twin
 kernel-check still runs), and every other Rust file in the workspace is
 driven directly through `scripts/run_example.sh` — its `generated/` and
-`proofs/` twins land next to it just the same. Files that do not type-check
+`proofs/` twins land next to it just the same. A source that is not a
+standalone program — a vendored crate member, or a module `#[path]`-mounted
+into a case study's acquisition root — is never driven as a file of its own:
+⌘⇧R re-runs the owning study's driver instead (re-judging the whole
+acquisition, that file included), while open/save leave its recorded
+verdicts alone. Files that do not type-check
 fail in the pipeline's own front end, with the rustc errors shown at their
 spans. When a run finishes:
 

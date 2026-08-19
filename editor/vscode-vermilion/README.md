@@ -12,7 +12,14 @@ this extension brings the results into the editor:
   in the *Vermilion* output channel. A file with an
   example `run.sh` next to it goes through that; every other Rust file is
   driven directly through `scripts/run_example.sh`, so **no `run.sh` needs to
-  exist** for a file to verify. Files that do not type-check fail in the
+  exist** for a file to verify. A source that is not a standalone program —
+  a vendored crate member, or a module `#[path]`-mounted into a case study's
+  acquisition root (dalek-lite's `field_u64.rs`) — is never driven as a file
+  of its own: an explicit **⌘⇧R re-runs the owning study's driver** (the
+  `run.sh` whose entry point's manifest sits in the same `generated/` root),
+  which re-judges the whole acquisition, that file included; automatic
+  open/save triggers leave its recorded verdicts alone rather than launching
+  a whole-crate pass. Files that do not type-check fail in the
   pipeline's own front end and those errors appear at their spans
   (rust-analyzer is not consulted — it cannot expand `verus!` macros);
 - while a file is being (re-)verified, the functions under verification

@@ -2,7 +2,7 @@
   "name": "vscode-vermilion",
   "displayName": "Vermilion",
   "description": "Vermilion verifies Verus-annotated Rust using Lean as the proof engine. Check a file with one shortcut: functions that verify are marked with a green checkmark, failing assertions and contracts are highlighted right in the Rust code, and every unproven goal links to the Lean file where you can finish the proof by hand.",
-  "version": "0.9.11",
+  "version": "0.9.12",
   "publisher": "vermilion",
   "license": "Apache-2.0",
   "engines": {
