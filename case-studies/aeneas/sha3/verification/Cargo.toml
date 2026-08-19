@@ -1,0 +1,12 @@
+cargo-features = ["edition2024"]
+
+[package]
+name = "shars"
+version = "0.1.0"
+edition = "2024"
+
+# [[bin]]
+# name = "sha3"
+# path = "src/main.rs"
+
+[dependencies]

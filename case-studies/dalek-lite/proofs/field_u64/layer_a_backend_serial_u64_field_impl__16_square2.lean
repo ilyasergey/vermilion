@@ -1,0 +1,2607 @@
+import Vermilion.Obligations
+import field_u64.Specs
+
+set_option linter.unusedVariables false
+set_option linter.style.nameCheck false
+set_option linter.dupNamespace false
+set_option linter.unusedTactic false
+set_option linter.unreachableTactic false
+
+namespace layer_a.backend.serial.u64.field.impl__16.square2
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.call_requires_0_0 f90c2ec7a5b7d2ba
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.call_requires_0_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1362:26-1362:39`
+- Rust/SST construct: call pow2k
+- AssertId: `0_0`
+- Statement hash: `f90c2ec7a5b7d2ba`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩
+-/
+def call_requires_0_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1362
+  startColumn := 26
+  endLine := 1362
+  endColumn := 39
+  assertId := "0_0"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "call_requires"
+  statementHash := "f90c2ec7a5b7d2ba"
+}
+@[vrml_obligation] theorem call_requires_0_0
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54) :
+    1 > 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.call_requires_0_0
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.call_requires_0_1 af19896c803c4db1
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.call_requires_0_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1362:26-1362:39`
+- Rust/SST construct: call pow2k
+- AssertId: `0_1`
+- Statement hash: `af19896c803c4db1`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩
+-/
+def call_requires_0_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1362
+  startColumn := 26
+  endLine := 1362
+  endColumn := 39
+  assertId := "0_1"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "call_requires"
+  statementHash := "af19896c803c4db1"
+}
+@[vrml_obligation] theorem call_requires_0_1
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54) :
+    layer_a.specs.field_specs.fe51_limbs_bounded self 54 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.call_requires_0_1
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.call_requires_1 7d1c7235ecedac9f
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.call_requires_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1372:17-1372:90`
+- Rust/SST construct: call lemma_mul_left_inequality
+- AssertId: `1`
+- Statement hash: `7d1c7235ecedac9f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩
+-/
+def call_requires_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1372
+  startColumn := 17
+  endLine := 1372
+  endColumn := 90
+  assertId := "1"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "call_requires"
+  statementHash := "7d1c7235ecedac9f"
+}
+@[vrml_obligation] theorem call_requires_1
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : True)
+    (assume_9 : (0 ≤ i) ∧ (i < 5)) :
+    0 < 2 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.call_requires_1
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_2 8dc1fdc12c7eb3c2
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_2`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1373:24-1373:52`
+- Rust/SST construct: assertion failed
+- AssertId: `2`
+- Statement hash: `8dc1fdc12c7eb3c2`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩
+-/
+def assert_2_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1373
+  startColumn := 24
+  endLine := 1373
+  endColumn := 52
+  assertId := "2"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "8dc1fdc12c7eb3c2"
+}
+@[vrml_obligation] theorem assert_2
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : True)
+    (assume_9 : (0 ≤ i) ∧ (i < 5))
+    (call_lemma_mul_left_inequality_ensures_0 : (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i ≤ Vermilion.Bits.shl 64 1 52) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ (2 * Vermilion.Bits.shl 64 1 52)))
+    (call_lemma_mul_left_inequality_ensures_1 : (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i < Vermilion.Bits.shl 64 1 52) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) < (2 * Vermilion.Bits.shl 64 1 52))) :
+    True := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_2
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_3 c4087ec04ec9b318
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_3`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1370:54-1370:85`
+- Rust/SST construct: Rust source assertion
+- AssertId: `3`
+- Statement hash: `c4087ec04ec9b318`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩
+-/
+def assert_3_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1370
+  startColumn := 54
+  endLine := 1370
+  endColumn := 85
+  assertId := "3"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "c4087ec04ec9b318"
+}
+@[vrml_obligation] theorem assert_3
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : True)
+    (assume_9 : (0 ≤ i) ∧ (i < 5))
+    (call_lemma_mul_left_inequality_ensures_0 : (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i ≤ Vermilion.Bits.shl 64 1 52) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ (2 * Vermilion.Bits.shl 64 1 52)))
+    (call_lemma_mul_left_inequality_ensures_1 : (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i < Vermilion.Bits.shl 64 1 52) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) < (2 * Vermilion.Bits.shl 64 1 52)))
+    (assert_2 : True)
+    (assume_13 : (2 * Vermilion.Bits.shl 64 1 52) ≤ 18446744073709551615) :
+    (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_3
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.call_requires_4 c9fdfbf79656158b
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.call_requires_4`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1387:13-1387:50`
+- Rust/SST construct: call lemma_u64_5_as_nat_k
+- AssertId: `4`
+- Statement hash: `c9fdfbf79656158b`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩
+-/
+def call_requires_4_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1387
+  startColumn := 13
+  endLine := 1387
+  endColumn := 50
+  assertId := "4"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "call_requires"
+  statementHash := "c9fdfbf79656158b"
+}
+@[vrml_obligation] theorem call_requires_4
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615)))) :
+    (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.call_requires_4
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.call_requires_7 c71159f7227bda14
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.call_requires_7`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1400:17-1400:85`
+- Rust/SST construct: call lemma_mul_mod_noop
+- AssertId: `7`
+- Statement hash: `c71159f7227bda14`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩
+-/
+def call_requires_7_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1400
+  startColumn := 17
+  endLine := 1400
+  endColumn := 85
+  assertId := "7"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "call_requires"
+  statementHash := "c71159f7227bda14"
+}
+@[vrml_obligation] theorem call_requires_7
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True) :
+    0 < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.call_requires_7
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_8 4ac433055972b79f
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_8`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1397:20-1399:22`
+- Rust/SST construct: Rust source assertion
+- AssertId: `8`
+- Statement hash: `4ac433055972b79f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩
+-/
+def assert_8_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1397
+  startColumn := 20
+  endLine := 1399
+  endColumn := 22
+  assertId := "8"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "4ac433055972b79f"
+}
+@[vrml_obligation] theorem assert_8
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True)
+    (call_lemma_mul_mod_noop_ensures_0 : (Vermilion.emod ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0))) :
+    ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_8
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_10 99cf60429471d307
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_10`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1404:20-1404:64`
+- Rust/SST construct: Rust source assertion
+- AssertId: `10`
+- Statement hash: `99cf60429471d307`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩
+-/
+def assert_10_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1404
+  startColumn := 20
+  endLine := 1404
+  endColumn := 64
+  assertId := "10"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "99cf60429471d307"
+}
+@[vrml_obligation] theorem assert_10
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True)
+    (call_lemma_pow_nat_is_nat_ensures_0 : vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) (vstd.arithmetic.power2.pow2 1) ≥ 0) :
+    vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_10
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.call_requires_11 0825350314f9b929
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.call_requires_11`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1410:17-1410:98`
+- Rust/SST construct: call lemma_mul_mod_noop
+- AssertId: `11`
+- Statement hash: `0825350314f9b929`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩
+-/
+def call_requires_11_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1410
+  startColumn := 17
+  endLine := 1410
+  endColumn := 98
+  assertId := "11"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "call_requires"
+  statementHash := "0825350314f9b929"
+}
+@[vrml_obligation] theorem call_requires_11
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True) :
+    0 < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.call_requires_11
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_12 3c165109dd768fbe
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_12`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1408:20-1409:80`
+- Rust/SST construct: Rust source assertion
+- AssertId: `12`
+- Statement hash: `3c165109dd768fbe`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩
+-/
+def assert_12_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1408
+  startColumn := 20
+  endLine := 1409
+  endColumn := 80
+  assertId := "12"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "3c165109dd768fbe"
+}
+@[vrml_obligation] theorem assert_12
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True)
+    (call_lemma_mul_mod_noop_1_ensures_0 : (Vermilion.emod ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2) (layer_a.specs.field_specs_u64.p 0))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2) (layer_a.specs.field_specs_u64.p 0))) :
+    (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_12
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_13 074ab8ffad99a612
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_13`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1413:20-1414:22`
+- Rust/SST construct: Rust source assertion
+- AssertId: `13`
+- Statement hash: `074ab8ffad99a612`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩
+-/
+def assert_13_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1413
+  startColumn := 20
+  endLine := 1414
+  endColumn := 22
+  assertId := "13"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "074ab8ffad99a612"
+}
+@[vrml_obligation] theorem assert_13
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_13
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.invariant_entry_0_4 60c4fe01defc81be
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.invariant_entry_0_4`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1421:17-1421:45`
+- Rust/SST construct: loop invariant on entry
+- AssertId: `0_4`
+- Statement hash: `60c4fe01defc81be`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩
+-/
+def invariant_entry_0_4_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1421
+  startColumn := 17
+  endLine := 1421
+  endColumn := 45
+  assertId := "0_4"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "invariant_entry"
+  statementHash := "60c4fe01defc81be"
+}
+@[vrml_obligation] theorem invariant_entry_0_4
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb) :
+    layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.invariant_entry_0_4
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.invariant_entry_0_5 9a3a58c2a2035c09
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.invariant_entry_0_5`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1422:17-1422:93`
+- Rust/SST construct: loop invariant on entry
+- AssertId: `0_5`
+- Statement hash: `9a3a58c2a2035c09`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩
+-/
+def invariant_entry_0_5_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1422
+  startColumn := 17
+  endLine := 1422
+  endColumn := 93
+  assertId := "0_5"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "invariant_entry"
+  statementHash := "9a3a58c2a2035c09"
+}
+@[vrml_obligation] theorem invariant_entry_0_5
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb) :
+    (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 0 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.invariant_entry_0_5
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.invariant_entry_0_6 9f1dcddc677c23e1
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.invariant_entry_0_6`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1423:17-1423:89`
+- Rust/SST construct: loop invariant on entry
+- AssertId: `0_6`
+- Statement hash: `9f1dcddc677c23e1`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩
+-/
+def invariant_entry_0_6_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1423
+  startColumn := 17
+  endLine := 1423
+  endColumn := 89
+  assertId := "0_6"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "invariant_entry"
+  statementHash := "9f1dcddc677c23e1"
+}
+@[vrml_obligation] theorem invariant_entry_0_6
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb) :
+    (∀ (j : Int), ((((Vermilion.iteP (0 ≤ 5) 0 vrml_for_arb) ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.invariant_entry_0_6
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.invariant_entry_0_7 496e67b696a0bc8f
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.invariant_entry_0_7`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1425:17-1425:77`
+- Rust/SST construct: loop invariant on entry
+- AssertId: `0_7`
+- Statement hash: `496e67b696a0bc8f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩
+-/
+def invariant_entry_0_7_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1425
+  startColumn := 17
+  endLine := 1425
+  endColumn := 77
+  assertId := "0_7"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "invariant_entry"
+  statementHash := "496e67b696a0bc8f"
+}
+@[vrml_obligation] theorem invariant_entry_0_7
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb) :
+    (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 0 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j < Vermilion.Bits.shl 64 1 53))) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.invariant_entry_0_7
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_18 1e4c15d7ed5c4544
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_18`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1428:24-1428:52`
+- Rust/SST construct: assertion failed
+- AssertId: `18`
+- Statement hash: `1e4c15d7ed5c4544`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def assert_18_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1428
+  startColumn := 24
+  endLine := 1428
+  endColumn := 52
+  assertId := "18"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "1e4c15d7ed5c4544"
+}
+@[vrml_obligation] theorem assert_18
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_0_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_0_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_0_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_0_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_iteration_7 : Vermilion.inUnsignedRange 64 i)
+    (loop_0_iteration_8 : 0 ≤ i)
+    (loop_0_iteration_9 : i < 5)
+    (loop_0_iteration_10 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_iteration_11 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_iteration_12 : (∀ (j : Int), (((i ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_iteration_13 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53)))) :
+    True := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_18
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.call_requires_19_0 3dcbf945c7344435
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.call_requires_19_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1429:17-1429:99`
+- Rust/SST construct: call lemma_mul_strict_inequality
+- AssertId: `19_0`
+- Statement hash: `3dcbf945c7344435`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def call_requires_19_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1429
+  startColumn := 17
+  endLine := 1429
+  endColumn := 99
+  assertId := "19_0"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "call_requires"
+  statementHash := "3dcbf945c7344435"
+}
+@[vrml_obligation] theorem call_requires_19_0
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_0_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_0_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_0_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_0_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_iteration_7 : Vermilion.inUnsignedRange 64 i)
+    (loop_0_iteration_8 : 0 ≤ i)
+    (loop_0_iteration_9 : i < 5)
+    (loop_0_iteration_10 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_iteration_11 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_iteration_12 : (∀ (j : Int), (((i ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_iteration_13 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assert_18 : True)
+    (assume_15 : (2 * Vermilion.Bits.shl 64 1 52) ≤ 18446744073709551615) :
+    Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i < Vermilion.Bits.shl 64 1 52 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.call_requires_19_0
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.call_requires_19_1 7b384745bd5efd40
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.call_requires_19_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1429:17-1429:99`
+- Rust/SST construct: call lemma_mul_strict_inequality
+- AssertId: `19_1`
+- Statement hash: `7b384745bd5efd40`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def call_requires_19_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1429
+  startColumn := 17
+  endLine := 1429
+  endColumn := 99
+  assertId := "19_1"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "call_requires"
+  statementHash := "7b384745bd5efd40"
+}
+@[vrml_obligation] theorem call_requires_19_1
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_0_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_0_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_0_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_0_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_iteration_7 : Vermilion.inUnsignedRange 64 i)
+    (loop_0_iteration_8 : 0 ≤ i)
+    (loop_0_iteration_9 : i < 5)
+    (loop_0_iteration_10 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_iteration_11 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_iteration_12 : (∀ (j : Int), (((i ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_iteration_13 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assert_18 : True)
+    (assume_15 : (2 * Vermilion.Bits.shl 64 1 52) ≤ 18446744073709551615) :
+    2 > 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.call_requires_19_1
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_20 db250d95e75feae3
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_20`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1431:17-1431:23`
+- Rust/SST construct: requires not satisfied
+- AssertId: `20`
+- Statement hash: `db250d95e75feae3`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def assert_20_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1431
+  startColumn := 17
+  endLine := 1431
+  endColumn := 23
+  assertId := "20"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "db250d95e75feae3"
+}
+@[vrml_obligation] theorem assert_20
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_0_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_0_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_0_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_0_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_iteration_7 : Vermilion.inUnsignedRange 64 i)
+    (loop_0_iteration_8 : 0 ≤ i)
+    (loop_0_iteration_9 : i < 5)
+    (loop_0_iteration_10 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_iteration_11 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_iteration_12 : (∀ (j : Int), (((i ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_iteration_13 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assert_18 : True)
+    (assume_15 : (2 * Vermilion.Bits.shl 64 1 52) ≤ 18446744073709551615)
+    (call_lemma_mul_strict_inequality_ensures_0 : (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) < (Vermilion.Bits.shl 64 1 52 * 2)) :
+    True := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_20
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_bv_5_0 bea6232ee1a2aab0
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_bv_5_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1431:24-1431:56`
+- Rust/SST construct: bit-vector assertion (`by (bit_vector)`)
+- AssertId: `bv_5_0`
+- Statement hash: `bea6232ee1a2aab0`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩
+-/
+def assert_bv_5_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1431
+  startColumn := 24
+  endLine := 1431
+  endColumn := 56
+  assertId := "bv_5_0"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "bea6232ee1a2aab0"
+}
+@[vrml_obligation] theorem assert_bv_5_0
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_1_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_1_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_1_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_1_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_1_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_1_iteration_5 : True) :
+    True := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_bv_5_0
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_21 f9d380ed5a9f28f8
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_21`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1433:13-1433:28`
+- Rust/SST construct: precondition not met: index in bounds for this access
+- AssertId: `21`
+- Statement hash: `f9d380ed5a9f28f8`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def assert_21_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1433
+  startColumn := 13
+  endLine := 1433
+  endColumn := 28
+  assertId := "21"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "f9d380ed5a9f28f8"
+}
+@[vrml_obligation] theorem assert_21
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_0_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_0_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_0_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_0_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_iteration_7 : Vermilion.inUnsignedRange 64 i)
+    (loop_0_iteration_8 : 0 ≤ i)
+    (loop_0_iteration_9 : i < 5)
+    (loop_0_iteration_10 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_iteration_11 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_iteration_12 : (∀ (j : Int), (((i ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_iteration_13 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assert_18 : True)
+    (assume_15 : (2 * Vermilion.Bits.shl 64 1 52) ≤ 18446744073709551615)
+    (call_lemma_mul_strict_inequality_ensures_0 : (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) < (Vermilion.Bits.shl 64 1 52 * 2))
+    (assert_20 : True)
+    (assume_18 : (2 * Vermilion.Bits.shl 64 1 52) = Vermilion.Bits.shl 64 1 53) :
+    (0 ≤ i) ∧ (i < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2)) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_21
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_22 236aaf9c4caa4743
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_22`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1433:13-1433:33`
+- Rust/SST construct: possible arithmetic underflow/overflow
+- AssertId: `22`
+- Statement hash: `236aaf9c4caa4743`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def assert_22_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1433
+  startColumn := 13
+  endLine := 1433
+  endColumn := 33
+  assertId := "22"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "236aaf9c4caa4743"
+}
+@[vrml_obligation] theorem assert_22
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_0_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_0_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_0_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_0_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_iteration_7 : Vermilion.inUnsignedRange 64 i)
+    (loop_0_iteration_8 : 0 ≤ i)
+    (loop_0_iteration_9 : i < 5)
+    (loop_0_iteration_10 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_iteration_11 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_iteration_12 : (∀ (j : Int), (((i ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_iteration_13 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assert_18 : True)
+    (assume_15 : (2 * Vermilion.Bits.shl 64 1 52) ≤ 18446744073709551615)
+    (call_lemma_mul_strict_inequality_ensures_0 : (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) < (Vermilion.Bits.shl 64 1 52 * 2))
+    (assert_20 : True)
+    (assume_18 : (2 * Vermilion.Bits.shl 64 1 52) = Vermilion.Bits.shl 64 1 53)
+    (assert_21 : (0 ≤ i) ∧ (i < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) :
+    Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_22
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.invariant_preserve_0_4 6730acef67947000
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.invariant_preserve_0_4`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1421:17-1421:45`
+- Rust/SST construct: loop invariant preserved by the body
+- AssertId: `0_4`
+- Statement hash: `6730acef67947000`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def invariant_preserve_0_4_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1421
+  startColumn := 17
+  endLine := 1421
+  endColumn := 45
+  assertId := "0_4"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "invariant_preserve"
+  statementHash := "6730acef67947000"
+}
+@[vrml_obligation] theorem invariant_preserve_0_4
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_0_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_0_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_0_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_0_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_iteration_7 : Vermilion.inUnsignedRange 64 i)
+    (loop_0_iteration_8 : 0 ≤ i)
+    (loop_0_iteration_9 : i < 5)
+    (loop_0_iteration_10 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_iteration_11 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_iteration_12 : (∀ (j : Int), (((i ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_iteration_13 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assert_18 : True)
+    (assume_15 : (2 * Vermilion.Bits.shl 64 1 52) ≤ 18446744073709551615)
+    (call_lemma_mul_strict_inequality_ensures_0 : (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) < (Vermilion.Bits.shl 64 1 52 * 2))
+    (assert_20 : True)
+    (assume_18 : (2 * Vermilion.Bits.shl 64 1 52) = Vermilion.Bits.shl 64 1 53)
+    (assert_21 : (0 ≤ i) ∧ (i < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2)))
+    (assert_22 : Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2)) :
+    layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.invariant_preserve_0_4
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.invariant_preserve_0_5 74f7c04cda455532
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.invariant_preserve_0_5`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1422:17-1422:93`
+- Rust/SST construct: loop invariant preserved by the body
+- AssertId: `0_5`
+- Statement hash: `74f7c04cda455532`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.update (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i ((Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) % 18446744073709551616)))) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def invariant_preserve_0_5_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1422
+  startColumn := 17
+  endLine := 1422
+  endColumn := 93
+  assertId := "0_5"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "invariant_preserve"
+  statementHash := "74f7c04cda455532"
+}
+@[vrml_obligation] theorem invariant_preserve_0_5
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_0_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_0_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_0_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_0_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_iteration_7 : Vermilion.inUnsignedRange 64 i)
+    (loop_0_iteration_8 : 0 ≤ i)
+    (loop_0_iteration_9 : i < 5)
+    (loop_0_iteration_10 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_iteration_11 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_iteration_12 : (∀ (j : Int), (((i ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_iteration_13 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assert_18 : True)
+    (assume_15 : (2 * Vermilion.Bits.shl 64 1 52) ≤ 18446744073709551615)
+    (call_lemma_mul_strict_inequality_ensures_0 : (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) < (Vermilion.Bits.shl 64 1 52 * 2))
+    (assert_20 : True)
+    (assume_18 : (2 * Vermilion.Bits.shl 64 1 52) = Vermilion.Bits.shl 64 1 53)
+    (assert_21 : (0 ≤ i) ∧ (i < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2)))
+    (assert_22 : Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2)) :
+    (∀ (j : Int), (((0 ≤ j) ∧ (j < (i + 1))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.update (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i ((Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) % 18446744073709551616)))) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.invariant_preserve_0_5
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.invariant_preserve_0_6 a285a536d1d0f292
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.invariant_preserve_0_6`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1423:17-1423:89`
+- Rust/SST construct: loop invariant preserved by the body
+- AssertId: `0_6`
+- Statement hash: `a285a536d1d0f292`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.update (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i ((Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) % 18446744073709551616)))) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def invariant_preserve_0_6_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1423
+  startColumn := 17
+  endLine := 1423
+  endColumn := 89
+  assertId := "0_6"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "invariant_preserve"
+  statementHash := "a285a536d1d0f292"
+}
+@[vrml_obligation] theorem invariant_preserve_0_6
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_0_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_0_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_0_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_0_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_iteration_7 : Vermilion.inUnsignedRange 64 i)
+    (loop_0_iteration_8 : 0 ≤ i)
+    (loop_0_iteration_9 : i < 5)
+    (loop_0_iteration_10 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_iteration_11 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_iteration_12 : (∀ (j : Int), (((i ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_iteration_13 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assert_18 : True)
+    (assume_15 : (2 * Vermilion.Bits.shl 64 1 52) ≤ 18446744073709551615)
+    (call_lemma_mul_strict_inequality_ensures_0 : (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) < (Vermilion.Bits.shl 64 1 52 * 2))
+    (assert_20 : True)
+    (assume_18 : (2 * Vermilion.Bits.shl 64 1 52) = Vermilion.Bits.shl 64 1 53)
+    (assert_21 : (0 ≤ i) ∧ (i < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2)))
+    (assert_22 : Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2)) :
+    (∀ (j : Int), ((((i + 1) ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.update (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i ((Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) % 18446744073709551616)))) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.invariant_preserve_0_6
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.invariant_preserve_0_7 4123f89887fe1c6a
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.invariant_preserve_0_7`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1425:17-1425:77`
+- Rust/SST construct: loop invariant preserved by the body
+- AssertId: `0_7`
+- Statement hash: `4123f89887fe1c6a`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.update (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i ((Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) % 18446744073709551616)))) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def invariant_preserve_0_7_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1425
+  startColumn := 17
+  endLine := 1425
+  endColumn := 77
+  assertId := "0_7"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "invariant_preserve"
+  statementHash := "4123f89887fe1c6a"
+}
+@[vrml_obligation] theorem invariant_preserve_0_7
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_0_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_0_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_0_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_0_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_iteration_7 : Vermilion.inUnsignedRange 64 i)
+    (loop_0_iteration_8 : 0 ≤ i)
+    (loop_0_iteration_9 : i < 5)
+    (loop_0_iteration_10 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_iteration_11 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_iteration_12 : (∀ (j : Int), (((i ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_iteration_13 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assert_18 : True)
+    (assume_15 : (2 * Vermilion.Bits.shl 64 1 52) ≤ 18446744073709551615)
+    (call_lemma_mul_strict_inequality_ensures_0 : (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) < (Vermilion.Bits.shl 64 1 52 * 2))
+    (assert_20 : True)
+    (assume_18 : (2 * Vermilion.Bits.shl 64 1 52) = Vermilion.Bits.shl 64 1 53)
+    (assert_21 : (0 ≤ i) ∧ (i < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2)))
+    (assert_22 : Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2)) :
+    (∀ (j : Int), (((0 ≤ j) ∧ (j < (i + 1))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.update (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i ((Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) % 18446744073709551616)))) j < Vermilion.Bits.shl 64 1 53))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.invariant_preserve_0_7
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_0_decreases cf9d66a132716665
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_0_decreases`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1417:9-1434:10`
+- Rust/SST construct: loop termination measure must decrease
+- AssertId: `0_decreases`
+- Statement hash: `cf9d66a132716665`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def assert_0_decreases_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1417
+  startColumn := 9
+  endLine := 1434
+  endColumn := 10
+  assertId := "0_decreases"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "cf9d66a132716665"
+}
+@[vrml_obligation] theorem assert_0_decreases
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_0_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_0_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_0_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_0_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_iteration_7 : Vermilion.inUnsignedRange 64 i)
+    (loop_0_iteration_8 : 0 ≤ i)
+    (loop_0_iteration_9 : i < 5)
+    (loop_0_iteration_10 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_iteration_11 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_iteration_12 : (∀ (j : Int), (((i ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_iteration_13 : (∀ (j : Int), (((0 ≤ j) ∧ (j < i)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assert_18 : True)
+    (assume_15 : (2 * Vermilion.Bits.shl 64 1 52) ≤ 18446744073709551615)
+    (call_lemma_mul_strict_inequality_ensures_0 : (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2) < (Vermilion.Bits.shl 64 1 52 * 2))
+    (assert_20 : True)
+    (assume_18 : (2 * Vermilion.Bits.shl 64 1 52) = Vermilion.Bits.shl 64 1 53)
+    (assert_21 : (0 ≤ i) ∧ (i < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2)))
+    (assert_22 : Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) i * 2)) :
+    (0 ≤ (5 - (i + 1))) ∧ ((5 - (i + 1)) < (5 - i)) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_0_decreases
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_23 7c08523eac7aed0a
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_23`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1439:24-1439:59`
+- Rust/SST construct: Rust source assertion
+- AssertId: `23`
+- Statement hash: `7c08523eac7aed0a`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def assert_23_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1439
+  startColumn := 24
+  endLine := 1439
+  endColumn := 59
+  assertId := "23"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "7c08523eac7aed0a"
+}
+@[vrml_obligation] theorem assert_23
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_exit_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_exit_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_exit_2 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_exit_3 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_exit_4 : (∀ (j : Int), ((((Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb) ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_exit_5 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_56 : True)
+    (assume_57 : (0 ≤ j) ∧ (j < 5)) :
+    Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_23
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_24 3ca54ccdcab7b4b0
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_24`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1440:24-1440:51`
+- Rust/SST construct: Rust source assertion
+- AssertId: `24`
+- Statement hash: `3ca54ccdcab7b4b0`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def assert_24_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1440
+  startColumn := 24
+  endLine := 1440
+  endColumn := 51
+  assertId := "24"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "3ca54ccdcab7b4b0"
+}
+@[vrml_obligation] theorem assert_24
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_exit_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_exit_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_exit_2 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_exit_3 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_exit_4 : (∀ (j : Int), ((((Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb) ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_exit_5 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_56 : True)
+    (assume_57 : (0 ≤ j) ∧ (j < 5))
+    (assert_23 : Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)) :
+    Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j < Vermilion.Bits.shl 64 1 52 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_24
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_25 8a8d4ae97692d30e
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_25`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1441:17-1441:23`
+- Rust/SST construct: requires not satisfied
+- AssertId: `25`
+- Statement hash: `8a8d4ae97692d30e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def assert_25_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1441
+  startColumn := 17
+  endLine := 1441
+  endColumn := 23
+  assertId := "25"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "8a8d4ae97692d30e"
+}
+@[vrml_obligation] theorem assert_25
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_exit_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_exit_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_exit_2 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_exit_3 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_exit_4 : (∀ (j : Int), ((((Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb) ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_exit_5 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_56 : True)
+    (assume_57 : (0 ≤ j) ∧ (j < 5))
+    (assert_23 : Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))
+    (assert_24 : Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j < Vermilion.Bits.shl 64 1 52) :
+    True := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_25
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_bv_6_0 3ea202780fecee5d
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_bv_6_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1441:24-1441:56`
+- Rust/SST construct: bit-vector assertion (`by (bit_vector)`)
+- AssertId: `bv_6_0`
+- Statement hash: `3ea202780fecee5d`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩
+-/
+def assert_bv_6_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1441
+  startColumn := 24
+  endLine := 1441
+  endColumn := 56
+  assertId := "bv_6_0"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "3ea202780fecee5d"
+}
+@[vrml_obligation] theorem assert_bv_6_0
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_2_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_2_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_2_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_2_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_2_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_2_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_2_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_2_iteration_7 : True) :
+    True := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_bv_6_0
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_26 3982cde218cb4abc
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_26`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1438:54-1438:84`
+- Rust/SST construct: Rust source assertion
+- AssertId: `26`
+- Statement hash: `3982cde218cb4abc`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def assert_26_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1438
+  startColumn := 54
+  endLine := 1438
+  endColumn := 84
+  assertId := "26"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "3982cde218cb4abc"
+}
+@[vrml_obligation] theorem assert_26
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_exit_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_exit_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_exit_2 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_exit_3 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_exit_4 : (∀ (j : Int), ((((Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb) ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_exit_5 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_56 : True)
+    (assume_57 : (0 ≤ j) ∧ (j < 5))
+    (assert_23 : Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))
+    (assert_24 : Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j < Vermilion.Bits.shl 64 1 52)
+    (assert_25 : True)
+    (assume_61 : (2 * Vermilion.Bits.shl 64 1 52) = Vermilion.Bits.shl 64 1 53) :
+    Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_26
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_27 b1ca344801f7c7fd
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_27`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1445:24-1445:54`
+- Rust/SST construct: Rust source assertion
+- AssertId: `27`
+- Statement hash: `b1ca344801f7c7fd`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def assert_27_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1445
+  startColumn := 24
+  endLine := 1445
+  endColumn := 54
+  assertId := "27"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "b1ca344801f7c7fd"
+}
+@[vrml_obligation] theorem assert_27
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_exit_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_exit_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_exit_2 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_exit_3 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_exit_4 : (∀ (j : Int), ((((Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb) ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_exit_5 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_56 : (∀ (j : Int), (((0 ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_57 : True)
+    (assume_58 : (0 ≤ j) ∧ (j < 5)) :
+    Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_27
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_28 b8387aa29f88d1ae
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_28`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1446:17-1446:23`
+- Rust/SST construct: requires not satisfied
+- AssertId: `28`
+- Statement hash: `b8387aa29f88d1ae`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def assert_28_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1446
+  startColumn := 17
+  endLine := 1446
+  endColumn := 23
+  assertId := "28"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "b8387aa29f88d1ae"
+}
+@[vrml_obligation] theorem assert_28
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_exit_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_exit_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_exit_2 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_exit_3 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_exit_4 : (∀ (j : Int), ((((Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb) ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_exit_5 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_56 : (∀ (j : Int), (((0 ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_57 : True)
+    (assume_58 : (0 ≤ j) ∧ (j < 5))
+    (assert_27 : Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53) :
+    True := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_28
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_bv_5_0 4b5d62519b846699
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_bv_5_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1446:24-1446:51`
+- Rust/SST construct: bit-vector assertion (`by (bit_vector)`)
+- AssertId: `bv_5_0`
+- Statement hash: `4b5d62519b846699`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩
+-/
+def assert_bv_5_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1446
+  startColumn := 24
+  endLine := 1446
+  endColumn := 51
+  assertId := "bv_5_0"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "4b5d62519b846699"
+}
+@[vrml_obligation] theorem assert_bv_5_0
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (loop_3_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (loop_3_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (loop_3_iteration_2 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (loop_3_iteration_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (loop_3_iteration_4 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_3_iteration_5 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_3_iteration_6 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_3_iteration_7 : True) :
+    True := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_bv_5_0
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.assert_29 3f82517a7e303800
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.assert_29`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1444:54-1444:84`
+- Rust/SST construct: Rust source assertion
+- AssertId: `29`
+- Statement hash: `3f82517a7e303800`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def assert_29_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1444
+  startColumn := 54
+  endLine := 1444
+  endColumn := 84
+  assertId := "29"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "assert"
+  statementHash := "3f82517a7e303800"
+}
+@[vrml_obligation] theorem assert_29
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_exit_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_exit_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_exit_2 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_exit_3 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_exit_4 : (∀ (j : Int), ((((Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb) ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_exit_5 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_56 : (∀ (j : Int), (((0 ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_57 : True)
+    (assume_58 : (0 ≤ j) ∧ (j < 5))
+    (assert_27 : Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53)
+    (assert_28 : True)
+    (assume_61 : Vermilion.Bits.shl 64 1 53 < Vermilion.Bits.shl 64 1 54) :
+    Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 54 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.assert_29
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.ensures_30_0 18e9370b6f86ed97
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.ensures_30_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1354:13-1356:14`
+- Rust/SST construct: function postcondition (`ensures`)
+- AssertId: `30_0`
+- Statement hash: `18e9370b6f86ed97`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def ensures_30_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1354
+  startColumn := 13
+  endLine := 1356
+  endColumn := 14
+  assertId := "30_0"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "ensures"
+  statementHash := "18e9370b6f86ed97"
+}
+@[vrml_obligation] theorem ensures_30_0
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_exit_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_exit_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_exit_2 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_exit_3 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_exit_4 : (∀ (j : Int), ((((Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb) ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_exit_5 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_56 : (∀ (j : Int), (((0 ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_57 : (∀ (j : Int), (((0 ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 54)))) :
+    layer_a.specs.field_specs.fe51_as_canonical_nat square_2 = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.ensures_30_0
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.ensures_30_1 2a57d2f490e29a9e
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.ensures_30_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1358:13-1358:39`
+- Rust/SST construct: function postcondition (`ensures`)
+- AssertId: `30_1`
+- Statement hash: `2a57d2f490e29a9e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def ensures_30_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1358
+  startColumn := 13
+  endLine := 1358
+  endColumn := 39
+  assertId := "30_1"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "ensures"
+  statementHash := "2a57d2f490e29a9e"
+}
+@[vrml_obligation] theorem ensures_30_1
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_exit_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_exit_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_exit_2 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_exit_3 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_exit_4 : (∀ (j : Int), ((((Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb) ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_exit_5 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_56 : (∀ (j : Int), (((0 ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_57 : (∀ (j : Int), (((0 ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 54)))) :
+    layer_a.specs.field_specs.fe51_limbs_bounded square_2 53 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.ensures_30_1
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.square2.ensures_30_2 2a57d5f490e29fb7
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.square2.ensures_30_2`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1360:13-1360:39`
+- Rust/SST construct: function postcondition (`ensures`)
+- AssertId: `30_2`
+- Statement hash: `2a57d5f490e29fb7`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩ ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j⟩
+-/
+def ensures_30_2_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1360
+  startColumn := 13
+  endLine := 1360
+  endColumn := 39
+  assertId := "30_2"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.square2"
+  kind := "ensures"
+  statementHash := "2a57d5f490e29fb7"
+}
+@[vrml_obligation] theorem ensures_30_2
+    (self : layer_a.backend.serial.u64.field.FieldElement51)
+    (square : layer_a.backend.serial.u64.field.FieldElement51)
+    (vrml_for_arb : Int)
+    (square_2 : layer_a.backend.serial.u64.field.FieldElement51)
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self) vrml_i0))))
+    (requires_2 : layer_a.specs.field_specs.fe51_limbs_bounded self 54)
+    (call_pow2k_ensures_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) = 5)
+    (call_pow2k_ensures_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) vrml_i0))))
+    (call_pow2k_ensures_2 : layer_a.specs.field_specs.fe51_limbs_bounded square 52)
+    (call_pow2k_ensures_3 : layer_a.specs.field_specs.fe51_limbs_bounded square 54)
+    (call_pow2k_ensures_4 : layer_a.specs.field_specs.fe51_as_canonical_nat square = layer_a.specs.field_specs_u64.field_canonical (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs.fe51_as_nat self) (vstd.arithmetic.power2.pow2 1))))
+    (assume_8 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) i) ≤ 18446744073709551615))))
+    (call_lemma_u64_5_as_nat_k_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616)) = (2 * layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)))
+    (call_lemma2_to64_ensures_0 : vstd.arithmetic.power2.pow2 0 = 1)
+    (call_lemma2_to64_ensures_1 : vstd.arithmetic.power2.pow2 1 = 2)
+    (call_lemma2_to64_ensures_2 : vstd.arithmetic.power2.pow2 2 = 4)
+    (call_lemma2_to64_ensures_3 : vstd.arithmetic.power2.pow2 3 = 8)
+    (call_lemma2_to64_ensures_4 : vstd.arithmetic.power2.pow2 4 = 16)
+    (call_lemma2_to64_ensures_5 : vstd.arithmetic.power2.pow2 5 = 32)
+    (call_lemma2_to64_ensures_6 : vstd.arithmetic.power2.pow2 6 = 64)
+    (call_lemma2_to64_ensures_7 : vstd.arithmetic.power2.pow2 7 = 128)
+    (call_lemma2_to64_ensures_8 : vstd.arithmetic.power2.pow2 8 = 256)
+    (call_lemma2_to64_ensures_9 : vstd.arithmetic.power2.pow2 9 = 512)
+    (call_lemma2_to64_ensures_10 : vstd.arithmetic.power2.pow2 10 = 1024)
+    (call_lemma2_to64_ensures_11 : vstd.arithmetic.power2.pow2 11 = 2048)
+    (call_lemma2_to64_ensures_12 : vstd.arithmetic.power2.pow2 12 = 4096)
+    (call_lemma2_to64_ensures_13 : vstd.arithmetic.power2.pow2 13 = 8192)
+    (call_lemma2_to64_ensures_14 : vstd.arithmetic.power2.pow2 14 = 16384)
+    (call_lemma2_to64_ensures_15 : vstd.arithmetic.power2.pow2 15 = 32768)
+    (call_lemma2_to64_ensures_16 : vstd.arithmetic.power2.pow2 16 = 65536)
+    (call_lemma2_to64_ensures_17 : vstd.arithmetic.power2.pow2 17 = 131072)
+    (call_lemma2_to64_ensures_18 : vstd.arithmetic.power2.pow2 18 = 262144)
+    (call_lemma2_to64_ensures_19 : vstd.arithmetic.power2.pow2 19 = 524288)
+    (call_lemma2_to64_ensures_20 : vstd.arithmetic.power2.pow2 20 = 1048576)
+    (call_lemma2_to64_ensures_21 : vstd.arithmetic.power2.pow2 21 = 2097152)
+    (call_lemma2_to64_ensures_22 : vstd.arithmetic.power2.pow2 22 = 4194304)
+    (call_lemma2_to64_ensures_23 : vstd.arithmetic.power2.pow2 23 = 8388608)
+    (call_lemma2_to64_ensures_24 : vstd.arithmetic.power2.pow2 24 = 16777216)
+    (call_lemma2_to64_ensures_25 : vstd.arithmetic.power2.pow2 25 = 33554432)
+    (call_lemma2_to64_ensures_26 : vstd.arithmetic.power2.pow2 26 = 67108864)
+    (call_lemma2_to64_ensures_27 : vstd.arithmetic.power2.pow2 27 = 134217728)
+    (call_lemma2_to64_ensures_28 : vstd.arithmetic.power2.pow2 28 = 268435456)
+    (call_lemma2_to64_ensures_29 : vstd.arithmetic.power2.pow2 29 = 536870912)
+    (call_lemma2_to64_ensures_30 : vstd.arithmetic.power2.pow2 30 = 1073741824)
+    (call_lemma2_to64_ensures_31 : vstd.arithmetic.power2.pow2 31 = 2147483648)
+    (call_lemma2_to64_ensures_32 : vstd.arithmetic.power2.pow2 32 = 4294967296)
+    (call_lemma2_to64_ensures_33 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (assume_45 : True → (((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_46 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2 ≥ 0))
+    (assume_47 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod 2 (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0))))
+    (assert_13 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 0) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 1) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 2) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 3) % 18446744073709551616)) ((2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 4) % 18446744073709551616))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (2 * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs self)) 2)) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_49 : Vermilion.inUnsignedRange 64 vrml_for_arb)
+    (loop_0_exit_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) = 5)
+    (loop_0_exit_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) vrml_i0))))
+    (loop_0_exit_2 : layer_a.specs.field_specs.u64_5_bounded (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) 52)
+    (loop_0_exit_3 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = (2 * Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j)))))
+    (loop_0_exit_4 : (∀ (j : Int), ((((Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb) ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j = Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square) j))))
+    (loop_0_exit_5 : (∀ (j : Int), (((0 ≤ j) ∧ (j < (Vermilion.iteP (0 ≤ 5) 5 vrml_for_arb))) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_56 : (∀ (j : Int), (((0 ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 53))))
+    (assume_57 : (∀ (j : Int), (((0 ≤ j) ∧ (j < 5)) → (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs square_2) j < Vermilion.Bits.shl 64 1 54)))) :
+    layer_a.specs.field_specs.fe51_limbs_bounded square_2 54 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.square2.ensures_30_2
+
+end layer_a.backend.serial.u64.field.impl__16.square2
+

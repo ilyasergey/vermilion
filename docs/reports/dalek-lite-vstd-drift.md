@@ -1,0 +1,55 @@
+# dalek-lite vstd drift assessment (DL7)
+
+*Measured 2026-07-20 against upstream pin `de9ebf015` (Verus release
+`0.2026.01.14.88f7396`, January vstd) and our fork checkout
+`486008364` (July vstd, base `c569645bd37b0`). Method: mechanical sweep
+of every vstd name the crate can reach, resolved against both vstd
+trees; scripts inline in the session log
+(`logs/2026-07-20-dalek-lite-dl7-vstd-drift.md`).*
+
+## The crate's vstd surface
+
+`use vstd::` sites: 383, resolving to a deliberately narrow module set —
+`prelude::*`, `arithmetic::{div_mod, mul, power, power2}`, `bits::*`,
+`seq::*`/`seq_lib::*`, and `calc`. No vstd broadcast groups are used
+(every `group_*` name in the crate is its own: curve group-order lemma
+groups in `scalar.rs`/`scalar52_specs.rs`).
+
+## Resolution sweep
+
+| Surface | Count | Verdict |
+|---|---|---|
+| Explicitly imported vstd lemmas (`lemma_small_mod`, `lemma_mod_bound`, `lemma_mul_inequality`, `lemma_mul_is_associative`, `lemma2_to64`, `lemma2_to64_rest`, `lemma_pow2_adds`, `lemma_pow2_pos`, `lemma_pow2_unfold`, `lemma_pow2_strictly_increases`) | 10 | **all present** in our July vstd, signatures unchanged |
+| Named vstd spec fns (`pow2`, `pow`) | 2 | present |
+| `vstd::bits` per-width lemmas reached via globs (`lemma_u64_shl_is_mul`, `lemma_u64_shr_is_div`, `lemma_u64_pow2_no_overflow`, `lemma_u64_low_bits_mask_is_mod`, …) | 8 named at call sites | **all present** (macro-generated in `bits.rs`, both pins) |
+| All `lemma_*` **call sites** in the crate | 918 distinct names 907 | every name resolves to a crate-local declaration (804 `proof fn`s + macro instantiations in `lemmas/**`) or to our vstd; **zero unresolved** |
+
+## The `lemma_mul_le` correction
+
+`case-studies/dalek-lite/probes/wide_mul_control.rs` (DL0) recorded
+"`lemma_mul_le` is gone at our pin" as the first measured drift point.
+The sweep shows this was a **misattribution**: `lemma_mul_le` is
+dalek-lite's *own* helper
+(`curve25519-dalek/src/lemmas/common_lemmas/mul_lemmas.rs:28`,
+`(a1, b1, a2, b2): a1 ≤ b1 ∧ a2 ≤ b2 → a1·a2 ≤ b1·b2` over `nat`), not a
+vstd export at either pin — the January vstd has no `lemma_mul_le`
+either (the grep that suggested otherwise prefix-matched
+`lemma_mul_left_inequality`). The one-file probe could not import a
+crate-local lemma and swapped in vstd's `lemma_mul_upper_bound`, which
+is the correct *distillation* accommodation — but it is not vstd drift,
+and whole-crate acquisition (DL8+) needs no accommodation at all: the
+crate carries its own lemma layer.
+
+## Verdict
+
+**No vstd drift affects dalek-lite.** Every vstd symbol the crate can
+name exists in our July vstd with an unchanged signature; the crate's
+own 800+ lemma layer is self-contained. DL8's Layer Set A acquisition
+can proceed verbatim with no per-case accommodation list. The only
+Verus-level accommodation measured anywhere in the probe series remains
+the *front-end* mut-ref migration (`*x` → `*final(x)` in
+`assume_specification` ensures, DL5 probes) — a syntax requirement of
+our newer pinned front end, labeled `<MODIFIED CODE>` where distilled
+probes hit it; whole files at crate scale will hit it wherever upstream
+wrote bare `*x` postconditions on `&mut` params, and each such site is
+a mechanical, meaning-preserving edit.

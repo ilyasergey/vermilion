@@ -1,0 +1,31 @@
+# cache and other artifacts produced by Lean's Lake build tool
+.lake/
+docs/reports/generated/
+__pycache__/
+/target/
+/.verus-log/
+/.verus-checkout
+/crates/vermilion_direct/target/
+/.vermilion/
+tests/differential/generated/
+tests/differential/proofs/
+examples/*/generated/
+examples/*/proofs/*
+# Twins carrying hand-written proofs are tracked (the manual-proof
+# workflow). Per-function emission keeps one twin per function (plus the
+# shared Specs twin) in a directory named after the source file:
+!examples/m2-loops/proofs/looping/
+!examples/m3-quantifiers/proofs/quantified/
+!examples/m3-traits/proofs/traits/
+!examples/m3-vec-set/proofs/vec_set/
+!examples/m2-forloop/proofs/forloop/
+!examples/m3-vec-pop/proofs/vec_pop/
+case-studies/*/generated/
+vstd/generated/
+.DS_Store
+# issue-sync bookkeeping (local sync state)
+docs/issues/.sync-state.json
+case-studies/aeneas/probes/generated/
+case-studies/aeneas/probes/.probe-logs/
+case-studies/aeneas/*/generated/
+tests/lowering_isolation/generated/

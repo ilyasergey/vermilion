@@ -1,0 +1,25 @@
+[package]
+name = "vermilion_direct"
+version = "0.1.0"
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/ilyasergey/vermilion"
+publish = false
+
+# This crate is the direct half of the SST facade boundary: it is the only
+# Vermilion code that links the pinned Verus `vir` crate and sees real
+# `vir::sst::FunctionSst` values. It converts them into the neutral
+# `FunctionView` contract and never leaks Verus types further.
+#
+# `.verus-checkout` is a repository-root symlink to the pinned Verus checkout,
+# created by scripts/run_m1_pipeline.sh (or manually). Build with the same
+# toolchain that builds Verus (rust-toolchain.toml in the checkout).
+
+[dependencies]
+vermilion_backend = { path = "../vermilion_backend" }
+vir = { path = "../../.verus-checkout/source/vir" }
+air = { path = "../../.verus-checkout/source/air" }
+bincode = "1"
+num-bigint = "0.4"
+
+[workspace]

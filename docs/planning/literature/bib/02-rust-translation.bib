@@ -1,0 +1,107 @@
+% Translation-based Rust verification: Aeneas/Charon line, hax/hacspec,
+% coq-of-rust, Electrolysis, rust-lean-models.
+
+@article{ho2022aeneas,
+  author  = {Son Ho and Jonathan Protzenko},
+  title   = {Aeneas: {Rust} Verification by Functional Translation},
+  journal = {Proc. ACM Program. Lang.},
+  volume  = {6},
+  number  = {ICFP},
+  pages   = {711--741},
+  year    = {2022},
+  doi     = {10.1145/3547647}
+}
+
+@article{ho2024borrow,
+  author  = {Son Ho and Aymeric Fromherz and Jonathan Protzenko},
+  title   = {Sound Borrow-Checking for {Rust} via Symbolic Semantics},
+  journal = {Proc. ACM Program. Lang.},
+  volume  = {8},
+  number  = {ICFP},
+  pages   = {426--454},
+  year    = {2024},
+  doi     = {10.1145/3674640}
+}
+
+@inproceedings{ho2025charon,
+  author    = {Son Ho and Guillaume Boisseau and Lucas Franceschino and Yoann Prak and Aymeric Fromherz and Jonathan Protzenko},
+  title     = {Charon: An Analysis Framework for {Rust}},
+  booktitle = {Computer Aided Verification (CAV 2025), Part IV},
+  series    = {LNCS},
+  volume    = {15934},
+  pages     = {377--391},
+  publisher = {Springer},
+  year      = {2025},
+  doi       = {10.1007/978-3-031-98685-7_18}
+}
+
+@phdthesis{ho2024thesis,
+  author = {Son Ho},
+  title  = {Formal Verification of {Rust} Programs by Functional Translation},
+  school = {Universit{\'e} PSL},
+  year   = {2024},
+  note   = {Defended 9 December 2024; extends Aeneas with loops and the Lean backend}
+}
+
+@inproceedings{bhargavan2024hax,
+  author    = {Karthikeyan Bhargavan and Maxime Buyse and Lucas Franceschino and Lasse Letager Hansen and Franziskus Kiefer and Jonas Schneider-Bensch and Bas Spitters},
+  title     = {hax: Verifying Security-Critical {Rust} Software Using Multiple Provers},
+  booktitle = {Verified Software. Theories, Tools and Experiments (VSTTE 2024)},
+  series    = {LNCS},
+  volume    = {15525},
+  pages     = {96--119},
+  publisher = {Springer},
+  year      = {2024},
+  doi       = {10.1007/978-3-031-86695-1_7}
+}
+
+@inproceedings{bhargavan2018hacspec,
+  author    = {Karthikeyan Bhargavan and Franziskus Kiefer and Pierre-Yves Strub},
+  title     = {hacspec: Towards Verifiable Crypto Standards},
+  booktitle = {Security Standardisation Research (SSR 2018)},
+  series    = {LNCS},
+  volume    = {11322},
+  pages     = {1--20},
+  publisher = {Springer},
+  year      = {2018},
+  doi       = {10.1007/978-3-030-04762-7_1}
+}
+
+@inproceedings{bhargavan2025bertie,
+  author    = {Karthikeyan Bhargavan and Lasse Letager Hansen and Franziskus Kiefer and Jonas Schneider-Bensch and Bas Spitters},
+  title     = {Formal Security and Functional Verification of Cryptographic Protocol Implementations in {Rust}},
+  booktitle = {Proceedings of the 2025 ACM SIGSAC Conference on Computer and Communications Security (CCS 2025)},
+  pages     = {2729--2743},
+  publisher = {ACM},
+  year      = {2025},
+  doi       = {10.1145/3719027.3765213}
+}
+
+@misc{coqofrust,
+  author = {{Formal Land}},
+  title  = {coq-of-rust / rocq-of-rust: Translation of {Rust} to {Rocq/Coq}},
+  howpublished = {\url{https://github.com/formal-land/rocq-of-rust}},
+  note   = {Grey literature; no peer-reviewed publication. Accessed July 2026}
+}
+
+@mastersthesis{ullrich2016electrolysis,
+  author = {Sebastian Ullrich},
+  title  = {Simple Verification of {Rust} Programs via Functional Purification},
+  school = {Karlsruhe Institute of Technology},
+  year   = {2016},
+  note   = {Electrolysis: the earliest Rust-to-Lean translation}
+}
+
+@misc{rustleanmodels,
+  author = {{AWS model-checking team}},
+  title  = {rust-lean-models: {Lean} 4 Models of {Rust} Standard-Library Functions},
+  howpublished = {\url{https://github.com/model-checking/rust-lean-models}},
+  note   = {Repo + AWS blog only; no paper. Accessed July 2026}
+}
+
+@misc{klaus2026pipeline,
+  author = {Natalia Klaus and Juan Conejero and Palina Tolmach},
+  title  = {A {Rust}-to-{Lean} Verification Pipeline with {AI} Provers: An Experience Report},
+  year   = {2026},
+  note   = {arXiv:2605.30106; AIMACS workshop at CAV 2026}
+}

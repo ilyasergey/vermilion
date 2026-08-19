@@ -1,0 +1,1047 @@
+import Vermilion.Obligations
+import to_bytes_reduction_lemmas.Specs
+
+set_option linter.unusedVariables false
+set_option linter.style.nameCheck false
+set_option linter.dupNamespace false
+set_option linter.unusedTactic false
+set_option linter.unreachableTactic false
+
+namespace layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_2_0 0a5efb6ad6b8ed19
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_2_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:497:9-497:74`
+- Rust/SST construct: call lemma_reduction_carry_propagation_is_division
+- AssertId: `2_0`
+- Statement hash: `0a5efb6ad6b8ed19`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs i⟩ ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_2_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 497
+  startColumn := 9
+  endLine := 497
+  endColumn := 74
+  assertId := "2_0"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "0a5efb6ad6b8ed19"
+}
+@[vrml_obligation] theorem call_requires_2_0
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : q = 0) :
+    (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_2_0
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_2_1 3618c7f6d24400a1
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_2_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:497:9-497:74`
+- Rust/SST construct: call lemma_reduction_carry_propagation_is_division
+- AssertId: `2_1`
+- Statement hash: `3618c7f6d24400a1`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_2_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 497
+  startColumn := 9
+  endLine := 497
+  endColumn := 74
+  assertId := "2_1"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "3618c7f6d24400a1"
+}
+@[vrml_obligation] theorem call_requires_2_1
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : q = 0) :
+    (q = 0) ∨ (q = 1) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_2_1
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_2_2 f80e0f266eac681f
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_2_2`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:497:9-497:74`
+- Rust/SST construct: call lemma_reduction_carry_propagation_is_division
+- AssertId: `2_2`
+- Statement hash: `f80e0f266eac681f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_2_2_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 497
+  startColumn := 9
+  endLine := 497
+  endColumn := 74
+  assertId := "2_2"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "f80e0f266eac681f"
+}
+@[vrml_obligation] theorem call_requires_2_2
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : q = 0) :
+    Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_2_2
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_3_0 971285f6191951a7
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_3_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:499:9-499:90`
+- Rust/SST construct: call lemma_div_strictly_bounded
+- AssertId: `3_0`
+- Statement hash: `971285f6191951a7`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_3_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 499
+  startColumn := 9
+  endLine := 499
+  endColumn := 90
+  assertId := "3_0"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "971285f6191951a7"
+}
+@[vrml_obligation] theorem call_requires_3_0
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : q = 0)
+    (call_lemma_reduction_carry_propagation_is_division_ensures_0 : Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))) :
+    vstd.arithmetic.power2.pow2 255 > 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_3_0
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_3_1 33bb4a2d3f2e20e6
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_3_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:499:9-499:90`
+- Rust/SST construct: call lemma_div_strictly_bounded
+- AssertId: `3_1`
+- Statement hash: `33bb4a2d3f2e20e6`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_3_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 499
+  startColumn := 9
+  endLine := 499
+  endColumn := 90
+  assertId := "3_1"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "33bb4a2d3f2e20e6"
+}
+@[vrml_obligation] theorem call_requires_3_1
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : q = 0)
+    (call_lemma_reduction_carry_propagation_is_division_ensures_0 : Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))) :
+    1 ≥ 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_3_1
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_3_2 22ca61ab9d2c7299
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_3_2`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:499:9-499:90`
+- Rust/SST construct: call lemma_div_strictly_bounded
+- AssertId: `3_2`
+- Statement hash: `22ca61ab9d2c7299`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_3_2_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 499
+  startColumn := 9
+  endLine := 499
+  endColumn := 90
+  assertId := "3_2"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "22ca61ab9d2c7299"
+}
+@[vrml_obligation] theorem call_requires_3_2
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : q = 0)
+    (call_lemma_reduction_carry_propagation_is_division_ensures_0 : Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))) :
+    layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < (vstd.arithmetic.power2.pow2 255 * 1) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_3_2
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_4_0 23a49d2a94fa0bfc
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_4_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:522:13-522:78`
+- Rust/SST construct: call lemma_reduction_carry_propagation_is_division
+- AssertId: `4_0`
+- Statement hash: `23a49d2a94fa0bfc`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs i⟩ ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_4_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 522
+  startColumn := 13
+  endLine := 522
+  endColumn := 78
+  assertId := "4_0"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "23a49d2a94fa0bfc"
+}
+@[vrml_obligation] theorem call_requires_4_0
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True) :
+    (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_4_0
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_4_1 ddded6b655c766b4
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_4_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:522:13-522:78`
+- Rust/SST construct: call lemma_reduction_carry_propagation_is_division
+- AssertId: `4_1`
+- Statement hash: `ddded6b655c766b4`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_4_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 522
+  startColumn := 13
+  endLine := 522
+  endColumn := 78
+  assertId := "4_1"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "ddded6b655c766b4"
+}
+@[vrml_obligation] theorem call_requires_4_1
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True) :
+    (q = 0) ∨ (q = 1) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_4_1
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_4_2 5e7d5958a44d7d76
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_4_2`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:522:13-522:78`
+- Rust/SST construct: call lemma_reduction_carry_propagation_is_division
+- AssertId: `4_2`
+- Statement hash: `5e7d5958a44d7d76`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_4_2_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 522
+  startColumn := 13
+  endLine := 522
+  endColumn := 78
+  assertId := "4_2"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "5e7d5958a44d7d76"
+}
+@[vrml_obligation] theorem call_requires_4_2
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True) :
+    Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_4_2
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_5 5352baa155de413e
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_5`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:520:16-520:100`
+- Rust/SST construct: Rust source assertion
+- AssertId: `5`
+- Statement hash: `5352baa155de413e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def assert_5_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 520
+  startColumn := 16
+  endLine := 520
+  endColumn := 100
+  assertId := "5"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "assert"
+  statementHash := "5352baa155de413e"
+}
+@[vrml_obligation] theorem assert_5
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True)
+    (call_lemma_reduction_carry_propagation_is_division_1_ensures_0 : Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))) :
+    Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_5
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_7 b1b68919b0acff05
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_7`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:528:20-528:39`
+- Rust/SST construct: Rust source assertion
+- AssertId: `7`
+- Statement hash: `b1b68919b0acff05`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def assert_7_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 528
+  startColumn := 20
+  endLine := 528
+  endColumn := 39
+  assertId := "7"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "assert"
+  statementHash := "b1b68919b0acff05"
+}
+@[vrml_obligation] theorem assert_7
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True)
+    (call_lemma_mul_basics_3_ensures_0 : (19 * 1) = 19) :
+    19 = (19 * q) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_7
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_8 eca34db26fa5b1b9
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_8`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:535:20-535:52`
+- Rust/SST construct: Rust source assertion
+- AssertId: `8`
+- Statement hash: `eca34db26fa5b1b9`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def assert_8_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 535
+  startColumn := 20
+  endLine := 535
+  endColumn := 52
+  assertId := "8"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "assert"
+  statementHash := "eca34db26fa5b1b9"
+}
+@[vrml_obligation] theorem assert_8
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True → (19 = (19 * q))) :
+    layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_8
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_9 d0b685299c5e6e75
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_9`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:536:20-536:36`
+- Rust/SST construct: Rust source assertion
+- AssertId: `9`
+- Statement hash: `d0b685299c5e6e75`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def assert_9_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 536
+  startColumn := 20
+  endLine := 536
+  endColumn := 36
+  assertId := "9"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "assert"
+  statementHash := "d0b685299c5e6e75"
+}
+@[vrml_obligation] theorem assert_9
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True → (19 = (19 * q)))
+    (assert_8 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) :
+    (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) ≥ vstd.arithmetic.power2.pow2 255 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_9
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_10_0 fb78d829f179a602
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_10_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:541:17-541:60`
+- Rust/SST construct: call lemma_div_strictly_bounded
+- AssertId: `10_0`
+- Statement hash: `fb78d829f179a602`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_10_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 541
+  startColumn := 17
+  endLine := 541
+  endColumn := 60
+  assertId := "10_0"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "fb78d829f179a602"
+}
+@[vrml_obligation] theorem call_requires_10_0
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True → (19 = (19 * q)))
+    (assert_8 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0)
+    (assert_9 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) ≥ vstd.arithmetic.power2.pow2 255)
+    (assume_15 : True) :
+    vstd.arithmetic.power2.pow2 255 > 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_10_0
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_10_1 adf0f7fa5b5a5e62
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_10_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:541:17-541:60`
+- Rust/SST construct: call lemma_div_strictly_bounded
+- AssertId: `10_1`
+- Statement hash: `adf0f7fa5b5a5e62`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_10_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 541
+  startColumn := 17
+  endLine := 541
+  endColumn := 60
+  assertId := "10_1"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "adf0f7fa5b5a5e62"
+}
+@[vrml_obligation] theorem call_requires_10_1
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True → (19 = (19 * q)))
+    (assert_8 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0)
+    (assert_9 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) ≥ vstd.arithmetic.power2.pow2 255)
+    (assume_15 : True) :
+    2 ≥ 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_10_1
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_10_2 5db8a520a6c0dc09
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_10_2`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:541:17-541:60`
+- Rust/SST construct: call lemma_div_strictly_bounded
+- AssertId: `10_2`
+- Statement hash: `5db8a520a6c0dc09`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_10_2_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 541
+  startColumn := 17
+  endLine := 541
+  endColumn := 60
+  assertId := "10_2"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "5db8a520a6c0dc09"
+}
+@[vrml_obligation] theorem call_requires_10_2
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True → (19 = (19 * q)))
+    (assert_8 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0)
+    (assert_9 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) ≥ vstd.arithmetic.power2.pow2 255)
+    (assume_15 : True) :
+    (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) < (vstd.arithmetic.power2.pow2 255 * 2) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_10_2
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_11 b043a580512c84a6
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_11`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:540:20-540:37`
+- Rust/SST construct: Rust source assertion
+- AssertId: `11`
+- Statement hash: `b043a580512c84a6`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def assert_11_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 540
+  startColumn := 20
+  endLine := 540
+  endColumn := 37
+  assertId := "11"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "assert"
+  statementHash := "b043a580512c84a6"
+}
+@[vrml_obligation] theorem assert_11
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True → (19 = (19 * q)))
+    (assert_8 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0)
+    (assert_9 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) ≥ vstd.arithmetic.power2.pow2 255)
+    (assume_15 : True)
+    (call_lemma_div_strictly_bounded_1_ensures_0 : (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) < 2) :
+    (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) < 2 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_11
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_12_0 11eb8f8e22c516e6
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_12_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:547:21-547:75`
+- Rust/SST construct: call lemma_div_is_ordered_by_denominator
+- AssertId: `12_0`
+- Statement hash: `11eb8f8e22c516e6`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_12_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 547
+  startColumn := 21
+  endLine := 547
+  endColumn := 75
+  assertId := "12_0"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "11eb8f8e22c516e6"
+}
+@[vrml_obligation] theorem call_requires_12_0
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True → (19 = (19 * q)))
+    (assert_8 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0)
+    (assert_9 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) ≥ vstd.arithmetic.power2.pow2 255)
+    (assume_15 : True → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) < 2))
+    (assume_16 : True)
+    (assume_17 : True) :
+    0 ≤ (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_12_0
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_12_1 eed85a5ee4c92657
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_12_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:547:21-547:75`
+- Rust/SST construct: call lemma_div_is_ordered_by_denominator
+- AssertId: `12_1`
+- Statement hash: `eed85a5ee4c92657`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def call_requires_12_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 547
+  startColumn := 21
+  endLine := 547
+  endColumn := 75
+  assertId := "12_1"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "call_requires"
+  statementHash := "eed85a5ee4c92657"
+}
+@[vrml_obligation] theorem call_requires_12_1
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True → (19 = (19 * q)))
+    (assert_8 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0)
+    (assert_9 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) ≥ vstd.arithmetic.power2.pow2 255)
+    (assume_15 : True → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) < 2))
+    (assume_16 : True)
+    (assume_17 : True) :
+    (1 ≤ vstd.arithmetic.power2.pow2 255) ∧ (vstd.arithmetic.power2.pow2 255 ≤ (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q))) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.call_requires_12_1
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_13 49983c8a3053e718
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_13`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:546:24-546:50`
+- Rust/SST construct: Rust source assertion
+- AssertId: `13`
+- Statement hash: `49983c8a3053e718`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def assert_13_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 546
+  startColumn := 24
+  endLine := 546
+  endColumn := 50
+  assertId := "13"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "assert"
+  statementHash := "49983c8a3053e718"
+}
+@[vrml_obligation] theorem assert_13
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True → (19 = (19 * q)))
+    (assert_8 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0)
+    (assert_9 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) ≥ vstd.arithmetic.power2.pow2 255)
+    (assume_15 : True → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) < 2))
+    (assume_16 : True)
+    (assume_17 : True)
+    (call_lemma_div_is_ordered_by_denominator_ensures_0 : (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) ≥ (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)))) :
+    (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) ≥ (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q))) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_13
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_15 d33e2e3c35fd449b
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_15`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:549:24-549:38`
+- Rust/SST construct: Rust source assertion
+- AssertId: `15`
+- Statement hash: `d33e2e3c35fd449b`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def assert_15_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 549
+  startColumn := 24
+  endLine := 549
+  endColumn := 38
+  assertId := "15"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "assert"
+  statementHash := "d33e2e3c35fd449b"
+}
+@[vrml_obligation] theorem assert_15
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True → (19 = (19 * q)))
+    (assert_8 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0)
+    (assert_9 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) ≥ vstd.arithmetic.power2.pow2 255)
+    (assume_15 : True → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) < 2))
+    (assume_16 : True)
+    (assume_17 : True → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) ≥ (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)))))
+    (assume_18 : True)
+    (call_lemma_div_basics_3_ensures_0 : (¬ ((layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = 0)) → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q))) = 1)) :
+    (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q))) = 1 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_15
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_16 5fe057fbd646472f
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_16`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:545:20-545:38`
+- Rust/SST construct: Rust source assertion
+- AssertId: `16`
+- Statement hash: `5fe057fbd646472f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def assert_16_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 545
+  startColumn := 20
+  endLine := 545
+  endColumn := 38
+  assertId := "16"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "assert"
+  statementHash := "5fe057fbd646472f"
+}
+@[vrml_obligation] theorem assert_16
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True → (19 = (19 * q)))
+    (assert_8 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0)
+    (assert_9 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) ≥ vstd.arithmetic.power2.pow2 255)
+    (assume_15 : True → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) < 2))
+    (assume_16 : True)
+    (assume_17 : True → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) ≥ (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)))))
+    (assume_18 : True → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q))) = 1)) :
+    (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) ≥ 1 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_16
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_17 06e20faa755ba3cf
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_17`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:525:16-525:92`
+- Rust/SST construct: Rust source assertion
+- AssertId: `17`
+- Statement hash: `06e20faa755ba3cf`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def assert_17_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 525
+  startColumn := 16
+  endLine := 525
+  endColumn := 92
+  assertId := "17"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "assert"
+  statementHash := "06e20faa755ba3cf"
+}
+@[vrml_obligation] theorem assert_17
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (branch_0 : (¬ (q = 0)))
+    (assume_10 : True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (assume_11 : True)
+    (assume_12 : True → (19 = (19 * q)))
+    (assert_8 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0)
+    (assert_9 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) ≥ vstd.arithmetic.power2.pow2 255)
+    (assume_15 : True → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) < 2))
+    (assume_16 : True → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) ≥ 1)) :
+    (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) = 1 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.assert_17
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.ensures_18 26a5e96ba1a416e4
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.ensures_18`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:459:9-466:11`
+- Rust/SST construct: function postcondition (`ensures`)
+- AssertId: `18`
+- Statement hash: `26a5e96ba1a416e4`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index input_limbs i⟩
+-/
+def ensures_18_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 459
+  startColumn := 9
+  endLine := 466
+  endColumn := 11
+  assertId := "18"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q"
+  kind := "ensures"
+  statementHash := "26a5e96ba1a416e4"
+}
+@[vrml_obligation] theorem ensures_18
+    (input_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.inUnsignedRange 64 q)
+    (requires_3 : (∀ (i : Int), (((0 ≤ i) ∧ (i < 5)) → (Vermilion.Seq.index input_limbs i < Vermilion.Bits.shl 64 1 52))))
+    (requires_4 : (q = 0) ∨ (q = 1))
+    (requires_5 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs ≥ layer_a.specs.field_specs_u64.p 0) ↔ (q = 1))
+    (requires_6 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0))
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 255 > 0)
+    (then_0_call_lemma_reduction_carry_propagation_is_division_ensures_0 : (q = 0) → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255))))
+    (then_0_call_lemma_div_strictly_bounded_ensures_0 : (q = 0) → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs) (vstd.arithmetic.power2.pow2 255)) < 1))
+    (else_0_assume_10 : (¬ (q = 0)) → (True → (Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = (Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)))))
+    (else_0_assume_11 : (¬ (q = 0)) → (True → ((Vermilion.ediv (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) (vstd.arithmetic.power2.pow2 255)) = 1))) :
+    Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 4 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 3 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 2 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 1 + Vermilion.Bits.shr 64 ((Vermilion.Seq.index input_limbs 0 + (19 * q)) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51) % 18446744073709551616) 51 = q := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q.ensures_18
+
+end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_carry_out_equals_q
+

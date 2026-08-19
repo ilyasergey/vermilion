@@ -1,0 +1,339 @@
+#!/bin/bash
+# Lake shim for the Lean language server.
+#
+# Why: every `lake` invocation re-materializes the Lake workspace — one
+# `git diff HEAD` subprocess per dependency checkout (~15 packages, 28 git
+# spawns). On machines where endpoint security taxes each process spawn
+# (~0.26s flat, measured here), that makes `lake serve` and
+# the per-file `lake setup-file` cost ~17s each, which is exactly the
+# "opening a .lean file takes forever to start checking" latency.
+#
+# What: this shim answers the hot server paths from caches under
+# `.vermilion/` using bash builtins only (the warm `setup-file` path spawns
+# no subprocess at all), and delegates everything else — and every cache
+# miss — to the real toolchain lake. Caches invalidate when lakefile.lean,
+# lake-manifest.json, or lean-toolchain change; exact proof-root changes and
+# requested generated-root switches also refresh Lake's compiled module
+# configuration. Generated roots are exposed through one duplicate-checked
+# overlay, making `generated.<stem>.Specs` unambiguous.
+#
+# Wiring: `.vscode/settings.json` prepends `editor/bin` to the lean4
+# extension's PATH (`lean4.envPathExtensions`), so the extension's
+# `lake serve --` lands here; the `serve` branch execs `lean --server`
+# directly with the cached workspace environment and points the file
+# workers' LAKE variable back at this shim for their `setup-file` calls.
+
+set -u -o pipefail
+
+self="${BASH_SOURCE[0]}"
+case "$self" in
+  /*) : ;;
+  *) self="$PWD/$self" ;;
+esac
+root="${self%/editor/bin/lake}"
+cache_dir="$root/.vermilion/lake-shim"
+env_cache="$cache_dir/serve-env"
+setup_dir="$cache_dir/setup-file"
+stamp="$cache_dir/config-stamp"
+proof_roots_cache="$cache_dir/proof-roots"
+generated_roots_cache="$cache_dir/generated-roots"
+generated_src="$cache_dir/generated-src"
+lake_config="$root/.lake/config/[anonymous]/lakefile.olean"
+lake_config_trace="$lake_config.trace"
+
+real_lake() {
+  # Resolve the toolchain lake without recursing into this shim.
+  local candidate
+  candidate="$(cd "$root" && "${ELAN:-elan}" which lake 2>/dev/null)" || candidate=""
+  if [[ -z "$candidate" || "$candidate" == "$self" ]]; then
+    local IFS=:
+    for dir in $PATH; do
+      [[ -x "$dir/lake" && "$dir/lake" != "$self" ]] && { candidate="$dir/lake"; break; }
+    done
+  fi
+  printf '%s' "$candidate"
+}
+
+# True when the Lake configuration changed since the cache was written.
+config_stale() {
+  [[ ! -f "$stamp" ]] && return 0
+  local f
+  for f in "$root/lakefile.lean" "$root/lake-manifest.json" "$root/lean-toolchain" "$self"; do
+    [[ -f "$f" && "$f" -nt "$stamp" ]] && return 0
+  done
+  return 1
+}
+
+# Collect the exact first-level roots under every `proofs/` directory.
+# Pure bash recursion keeps the warm editor path free of `find`/Python
+# subprocesses; build/vendor trees are pruned. The traversal and shell globs
+# are deterministic. Generated roots are activated on demand by `setup-file`
+# below; registering every generated unit made Lake construct the whole
+# generated graph merely to open one file.
+current_proof_roots=""
+current_generated_roots=""
+requested_generated_root=""
+collect_editor_roots() {
+  local directory="$1"
+  local child name root_entry
+  for child in "$directory"/*; do
+    [[ -d "$child" ]] || continue
+    name="${child##*/}"
+    case "$name" in
+      _work|generated|node_modules|pristine|target|upstream|vendor) continue ;;
+    esac
+    if [[ "$name" == "proofs" ]]; then
+      for root_entry in "$child"/*; do
+        if [[ -d "$root_entry" || "$root_entry" == *.lean ]]; then
+          current_proof_roots+=$'\n'"${root_entry#"$root/"}"
+        fi
+      done
+    else
+      collect_editor_roots "$child"
+    fi
+  done
+}
+
+refresh_generated_overlay() {
+  local relative source name destination
+  rm -rf "$generated_src"
+  mkdir -p "$generated_src/generated"
+  while IFS= read -r relative; do
+    [[ -n "$relative" ]] || continue
+    source="$root/$relative"
+    name="${source##*/}"
+    destination="$generated_src/generated/$name"
+    if [[ -e "$destination" || -L "$destination" ]]; then
+      echo "vermilion lake shim: duplicate generated module root '$name'" >&2
+      echo "  first: $destination" >&2
+      echo "  other: $source" >&2
+      return 1
+    fi
+    ln -s "$source" "$destination" || return 1
+  done <<< "$current_generated_roots"
+}
+
+reset_cache_if_stale() {
+  if config_stale; then
+    rm -rf "$cache_dir"
+    mkdir -p "$setup_dir"
+    : > "$stamp"
+  fi
+  # Proof libraries discover exact first-level roots at Lakefile elaboration
+  # time. The generated library uses one overlay because all generated trees
+  # share the `generated.<stem>` namespace. Adding a function below an existing
+  # directory root needs no refresh because its submodule glob/symlink already
+  # covers it.
+  current_proof_roots=""
+  current_generated_roots=""
+  collect_editor_roots "$root"
+  if [[ -n "$requested_generated_root" ]]; then
+    case "$requested_generated_root" in
+      "$root"/*) requested_generated_root="${requested_generated_root#"$root/"}" ;;
+      ./*) requested_generated_root="${requested_generated_root#./}" ;;
+    esac
+    current_generated_roots=$'\n'"$requested_generated_root"
+  elif [[ -f "$generated_roots_cache" ]]; then
+    # Preserve the active overlay across ordinary proof/core setup requests,
+    # but discard it when its generated source was removed.
+    cached_generated_roots="$(<"$generated_roots_cache")"
+    generated_roots_valid=1
+    while IFS= read -r relative; do
+      [[ -z "$relative" || -e "$root/$relative" ]] \
+        || { generated_roots_valid=0; break; }
+    done <<< "$cached_generated_roots"
+    if [[ "$generated_roots_valid" == 1 ]]; then
+      current_generated_roots="$cached_generated_roots"
+    fi
+  fi
+  roots_changed=0
+  if [[ ! -f "$generated_roots_cache" \
+      || "$(<"$generated_roots_cache")" != "$current_generated_roots" \
+      || ! -d "$generated_src/generated" ]]; then
+    refresh_generated_overlay || exit 1
+    printf '%s' "$current_generated_roots" > "$generated_roots_cache"
+    roots_changed=1
+  fi
+  if [[ ! -f "$proof_roots_cache" \
+      || "$(<"$proof_roots_cache")" != "$current_proof_roots" ]]; then
+    printf '%s' "$current_proof_roots" > "$proof_roots_cache"
+    roots_changed=1
+  fi
+  if [[ "$roots_changed" == 1 ]]; then
+    rm -f "$lake_config" "$lake_config_trace"
+    rm -rf "$setup_dir"
+    mkdir -p "$setup_dir"
+  fi
+}
+
+load_env_cache() {
+  # Populate the serve environment (LEAN_PATH, package bin PATH, plugins…)
+  # from the real lake, once per Lake-configuration change.
+  if [[ ! -s "$env_cache" ]]; then
+    mkdir -p "$cache_dir"
+    local lake_bin
+    lake_bin="$(real_lake)"
+    [[ -z "$lake_bin" ]] && return 1
+    (cd "$root" && "$lake_bin" env env 2>/dev/null \
+       | grep -E '^(PATH|LEAN|LAKE|ELAN|DYLD)[A-Z_]*=' > "$env_cache.tmp") || return 1
+    mv "$env_cache.tmp" "$env_cache"
+  fi
+  local line
+  while IFS= read -r line; do
+    [[ "$line" == *=* ]] && export "${line?}"
+  done < "$env_cache"
+  return 0
+}
+
+cmd="${1:-}"
+
+case "$cmd" in
+  serve)
+    shift
+    [[ "${1:-}" == "--" ]] && shift
+    reset_cache_if_stale
+    if load_env_cache; then
+      # File workers resolve `$LAKE setup-file`; send them back here.
+      export LAKE="$self"
+      lean_bin="${LEAN:-lean}"
+      cd "$root" && exec "$lean_bin" --server "$@"
+    fi
+    # No usable environment cache: fall back to the real lake serve.
+    lake_bin="$(real_lake)"
+    [[ -n "$lake_bin" ]] && exec "$lake_bin" serve -- "$@"
+    echo "vermilion lake shim: cannot resolve lake" >&2
+    exit 1
+    ;;
+  setup-file)
+    request_file="${2:-}"
+    case "$request_file" in
+      */generated/*/*.lean) requested_generated_root="${request_file%/*}" ;;
+      */generated/*.lean) requested_generated_root="$request_file" ;;
+    esac
+    reset_cache_if_stale
+    key="$*"
+    # Lean's file worker passes the parsed module header on stdin. Imports can
+    # change while the argument vector stays identical, so include that header
+    # in the cache identity and replay it on a real-Lake miss.
+    header_input=""
+    if [[ "${3:-}" == "-" ]]; then
+      IFS= read -r header_input || :
+      key+=$'\n'$header_input
+    fi
+    # Per-function modules import a shared sibling Specs module, which only
+    # Lake can build with the full artifact set the server needs (`--no-build`
+    # setups omit modules Lake never built). Detect the structure itself, not
+    # a numbered case or a particular `proofs/` path, so generated output and
+    # every current/future proof library receive the same treatment.
+    sibling_specs=""
+    generated_setup_file=""
+    generated_module_name=""
+    if [[ "$request_file" == *.lean ]]; then
+      twin_dir="${request_file%/*}"
+      if [[ "$request_file" != "$twin_dir/Specs.lean" && -f "$twin_dir/Specs.lean" ]]; then
+        sibling_specs="$twin_dir/Specs.lean"
+      fi
+      # Ask Lake about the overlay path as well as resolving imports through
+      # it. The opened file and this path are the same symlinked contents, but
+      # only the overlay is below DifferentialGenerated's srcDir, so Lake
+      # reports the canonical module name used for navigation and declaration
+      # ownership instead of `_unknown`.
+      case "$request_file" in
+        */generated/*/*.lean)
+          generated_suffix="${request_file#*/generated/}"
+          generated_stem="${generated_suffix%%/*}"
+          generated_unit="${generated_suffix##*/}"
+          generated_setup_file=".vermilion/lake-shim/generated-src/generated/$generated_stem/$generated_unit"
+          generated_module_name="generated.$generated_stem.${generated_unit%.lean}"
+          ;;
+        */generated/*.lean)
+          generated_unit="${request_file##*/}"
+          generated_setup_file=".vermilion/lake-shim/generated-src/generated/$generated_unit"
+          generated_module_name="generated.${generated_unit%.lean}"
+          ;;
+      esac
+    fi
+    # Warm path: match the exact argument vector against cached entries and
+    # verify every .olean the cached answer names still exists — builtins
+    # only, no subprocess. A unit's cached setup is additionally stale once
+    # its sibling Specs.lean is newer than the payload (the shared definitions
+    # were regenerated after Lake built the import closure).
+    if [[ -d "$setup_dir" ]]; then
+      for keyfile in "$setup_dir"/*.key; do
+        [[ -e "$keyfile" ]] || break
+        [[ "$(<"$keyfile")" == "$key" ]] || continue
+        payload_file="${keyfile%.key}.json"
+        [[ -f "$payload_file" ]] || continue
+        if [[ -n "$sibling_specs" ]]; then
+          # This payload was written only after the miss path built Specs.
+          # Regeneration after that point makes the cached setup stale.
+          [[ ! "$sibling_specs" -nt "$payload_file" ]] || continue
+        fi
+        payload="$(<"$payload_file")"
+        # Single pass: split on quotes and stat every .olean field.
+        IFS='"' read -ra fields <<< "$payload"
+        fresh=1
+        for field in "${fields[@]}"; do
+          [[ "$field" == *.olean ]] || continue
+          [[ -f "$field" ]] || { fresh=0; break; }
+        done
+        if [[ "$fresh" == 1 ]]; then
+          printf '%s\n' "$payload"
+          exit 0
+        fi
+      done
+    fi
+    # Miss: ask the real lake, store the answer, and replay it. When the unit
+    # has a sibling Specs module, drop `--no-build` so Lake builds that import
+    # closure with proper traces and the setup answer actually contains it.
+    # The closure beyond that is the prebuilt Vermilion library, so the build
+    # cost is one small module.
+    lake_bin="$(real_lake)"
+    if [[ -z "$lake_bin" ]]; then
+      echo "vermilion lake shim: cannot resolve lake" >&2
+      exit 1
+    fi
+    args=()
+    for arg in "$@"; do
+      if [[ -n "$sibling_specs" && "$arg" == "--no-build" ]]; then
+        continue
+      fi
+      if [[ -n "$generated_setup_file" && "$arg" == "$request_file" ]]; then
+        args+=("$generated_setup_file")
+      else
+        args+=("$arg")
+      fi
+    done
+    mkdir -p "$setup_dir"
+    [[ -f "$stamp" ]] || : > "$stamp"
+    if [[ "${3:-}" == "-" && -n "$generated_module_name" ]]; then
+      # Lake resolves symlinks before deriving a module name and therefore
+      # still labels the opened generated unit `_unknown`. Rewrite the one
+      # setup JSON field as a streaming miss-path operation; bash's in-memory
+      # pattern substitution is pathologically slow on Lake's large importArts
+      # payload. Warm setup remains subprocess-free.
+      payload="$(cd "$root" && "$lake_bin" "${args[@]}" <<< "$header_input" \
+        | sed "s/\"name\":\"_unknown\"/\"name\":\"$generated_module_name\"/")" || exit $?
+    elif [[ "${3:-}" == "-" ]]; then
+      payload="$(cd "$root" && "$lake_bin" "${args[@]}" <<< "$header_input")" || exit $?
+    elif [[ -n "$generated_module_name" ]]; then
+      payload="$(cd "$root" && "$lake_bin" "${args[@]}" \
+        | sed "s/\"name\":\"_unknown\"/\"name\":\"$generated_module_name\"/")" || exit $?
+    else
+      payload="$(cd "$root" && "$lake_bin" "${args[@]}")" || exit $?
+    fi
+    n=0
+    while [[ -e "$setup_dir/$n.key" ]]; do n=$((n + 1)); done
+    printf '%s' "$key" > "$setup_dir/$n.key"
+    printf '%s\n' "$payload" > "$setup_dir/$n.json"
+    printf '%s\n' "$payload"
+    ;;
+  *)
+    lake_bin="$(real_lake)"
+    if [[ -z "$lake_bin" ]]; then
+      echo "vermilion lake shim: cannot resolve lake" >&2
+      exit 1
+    fi
+    exec "$lake_bin" "$@"
+    ;;
+esac

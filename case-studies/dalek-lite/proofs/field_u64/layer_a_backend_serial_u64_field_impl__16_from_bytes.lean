@@ -1,0 +1,1111 @@
+import Vermilion.Obligations
+import field_u64.Specs
+
+set_option linter.unusedVariables false
+set_option linter.style.nameCheck false
+set_option linter.dupNamespace false
+set_option linter.unusedTactic false
+set_option linter.unreachableTactic false
+
+namespace layer_a.backend.serial.u64.field.impl__16.from_bytes
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_0 f120dcbee1b36dc9
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:975:20-975:46`
+- Rust/SST construct: assertion failed
+- AssertId: `0`
+- Statement hash: `f120dcbee1b36dc9`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def assert_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 975
+  startColumn := 20
+  endLine := 975
+  endColumn := 46
+  assertId := "0"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "assert"
+  statementHash := "f120dcbee1b36dc9"
+}
+@[vrml_obligation] theorem assert_0
+    (bytes : (Vermilion.Seq Int))
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0)))) :
+    True := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_0
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_1 d939bdf45e7e2296
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:985:17-985:55`
+- Rust/SST construct: call lemma_spec_load8_at_fits_u64
+- AssertId: `1`
+- Statement hash: `d939bdf45e7e2296`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def call_requires_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 985
+  startColumn := 17
+  endLine := 985
+  endColumn := 55
+  assertId := "1"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "call_requires"
+  statementHash := "d939bdf45e7e2296"
+}
+@[vrml_obligation] theorem call_requires_1
+    (bytes : (Vermilion.Seq Int))
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True) :
+    (0 + 7) < vstd.slice.len_returns_clause_autospec bytes := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_1
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_2 ecb3110d17123239
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_2`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:986:17-986:55`
+- Rust/SST construct: call lemma_spec_load8_at_fits_u64
+- AssertId: `2`
+- Statement hash: `ecb3110d17123239`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def call_requires_2_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 986
+  startColumn := 17
+  endLine := 986
+  endColumn := 55
+  assertId := "2"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "call_requires"
+  statementHash := "ecb3110d17123239"
+}
+@[vrml_obligation] theorem call_requires_2
+    (bytes : (Vermilion.Seq Int))
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True)
+    (call_lemma_spec_load8_at_fits_u64_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) :
+    (6 + 7) < vstd.slice.len_returns_clause_autospec bytes := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_2
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_3 cc7a192a5c5392c1
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_3`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:987:17-987:56`
+- Rust/SST construct: call lemma_spec_load8_at_fits_u64
+- AssertId: `3`
+- Statement hash: `cc7a192a5c5392c1`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def call_requires_3_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 987
+  startColumn := 17
+  endLine := 987
+  endColumn := 56
+  assertId := "3"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "call_requires"
+  statementHash := "cc7a192a5c5392c1"
+}
+@[vrml_obligation] theorem call_requires_3
+    (bytes : (Vermilion.Seq Int))
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True)
+    (call_lemma_spec_load8_at_fits_u64_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615)
+    (call_lemma_spec_load8_at_fits_u64_1_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615) :
+    (12 + 7) < vstd.slice.len_returns_clause_autospec bytes := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_3
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_4 f5bf318eaa439663
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_4`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:988:17-988:56`
+- Rust/SST construct: call lemma_spec_load8_at_fits_u64
+- AssertId: `4`
+- Statement hash: `f5bf318eaa439663`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def call_requires_4_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 988
+  startColumn := 17
+  endLine := 988
+  endColumn := 56
+  assertId := "4"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "call_requires"
+  statementHash := "f5bf318eaa439663"
+}
+@[vrml_obligation] theorem call_requires_4
+    (bytes : (Vermilion.Seq Int))
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True)
+    (call_lemma_spec_load8_at_fits_u64_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615)
+    (call_lemma_spec_load8_at_fits_u64_1_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)
+    (call_lemma_spec_load8_at_fits_u64_2_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615) :
+    (19 + 7) < vstd.slice.len_returns_clause_autospec bytes := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_4
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_5 70d7ae18926c0878
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_5`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:989:17-989:56`
+- Rust/SST construct: call lemma_spec_load8_at_fits_u64
+- AssertId: `5`
+- Statement hash: `70d7ae18926c0878`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def call_requires_5_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 989
+  startColumn := 17
+  endLine := 989
+  endColumn := 56
+  assertId := "5"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "call_requires"
+  statementHash := "70d7ae18926c0878"
+}
+@[vrml_obligation] theorem call_requires_5
+    (bytes : (Vermilion.Seq Int))
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True)
+    (call_lemma_spec_load8_at_fits_u64_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615)
+    (call_lemma_spec_load8_at_fits_u64_1_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)
+    (call_lemma_spec_load8_at_fits_u64_2_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)
+    (call_lemma_spec_load8_at_fits_u64_3_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615) :
+    (24 + 7) < vstd.slice.len_returns_clause_autospec bytes := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_5
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_6 c3de44c6ddfb1d2a
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_6`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:983:20-984:28`
+- Rust/SST construct: Rust source assertion
+- AssertId: `6`
+- Statement hash: `c3de44c6ddfb1d2a`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def assert_6_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 983
+  startColumn := 20
+  endLine := 984
+  endColumn := 28
+  assertId := "6"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "assert"
+  statementHash := "c3de44c6ddfb1d2a"
+}
+@[vrml_obligation] theorem assert_6
+    (bytes : (Vermilion.Seq Int))
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True)
+    (call_lemma_spec_load8_at_fits_u64_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615)
+    (call_lemma_spec_load8_at_fits_u64_1_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)
+    (call_lemma_spec_load8_at_fits_u64_2_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)
+    (call_lemma_spec_load8_at_fits_u64_3_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)
+    (call_lemma_spec_load8_at_fits_u64_4_ensures_0 : layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615) :
+    ((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615) := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_6
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_9 c197bfeacdc99ae4
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_9`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1000:20-1000:71`
+- Rust/SST construct: Rust source assertion
+- AssertId: `9`
+- Statement hash: `c197bfeacdc99ae4`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def assert_9_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1000
+  startColumn := 20
+  endLine := 1000
+  endColumn := 71
+  assertId := "9"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "assert"
+  statementHash := "c197bfeacdc99ae4"
+}
+@[vrml_obligation] theorem assert_9
+    (bytes : (Vermilion.Seq Int))
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True)
+    (call_lemma_from_u8_32_as_nat_ensures_0 : layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = ((((((((((((((((((((((((((((((((Vermilion.Seq.index bytes 0 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (0 * 8))) + (Vermilion.Seq.index bytes 1 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 8)))) + (Vermilion.Seq.index bytes 2 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 8)))) + (Vermilion.Seq.index bytes 3 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 8)))) + (Vermilion.Seq.index bytes 4 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 8)))) + (Vermilion.Seq.index bytes 5 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (5 * 8)))) + (Vermilion.Seq.index bytes 6 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (6 * 8)))) + (Vermilion.Seq.index bytes 7 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (7 * 8)))) + (Vermilion.Seq.index bytes 8 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (8 * 8)))) + (Vermilion.Seq.index bytes 9 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (9 * 8)))) + (Vermilion.Seq.index bytes 10 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (10 * 8)))) + (Vermilion.Seq.index bytes 11 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (11 * 8)))) + (Vermilion.Seq.index bytes 12 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (12 * 8)))) + (Vermilion.Seq.index bytes 13 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (13 * 8)))) + (Vermilion.Seq.index bytes 14 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (14 * 8)))) + (Vermilion.Seq.index bytes 15 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (15 * 8)))) + (Vermilion.Seq.index bytes 16 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (16 * 8)))) + (Vermilion.Seq.index bytes 17 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (17 * 8)))) + (Vermilion.Seq.index bytes 18 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (18 * 8)))) + (Vermilion.Seq.index bytes 19 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (19 * 8)))) + (Vermilion.Seq.index bytes 20 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (20 * 8)))) + (Vermilion.Seq.index bytes 21 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (21 * 8)))) + (Vermilion.Seq.index bytes 22 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (22 * 8)))) + (Vermilion.Seq.index bytes 23 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (23 * 8)))) + (Vermilion.Seq.index bytes 24 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (24 * 8)))) + (Vermilion.Seq.index bytes 25 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (25 * 8)))) + (Vermilion.Seq.index bytes 26 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (26 * 8)))) + (Vermilion.Seq.index bytes 27 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (27 * 8)))) + (Vermilion.Seq.index bytes 28 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (28 * 8)))) + (Vermilion.Seq.index bytes 29 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (29 * 8)))) + (Vermilion.Seq.index bytes 30 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (30 * 8)))) + Vermilion.natClip ((Vermilion.emod (Vermilion.Seq.index bytes 31) (vstd.arithmetic.power2.pow2 7)) * vstd.arithmetic.power2.pow2 (Vermilion.natClip (31 * 8)))))
+    (call_lemma_as_nat_32_mod_255_ensures_0 : (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255)) = ((((((((((((((((((((((((((((((((Vermilion.Seq.index bytes 0 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (0 * 8))) + (Vermilion.Seq.index bytes 1 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 8)))) + (Vermilion.Seq.index bytes 2 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 8)))) + (Vermilion.Seq.index bytes 3 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 8)))) + (Vermilion.Seq.index bytes 4 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 8)))) + (Vermilion.Seq.index bytes 5 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (5 * 8)))) + (Vermilion.Seq.index bytes 6 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (6 * 8)))) + (Vermilion.Seq.index bytes 7 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (7 * 8)))) + (Vermilion.Seq.index bytes 8 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (8 * 8)))) + (Vermilion.Seq.index bytes 9 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (9 * 8)))) + (Vermilion.Seq.index bytes 10 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (10 * 8)))) + (Vermilion.Seq.index bytes 11 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (11 * 8)))) + (Vermilion.Seq.index bytes 12 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (12 * 8)))) + (Vermilion.Seq.index bytes 13 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (13 * 8)))) + (Vermilion.Seq.index bytes 14 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (14 * 8)))) + (Vermilion.Seq.index bytes 15 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (15 * 8)))) + (Vermilion.Seq.index bytes 16 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (16 * 8)))) + (Vermilion.Seq.index bytes 17 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (17 * 8)))) + (Vermilion.Seq.index bytes 18 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (18 * 8)))) + (Vermilion.Seq.index bytes 19 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (19 * 8)))) + (Vermilion.Seq.index bytes 20 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (20 * 8)))) + (Vermilion.Seq.index bytes 21 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (21 * 8)))) + (Vermilion.Seq.index bytes 22 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (22 * 8)))) + (Vermilion.Seq.index bytes 23 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (23 * 8)))) + (Vermilion.Seq.index bytes 24 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (24 * 8)))) + (Vermilion.Seq.index bytes 25 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (25 * 8)))) + (Vermilion.Seq.index bytes 26 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (26 * 8)))) + (Vermilion.Seq.index bytes 27 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (27 * 8)))) + (Vermilion.Seq.index bytes 28 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (28 * 8)))) + (Vermilion.Seq.index bytes 29 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (29 * 8)))) + (Vermilion.Seq.index bytes 30 * vstd.arithmetic.power2.pow2 (Vermilion.natClip (30 * 8)))) + Vermilion.natClip ((Vermilion.emod (Vermilion.Seq.index bytes 31) (vstd.arithmetic.power2.pow2 7)) * vstd.arithmetic.power2.pow2 (Vermilion.natClip (31 * 8))))) :
+    layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255)) := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_9
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_10 ad0eb53a080909bd
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_10`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1006:13-1006:19`
+- Rust/SST construct: requires not satisfied
+- AssertId: `10`
+- Statement hash: `ad0eb53a080909bd`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def assert_10_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1006
+  startColumn := 13
+  endLine := 1006
+  endColumn := 19
+  assertId := "10"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "assert"
+  statementHash := "ad0eb53a080909bd"
+}
+@[vrml_obligation] theorem assert_10
+    (bytes : (Vermilion.Seq Int))
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255)))) :
+    True := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_10
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_bv_8_0 fdbf2ebbb6c59cd0
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_bv_8_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1006:20-1006:73`
+- Rust/SST construct: bit-vector assertion (`by (bit_vector)`)
+- AssertId: `bv_8_0`
+- Statement hash: `fdbf2ebbb6c59cd0`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def assert_bv_8_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1006
+  startColumn := 20
+  endLine := 1006
+  endColumn := 73
+  assertId := "bv_8_0"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "assert"
+  statementHash := "fdbf2ebbb6c59cd0"
+}
+@[vrml_obligation] theorem assert_bv_8_0
+    (bytes : (Vermilion.Seq Int))
+    (loop_0_iteration_0 : Vermilion.Seq.len bytes = 32)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (loop_0_iteration_2 : True) :
+    (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x 2251799813685247 < 2251799813685248))) := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_bv_8_0
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_11 3aafc9ceba940871
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_11`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1008:31-1008:43`
+- Rust/SST construct: possible bit shift underflow/overflow
+- AssertId: `11`
+- Statement hash: `3aafc9ceba940871`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩
+-/
+def assert_11_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1008
+  startColumn := 31
+  endLine := 1008
+  endColumn := 43
+  assertId := "11"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "assert"
+  statementHash := "3aafc9ceba940871"
+}
+@[vrml_obligation] theorem assert_11
+    (bytes : (Vermilion.Seq Int))
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51)))) :
+    (0 ≤ 51) ∧ (51 < 64) := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_11
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_12 8838555290f0d8c3
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_12`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1008:31-1008:47`
+- Rust/SST construct: possible arithmetic underflow/overflow
+- AssertId: `12`
+- Statement hash: `8838555290f0d8c3`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩
+-/
+def assert_12_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1008
+  startColumn := 31
+  endLine := 1008
+  endColumn := 47
+  assertId := "12"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "assert"
+  statementHash := "8838555290f0d8c3"
+}
+@[vrml_obligation] theorem assert_12
+    (bytes : (Vermilion.Seq Int))
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64)) :
+    Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1) := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_12
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_14 7d2d497a66b2f95f
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_14`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1014:17-1014:35`
+- Rust/SST construct: call load8_at
+- AssertId: `14`
+- Statement hash: `7d2d497a66b2f95f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def call_requires_14_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1014
+  startColumn := 17
+  endLine := 1014
+  endColumn := 35
+  assertId := "14"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "call_requires"
+  statementHash := "7d2d497a66b2f95f"
+}
+@[vrml_obligation] theorem call_requires_14
+    (bytes : (Vermilion.Seq Int))
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0)))) :
+    (0 + 7) < vstd.slice.len_returns_clause_autospec bytes := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_14
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_16 7ac0694ba9a36f14
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_16`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1018:18-1018:36`
+- Rust/SST construct: call load8_at
+- AssertId: `16`
+- Statement hash: `7ac0694ba9a36f14`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def call_requires_16_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1018
+  startColumn := 18
+  endLine := 1018
+  endColumn := 36
+  assertId := "16"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "call_requires"
+  statementHash := "7ac0694ba9a36f14"
+}
+@[vrml_obligation] theorem call_requires_16
+    (bytes : (Vermilion.Seq Int))
+    (tmp_ : Int)
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_ensures_0 : Vermilion.inUnsignedRange 64 tmp_)
+    (call_load8_at_ensures_1 : tmp_ = layer_a.specs.core_specs.spec_load8_at bytes 0)
+    (assume_13 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0)))) :
+    (6 + 7) < vstd.slice.len_returns_clause_autospec bytes := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_16
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_17 3a5ccdc58e349c48
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_17`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1018:17-1018:42`
+- Rust/SST construct: possible bit shift underflow/overflow
+- AssertId: `17`
+- Statement hash: `3a5ccdc58e349c48`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def assert_17_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1018
+  startColumn := 17
+  endLine := 1018
+  endColumn := 42
+  assertId := "17"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "assert"
+  statementHash := "3a5ccdc58e349c48"
+}
+@[vrml_obligation] theorem assert_17
+    (bytes : (Vermilion.Seq Int))
+    (tmp_ : Int)
+    (tmp__2 : Int)
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_ensures_0 : Vermilion.inUnsignedRange 64 tmp_)
+    (call_load8_at_ensures_1 : tmp_ = layer_a.specs.core_specs.spec_load8_at bytes 0)
+    (assume_13 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_1_ensures_0 : Vermilion.inUnsignedRange 64 tmp__2)
+    (call_load8_at_1_ensures_1 : tmp__2 = layer_a.specs.core_specs.spec_load8_at bytes 6) :
+    (0 ≤ 3) ∧ (3 < 64) := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_17
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_19 2d48f78ac532577d
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_19`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1022:18-1022:37`
+- Rust/SST construct: call load8_at
+- AssertId: `19`
+- Statement hash: `2d48f78ac532577d`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def call_requires_19_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1022
+  startColumn := 18
+  endLine := 1022
+  endColumn := 37
+  assertId := "19"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "call_requires"
+  statementHash := "2d48f78ac532577d"
+}
+@[vrml_obligation] theorem call_requires_19
+    (bytes : (Vermilion.Seq Int))
+    (tmp_ : Int)
+    (tmp__2 : Int)
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_ensures_0 : Vermilion.inUnsignedRange 64 tmp_)
+    (call_load8_at_ensures_1 : tmp_ = layer_a.specs.core_specs.spec_load8_at bytes 0)
+    (assume_13 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_1_ensures_0 : Vermilion.inUnsignedRange 64 tmp__2)
+    (call_load8_at_1_ensures_1 : tmp__2 = layer_a.specs.core_specs.spec_load8_at bytes 6)
+    (assert_17 : (0 ≤ 3) ∧ (3 < 64))
+    (assume_17 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0)))) :
+    (12 + 7) < vstd.slice.len_returns_clause_autospec bytes := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_19
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_20 917f0c77f87e1d42
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_20`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1022:17-1022:43`
+- Rust/SST construct: possible bit shift underflow/overflow
+- AssertId: `20`
+- Statement hash: `917f0c77f87e1d42`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def assert_20_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1022
+  startColumn := 17
+  endLine := 1022
+  endColumn := 43
+  assertId := "20"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "assert"
+  statementHash := "917f0c77f87e1d42"
+}
+@[vrml_obligation] theorem assert_20
+    (bytes : (Vermilion.Seq Int))
+    (tmp_ : Int)
+    (tmp__2 : Int)
+    (tmp__3 : Int)
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_ensures_0 : Vermilion.inUnsignedRange 64 tmp_)
+    (call_load8_at_ensures_1 : tmp_ = layer_a.specs.core_specs.spec_load8_at bytes 0)
+    (assume_13 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_1_ensures_0 : Vermilion.inUnsignedRange 64 tmp__2)
+    (call_load8_at_1_ensures_1 : tmp__2 = layer_a.specs.core_specs.spec_load8_at bytes 6)
+    (assert_17 : (0 ≤ 3) ∧ (3 < 64))
+    (assume_17 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_2_ensures_0 : Vermilion.inUnsignedRange 64 tmp__3)
+    (call_load8_at_2_ensures_1 : tmp__3 = layer_a.specs.core_specs.spec_load8_at bytes 12) :
+    (0 ≤ 6) ∧ (6 < 64) := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_20
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_22 f05f233b7130cb19
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_22`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1026:18-1026:37`
+- Rust/SST construct: call load8_at
+- AssertId: `22`
+- Statement hash: `f05f233b7130cb19`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def call_requires_22_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1026
+  startColumn := 18
+  endLine := 1026
+  endColumn := 37
+  assertId := "22"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "call_requires"
+  statementHash := "f05f233b7130cb19"
+}
+@[vrml_obligation] theorem call_requires_22
+    (bytes : (Vermilion.Seq Int))
+    (tmp_ : Int)
+    (tmp__2 : Int)
+    (tmp__3 : Int)
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_ensures_0 : Vermilion.inUnsignedRange 64 tmp_)
+    (call_load8_at_ensures_1 : tmp_ = layer_a.specs.core_specs.spec_load8_at bytes 0)
+    (assume_13 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_1_ensures_0 : Vermilion.inUnsignedRange 64 tmp__2)
+    (call_load8_at_1_ensures_1 : tmp__2 = layer_a.specs.core_specs.spec_load8_at bytes 6)
+    (assert_17 : (0 ≤ 3) ∧ (3 < 64))
+    (assume_17 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_2_ensures_0 : Vermilion.inUnsignedRange 64 tmp__3)
+    (call_load8_at_2_ensures_1 : tmp__3 = layer_a.specs.core_specs.spec_load8_at bytes 12)
+    (assert_20 : (0 ≤ 6) ∧ (6 < 64))
+    (assume_21 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0)))) :
+    (19 + 7) < vstd.slice.len_returns_clause_autospec bytes := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_22
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_23 be7a23afbc5bee23
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_23`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1026:17-1026:43`
+- Rust/SST construct: possible bit shift underflow/overflow
+- AssertId: `23`
+- Statement hash: `be7a23afbc5bee23`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def assert_23_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1026
+  startColumn := 17
+  endLine := 1026
+  endColumn := 43
+  assertId := "23"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "assert"
+  statementHash := "be7a23afbc5bee23"
+}
+@[vrml_obligation] theorem assert_23
+    (bytes : (Vermilion.Seq Int))
+    (tmp_ : Int)
+    (tmp__2 : Int)
+    (tmp__3 : Int)
+    (tmp__4 : Int)
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_ensures_0 : Vermilion.inUnsignedRange 64 tmp_)
+    (call_load8_at_ensures_1 : tmp_ = layer_a.specs.core_specs.spec_load8_at bytes 0)
+    (assume_13 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_1_ensures_0 : Vermilion.inUnsignedRange 64 tmp__2)
+    (call_load8_at_1_ensures_1 : tmp__2 = layer_a.specs.core_specs.spec_load8_at bytes 6)
+    (assert_17 : (0 ≤ 3) ∧ (3 < 64))
+    (assume_17 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_2_ensures_0 : Vermilion.inUnsignedRange 64 tmp__3)
+    (call_load8_at_2_ensures_1 : tmp__3 = layer_a.specs.core_specs.spec_load8_at bytes 12)
+    (assert_20 : (0 ≤ 6) ∧ (6 < 64))
+    (assume_21 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_3_ensures_0 : Vermilion.inUnsignedRange 64 tmp__4)
+    (call_load8_at_3_ensures_1 : tmp__4 = layer_a.specs.core_specs.spec_load8_at bytes 19) :
+    (0 ≤ 1) ∧ (1 < 64) := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_23
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_25 9c9abb16239f25a1
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_25`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1030:18-1030:37`
+- Rust/SST construct: call load8_at
+- AssertId: `25`
+- Statement hash: `9c9abb16239f25a1`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def call_requires_25_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1030
+  startColumn := 18
+  endLine := 1030
+  endColumn := 37
+  assertId := "25"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "call_requires"
+  statementHash := "9c9abb16239f25a1"
+}
+@[vrml_obligation] theorem call_requires_25
+    (bytes : (Vermilion.Seq Int))
+    (tmp_ : Int)
+    (tmp__2 : Int)
+    (tmp__3 : Int)
+    (tmp__4 : Int)
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_ensures_0 : Vermilion.inUnsignedRange 64 tmp_)
+    (call_load8_at_ensures_1 : tmp_ = layer_a.specs.core_specs.spec_load8_at bytes 0)
+    (assume_13 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_1_ensures_0 : Vermilion.inUnsignedRange 64 tmp__2)
+    (call_load8_at_1_ensures_1 : tmp__2 = layer_a.specs.core_specs.spec_load8_at bytes 6)
+    (assert_17 : (0 ≤ 3) ∧ (3 < 64))
+    (assume_17 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_2_ensures_0 : Vermilion.inUnsignedRange 64 tmp__3)
+    (call_load8_at_2_ensures_1 : tmp__3 = layer_a.specs.core_specs.spec_load8_at bytes 12)
+    (assert_20 : (0 ≤ 6) ∧ (6 < 64))
+    (assume_21 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_3_ensures_0 : Vermilion.inUnsignedRange 64 tmp__4)
+    (call_load8_at_3_ensures_1 : tmp__4 = layer_a.specs.core_specs.spec_load8_at bytes 19)
+    (assert_23 : (0 ≤ 1) ∧ (1 < 64))
+    (assume_25 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0)))) :
+    (24 + 7) < vstd.slice.len_returns_clause_autospec bytes := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_25
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_26 ac7a2e5bfe7a8d2c
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_26`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1030:17-1030:44`
+- Rust/SST construct: possible bit shift underflow/overflow
+- AssertId: `26`
+- Statement hash: `ac7a2e5bfe7a8d2c`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def assert_26_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1030
+  startColumn := 17
+  endLine := 1030
+  endColumn := 44
+  assertId := "26"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "assert"
+  statementHash := "ac7a2e5bfe7a8d2c"
+}
+@[vrml_obligation] theorem assert_26
+    (bytes : (Vermilion.Seq Int))
+    (tmp_ : Int)
+    (tmp__2 : Int)
+    (tmp__3 : Int)
+    (tmp__4 : Int)
+    (tmp__5 : Int)
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_ensures_0 : Vermilion.inUnsignedRange 64 tmp_)
+    (call_load8_at_ensures_1 : tmp_ = layer_a.specs.core_specs.spec_load8_at bytes 0)
+    (assume_13 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_1_ensures_0 : Vermilion.inUnsignedRange 64 tmp__2)
+    (call_load8_at_1_ensures_1 : tmp__2 = layer_a.specs.core_specs.spec_load8_at bytes 6)
+    (assert_17 : (0 ≤ 3) ∧ (3 < 64))
+    (assume_17 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_2_ensures_0 : Vermilion.inUnsignedRange 64 tmp__3)
+    (call_load8_at_2_ensures_1 : tmp__3 = layer_a.specs.core_specs.spec_load8_at bytes 12)
+    (assert_20 : (0 ≤ 6) ∧ (6 < 64))
+    (assume_21 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_3_ensures_0 : Vermilion.inUnsignedRange 64 tmp__4)
+    (call_load8_at_3_ensures_1 : tmp__4 = layer_a.specs.core_specs.spec_load8_at bytes 19)
+    (assert_23 : (0 ≤ 1) ∧ (1 < 64))
+    (assume_25 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_4_ensures_0 : Vermilion.inUnsignedRange 64 tmp__5)
+    (call_load8_at_4_ensures_1 : tmp__5 = layer_a.specs.core_specs.spec_load8_at bytes 24) :
+    (0 ≤ 12) ∧ (12 < 64) := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.assert_26
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_27 aaa8b0d4758b0b97
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_27`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:1035:13-1035:80`
+- Rust/SST construct: call axiom_from_bytes_uniform
+- AssertId: `27`
+- Statement hash: `aaa8b0d4758b0b97`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def call_requires_27_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 1035
+  startColumn := 13
+  endLine := 1035
+  endColumn := 80
+  assertId := "27"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "call_requires"
+  statementHash := "aaa8b0d4758b0b97"
+}
+@[vrml_obligation] theorem call_requires_27
+    (bytes : (Vermilion.Seq Int))
+    (tmp_ : Int)
+    (tmp__2 : Int)
+    (tmp__3 : Int)
+    (tmp__4 : Int)
+    (tmp__5 : Int)
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_ensures_0 : Vermilion.inUnsignedRange 64 tmp_)
+    (call_load8_at_ensures_1 : tmp_ = layer_a.specs.core_specs.spec_load8_at bytes 0)
+    (assume_13 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_1_ensures_0 : Vermilion.inUnsignedRange 64 tmp__2)
+    (call_load8_at_1_ensures_1 : tmp__2 = layer_a.specs.core_specs.spec_load8_at bytes 6)
+    (assert_17 : (0 ≤ 3) ∧ (3 < 64))
+    (assume_17 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_2_ensures_0 : Vermilion.inUnsignedRange 64 tmp__3)
+    (call_load8_at_2_ensures_1 : tmp__3 = layer_a.specs.core_specs.spec_load8_at bytes 12)
+    (assert_20 : (0 ≤ 6) ∧ (6 < 64))
+    (assume_21 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_3_ensures_0 : Vermilion.inUnsignedRange 64 tmp__4)
+    (call_load8_at_3_ensures_1 : tmp__4 = layer_a.specs.core_specs.spec_load8_at bytes 19)
+    (assert_23 : (0 ≤ 1) ∧ (1 < 64))
+    (assume_25 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_4_ensures_0 : Vermilion.inUnsignedRange 64 tmp__5)
+    (call_load8_at_4_ensures_1 : tmp__5 = layer_a.specs.core_specs.spec_load8_at bytes 24)
+    (assert_26 : (0 ≤ 12) ∧ (12 < 64)) :
+    layer_a.specs.field_specs.fe51_as_nat (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 tmp_ ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__2 3) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__3 6) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__4 1) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__5 12) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616)))) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255)) := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.call_requires_27
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.ensures_28_0 a9a00393af137fa8
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.ensures_28_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:951:13-951:63`
+- Rust/SST construct: function postcondition (`ensures`)
+- AssertId: `28_0`
+- Statement hash: `a9a00393af137fa8`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def ensures_28_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 951
+  startColumn := 13
+  endLine := 951
+  endColumn := 63
+  assertId := "28_0"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "ensures"
+  statementHash := "a9a00393af137fa8"
+}
+@[vrml_obligation] theorem ensures_28_0
+    (bytes : (Vermilion.Seq Int))
+    (tmp_ : Int)
+    (tmp__2 : Int)
+    (tmp__3 : Int)
+    (tmp__4 : Int)
+    (tmp__5 : Int)
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_ensures_0 : Vermilion.inUnsignedRange 64 tmp_)
+    (call_load8_at_ensures_1 : tmp_ = layer_a.specs.core_specs.spec_load8_at bytes 0)
+    (assume_13 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_1_ensures_0 : Vermilion.inUnsignedRange 64 tmp__2)
+    (call_load8_at_1_ensures_1 : tmp__2 = layer_a.specs.core_specs.spec_load8_at bytes 6)
+    (assert_17 : (0 ≤ 3) ∧ (3 < 64))
+    (assume_17 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_2_ensures_0 : Vermilion.inUnsignedRange 64 tmp__3)
+    (call_load8_at_2_ensures_1 : tmp__3 = layer_a.specs.core_specs.spec_load8_at bytes 12)
+    (assert_20 : (0 ≤ 6) ∧ (6 < 64))
+    (assume_21 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_3_ensures_0 : Vermilion.inUnsignedRange 64 tmp__4)
+    (call_load8_at_3_ensures_1 : tmp__4 = layer_a.specs.core_specs.spec_load8_at bytes 19)
+    (assert_23 : (0 ≤ 1) ∧ (1 < 64))
+    (assume_25 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_4_ensures_0 : Vermilion.inUnsignedRange 64 tmp__5)
+    (call_load8_at_4_ensures_1 : tmp__5 = layer_a.specs.core_specs.spec_load8_at bytes 24)
+    (assert_26 : (0 ≤ 12) ∧ (12 < 64))
+    (call_axiom_from_bytes_uniform_ensures_0 : layer_a.specs.proba_specs.is_uniform_bytes bytes → layer_a.specs.proba_specs.is_uniform_field_element (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 tmp_ ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__2 3) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__3 6) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__4 1) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__5 12) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))))) :
+    layer_a.specs.field_specs.fe51_as_nat (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 tmp_ ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__2 3) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__3 6) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__4 1) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__5 12) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616)))) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255)) := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.ensures_28_0
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.ensures_28_1 138328656a1e2a6d
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.ensures_28_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:953:13-953:39`
+- Rust/SST construct: function postcondition (`ensures`)
+- AssertId: `28_1`
+- Statement hash: `138328656a1e2a6d`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def ensures_28_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 953
+  startColumn := 13
+  endLine := 953
+  endColumn := 39
+  assertId := "28_1"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "ensures"
+  statementHash := "138328656a1e2a6d"
+}
+@[vrml_obligation] theorem ensures_28_1
+    (bytes : (Vermilion.Seq Int))
+    (tmp_ : Int)
+    (tmp__2 : Int)
+    (tmp__3 : Int)
+    (tmp__4 : Int)
+    (tmp__5 : Int)
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_ensures_0 : Vermilion.inUnsignedRange 64 tmp_)
+    (call_load8_at_ensures_1 : tmp_ = layer_a.specs.core_specs.spec_load8_at bytes 0)
+    (assume_13 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_1_ensures_0 : Vermilion.inUnsignedRange 64 tmp__2)
+    (call_load8_at_1_ensures_1 : tmp__2 = layer_a.specs.core_specs.spec_load8_at bytes 6)
+    (assert_17 : (0 ≤ 3) ∧ (3 < 64))
+    (assume_17 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_2_ensures_0 : Vermilion.inUnsignedRange 64 tmp__3)
+    (call_load8_at_2_ensures_1 : tmp__3 = layer_a.specs.core_specs.spec_load8_at bytes 12)
+    (assert_20 : (0 ≤ 6) ∧ (6 < 64))
+    (assume_21 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_3_ensures_0 : Vermilion.inUnsignedRange 64 tmp__4)
+    (call_load8_at_3_ensures_1 : tmp__4 = layer_a.specs.core_specs.spec_load8_at bytes 19)
+    (assert_23 : (0 ≤ 1) ∧ (1 < 64))
+    (assume_25 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_4_ensures_0 : Vermilion.inUnsignedRange 64 tmp__5)
+    (call_load8_at_4_ensures_1 : tmp__5 = layer_a.specs.core_specs.spec_load8_at bytes 24)
+    (assert_26 : (0 ≤ 12) ∧ (12 < 64))
+    (call_axiom_from_bytes_uniform_ensures_0 : layer_a.specs.proba_specs.is_uniform_bytes bytes → layer_a.specs.proba_specs.is_uniform_field_element (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 tmp_ ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__2 3) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__3 6) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__4 1) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__5 12) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))))) :
+    layer_a.specs.field_specs.fe51_limbs_bounded (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 tmp_ ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__2 3) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__3 6) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__4 1) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__5 12) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616)))) 51 := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.ensures_28_1
+
+-- vrml:begin layer_a.backend.serial.u64.field.impl__16.from_bytes.ensures_28_2 3f5b4fbaa6025b29
+/--
+Generated VC `layer_a.backend.serial.u64.field.impl__16.from_bytes.ensures_28_2`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs:959:13-959:69`
+- Rust/SST construct: function postcondition (`ensures`)
+- AssertId: `28_2`
+- Statement hash: `3f5b4fbaa6025b29`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩ ⟨Vermilion.Seq.index bytes vrml_i0⟩
+-/
+def ensures_28_2_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/backend/serial/u64/../../../../../../field_u64.rs"
+  startLine := 959
+  startColumn := 13
+  endLine := 959
+  endColumn := 69
+  assertId := "28_2"
+  functionName := "layer_a.backend.serial.u64.field.impl__16.from_bytes"
+  kind := "ensures"
+  statementHash := "3f5b4fbaa6025b29"
+}
+@[vrml_obligation] theorem ensures_28_2
+    (bytes : (Vermilion.Seq Int))
+    (tmp_ : Int)
+    (tmp__2 : Int)
+    (tmp__3 : Int)
+    (tmp__4 : Int)
+    (tmp__5 : Int)
+    (requires_0 : Vermilion.Seq.len bytes = 32)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (assert_0 : True)
+    (assume_3 : layer_a.specs.field_specs_u64.mask51 = (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_4 : True → (((((layer_a.specs.core_specs.spec_load8_at bytes 0 ≤ 18446744073709551615) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 6 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 12 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 19 ≤ 18446744073709551615)) ∧ (layer_a.specs.core_specs.spec_load8_at bytes 24 ≤ 18446744073709551615)))
+    (assume_5 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 ((layer_a.specs.core_specs.spec_load8_at bytes 0) % 18446744073709551616) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 6) % 18446744073709551616) 3) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 12) % 18446744073709551616) 6) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 19) % 18446744073709551616) 1) layer_a.specs.field_specs_u64.mask51)) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 ((layer_a.specs.core_specs.spec_load8_at bytes 24) % 18446744073709551616) 12) layer_a.specs.field_specs_u64.mask51)) = (Vermilion.emod (layer_a.specs.core_specs.u8_32_as_nat bytes) (vstd.arithmetic.power2.pow2 255))))
+    (assert_10 : True)
+    (assume_7 : (∀ (x : Int), (Vermilion.inUnsignedRange 64 x → (Vermilion.Bits.band 64 x layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51))))
+    (assert_11 : (0 ≤ 51) ∧ (51 < 64))
+    (assert_12 : Vermilion.inUnsignedRange 64 (Vermilion.Bits.shl 64 1 51 - 1))
+    (assume_10 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_ensures_0 : Vermilion.inUnsignedRange 64 tmp_)
+    (call_load8_at_ensures_1 : tmp_ = layer_a.specs.core_specs.spec_load8_at bytes 0)
+    (assume_13 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_1_ensures_0 : Vermilion.inUnsignedRange 64 tmp__2)
+    (call_load8_at_1_ensures_1 : tmp__2 = layer_a.specs.core_specs.spec_load8_at bytes 6)
+    (assert_17 : (0 ≤ 3) ∧ (3 < 64))
+    (assume_17 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_2_ensures_0 : Vermilion.inUnsignedRange 64 tmp__3)
+    (call_load8_at_2_ensures_1 : tmp__3 = layer_a.specs.core_specs.spec_load8_at bytes 12)
+    (assert_20 : (0 ≤ 6) ∧ (6 < 64))
+    (assume_21 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_3_ensures_0 : Vermilion.inUnsignedRange 64 tmp__4)
+    (call_load8_at_3_ensures_1 : tmp__4 = layer_a.specs.core_specs.spec_load8_at bytes 19)
+    (assert_23 : (0 ≤ 1) ∧ (1 < 64))
+    (assume_25 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len bytes)) → Vermilion.inUnsignedRange 8 (Vermilion.Seq.index bytes vrml_i0))))
+    (call_load8_at_4_ensures_0 : Vermilion.inUnsignedRange 64 tmp__5)
+    (call_load8_at_4_ensures_1 : tmp__5 = layer_a.specs.core_specs.spec_load8_at bytes 24)
+    (assert_26 : (0 ≤ 12) ∧ (12 < 64))
+    (call_axiom_from_bytes_uniform_ensures_0 : layer_a.specs.proba_specs.is_uniform_bytes bytes → layer_a.specs.proba_specs.is_uniform_field_element (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 tmp_ ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__2 3) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__3 6) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__4 1) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__5 12) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))))) :
+    layer_a.specs.proba_specs.is_uniform_bytes bytes → layer_a.specs.proba_specs.is_uniform_field_element (layer_a.backend.serial.u64.field.FieldElement51.FieldElement51 (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) (Vermilion.Bits.band 64 tmp_ ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__2 3) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__3 6) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__4 1) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616))) (Vermilion.Bits.band 64 (Vermilion.Bits.shr 64 tmp__5 12) ((Vermilion.Bits.shl 64 1 51 - 1) % 18446744073709551616)))) := by
+  sorry -- vrml:interactive (automation did not close this; hand proof pending)
+-- vrml:end layer_a.backend.serial.u64.field.impl__16.from_bytes.ensures_28_2
+
+end layer_a.backend.serial.u64.field.impl__16.from_bytes
+

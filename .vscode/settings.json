@@ -1,0 +1,9 @@
+{
+  // Route the lean4 extension's `lake serve` / `lake setup-file` calls
+  // through the caching shim (see editor/bin/lake): Lake's per-package git
+  // scans cost ~17s per invocation behind endpoint-security spawn taxing,
+  // which is otherwise paid on every .lean file open.
+  "lean4.envPathExtensions": [
+    "editor/bin"
+  ]
+}

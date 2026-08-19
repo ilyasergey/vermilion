@@ -1,0 +1,78 @@
+{
+  "name": "vscode-vermilion",
+  "displayName": "Vermilion",
+  "description": "Vermilion verifies Verus-annotated Rust using Lean as the proof engine. Check a file with one shortcut: functions that verify are marked with a green checkmark, failing assertions and contracts are highlighted right in the Rust code, and every unproven goal links to the Lean file where you can finish the proof by hand.",
+  "version": "0.9.7",
+  "publisher": "vermilion",
+  "license": "Apache-2.0",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Linters"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onLanguage:rust",
+    "workspaceContains:scripts/run_example.sh",
+    "workspaceContains:.vermilion"
+  ],
+  "main": "./extension.js",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "vermilion.goToRust",
+        "title": "Vermilion: Go to Rust"
+      },
+      {
+        "command": "vermilion.goToLean",
+        "title": "Vermilion: Go to Lean (proof or definition)"
+      },
+      {
+        "command": "vermilion.verifyCurrentFile",
+        "title": "Vermilion: Verify Current File"
+      },
+      {
+        "command": "vermilion.openProofObligation",
+        "title": "Vermilion: Open Proof Obligation in Twin"
+      },
+      {
+        "command": "vermilion.openFunctionProofs",
+        "title": "Vermilion: Go to Function's Lean Proofs"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "vermilion.verifyCurrentFile",
+        "key": "ctrl+shift+r",
+        "mac": "cmd+shift+r",
+        "when": "editorLangId == rust"
+      },
+      {
+        "command": "vermilion.goToLean",
+        "key": "ctrl+shift+j",
+        "mac": "cmd+shift+j",
+        "when": "editorLangId == rust"
+      },
+      {
+        "command": "vermilion.goToRust",
+        "key": "ctrl+shift+j",
+        "mac": "cmd+shift+j",
+        "when": "editorLangId == lean4 || resourceExtname == .lean"
+      }
+    ],
+    "menus": {
+      "editor/context": [
+        {
+          "command": "vermilion.goToLean",
+          "when": "editorLangId == rust",
+          "group": "navigation@9"
+        }
+      ]
+    }
+  }
+}

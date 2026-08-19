@@ -1,0 +1,17 @@
+[workspace]
+members = ["crates/vermilion_backend"]
+# vermilion_direct links the pinned Verus `vir` crate (edition 2024, built with
+# the Verus toolchain) through the `.verus-checkout` symlink; it is built by
+# scripts/run_m1_pipeline.sh and deliberately kept out of the default workspace.
+exclude = [
+  "crates/vermilion_direct",
+  "case-studies/aeneas/sha3/upstream",
+  "case-studies/aeneas/sha3/verification",
+]
+resolver = "2"
+
+[workspace.package]
+edition = "2021"
+license = "Apache-2.0"
+repository = "https://github.com/ilyasergey/vermilion"
+rust-version = "1.83"

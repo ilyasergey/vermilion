@@ -1,0 +1,22 @@
+use vstd::prelude::*;
+
+verus! {
+
+/// A fixed-size array `[T; N]` is its `Seq<T>` view with the length
+/// pinned to the const generic: `a@.len() == N` arrives as a type fact.
+fn first_of<const N: usize>(a: [u32; N]) -> (r: u32)
+    requires N > 0, a[0] < 100,
+    ensures r == a[0],
+{
+    a[0]
+}
+
+fn caller() {
+    let arr: [u32; 3] = [7, 8, 9];
+    let f = first_of(arr);
+    assert(f == 7);
+}
+
+fn main() {}
+
+}

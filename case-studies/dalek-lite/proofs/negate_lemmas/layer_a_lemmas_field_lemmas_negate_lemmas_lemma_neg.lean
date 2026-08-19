@@ -1,0 +1,2294 @@
+import Vermilion.Obligations
+import negate_lemmas.Specs
+
+set_option linter.unusedVariables false
+set_option linter.style.nameCheck false
+set_option linter.dupNamespace false
+set_option linter.unusedTactic false
+set_option linter.unreachableTactic false
+
+namespace layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_1 95d14bf48e7891bf
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:144:12-144:19`
+- Rust/SST construct: Rust source assertion
+- AssertId: `1`
+- Statement hash: `95d14bf48e7891bf`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 144
+  startColumn := 12
+  endLine := 144
+  endColumn := 19
+  assertId := "1"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "95d14bf48e7891bf"
+}
+@[vrml_obligation] theorem assert_1
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19) :
+    layer_a.specs.field_specs_u64.p 0 > 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_1
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_2 fcc964b19517fe64
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_2`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:149:9-149:69`
+- Rust/SST construct: call lemma_mod_bound
+- AssertId: `2`
+- Statement hash: `fcc964b19517fe64`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_2_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 149
+  startColumn := 9
+  endLine := 149
+  endColumn := 69
+  assertId := "2"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "fcc964b19517fe64"
+}
+@[vrml_obligation] theorem call_requires_2
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True) :
+    0 < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_2
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_3 0ef008b88a7b6a27
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_3`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:148:12-148:19`
+- Rust/SST construct: Rust source assertion
+- AssertId: `3`
+- Statement hash: `0ef008b88a7b6a27`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_3_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 148
+  startColumn := 12
+  endLine := 148
+  endColumn := 19
+  assertId := "3"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "0ef008b88a7b6a27"
+}
+@[vrml_obligation] theorem assert_3
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True)
+    (call_lemma_mod_bound_ensures_0 : (0 ≤ (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0)) :
+    layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_3
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_4 2585295de4ca83a8
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_4`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:152:9-152:82`
+- Rust/SST construct: call lemma_mod_bound
+- AssertId: `4`
+- Statement hash: `2585295de4ca83a8`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_4_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 152
+  startColumn := 9
+  endLine := 152
+  endColumn := 82
+  assertId := "4"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "2585295de4ca83a8"
+}
+@[vrml_obligation] theorem call_requires_4
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True) :
+    0 < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_4
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_5 f539bffe075c6e46
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_5`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:151:12-151:19`
+- Rust/SST construct: Rust source assertion
+- AssertId: `5`
+- Statement hash: `f539bffe075c6e46`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_5_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 151
+  startColumn := 12
+  endLine := 151
+  endColumn := 19
+  assertId := "5"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "f539bffe075c6e46"
+}
+@[vrml_obligation] theorem assert_5
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True)
+    (call_lemma_mod_bound_1_ensures_0 : (0 ≤ (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0)) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_5
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_6 9f11f10adf674984
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_6`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:156:9-160:10`
+- Rust/SST construct: call lemma_add_mod_noop
+- AssertId: `6`
+- Statement hash: `9f11f10adf674984`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_6_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 156
+  startColumn := 9
+  endLine := 160
+  endColumn := 10
+  assertId := "6"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "9f11f10adf674984"
+}
+@[vrml_obligation] theorem call_requires_6
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True) :
+    0 < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_6
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_7 f47ec18acda0c10b
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_7`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:155:12-155:30`
+- Rust/SST construct: Rust source assertion
+- AssertId: `7`
+- Statement hash: `f47ec18acda0c10b`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_7_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 155
+  startColumn := 12
+  endLine := 155
+  endColumn := 30
+  assertId := "7"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "f47ec18acda0c10b"
+}
+@[vrml_obligation] theorem assert_7
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True)
+    (call_lemma_add_mod_noop_ensures_0 : (Vermilion.emod ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) (layer_a.specs.field_specs_u64.p 0))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) (layer_a.specs.field_specs_u64.p 0))) :
+    (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_7
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_8 d5ad17774ef15407
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_8`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:164:13-164:50`
+- Rust/SST construct: call lemma_mod_bound
+- AssertId: `8`
+- Statement hash: `d5ad17774ef15407`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_8_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 164
+  startColumn := 13
+  endLine := 164
+  endColumn := 50
+  assertId := "8"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "d5ad17774ef15407"
+}
+@[vrml_obligation] theorem call_requires_8
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True) :
+    0 < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_8
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_9 021be9ec2a22fa9e
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_9`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:163:16-163:36`
+- Rust/SST construct: Rust source assertion
+- AssertId: `9`
+- Statement hash: `021be9ec2a22fa9e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_9_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 163
+  startColumn := 16
+  endLine := 163
+  endColumn := 36
+  assertId := "9"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "021be9ec2a22fa9e"
+}
+@[vrml_obligation] theorem assert_9
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True)
+    (call_lemma_mod_bound_2_ensures_0 : (0 ≤ (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ∧ ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0)) :
+    (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_9
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_10 c9bad3489e5e702a
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_10`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:167:13-167:66`
+- Rust/SST construct: call lemma_mod_twice
+- AssertId: `10`
+- Statement hash: `c9bad3489e5e702a`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_10_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 167
+  startColumn := 13
+  endLine := 167
+  endColumn := 66
+  assertId := "10"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "c9bad3489e5e702a"
+}
+@[vrml_obligation] theorem call_requires_10
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True) :
+    layer_a.specs.field_specs_u64.p 0 > 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_10
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_11 91754ff61c1aaa00
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_11`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:166:16-166:28`
+- Rust/SST construct: Rust source assertion
+- AssertId: `11`
+- Statement hash: `91754ff61c1aaa00`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_11_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 166
+  startColumn := 16
+  endLine := 166
+  endColumn := 28
+  assertId := "11"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "91754ff61c1aaa00"
+}
+@[vrml_obligation] theorem assert_11
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True)
+    (call_lemma_mod_twice_ensures_0 : (Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs.fe51_as_nat elem) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (layer_a.specs.field_specs.fe51_as_nat elem) (layer_a.specs.field_specs_u64.p 0))) :
+    (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_11
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_12 ce921c18cedb75e0
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_12`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:170:20-170:32`
+- Rust/SST construct: Rust source assertion
+- AssertId: `12`
+- Statement hash: `ce921c18cedb75e0`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_12_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 170
+  startColumn := 20
+  endLine := 170
+  endColumn := 32
+  assertId := "12"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "ce921c18cedb75e0"
+}
+@[vrml_obligation] theorem assert_12
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0) :
+    (Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_12
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_14 1fbe217284d5ab7b
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_14`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:176:25-176:32`
+- Rust/SST construct: requires not satisfied
+- AssertId: `14`
+- Statement hash: `1fbe217284d5ab7b`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_14_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 176
+  startColumn := 25
+  endLine := 176
+  endColumn := 32
+  assertId := "14"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "1fbe217284d5ab7b"
+}
+@[vrml_obligation] theorem assert_14
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)
+    (assert_12 : (Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_12 : True) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_14
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_15 d74c52b338ad4ce4
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_15`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:177:25-177:37`
+- Rust/SST construct: requires not satisfied
+- AssertId: `15`
+- Statement hash: `d74c52b338ad4ce4`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_15_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 177
+  startColumn := 25
+  endLine := 177
+  endColumn := 37
+  assertId := "15"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "d74c52b338ad4ce4"
+}
+@[vrml_obligation] theorem assert_15
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)
+    (assert_12 : (Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_12 : True)
+    (assert_14 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0) :
+    (Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_15
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_16 ebe6e6f86c9be3d4
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_16`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:178:25-178:32`
+- Rust/SST construct: requires not satisfied
+- AssertId: `16`
+- Statement hash: `ebe6e6f86c9be3d4`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_16_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 178
+  startColumn := 25
+  endLine := 178
+  endColumn := 32
+  assertId := "16"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "ebe6e6f86c9be3d4"
+}
+@[vrml_obligation] theorem assert_16
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)
+    (assert_12 : (Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_12 : True)
+    (assert_14 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0)
+    (assert_15 : (Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 0) :
+    layer_a.specs.field_specs_u64.p 0 > 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_16
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_13 93c1fd8d6b690e2f
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_13`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:174:24-174:30`
+- Rust/SST construct: Rust source assertion
+- AssertId: `13`
+- Statement hash: `93c1fd8d6b690e2f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_13_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 174
+  startColumn := 24
+  endLine := 174
+  endColumn := 30
+  assertId := "13"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "93c1fd8d6b690e2f"
+}
+@[vrml_obligation] theorem assert_13
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (loop_0_iteration_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (loop_0_iteration_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (assume_2 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0)
+    (assume_3 : (Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_4 : layer_a.specs.field_specs_u64.p 0 > 0) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_13
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_17 c47d93c53f920ab8
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_17`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:171:20-171:26`
+- Rust/SST construct: Rust source assertion
+- AssertId: `17`
+- Statement hash: `c47d93c53f920ab8`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_17_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 171
+  startColumn := 20
+  endLine := 171
+  endColumn := 26
+  assertId := "17"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "c47d93c53f920ab8"
+}
+@[vrml_obligation] theorem assert_17
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)
+    (assert_12 : (Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_12 : True)
+    (assert_14 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0)
+    (assert_15 : (Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assert_16 : layer_a.specs.field_specs_u64.p 0 > 0)
+    (assume_16 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_17
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_18 98753b99733a259d
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_18`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:182:17-182:45`
+- Rust/SST construct: call lemma_mod_self_0
+- AssertId: `18`
+- Statement hash: `98753b99733a259d`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_18_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 182
+  startColumn := 17
+  endLine := 182
+  endColumn := 45
+  assertId := "18"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "98753b99733a259d"
+}
+@[vrml_obligation] theorem call_requires_18
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)
+    (assert_12 : (Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_12 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_13 : True) :
+    layer_a.specs.field_specs_u64.p 0 > 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_18
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_19 dbf77b2deb80c54f
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_19`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:181:20-181:34`
+- Rust/SST construct: Rust source assertion
+- AssertId: `19`
+- Statement hash: `dbf77b2deb80c54f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_19_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 181
+  startColumn := 20
+  endLine := 181
+  endColumn := 34
+  assertId := "19"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "dbf77b2deb80c54f"
+}
+@[vrml_obligation] theorem assert_19
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)
+    (assert_12 : (Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_12 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_13 : True)
+    (call_lemma_mod_self_0_ensures_0 : (Vermilion.emod (layer_a.specs.field_specs_u64.p 0) (layer_a.specs.field_specs_u64.p 0)) = 0) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.p 0) (layer_a.specs.field_specs_u64.p 0)) = 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_19
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_20 3512e078cea4acb7
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_20`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:187:20-187:41`
+- Rust/SST construct: Rust source assertion
+- AssertId: `20`
+- Statement hash: `3512e078cea4acb7`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_20_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 187
+  startColumn := 20
+  endLine := 187
+  endColumn := 41
+  assertId := "20"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "3512e078cea4acb7"
+}
+@[vrml_obligation] theorem assert_20
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0))) :
+    (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_20
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_21 e67ad6418c3df620
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_21`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:188:20-188:29`
+- Rust/SST construct: Rust source assertion
+- AssertId: `21`
+- Statement hash: `e67ad6418c3df620`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_21_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 188
+  startColumn := 20
+  endLine := 188
+  endColumn := 29
+  assertId := "21"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "e67ad6418c3df620"
+}
+@[vrml_obligation] theorem assert_21
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0) :
+    Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_21
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_22_0 7fce19b7d40b795e
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_22_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:191:17-191:63`
+- Rust/SST construct: call lemma_small_mod
+- AssertId: `22_0`
+- Statement hash: `7fce19b7d40b795e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_22_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 191
+  startColumn := 17
+  endLine := 191
+  endColumn := 63
+  assertId := "22_0"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "7fce19b7d40b795e"
+}
+@[vrml_obligation] theorem call_requires_22_0
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True) :
+    Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_22_0
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_22_1 a7560f74f5d9262f
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_22_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:191:17-191:63`
+- Rust/SST construct: call lemma_small_mod
+- AssertId: `22_1`
+- Statement hash: `a7560f74f5d9262f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_22_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 191
+  startColumn := 17
+  endLine := 191
+  endColumn := 63
+  assertId := "22_1"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "a7560f74f5d9262f"
+}
+@[vrml_obligation] theorem call_requires_22_1
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True) :
+    0 < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_22_1
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_23 552ab7287a4d3d36
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_23`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:190:20-190:61`
+- Rust/SST construct: Rust source assertion
+- AssertId: `23`
+- Statement hash: `552ab7287a4d3d36`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_23_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 190
+  startColumn := 20
+  endLine := 190
+  endColumn := 61
+  assertId := "23"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "552ab7287a4d3d36"
+}
+@[vrml_obligation] theorem assert_23
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True)
+    (call_lemma_small_mod_ensures_0 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) :
+    (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_23
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_24 515980b67f5d7c0c
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_24`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:197:20-197:32`
+- Rust/SST construct: Rust source assertion
+- AssertId: `24`
+- Statement hash: `515980b67f5d7c0c`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_24_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 197
+  startColumn := 20
+  endLine := 197
+  endColumn := 32
+  assertId := "24"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "515980b67f5d7c0c"
+}
+@[vrml_obligation] theorem assert_24
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem))) :
+    (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_24
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_25 538fe523875ba8ca
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_25`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:203:21-203:68`
+- Rust/SST construct: call lemma_fundamental_div_mod
+- AssertId: `25`
+- Statement hash: `538fe523875ba8ca`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_25_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 203
+  startColumn := 21
+  endLine := 203
+  endColumn := 68
+  assertId := "25"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "538fe523875ba8ca"
+}
+@[vrml_obligation] theorem call_requires_25
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True) :
+    (¬ (layer_a.specs.field_specs_u64.p 0 = 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_25
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_26 8b174a8528863765
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_26`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:200:24-200:44`
+- Rust/SST construct: Rust source assertion
+- AssertId: `26`
+- Statement hash: `8b174a8528863765`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_26_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 200
+  startColumn := 24
+  endLine := 200
+  endColumn := 44
+  assertId := "26"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "8b174a8528863765"
+}
+@[vrml_obligation] theorem assert_26
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True)
+    (call_lemma_fundamental_div_mod_ensures_0 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = ((layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0))) + (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))) :
+    Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_26
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_27_0 547be085765f5215
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_27_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:208:29-208:54`
+- Rust/SST construct: call lemma_mod_is_zero
+- AssertId: `27_0`
+- Statement hash: `547be085765f5215`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_27_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 208
+  startColumn := 29
+  endLine := 208
+  endColumn := 54
+  assertId := "27_0"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "547be085765f5215"
+}
+@[vrml_obligation] theorem call_requires_27_0
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True)
+    (assume_19 : True) :
+    (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0) ∧ (layer_a.specs.field_specs_u64.p 0 > 0) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_27_0
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_27_1 a471787388f495c6
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_27_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:208:29-208:54`
+- Rust/SST construct: call lemma_mod_is_zero
+- AssertId: `27_1`
+- Statement hash: `a471787388f495c6`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_27_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 208
+  startColumn := 29
+  endLine := 208
+  endColumn := 54
+  assertId := "27_1"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "a471787388f495c6"
+}
+@[vrml_obligation] theorem call_requires_27_1
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True)
+    (assume_19 : True) :
+    (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_27_1
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_28 83646beaf7204e97
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_28`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:207:32-207:40`
+- Rust/SST construct: Rust source assertion
+- AssertId: `28`
+- Statement hash: `83646beaf7204e97`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_28_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 207
+  startColumn := 32
+  endLine := 207
+  endColumn := 40
+  assertId := "28"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "83646beaf7204e97"
+}
+@[vrml_obligation] theorem assert_28
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True)
+    (assume_19 : True)
+    (call_lemma_mod_is_zero_ensures_0 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≥ layer_a.specs.field_specs_u64.p 0) :
+    Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≥ layer_a.specs.field_specs_u64.p 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_28
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_29_0 57079afdb2d99151
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_29_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:212:29-212:83`
+- Rust/SST construct: call lemma_div_is_ordered
+- AssertId: `29_0`
+- Statement hash: `57079afdb2d99151`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_29_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 212
+  startColumn := 29
+  endLine := 212
+  endColumn := 83
+  assertId := "29_0"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "57079afdb2d99151"
+}
+@[vrml_obligation] theorem call_requires_29_0
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True)
+    (assume_19 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≥ layer_a.specs.field_specs_u64.p 0))
+    (assume_20 : True) :
+    layer_a.specs.field_specs_u64.p 0 ≤ Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_29_0
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_29_1 8771d4fcf30c134d
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_29_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:212:29-212:83`
+- Rust/SST construct: call lemma_div_is_ordered
+- AssertId: `29_1`
+- Statement hash: `8771d4fcf30c134d`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_29_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 212
+  startColumn := 29
+  endLine := 212
+  endColumn := 83
+  assertId := "29_1"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "8771d4fcf30c134d"
+}
+@[vrml_obligation] theorem call_requires_29_1
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True)
+    (assume_19 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≥ layer_a.specs.field_specs_u64.p 0))
+    (assume_20 : True) :
+    0 < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_29_1
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_30 3ca9fb9a1c1907be
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_30`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:210:32-210:52`
+- Rust/SST construct: Rust source assertion
+- AssertId: `30`
+- Statement hash: `3ca9fb9a1c1907be`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_30_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 210
+  startColumn := 32
+  endLine := 210
+  endColumn := 52
+  assertId := "30"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "3ca9fb9a1c1907be"
+}
+@[vrml_obligation] theorem assert_30
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True)
+    (assume_19 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≥ layer_a.specs.field_specs_u64.p 0))
+    (assume_20 : True)
+    (call_lemma_div_is_ordered_ensures_0 : (Vermilion.ediv (layer_a.specs.field_specs_u64.p 0) (layer_a.specs.field_specs_u64.p 0)) ≤ (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0))) :
+    (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ (Vermilion.ediv (layer_a.specs.field_specs_u64.p 0) (layer_a.specs.field_specs_u64.p 0)) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_30
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_31 f69fd20093fcc6a9
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_31`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:215:29-215:58`
+- Rust/SST construct: call lemma_div_by_self
+- AssertId: `31`
+- Statement hash: `f69fd20093fcc6a9`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_31_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 215
+  startColumn := 29
+  endLine := 215
+  endColumn := 58
+  assertId := "31"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "f69fd20093fcc6a9"
+}
+@[vrml_obligation] theorem call_requires_31
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True)
+    (assume_19 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≥ layer_a.specs.field_specs_u64.p 0))
+    (assume_20 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ (Vermilion.ediv (layer_a.specs.field_specs_u64.p 0) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_21 : True) :
+    (¬ (layer_a.specs.field_specs_u64.p 0 = 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_31
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_32 f8c5f80985f3521e
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_32`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:214:32-214:46`
+- Rust/SST construct: Rust source assertion
+- AssertId: `32`
+- Statement hash: `f8c5f80985f3521e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_32_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 214
+  startColumn := 32
+  endLine := 214
+  endColumn := 46
+  assertId := "32"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "f8c5f80985f3521e"
+}
+@[vrml_obligation] theorem assert_32
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True)
+    (assume_19 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≥ layer_a.specs.field_specs_u64.p 0))
+    (assume_20 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ (Vermilion.ediv (layer_a.specs.field_specs_u64.p 0) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_21 : True)
+    (call_lemma_div_by_self_ensures_0 : (Vermilion.ediv (layer_a.specs.field_specs_u64.p 0) (layer_a.specs.field_specs_u64.p 0)) = 1) :
+    (Vermilion.ediv (layer_a.specs.field_specs_u64.p 0) (layer_a.specs.field_specs_u64.p 0)) = 1 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_32
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_33 d08b75218c543a71
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_33`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:206:28-206:40`
+- Rust/SST construct: Rust source assertion
+- AssertId: `33`
+- Statement hash: `d08b75218c543a71`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_33_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 206
+  startColumn := 28
+  endLine := 206
+  endColumn := 40
+  assertId := "33"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "d08b75218c543a71"
+}
+@[vrml_obligation] theorem assert_33
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True)
+    (assume_19 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≥ layer_a.specs.field_specs_u64.p 0))
+    (assume_20 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ (Vermilion.ediv (layer_a.specs.field_specs_u64.p 0) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_21 : True → ((Vermilion.ediv (layer_a.specs.field_specs_u64.p 0) (layer_a.specs.field_specs_u64.p 0)) = 1)) :
+    (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ 1 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_33
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_34 0b107039be08bcbe
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_34`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:221:36-221:43`
+- Rust/SST construct: Rust source assertion
+- AssertId: `34`
+- Statement hash: `0b107039be08bcbe`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_34_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 221
+  startColumn := 36
+  endLine := 221
+  endColumn := 43
+  assertId := "34"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "0b107039be08bcbe"
+}
+@[vrml_obligation] theorem assert_34
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ 1))
+    (assume_19 : True)
+    (assume_20 : True) :
+    layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_34
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_35 21f861eb737a26de
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_35`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:222:36-222:43`
+- Rust/SST construct: Rust source assertion
+- AssertId: `35`
+- Statement hash: `21f861eb737a26de`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_35_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 222
+  startColumn := 36
+  endLine := 222
+  endColumn := 43
+  assertId := "35"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "21f861eb737a26de"
+}
+@[vrml_obligation] theorem assert_35
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ 1))
+    (assume_19 : True)
+    (assume_20 : True)
+    (assert_34 : layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_35
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_36 5db8fd928631f58b
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_36`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:219:32-219:44`
+- Rust/SST construct: Rust source assertion
+- AssertId: `36`
+- Statement hash: `5db8fd928631f58b`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_36_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 219
+  startColumn := 32
+  endLine := 219
+  endColumn := 44
+  assertId := "36"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "5db8fd928631f58b"
+}
+@[vrml_obligation] theorem assert_36
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ 1))
+    (assume_19 : True)
+    (assume_20 : True)
+    (assert_34 : layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0)
+    (assert_35 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0) :
+    Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≤ Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_36
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_37_0 13f133294dd3d0d4
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_37_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:225:29-225:65`
+- Rust/SST construct: call lemma_div_by_multiple
+- AssertId: `37_0`
+- Statement hash: `13f133294dd3d0d4`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_37_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 225
+  startColumn := 29
+  endLine := 225
+  endColumn := 65
+  assertId := "37_0"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "13f133294dd3d0d4"
+}
+@[vrml_obligation] theorem call_requires_37_0
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ 1))
+    (assume_19 : True)
+    (assume_20 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≤ Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)))
+    (assume_21 : True) :
+    0 ≤ 2 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_37_0
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_37_1 09118e2f9701e953
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_37_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:225:29-225:65`
+- Rust/SST construct: call lemma_div_by_multiple
+- AssertId: `37_1`
+- Statement hash: `09118e2f9701e953`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_37_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 225
+  startColumn := 29
+  endLine := 225
+  endColumn := 65
+  assertId := "37_1"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "09118e2f9701e953"
+}
+@[vrml_obligation] theorem call_requires_37_1
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ 1))
+    (assume_19 : True)
+    (assume_20 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≤ Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)))
+    (assume_21 : True) :
+    0 < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_37_1
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_38 53f3931990b8ca0a
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_38`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:224:32-224:50`
+- Rust/SST construct: Rust source assertion
+- AssertId: `38`
+- Statement hash: `53f3931990b8ca0a`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_38_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 224
+  startColumn := 32
+  endLine := 224
+  endColumn := 50
+  assertId := "38"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "53f3931990b8ca0a"
+}
+@[vrml_obligation] theorem assert_38
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ 1))
+    (assume_19 : True)
+    (assume_20 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≤ Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)))
+    (assume_21 : True)
+    (call_lemma_div_by_multiple_ensures_0 : (Vermilion.ediv (2 * layer_a.specs.field_specs_u64.p 0) (layer_a.specs.field_specs_u64.p 0)) = 2) :
+    (Vermilion.ediv (Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 2 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_38
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_39_0 88e170eb04ce1268
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_39_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:227:25-232:26`
+- Rust/SST construct: call lemma_div_by_multiple_is_strongly_ordered
+- AssertId: `39_0`
+- Statement hash: `88e170eb04ce1268`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_39_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 227
+  startColumn := 25
+  endLine := 232
+  endColumn := 26
+  assertId := "39_0"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "88e170eb04ce1268"
+}
+@[vrml_obligation] theorem call_requires_39_0
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ 1))
+    (assume_19 : True)
+    (assume_20 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≤ Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)))
+    (assume_21 : True → ((Vermilion.ediv (Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 2)) :
+    Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) < Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_39_0
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_39_1 bb71740d196507b5
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_39_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:227:25-232:26`
+- Rust/SST construct: call lemma_div_by_multiple_is_strongly_ordered
+- AssertId: `39_1`
+- Statement hash: `bb71740d196507b5`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_39_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 227
+  startColumn := 25
+  endLine := 232
+  endColumn := 26
+  assertId := "39_1"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "bb71740d196507b5"
+}
+@[vrml_obligation] theorem call_requires_39_1
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ 1))
+    (assume_19 : True)
+    (assume_20 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≤ Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)))
+    (assume_21 : True → ((Vermilion.ediv (Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 2)) :
+    Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0) = (2 * layer_a.specs.field_specs_u64.p 0) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_39_1
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_39_2 02ffc104ead9a2ae
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_39_2`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:227:25-232:26`
+- Rust/SST construct: call lemma_div_by_multiple_is_strongly_ordered
+- AssertId: `39_2`
+- Statement hash: `02ffc104ead9a2ae`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def call_requires_39_2_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 227
+  startColumn := 25
+  endLine := 232
+  endColumn := 26
+  assertId := "39_2"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "call_requires"
+  statementHash := "02ffc104ead9a2ae"
+}
+@[vrml_obligation] theorem call_requires_39_2
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ 1))
+    (assume_19 : True)
+    (assume_20 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≤ Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)))
+    (assume_21 : True → ((Vermilion.ediv (Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 2)) :
+    0 < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.call_requires_39_2
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_40 ed868959b9aa2e7f
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_40`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:218:28-218:39`
+- Rust/SST construct: Rust source assertion
+- AssertId: `40`
+- Statement hash: `ed868959b9aa2e7f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_40_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 218
+  startColumn := 28
+  endLine := 218
+  endColumn := 39
+  assertId := "40"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "ed868959b9aa2e7f"
+}
+@[vrml_obligation] theorem assert_40
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ 1))
+    (assume_19 : True)
+    (assume_20 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) ≤ Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)))
+    (assume_21 : True → ((Vermilion.ediv (Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 2))
+    (call_lemma_div_by_multiple_is_strongly_ordered_ensures_0 : (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) < (Vermilion.ediv (Vermilion.natClip (2 * layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0))) :
+    (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) < 2 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_40
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_41 189639da1a7ed991
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_41`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:205:24-205:36`
+- Rust/SST construct: Rust source assertion
+- AssertId: `41`
+- Statement hash: `189639da1a7ed991`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_41_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 205
+  startColumn := 24
+  endLine := 205
+  endColumn := 36
+  assertId := "41"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "189639da1a7ed991"
+}
+@[vrml_obligation] theorem assert_41
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True)
+    (assume_18 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) ≥ 1))
+    (assume_19 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) < 2)) :
+    (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 1 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_41
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_43 84a21006b0c7a381
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_43`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:236:24-236:36`
+- Rust/SST construct: Rust source assertion
+- AssertId: `43`
+- Statement hash: `84a21006b0c7a381`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_43_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 236
+  startColumn := 24
+  endLine := 236
+  endColumn := 36
+  assertId := "43"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "84a21006b0c7a381"
+}
+@[vrml_obligation] theorem assert_43
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 1))
+    (assume_18 : True)
+    (call_lemma_mul_basics_ensures_0 : (0 * layer_a.specs.field_specs_u64.p 0) = 0)
+    (call_lemma_mul_basics_ensures_1 : (layer_a.specs.field_specs_u64.p 0 * 0) = 0)
+    (call_lemma_mul_basics_ensures_2 : (layer_a.specs.field_specs_u64.p 0 * 1) = layer_a.specs.field_specs_u64.p 0)
+    (call_lemma_mul_basics_ensures_3 : (1 * layer_a.specs.field_specs_u64.p 0) = layer_a.specs.field_specs_u64.p 0) :
+    Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * 1) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_43
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_44 ffe24bcbe5c7ac02
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_44`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:239:24-239:32`
+- Rust/SST construct: Rust source assertion
+- AssertId: `44`
+- Statement hash: `ffe24bcbe5c7ac02`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_44_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 239
+  startColumn := 24
+  endLine := 239
+  endColumn := 32
+  assertId := "44"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "ffe24bcbe5c7ac02"
+}
+@[vrml_obligation] theorem assert_44
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 1))
+    (assume_18 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * 1))) :
+    Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_44
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_45 0cb4d8386c49ad7a
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_45`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:199:20-199:32`
+- Rust/SST construct: Rust source assertion
+- AssertId: `45`
+- Statement hash: `0cb4d8386c49ad7a`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_45_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 199
+  startColumn := 20
+  endLine := 199
+  endColumn := 32
+  assertId := "45"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "0cb4d8386c49ad7a"
+}
+@[vrml_obligation] theorem assert_45
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (branch_0 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)))
+    (assert_20 : (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0)
+    (assert_21 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0)
+    (assume_13 : True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem)))
+    (assert_24 : (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_15 : True)
+    (assume_16 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * (Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)))))
+    (assume_17 : True → ((Vermilion.ediv (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 1))
+    (assume_18 : True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 * 1)))
+    (assert_44 : Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = layer_a.specs.field_specs_u64.p 0) :
+    Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = layer_a.specs.field_specs_u64.p 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_45
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_46 d35974fdb203d4f5
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_46`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:162:12-162:47`
+- Rust/SST construct: Rust source assertion
+- AssertId: `46`
+- Statement hash: `d35974fdb203d4f5`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def assert_46_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 162
+  startColumn := 12
+  endLine := 162
+  endColumn := 47
+  assertId := "46"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "assert"
+  statementHash := "d35974fdb203d4f5"
+}
+@[vrml_obligation] theorem assert_46
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True)
+    (assume_8 : True → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) ≥ 0))
+    (assume_9 : True → ((Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.fe51_as_canonical_nat elem))
+    (then_0_assert_12 : (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0) → ((Vermilion.emod (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (then_0_assume_12 : (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0) → (True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)))
+    (then_0_assume_13 : (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0) → (True → ((Vermilion.emod (layer_a.specs.field_specs_u64.p 0) (layer_a.specs.field_specs_u64.p 0)) = 0)))
+    (else_0_assert_20 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)) → ((layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0))) < layer_a.specs.field_specs_u64.p 0))
+    (else_0_assert_21 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)) → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) > 0))
+    (else_0_assume_13 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)) → (True → ((Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (layer_a.specs.field_specs_u64.p 0 - layer_a.specs.field_specs.fe51_as_canonical_nat elem))))
+    (else_0_assert_24 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)) → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (else_0_assume_15 : (¬ (layer_a.specs.field_specs.fe51_as_canonical_nat elem = 0)) → (True → (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem) = layer_a.specs.field_specs_u64.p 0))) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.assert_46
+
+-- vrml:begin layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.ensures_47 a07bb1d6190d540e
+/--
+Generated VC `layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.ensures_47`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs:139:9-139:94`
+- Rust/SST construct: function postcondition (`ensures`)
+- AssertId: `47`
+- Statement hash: `a07bb1d6190d540e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0⟩
+-/
+def ensures_47_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/negate_lemmas.rs"
+  startLine := 139
+  startColumn := 9
+  endLine := 139
+  endColumn := 94
+  assertId := "47"
+  functionName := "layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg"
+  kind := "ensures"
+  statementHash := "a07bb1d6190d540e"
+}
+@[vrml_obligation] theorem ensures_47
+    (elem : layer_a.backend.serial.u64.field.FieldElement51)
+    (requires_0 : Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem) vrml_i0))))
+    (requires_2 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem)) + layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = 0)
+    (assume_3 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_4 : True → (layer_a.specs.field_specs.fe51_as_canonical_nat elem < layer_a.specs.field_specs_u64.p 0))
+    (assume_5 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) < layer_a.specs.field_specs_u64.p 0))
+    (assume_6 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) + layer_a.specs.field_specs.fe51_as_canonical_nat elem)) (layer_a.specs.field_specs_u64.p 0)) = 0))
+    (assume_7 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.p 0 - (Vermilion.emod (layer_a.specs.field_specs.fe51_as_canonical_nat elem) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)))) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.specs.field_specs_u64.spec_negate (layer_a.backend.serial.u64.field.FieldElement51.get_FieldElement51_limbs elem))) (layer_a.specs.field_specs_u64.p 0)) = layer_a.specs.field_specs.field_neg (layer_a.specs.field_specs.fe51_as_canonical_nat elem) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg.ensures_47
+
+end layer_a.lemmas.field_lemmas.negate_lemmas.lemma_neg
+

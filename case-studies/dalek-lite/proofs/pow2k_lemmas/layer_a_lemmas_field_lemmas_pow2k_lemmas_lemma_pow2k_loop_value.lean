@@ -1,0 +1,4547 @@
+import Vermilion.Obligations
+import pow2k_lemmas.Specs
+
+set_option linter.unusedVariables false
+set_option linter.style.nameCheck false
+set_option linter.dupNamespace false
+set_option linter.unusedTactic false
+set_option linter.unreachableTactic false
+
+namespace layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_2 b8762df4e745ff29
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_2`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:325:12-325:19`
+- Rust/SST construct: Rust source assertion
+- AssertId: `2`
+- Statement hash: `b8762df4e745ff29`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_2_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 325
+  startColumn := 12
+  endLine := 325
+  endColumn := 19
+  assertId := "2"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "b8762df4e745ff29"
+}
+@[vrml_obligation] theorem assert_2
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True)
+    (call_pow255_gt_19_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19) :
+    layer_a.specs.field_specs_u64.p 0 > 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_2
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_4 d596f6b33558ea8c
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_4`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:329:12-329:39`
+- Rust/SST construct: Rust source assertion
+- AssertId: `4`
+- Statement hash: `d596f6b33558ea8c`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_4_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 329
+  startColumn := 12
+  endLine := 329
+  endColumn := 39
+  assertId := "4"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "d596f6b33558ea8c"
+}
+@[vrml_obligation] theorem assert_4
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True)
+    (call_l51_bit_mask_lt_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51) :
+    layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_4
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_5 2ce63aa8e097b9b9
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_5`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:356:21-356:61`
+- Rust/SST construct: call lemma_u64_low_bits_mask_is_mod
+- AssertId: `5`
+- Statement hash: `2ce63aa8e097b9b9`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_5_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 356
+  startColumn := 21
+  endLine := 356
+  endColumn := 61
+  assertId := "5"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "2ce63aa8e097b9b9"
+}
+@[vrml_obligation] theorem call_requires_5
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True)
+    (assume_43 : True)
+    (assume_44 : True) :
+    51 < 64 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_5
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_6 7324d840f3b0f73f
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_6`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:355:24-355:56`
+- Rust/SST construct: Rust source assertion
+- AssertId: `6`
+- Statement hash: `7324d840f3b0f73f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_6_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 355
+  startColumn := 24
+  endLine := 355
+  endColumn := 56
+  assertId := "6"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "7324d840f3b0f73f"
+}
+@[vrml_obligation] theorem assert_6
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True)
+    (assume_43 : True)
+    (assume_44 : True)
+    (call_lemma_u64_low_bits_mask_is_mod_ensures_0 : Vermilion.Bits.band 64 (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.bits.low_bits_mask 51) % 18446744073709551616) = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))) :
+    layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val a = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_6
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_7 3e48bdd6a8ab04c6
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_7`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:360:21-360:51`
+- Rust/SST construct: call lemma_u64_shr_is_div
+- AssertId: `7`
+- Statement hash: `3e48bdd6a8ab04c6`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_7_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 360
+  startColumn := 21
+  endLine := 360
+  endColumn := 51
+  assertId := "7"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "3e48bdd6a8ab04c6"
+}
+@[vrml_obligation] theorem call_requires_7
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True)
+    (assume_43 : True)
+    (assume_44 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val a = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_45 : True) :
+    (0 ≤ 51) ∧ (51 < 64) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_7
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_8 ea83e9e5985b8ab0
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_8`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:359:24-359:62`
+- Rust/SST construct: Rust source assertion
+- AssertId: `8`
+- Statement hash: `ea83e9e5985b8ab0`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_8_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 359
+  startColumn := 24
+  endLine := 359
+  endColumn := 62
+  assertId := "8"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "ea83e9e5985b8ab0"
+}
+@[vrml_obligation] theorem assert_8
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True)
+    (assume_43 : True)
+    (assume_44 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val a = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_45 : True)
+    (call_lemma_u64_shr_is_div_ensures_0 : Vermilion.Bits.shr 64 (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) (vstd.arithmetic.power2.pow2 51))) :
+    Vermilion.Bits.shr 64 (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_8
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_9_0 39df69977e85582e
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_9_0`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:363:17-363:67`
+- Rust/SST construct: call lemma_u64_div_and_mod_51
+- AssertId: `9_0`
+- Statement hash: `39df69977e85582e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_9_0_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 363
+  startColumn := 17
+  endLine := 363
+  endColumn := 67
+  assertId := "9_0"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "39df69977e85582e"
+}
+@[vrml_obligation] theorem call_requires_9_0
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True)
+    (assume_43 : True)
+    (assume_44 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val a = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_45 : True → (Vermilion.Bits.shr 64 (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) :
+    Vermilion.Bits.shr 64 (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) 51 = Vermilion.Bits.shr 64 (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) 51 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_9_0
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_9_1 aed090797d8347c0
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_9_1`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:363:17-363:67`
+- Rust/SST construct: call lemma_u64_div_and_mod_51
+- AssertId: `9_1`
+- Statement hash: `aed090797d8347c0`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_9_1_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 363
+  startColumn := 17
+  endLine := 363
+  endColumn := 67
+  assertId := "9_1"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "aed090797d8347c0"
+}
+@[vrml_obligation] theorem call_requires_9_1
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True)
+    (assume_43 : True)
+    (assume_44 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val a = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_45 : True → (Vermilion.Bits.shr 64 (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) :
+    layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val a = Vermilion.Bits.band 64 (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) layer_a.specs.field_specs_u64.mask51 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_9_1
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_10 83f91ef484733764
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_10`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:354:20-354:68`
+- Rust/SST construct: Rust source assertion
+- AssertId: `10`
+- Statement hash: `83f91ef484733764`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_10_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 354
+  startColumn := 20
+  endLine := 354
+  endColumn := 68
+  assertId := "10"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "83f91ef484733764"
+}
+@[vrml_obligation] theorem assert_10
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True)
+    (assume_43 : True)
+    (assume_44 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val a = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_45 : True → (Vermilion.Bits.shr 64 (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (call_lemma_u64_div_and_mod_51_ensures_0 : Vermilion.Bits.shr 64 (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))
+    (call_lemma_u64_div_and_mod_51_ensures_1 : layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val a = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))
+    (call_lemma_u64_div_and_mod_51_ensures_2 : layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a = ((Vermilion.Bits.shr 64 (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a) 51 * vstd.arithmetic.power2.pow2 51) + layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val a)) :
+    (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val a)) = (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_10
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_11 35a40c503788a381
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_11`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:348:16-349:29`
+- Rust/SST construct: Rust source assertion
+- AssertId: `11`
+- Statement hash: `35a40c503788a381`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_11_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 348
+  startColumn := 16
+  endLine := 349
+  endColumn := 29
+  assertId := "11"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "35a40c503788a381"
+}
+@[vrml_obligation] theorem assert_11
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True)
+    (assume_43 : True → ((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val a)) = (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)))) :
+    layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_11
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_13 7fa5ec34fcebbcc7
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_13`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:386:20-386:59`
+- Rust/SST construct: Rust source assertion
+- AssertId: `13`
+- Statement hash: `7fa5ec34fcebbcc7`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_13_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 386
+  startColumn := 20
+  endLine := 386
+  endColumn := 59
+  assertId := "13"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "7fa5ec34fcebbcc7"
+}
+@[vrml_obligation] theorem assert_13
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True)
+    (call_l51_bit_mask_lt_1_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_1_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51) :
+    ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616) = ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_13
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_14 11bab0cb96f3cc36
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_14`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:389:17-389:64`
+- Rust/SST construct: call lemma_u64_low_bits_mask_is_mod
+- AssertId: `14`
+- Statement hash: `11bab0cb96f3cc36`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_14_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 389
+  startColumn := 17
+  endLine := 389
+  endColumn := 64
+  assertId := "14"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "11bab0cb96f3cc36"
+}
+@[vrml_obligation] theorem call_requires_14
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True)
+    (call_l51_bit_mask_lt_1_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_1_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51)
+    (assert_13 : ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616) = ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))
+    (assume_47 : True) :
+    51 < 64 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_14
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_15 d6411e29da17cfc4
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_15`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:388:20-388:76`
+- Rust/SST construct: Rust source assertion
+- AssertId: `15`
+- Statement hash: `d6411e29da17cfc4`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_15_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 388
+  startColumn := 20
+  endLine := 388
+  endColumn := 76
+  assertId := "15"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "d6411e29da17cfc4"
+}
+@[vrml_obligation] theorem assert_15
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True)
+    (call_l51_bit_mask_lt_1_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_1_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51)
+    (assert_13 : ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616) = ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))
+    (assume_47 : True)
+    (call_lemma_u64_low_bits_mask_is_mod_1_ensures_0 : Vermilion.Bits.band 64 ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.bits.low_bits_mask 51) % 18446744073709551616) = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))) :
+    layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a = ((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_15
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_16 b9de68a142eaaf3a
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_16`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:393:17-393:62`
+- Rust/SST construct: call lemma_u64_low_bits_mask_is_mod
+- AssertId: `16`
+- Statement hash: `b9de68a142eaaf3a`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_16_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 393
+  startColumn := 17
+  endLine := 393
+  endColumn := 62
+  assertId := "16"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "b9de68a142eaaf3a"
+}
+@[vrml_obligation] theorem call_requires_16
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True)
+    (call_l51_bit_mask_lt_1_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_1_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51)
+    (assert_13 : ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616) = ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))
+    (assume_47 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a = ((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True) :
+    51 < 64 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_16
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_17 7fb5bb91cf71cf71
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_17`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:392:20-392:59`
+- Rust/SST construct: Rust source assertion
+- AssertId: `17`
+- Statement hash: `7fb5bb91cf71cf71`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_17_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 392
+  startColumn := 20
+  endLine := 392
+  endColumn := 59
+  assertId := "17"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "7fb5bb91cf71cf71"
+}
+@[vrml_obligation] theorem assert_17
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True)
+    (call_l51_bit_mask_lt_1_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_1_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51)
+    (assert_13 : ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616) = ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))
+    (assume_47 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a = ((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True)
+    (call_lemma_u64_low_bits_mask_is_mod_2_ensures_0 : Vermilion.Bits.band 64 ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.bits.low_bits_mask 51) % 18446744073709551616) = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))) :
+    layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_17
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_18 82126d2b74096b1b
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_18`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:397:17-397:62`
+- Rust/SST construct: call lemma_u64_low_bits_mask_is_mod
+- AssertId: `18`
+- Statement hash: `82126d2b74096b1b`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_18_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 397
+  startColumn := 17
+  endLine := 397
+  endColumn := 62
+  assertId := "18"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "82126d2b74096b1b"
+}
+@[vrml_obligation] theorem call_requires_18
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True)
+    (call_l51_bit_mask_lt_1_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_1_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51)
+    (assert_13 : ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616) = ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))
+    (assume_47 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a = ((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_49 : True) :
+    51 < 64 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_18
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_19 82d250bcc54ca517
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_19`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:396:20-396:57`
+- Rust/SST construct: Rust source assertion
+- AssertId: `19`
+- Statement hash: `82d250bcc54ca517`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_19_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 396
+  startColumn := 20
+  endLine := 396
+  endColumn := 57
+  assertId := "19"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "82d250bcc54ca517"
+}
+@[vrml_obligation] theorem assert_19
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True)
+    (call_l51_bit_mask_lt_1_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_1_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51)
+    (assert_13 : ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616) = ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))
+    (assume_47 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a = ((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_49 : True)
+    (call_lemma_u64_low_bits_mask_is_mod_3_ensures_0 : Vermilion.Bits.band 64 ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.bits.low_bits_mask 51) % 18446744073709551616) = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))) :
+    layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_19
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_20 408c1c980945d7fa
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_20`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:401:17-401:62`
+- Rust/SST construct: call lemma_u64_low_bits_mask_is_mod
+- AssertId: `20`
+- Statement hash: `408c1c980945d7fa`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_20_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 401
+  startColumn := 17
+  endLine := 401
+  endColumn := 62
+  assertId := "20"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "408c1c980945d7fa"
+}
+@[vrml_obligation] theorem call_requires_20
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True)
+    (call_l51_bit_mask_lt_1_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_1_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51)
+    (assert_13 : ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616) = ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))
+    (assume_47 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a = ((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_49 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_50 : True) :
+    51 < 64 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_20
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_21 21c57c9ccfa90077
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_21`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:400:20-400:57`
+- Rust/SST construct: Rust source assertion
+- AssertId: `21`
+- Statement hash: `21c57c9ccfa90077`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_21_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 400
+  startColumn := 20
+  endLine := 400
+  endColumn := 57
+  assertId := "21"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "21c57c9ccfa90077"
+}
+@[vrml_obligation] theorem assert_21
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True)
+    (call_l51_bit_mask_lt_1_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_1_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51)
+    (assert_13 : ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616) = ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))
+    (assume_47 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a = ((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_49 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_50 : True)
+    (call_lemma_u64_low_bits_mask_is_mod_4_ensures_0 : Vermilion.Bits.band 64 ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.bits.low_bits_mask 51) % 18446744073709551616) = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))) :
+    layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_21
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_22 5ea80f1ea6b64b7a
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_22`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:405:17-405:62`
+- Rust/SST construct: call lemma_u64_low_bits_mask_is_mod
+- AssertId: `22`
+- Statement hash: `5ea80f1ea6b64b7a`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_22_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 405
+  startColumn := 17
+  endLine := 405
+  endColumn := 62
+  assertId := "22"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "5ea80f1ea6b64b7a"
+}
+@[vrml_obligation] theorem call_requires_22
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True)
+    (call_l51_bit_mask_lt_1_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_1_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51)
+    (assert_13 : ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616) = ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))
+    (assume_47 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a = ((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_49 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_50 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_51 : True) :
+    51 < 64 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_22
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_23 44ad3da1398c15d4
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_23`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:404:20-404:57`
+- Rust/SST construct: Rust source assertion
+- AssertId: `23`
+- Statement hash: `44ad3da1398c15d4`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_23_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 404
+  startColumn := 20
+  endLine := 404
+  endColumn := 57
+  assertId := "23"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "44ad3da1398c15d4"
+}
+@[vrml_obligation] theorem assert_23
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True)
+    (call_l51_bit_mask_lt_1_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_1_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51)
+    (assert_13 : ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616) = ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))
+    (assume_47 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a = ((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_49 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_50 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_51 : True)
+    (call_lemma_u64_low_bits_mask_is_mod_5_ensures_0 : Vermilion.Bits.band 64 ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.bits.low_bits_mask 51) % 18446744073709551616) = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))) :
+    layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_23
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_24 697774b1be96e484
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_24`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:379:16-383:19`
+- Rust/SST construct: Rust source assertion
+- AssertId: `24`
+- Statement hash: `697774b1be96e484`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_24_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 379
+  startColumn := 16
+  endLine := 383
+  endColumn := 19
+  assertId := "24"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "697774b1be96e484"
+}
+@[vrml_obligation] theorem assert_24
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True)
+    (call_l51_bit_mask_lt_1_ensures_0 : layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51)
+    (call_l51_bit_mask_lt_1_ensures_1 : layer_a.specs.field_specs_u64.mask51 < Vermilion.Bits.shl 64 1 51)
+    (assert_13 : ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616) = ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))
+    (assume_47 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a = ((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_49 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_50 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))
+    (assume_51 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a = (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) :
+    layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_24
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_30 c089547123002fe1
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_30`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:410:16-413:60`
+- Rust/SST construct: Rust source assertion
+- AssertId: `30`
+- Statement hash: `c089547123002fe1`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_30_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 410
+  startColumn := 16
+  endLine := 413
+  endColumn := 60
+  assertId := "30"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "c089547123002fe1"
+}
+@[vrml_obligation] theorem assert_30
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True)
+    (call_lemma_cast_then_mod_51_ensures_0 : (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))
+    (call_lemma_cast_then_mod_51_1_ensures_0 : (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))
+    (call_lemma_cast_then_mod_51_2_ensures_0 : (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))
+    (call_lemma_cast_then_mod_51_3_ensures_0 : (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))
+    (call_lemma_cast_then_mod_51_4_ensures_0 : (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) = (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))) :
+    layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_30
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_31 e6971cfe6e714dee
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_31`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:427:13-427:68`
+- Rust/SST construct: call lemma_fundamental_div_mod
+- AssertId: `31`
+- Statement hash: `e6971cfe6e714dee`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_31_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 427
+  startColumn := 13
+  endLine := 427
+  endColumn := 68
+  assertId := "31"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "e6971cfe6e714dee"
+}
+@[vrml_obligation] theorem call_requires_31
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True) :
+    (¬ (vstd.arithmetic.power2.pow2 51 = 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_31
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_32 56c059f07d47f49b
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_32`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:428:13-428:66`
+- Rust/SST construct: call lemma_fundamental_div_mod
+- AssertId: `32`
+- Statement hash: `56c059f07d47f49b`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_32_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 428
+  startColumn := 13
+  endLine := 428
+  endColumn := 66
+  assertId := "32"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "56c059f07d47f49b"
+}
+@[vrml_obligation] theorem call_requires_32
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True)
+    (call_lemma_fundamental_div_mod_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51)))) :
+    (¬ (vstd.arithmetic.power2.pow2 51 = 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_32
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_33 1e6947154ce7705e
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_33`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:429:13-429:66`
+- Rust/SST construct: call lemma_fundamental_div_mod
+- AssertId: `33`
+- Statement hash: `1e6947154ce7705e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_33_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 429
+  startColumn := 13
+  endLine := 429
+  endColumn := 66
+  assertId := "33"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "1e6947154ce7705e"
+}
+@[vrml_obligation] theorem call_requires_33
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True)
+    (call_lemma_fundamental_div_mod_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51))))
+    (call_lemma_fundamental_div_mod_1_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) (vstd.arithmetic.power2.pow2 51)))) :
+    (¬ (vstd.arithmetic.power2.pow2 51 = 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_33
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_34 ee4c3b4428962415
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_34`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:430:13-430:66`
+- Rust/SST construct: call lemma_fundamental_div_mod
+- AssertId: `34`
+- Statement hash: `ee4c3b4428962415`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_34_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 430
+  startColumn := 13
+  endLine := 430
+  endColumn := 66
+  assertId := "34"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "ee4c3b4428962415"
+}
+@[vrml_obligation] theorem call_requires_34
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True)
+    (call_lemma_fundamental_div_mod_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51))))
+    (call_lemma_fundamental_div_mod_1_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) (vstd.arithmetic.power2.pow2 51))))
+    (call_lemma_fundamental_div_mod_2_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) (vstd.arithmetic.power2.pow2 51)))) :
+    (¬ (vstd.arithmetic.power2.pow2 51 = 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_34
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_35 f02628f0741cb32c
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_35`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:431:13-431:66`
+- Rust/SST construct: call lemma_fundamental_div_mod
+- AssertId: `35`
+- Statement hash: `f02628f0741cb32c`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_35_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 431
+  startColumn := 13
+  endLine := 431
+  endColumn := 66
+  assertId := "35"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "f02628f0741cb32c"
+}
+@[vrml_obligation] theorem call_requires_35
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True)
+    (call_lemma_fundamental_div_mod_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51))))
+    (call_lemma_fundamental_div_mod_1_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) (vstd.arithmetic.power2.pow2 51))))
+    (call_lemma_fundamental_div_mod_2_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) (vstd.arithmetic.power2.pow2 51))))
+    (call_lemma_fundamental_div_mod_3_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) (vstd.arithmetic.power2.pow2 51)))) :
+    (¬ (vstd.arithmetic.power2.pow2 51 = 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_35
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_36 512b425c3cf9ffa8
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_36`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:423:16-426:70`
+- Rust/SST construct: Rust source assertion
+- AssertId: `36`
+- Statement hash: `512b425c3cf9ffa8`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_36_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 423
+  startColumn := 16
+  endLine := 426
+  endColumn := 70
+  assertId := "36"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "512b425c3cf9ffa8"
+}
+@[vrml_obligation] theorem assert_36
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True)
+    (call_lemma_fundamental_div_mod_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51))))
+    (call_lemma_fundamental_div_mod_1_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) (vstd.arithmetic.power2.pow2 51))))
+    (call_lemma_fundamental_div_mod_2_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) (vstd.arithmetic.power2.pow2 51))))
+    (call_lemma_fundamental_div_mod_3_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) (vstd.arithmetic.power2.pow2 51))))
+    (call_lemma_fundamental_div_mod_4_ensures_0 : layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a = ((vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) (vstd.arithmetic.power2.pow2 51))) + (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) (vstd.arithmetic.power2.pow2 51)))) :
+    layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_36
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_37 9503fb7c1593e5a3
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_37`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:443:13-443:44`
+- Rust/SST construct: call lemma_u128_shr_is_div
+- AssertId: `37`
+- Statement hash: `9503fb7c1593e5a3`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_37_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 443
+  startColumn := 13
+  endLine := 443
+  endColumn := 44
+  assertId := "37"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "9503fb7c1593e5a3"
+}
+@[vrml_obligation] theorem call_requires_37
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True) :
+    (0 ≤ 51) ∧ (51 < 128) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_37
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_38 846729eae442a5b1
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_38`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:444:13-444:42`
+- Rust/SST construct: call lemma_u128_shr_is_div
+- AssertId: `38`
+- Statement hash: `846729eae442a5b1`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_38_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 444
+  startColumn := 13
+  endLine := 444
+  endColumn := 42
+  assertId := "38"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "846729eae442a5b1"
+}
+@[vrml_obligation] theorem call_requires_38
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True)
+    (call_lemma_u128_shr_is_div_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51))) :
+    (0 ≤ 51) ∧ (51 < 128) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_38
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_39 e26b7c61d49a9423
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_39`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:445:13-445:42`
+- Rust/SST construct: call lemma_u128_shr_is_div
+- AssertId: `39`
+- Statement hash: `e26b7c61d49a9423`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_39_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 445
+  startColumn := 13
+  endLine := 445
+  endColumn := 42
+  assertId := "39"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "e26b7c61d49a9423"
+}
+@[vrml_obligation] theorem call_requires_39
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True)
+    (call_lemma_u128_shr_is_div_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51)))
+    (call_lemma_u128_shr_is_div_1_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) (vstd.arithmetic.power2.pow2 51))) :
+    (0 ≤ 51) ∧ (51 < 128) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_39
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_40 0ef3dc1b858683ac
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_40`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:446:13-446:42`
+- Rust/SST construct: call lemma_u128_shr_is_div
+- AssertId: `40`
+- Statement hash: `0ef3dc1b858683ac`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_40_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 446
+  startColumn := 13
+  endLine := 446
+  endColumn := 42
+  assertId := "40"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "0ef3dc1b858683ac"
+}
+@[vrml_obligation] theorem call_requires_40
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True)
+    (call_lemma_u128_shr_is_div_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51)))
+    (call_lemma_u128_shr_is_div_1_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) (vstd.arithmetic.power2.pow2 51)))
+    (call_lemma_u128_shr_is_div_2_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) (vstd.arithmetic.power2.pow2 51))) :
+    (0 ≤ 51) ∧ (51 < 128) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_40
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_41 d0da8cf393d2ef66
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_41`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:447:13-447:42`
+- Rust/SST construct: call lemma_u128_shr_is_div
+- AssertId: `41`
+- Statement hash: `d0da8cf393d2ef66`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_41_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 447
+  startColumn := 13
+  endLine := 447
+  endColumn := 42
+  assertId := "41"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "d0da8cf393d2ef66"
+}
+@[vrml_obligation] theorem call_requires_41
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True)
+    (call_lemma_u128_shr_is_div_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51)))
+    (call_lemma_u128_shr_is_div_1_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) (vstd.arithmetic.power2.pow2 51)))
+    (call_lemma_u128_shr_is_div_2_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) (vstd.arithmetic.power2.pow2 51)))
+    (call_lemma_u128_shr_is_div_3_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) (vstd.arithmetic.power2.pow2 51))) :
+    (0 ≤ 51) ∧ (51 < 128) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_41
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_42 393f1548c310288b
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_42`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:440:16-442:76`
+- Rust/SST construct: Rust source assertion
+- AssertId: `42`
+- Statement hash: `393f1548c310288b`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_42_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 440
+  startColumn := 16
+  endLine := 442
+  endColumn := 76
+  assertId := "42"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "393f1548c310288b"
+}
+@[vrml_obligation] theorem assert_42
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True)
+    (call_lemma_u128_shr_is_div_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) (vstd.arithmetic.power2.pow2 51)))
+    (call_lemma_u128_shr_is_div_1_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) (vstd.arithmetic.power2.pow2 51)))
+    (call_lemma_u128_shr_is_div_2_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) (vstd.arithmetic.power2.pow2 51)))
+    (call_lemma_u128_shr_is_div_3_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) (vstd.arithmetic.power2.pow2 51)))
+    (call_lemma_u128_shr_is_div_4_ensures_0 : Vermilion.Bits.shr 128 (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) 51 = (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) (vstd.arithmetic.power2.pow2 51))) :
+    layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_42
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_44 29edf73b01644a72
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_44`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:454:20-454:91`
+- Rust/SST construct: Rust source assertion
+- AssertId: `44`
+- Statement hash: `29edf73b01644a72`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_44_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 454
+  startColumn := 20
+  endLine := 454
+  endColumn := 91
+  assertId := "44"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "29edf73b01644a72"
+}
+@[vrml_obligation] theorem assert_44
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True)
+    (assume_48 : True)
+    (call_lemma_mul_is_distributive_sub_ensures_0 : (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) = ((vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) :
+    (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) = ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a)) + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_44
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_46 1935ba34dfe937b0
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_46`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:458:20-459:35`
+- Rust/SST construct: Rust source assertion
+- AssertId: `46`
+- Statement hash: `1935ba34dfe937b0`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_46_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 458
+  startColumn := 20
+  endLine := 459
+  endColumn := 35
+  assertId := "46"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "1935ba34dfe937b0"
+}
+@[vrml_obligation] theorem assert_46
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True)
+    (assume_48 : True → ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) = ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a)) + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))))
+    (assume_49 : True)
+    (call_lemma_mul_sub_ensures_0 : (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)))) = (((vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) - (vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a)) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))) :
+    (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)))) = (((vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) - (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_46
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_48 f2fa1cab42aa6866
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_48`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:463:20-464:35`
+- Rust/SST construct: Rust source assertion
+- AssertId: `48`
+- Statement hash: `f2fa1cab42aa6866`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_48_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 463
+  startColumn := 20
+  endLine := 464
+  endColumn := 35
+  assertId := "48"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "f2fa1cab42aa6866"
+}
+@[vrml_obligation] theorem assert_48
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True)
+    (assume_48 : True → ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) = ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a)) + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))))
+    (assume_49 : True → ((vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)))) = (((vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) - (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))
+    (assume_50 : True)
+    (call_lemma_mul_sub_1_ensures_0 : (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)))) = (((vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) - (vstd.arithmetic.power2.pow2 (Vermilion.natClip (102 + 51)) * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a)) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (102 + 51)) * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))) :
+    (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)))) = (((vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) - (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_48
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_50 1c60e9befaa3fe9a
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_50`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:468:20-469:35`
+- Rust/SST construct: Rust source assertion
+- AssertId: `50`
+- Statement hash: `1c60e9befaa3fe9a`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_50_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 468
+  startColumn := 20
+  endLine := 469
+  endColumn := 35
+  assertId := "50"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "1c60e9befaa3fe9a"
+}
+@[vrml_obligation] theorem assert_50
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True)
+    (assume_48 : True → ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) = ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a)) + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))))
+    (assume_49 : True → ((vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)))) = (((vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) - (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))
+    (assume_50 : True → ((vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)))) = (((vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) - (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))
+    (assume_51 : True)
+    (call_lemma_mul_sub_2_ensures_0 : (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)))) = (((vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) - (vstd.arithmetic.power2.pow2 (Vermilion.natClip (153 + 51)) * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a)) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (153 + 51)) * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))) :
+    (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)))) = (((vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) - (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_50
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_54 749397c1053f37de
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_54`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:473:20-473:93`
+- Rust/SST construct: Rust source assertion
+- AssertId: `54`
+- Statement hash: `749397c1053f37de`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_54_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 473
+  startColumn := 20
+  endLine := 473
+  endColumn := 93
+  assertId := "54"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "749397c1053f37de"
+}
+@[vrml_obligation] theorem assert_54
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True)
+    (assume_48 : True → ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) = ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a)) + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))))
+    (assume_49 : True → ((vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)))) = (((vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) - (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))
+    (assume_50 : True → ((vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)))) = (((vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) - (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))
+    (assume_51 : True → ((vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)))) = (((vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) - (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))
+    (assume_52 : True)
+    (call_lemma_mul_is_distributive_sub_1_ensures_0 : (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))) = ((vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) - (vstd.arithmetic.power2.pow2 204 * (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (call_lemma_mul_is_associative_ensures_0 : (vstd.arithmetic.power2.pow2 204 * (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) = ((vstd.arithmetic.power2.pow2 204 * vstd.arithmetic.power2.pow2 51) * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))
+    (call_lemma_pow2_adds_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (204 + 51)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 204 * vstd.arithmetic.power2.pow2 51)) :
+    (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))) = ((vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) - (vstd.arithmetic.power2.pow2 255 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_54
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_57 b5bf07bdb43a1254
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_57`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:480:20-482:68`
+- Rust/SST construct: Rust source assertion
+- AssertId: `57`
+- Statement hash: `b5bf07bdb43a1254`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_57_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 480
+  startColumn := 20
+  endLine := 482
+  endColumn := 68
+  assertId := "57"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "b5bf07bdb43a1254"
+}
+@[vrml_obligation] theorem assert_57
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True)
+    (assume_48 : True → ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) = ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a)) + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))))
+    (assume_49 : True → ((vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)))) = (((vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) - (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))
+    (assume_50 : True → ((vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)))) = (((vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) - (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))
+    (assume_51 : True → ((vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)))) = (((vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) - (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))
+    (assume_52 : True → ((vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))) = ((vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) - (vstd.arithmetic.power2.pow2 255 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_53 : True)
+    (call_pow255_gt_19_1_ensures_0 : vstd.arithmetic.power2.pow2 255 > 19)
+    (call_lemma_mul_is_distributive_sub_other_way_ensures_0 : ((vstd.arithmetic.power2.pow2 255 - 19) * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a) = ((vstd.arithmetic.power2.pow2 255 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a) - (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))) :
+    ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) - (vstd.arithmetic.power2.pow2 255 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) = (((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) - (layer_a.specs.field_specs_u64.p 0 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_57
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_58 8d83c4bbf8dc1ce5
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_58`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:452:16-453:45`
+- Rust/SST construct: Rust source assertion
+- AssertId: `58`
+- Statement hash: `8d83c4bbf8dc1ce5`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_58_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 452
+  startColumn := 16
+  endLine := 453
+  endColumn := 45
+  assertId := "58"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "8d83c4bbf8dc1ce5"
+}
+@[vrml_obligation] theorem assert_58
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True)
+    (assume_48 : True → ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) = ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a)) + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))))
+    (assume_49 : True → ((vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)))) = (((vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) - (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))
+    (assume_50 : True → ((vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)))) = (((vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) - (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))
+    (assume_51 : True → ((vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)))) = (((vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) - (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))
+    (assume_52 : True → ((vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))) = ((vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) - (vstd.arithmetic.power2.pow2 255 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_53 : True → (((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) - (vstd.arithmetic.power2.pow2 255 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) = (((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) - (layer_a.specs.field_specs_u64.p 0 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)))) :
+    layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = (((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) - (layer_a.specs.field_specs_u64.p 0 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_58
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_59 26c9b3086f25f645
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_59`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:492:13-492:81`
+- Rust/SST construct: call lemma_mod_diff_factor
+- AssertId: `59`
+- Statement hash: `26c9b3086f25f645`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_59_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 492
+  startColumn := 13
+  endLine := 492
+  endColumn := 81
+  assertId := "59"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "26c9b3086f25f645"
+}
+@[vrml_obligation] theorem call_requires_59
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = (((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) - (layer_a.specs.field_specs_u64.p 0 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True) :
+    layer_a.specs.field_specs_u64.p 0 > 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_59
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_60 f3b49fe8a02f9159
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_60`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:491:16-491:70`
+- Rust/SST construct: Rust source assertion
+- AssertId: `60`
+- Statement hash: `f3b49fe8a02f9159`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_60_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 491
+  startColumn := 16
+  endLine := 491
+  endColumn := 70
+  assertId := "60"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "f3b49fe8a02f9159"
+}
+@[vrml_obligation] theorem assert_60
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = (((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) - (layer_a.specs.field_specs_u64.p 0 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True)
+    (call_lemma_mod_diff_factor_ensures_0 : (Vermilion.emod (((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) - (layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a * layer_a.specs.field_specs_u64.p 0)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) (layer_a.specs.field_specs_u64.p 0))) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))) (layer_a.specs.field_specs_u64.p 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_60
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_66 fa3fbdac11f911e4
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_66`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:506:16-506:100`
+- Rust/SST construct: Rust source assertion
+- AssertId: `66`
+- Statement hash: `fa3fbdac11f911e4`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_66_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 506
+  startColumn := 16
+  endLine := 506
+  endColumn := 100
+  assertId := "66"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "fa3fbdac11f911e4"
+}
+@[vrml_obligation] theorem assert_66
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = (((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) - (layer_a.specs.field_specs_u64.p 0 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))) (layer_a.specs.field_specs_u64.p 0))))
+    (call_lemma_u64_5_as_nat_product_ensures_0 : Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a) = (((((((((vstd.arithmetic.power2.pow2 (Vermilion.natClip (8 * 51)) * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4)) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (7 * 51)) * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (6 * 51)) * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (5 * 51)) * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 51)) * ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 51)) * (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 51)) * ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)))) + (Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0)))
+    (call_lemma_u64_5_as_nat_product_ensures_1 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (((((vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)) + (19 * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4))))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 51)) * ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)) + (19 * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 51)) * (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)) + (19 * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))))) + ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0) + (19 * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))))) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_51 : True)
+    (call_lemma_mul_is_associative_1_ensures_0 : (Vermilion.Seq.index a 1 * (Vermilion.Seq.index a 4 * 19)) = ((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) * 19))
+    (call_lemma_mul_is_associative_2_ensures_0 : (Vermilion.Seq.index a 2 * (Vermilion.Seq.index a 3 * 19)) = ((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3) * 19))
+    (call_lemma_mul_is_commutative_ensures_0 : (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2) = (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3))
+    (call_lemma_mul_is_commutative_1_ensures_0 : (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1) = (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4)) :
+    layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a = ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0) + (19 * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_66
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_71 3bb302e9c66f6d59
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_71`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:514:16-514:100`
+- Rust/SST construct: Rust source assertion
+- AssertId: `71`
+- Statement hash: `3bb302e9c66f6d59`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_71_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 514
+  startColumn := 16
+  endLine := 514
+  endColumn := 100
+  assertId := "71"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "3bb302e9c66f6d59"
+}
+@[vrml_obligation] theorem assert_71
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = (((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) - (layer_a.specs.field_specs_u64.p 0 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))) (layer_a.specs.field_specs_u64.p 0))))
+    (call_lemma_u64_5_as_nat_product_ensures_0 : Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a) = (((((((((vstd.arithmetic.power2.pow2 (Vermilion.natClip (8 * 51)) * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4)) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (7 * 51)) * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (6 * 51)) * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (5 * 51)) * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 51)) * ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 51)) * (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 51)) * ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)))) + (Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0)))
+    (call_lemma_u64_5_as_nat_product_ensures_1 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (((((vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)) + (19 * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4))))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 51)) * ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)) + (19 * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 51)) * (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)) + (19 * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))))) + ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0) + (19 * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))))) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_51 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a = ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0) + (19 * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1))))))
+    (assume_52 : True)
+    (call_lemma_mul_is_associative_3_ensures_0 : (Vermilion.Seq.index a 3 * (Vermilion.Seq.index a 3 * 19)) = ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3) * 19))
+    (call_lemma_mul_is_associative_4_ensures_0 : (Vermilion.Seq.index a 2 * (Vermilion.Seq.index a 4 * 19)) = ((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) * 19))
+    (call_lemma_mul_is_commutative_2_ensures_0 : (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0) = (Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1))
+    (call_lemma_mul_is_commutative_3_ensures_0 : (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2) = (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4)) :
+    layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a = (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)) + (19 * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_71
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_75 db61473c7c4082e2
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_75`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:522:16-522:100`
+- Rust/SST construct: Rust source assertion
+- AssertId: `75`
+- Statement hash: `db61473c7c4082e2`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_75_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 522
+  startColumn := 16
+  endLine := 522
+  endColumn := 100
+  assertId := "75"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "db61473c7c4082e2"
+}
+@[vrml_obligation] theorem assert_75
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = (((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) - (layer_a.specs.field_specs_u64.p 0 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))) (layer_a.specs.field_specs_u64.p 0))))
+    (call_lemma_u64_5_as_nat_product_ensures_0 : Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a) = (((((((((vstd.arithmetic.power2.pow2 (Vermilion.natClip (8 * 51)) * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4)) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (7 * 51)) * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (6 * 51)) * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (5 * 51)) * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 51)) * ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 51)) * (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 51)) * ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)))) + (Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0)))
+    (call_lemma_u64_5_as_nat_product_ensures_1 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (((((vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)) + (19 * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4))))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 51)) * ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)) + (19 * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 51)) * (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)) + (19 * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))))) + ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0) + (19 * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))))) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_51 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a = ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0) + (19 * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1))))))
+    (assume_52 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a = (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)) + (19 * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2))))))
+    (assume_53 : True)
+    (call_lemma_mul_is_associative_5_ensures_0 : (Vermilion.Seq.index a 4 * (Vermilion.Seq.index a 3 * 19)) = ((Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3) * 19))
+    (call_lemma_mul_is_commutative_4_ensures_0 : (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0) = (Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2))
+    (call_lemma_mul_is_commutative_5_ensures_0 : (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3) = (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4)) :
+    layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a = ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)) + (19 * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_75
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_79 89f6c883e3b87fa9
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_79`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:529:16-529:100`
+- Rust/SST construct: Rust source assertion
+- AssertId: `79`
+- Statement hash: `89f6c883e3b87fa9`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_79_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 529
+  startColumn := 16
+  endLine := 529
+  endColumn := 100
+  assertId := "79"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "89f6c883e3b87fa9"
+}
+@[vrml_obligation] theorem assert_79
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = (((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) - (layer_a.specs.field_specs_u64.p 0 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))) (layer_a.specs.field_specs_u64.p 0))))
+    (call_lemma_u64_5_as_nat_product_ensures_0 : Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a) = (((((((((vstd.arithmetic.power2.pow2 (Vermilion.natClip (8 * 51)) * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4)) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (7 * 51)) * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (6 * 51)) * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (5 * 51)) * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 51)) * ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 51)) * (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 51)) * ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)))) + (Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0)))
+    (call_lemma_u64_5_as_nat_product_ensures_1 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (((((vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)) + (19 * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4))))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 51)) * ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)) + (19 * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 51)) * (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)) + (19 * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))))) + ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0) + (19 * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))))) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_51 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a = ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0) + (19 * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1))))))
+    (assume_52 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a = (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)) + (19 * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2))))))
+    (assume_53 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a = ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)) + (19 * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3))))))
+    (assume_54 : True)
+    (call_lemma_mul_is_associative_6_ensures_0 : (Vermilion.Seq.index a 4 * (Vermilion.Seq.index a 4 * 19)) = ((Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4) * 19))
+    (call_lemma_mul_is_commutative_6_ensures_0 : (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1) = (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2))
+    (call_lemma_mul_is_commutative_7_ensures_0 : (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0) = (Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3)) :
+    layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a = (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)) + (19 * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4))) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_79
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_82 dc51f122efb6bc0f
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_82`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:536:16-536:93`
+- Rust/SST construct: Rust source assertion
+- AssertId: `82`
+- Statement hash: `dc51f122efb6bc0f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_82_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 536
+  startColumn := 16
+  endLine := 536
+  endColumn := 93
+  assertId := "82"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "dc51f122efb6bc0f"
+}
+@[vrml_obligation] theorem assert_82
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = (((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) - (layer_a.specs.field_specs_u64.p 0 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))) (layer_a.specs.field_specs_u64.p 0))))
+    (call_lemma_u64_5_as_nat_product_ensures_0 : Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a) = (((((((((vstd.arithmetic.power2.pow2 (Vermilion.natClip (8 * 51)) * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4)) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (7 * 51)) * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (6 * 51)) * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (5 * 51)) * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 51)) * ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 51)) * (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 51)) * ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)))) + (Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0)))
+    (call_lemma_u64_5_as_nat_product_ensures_1 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (((((vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)) + (19 * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4))))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 51)) * ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)) + (19 * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 51)) * (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)) + (19 * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))))) + ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0) + (19 * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))))) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_51 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a = ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0) + (19 * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1))))))
+    (assume_52 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a = (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)) + (19 * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2))))))
+    (assume_53 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a = ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)) + (19 * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3))))))
+    (assume_54 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a = (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)) + (19 * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4)))))
+    (assume_55 : True)
+    (call_lemma_mul_is_commutative_8_ensures_0 : (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1) = (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3))
+    (call_lemma_mul_is_commutative_9_ensures_0 : (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0) = (Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4)) :
+    layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a = (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_82
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_83 334be7d716b17f5b
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_83`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:343:12-343:82`
+- Rust/SST construct: Rust source assertion
+- AssertId: `83`
+- Statement hash: `334be7d716b17f5b`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_83_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 343
+  startColumn := 12
+  endLine := 343
+  endColumn := 82
+  assertId := "83"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "334be7d716b17f5b"
+}
+@[vrml_obligation] theorem assert_83
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True)
+    (assume_42 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val a))))
+    (assume_43 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod ((layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) % 18446744073709551616) ((vstd.arithmetic.power2.pow2 51) % 18446744073709551616))))))
+    (assume_44 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 102 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 153 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (vstd.arithmetic.power2.pow2 204 * (Vermilion.emod (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))
+    (assume_45 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456)))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * (Vermilion.ediv (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a) ((vstd.arithmetic.power2.pow2 51) % 340282366920938463463374607431768211456))))))))
+    (assume_46 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = ((((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a))) + (19 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a)) + (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a))))) + (vstd.arithmetic.power2.pow2 102 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a))))) + (vstd.arithmetic.power2.pow2 153 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val a - (vstd.arithmetic.power2.pow2 51 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))))) + (vstd.arithmetic.power2.pow2 204 * (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val a - (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))))
+    (assume_47 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a) = (((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a)) - (layer_a.specs.field_specs_u64.p 0 * layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val a))))
+    (assume_48 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((((layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a + (vstd.arithmetic.power2.pow2 51 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a)) + (vstd.arithmetic.power2.pow2 102 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a)) + (vstd.arithmetic.power2.pow2 153 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a)) + (vstd.arithmetic.power2.pow2 204 * layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a))) (layer_a.specs.field_specs_u64.p 0))))
+    (call_lemma_u64_5_as_nat_product_ensures_0 : Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a) = (((((((((vstd.arithmetic.power2.pow2 (Vermilion.natClip (8 * 51)) * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4)) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (7 * 51)) * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (6 * 51)) * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (5 * 51)) * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 51)) * ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 51)) * (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 51)) * ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)))) + (Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0)))
+    (call_lemma_u64_5_as_nat_product_ensures_1 : (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (((((vstd.arithmetic.power2.pow2 (Vermilion.natClip (4 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (3 * 51)) * (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)) + (19 * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4))))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (2 * 51)) * ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)) + (19 * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3)))))) + (vstd.arithmetic.power2.pow2 (Vermilion.natClip (1 * 51)) * (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)) + (19 * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2)))))) + ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0) + (19 * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1)))))) (layer_a.specs.field_specs_u64.p 0)))
+    (assume_51 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val a = ((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 0) + (19 * ((((Vermilion.Seq.index a 1 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 1))))))
+    (assume_52 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val a = (((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 1) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 0)) + (19 * (((Vermilion.Seq.index a 2 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 2))))))
+    (assume_53 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val a = ((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 2) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 0)) + (19 * ((Vermilion.Seq.index a 3 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 3))))))
+    (assume_54 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val a = (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 3) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 0)) + (19 * (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 4)))))
+    (assume_55 : True → (layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val a = (((((Vermilion.Seq.index a 0 * Vermilion.Seq.index a 4) + (Vermilion.Seq.index a 1 * Vermilion.Seq.index a 3)) + (Vermilion.Seq.index a 2 * Vermilion.Seq.index a 2)) + (Vermilion.Seq.index a 3 * Vermilion.Seq.index a 1)) + (Vermilion.Seq.index a 4 * Vermilion.Seq.index a 0)))) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_83
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_85 1b37321e666bc96e
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_85`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:543:12-543:29`
+- Rust/SST construct: Rust source assertion
+- AssertId: `85`
+- Statement hash: `1b37321e666bc96e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_85_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 543
+  startColumn := 12
+  endLine := 543
+  endColumn := 29
+  assertId := "85"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "1b37321e666bc96e"
+}
+@[vrml_obligation] theorem assert_85
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_42 : True)
+    (call_lemma_pow_nat_is_nat_ensures_0 : vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i) ≥ 0) :
+    vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i) ≥ 0 := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_85
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_86 c6aa7a6b478a0bd9
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_86`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:550:9-550:87`
+- Rust/SST construct: call lemma_mul_mod_noop
+- AssertId: `86`
+- Statement hash: `c6aa7a6b478a0bd9`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_86_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 550
+  startColumn := 9
+  endLine := 550
+  endColumn := 87
+  assertId := "86"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "c6aa7a6b478a0bd9"
+}
+@[vrml_obligation] theorem call_requires_86
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_42 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i) ≥ 0))
+    (assume_43 : True) :
+    0 < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_86
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_87 64e3fef09e9031d6
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_87`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:548:12-548:98`
+- Rust/SST construct: Rust source assertion
+- AssertId: `87`
+- Statement hash: `64e3fef09e9031d6`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_87_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 548
+  startColumn := 12
+  endLine := 548
+  endColumn := 98
+  assertId := "87"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "64e3fef09e9031d6"
+}
+@[vrml_obligation] theorem assert_87
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_42 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i) ≥ 0))
+    (assume_43 : True)
+    (call_lemma_mul_mod_noop_ensures_0 : (Vermilion.emod ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0))) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_87
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_88 4563b33a5044c53c
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_88`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:555:9-555:73`
+- Rust/SST construct: call lemma_mul_mod_noop
+- AssertId: `88`
+- Statement hash: `4563b33a5044c53c`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def call_requires_88_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 555
+  startColumn := 9
+  endLine := 555
+  endColumn := 73
+  assertId := "88"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "call_requires"
+  statementHash := "4563b33a5044c53c"
+}
+@[vrml_obligation] theorem call_requires_88
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_42 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i) ≥ 0))
+    (assume_43 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_44 : True) :
+    0 < layer_a.specs.field_specs_u64.p 0 := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.call_requires_88
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_89 84d8e176b84909f8
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_89`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:554:12-554:86`
+- Rust/SST construct: Rust source assertion
+- AssertId: `89`
+- Statement hash: `84d8e176b84909f8`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_89_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 554
+  startColumn := 12
+  endLine := 554
+  endColumn := 86
+  assertId := "89"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "84d8e176b84909f8"
+}
+@[vrml_obligation] theorem assert_89
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_42 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i) ≥ 0))
+    (assume_43 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_44 : True)
+    (call_lemma_mul_mod_noop_1_ensures_0 : (Vermilion.emod ((Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i)) * Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0))) :
+    (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i)) * Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i)))) (layer_a.specs.field_specs_u64.p 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_89
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_91 fde8a9f9188eab8d
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_91`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:564:12-565:56`
+- Rust/SST construct: Rust source assertion
+- AssertId: `91`
+- Statement hash: `fde8a9f9188eab8d`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def assert_91_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 564
+  startColumn := 12
+  endLine := 565
+  endColumn := 56
+  assertId := "91"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "assert"
+  statementHash := "fde8a9f9188eab8d"
+}
+@[vrml_obligation] theorem assert_91
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_42 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i) ≥ 0))
+    (assume_43 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_44 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i)) * Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i)))) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_45 : True)
+    (call_lemma_pow2_square_ensures_0 : (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i) * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i)) = vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 (Vermilion.natClip (i + 1)))) :
+    (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i) * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i)) = vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 (Vermilion.natClip (i + 1))) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.assert_91
+
+-- vrml:begin layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.ensures_92 a26e4c74f2c85f10
+/--
+Generated VC `layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.ensures_92`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs:319:9-322:23`
+- Rust/SST construct: function postcondition (`ensures`)
+- AssertId: `92`
+- Statement hash: `a26e4c74f2c85f10`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index a vrml_i0⟩ ⟨Vermilion.Seq.index limbs vrml_i0⟩
+-/
+def ensures_92_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/pow2k_lemmas.rs"
+  startLine := 319
+  startColumn := 9
+  endLine := 322
+  endColumn := 23
+  assertId := "92"
+  functionName := "layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value"
+  kind := "ensures"
+  statementHash := "a26e4c74f2c85f10"
+}
+@[vrml_obligation] theorem ensures_92
+    (a : (Vermilion.Seq Int))
+    (limbs : (Vermilion.Seq Int))
+    (i : Int)
+    (requires_0 : Vermilion.Seq.len a = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len a)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index a vrml_i0))))
+    (requires_2 : Vermilion.Seq.len limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index limbs vrml_i0))))
+    (requires_4 : 0 ≤ i)
+    (requires_5 : layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec a)
+    (requires_6 : (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))
+    (call_lemma2_to64_rest_ensures_0 : vstd.arithmetic.power2.pow2 33 = 8589934592)
+    (call_lemma2_to64_rest_ensures_1 : vstd.arithmetic.power2.pow2 34 = 17179869184)
+    (call_lemma2_to64_rest_ensures_2 : vstd.arithmetic.power2.pow2 35 = 34359738368)
+    (call_lemma2_to64_rest_ensures_3 : vstd.arithmetic.power2.pow2 36 = 68719476736)
+    (call_lemma2_to64_rest_ensures_4 : vstd.arithmetic.power2.pow2 37 = 137438953472)
+    (call_lemma2_to64_rest_ensures_5 : vstd.arithmetic.power2.pow2 38 = 274877906944)
+    (call_lemma2_to64_rest_ensures_6 : vstd.arithmetic.power2.pow2 39 = 549755813888)
+    (call_lemma2_to64_rest_ensures_7 : vstd.arithmetic.power2.pow2 40 = 1099511627776)
+    (call_lemma2_to64_rest_ensures_8 : vstd.arithmetic.power2.pow2 41 = 2199023255552)
+    (call_lemma2_to64_rest_ensures_9 : vstd.arithmetic.power2.pow2 42 = 4398046511104)
+    (call_lemma2_to64_rest_ensures_10 : vstd.arithmetic.power2.pow2 43 = 8796093022208)
+    (call_lemma2_to64_rest_ensures_11 : vstd.arithmetic.power2.pow2 44 = 17592186044416)
+    (call_lemma2_to64_rest_ensures_12 : vstd.arithmetic.power2.pow2 45 = 35184372088832)
+    (call_lemma2_to64_rest_ensures_13 : vstd.arithmetic.power2.pow2 46 = 70368744177664)
+    (call_lemma2_to64_rest_ensures_14 : vstd.arithmetic.power2.pow2 47 = 140737488355328)
+    (call_lemma2_to64_rest_ensures_15 : vstd.arithmetic.power2.pow2 48 = 281474976710656)
+    (call_lemma2_to64_rest_ensures_16 : vstd.arithmetic.power2.pow2 49 = 562949953421312)
+    (call_lemma2_to64_rest_ensures_17 : vstd.arithmetic.power2.pow2 50 = 1125899906842624)
+    (call_lemma2_to64_rest_ensures_18 : vstd.arithmetic.power2.pow2 51 = 2251799813685248)
+    (call_lemma2_to64_rest_ensures_19 : vstd.arithmetic.power2.pow2 52 = 4503599627370496)
+    (call_lemma2_to64_rest_ensures_20 : vstd.arithmetic.power2.pow2 53 = 9007199254740992)
+    (call_lemma2_to64_rest_ensures_21 : vstd.arithmetic.power2.pow2 54 = 18014398509481984)
+    (call_lemma2_to64_rest_ensures_22 : vstd.arithmetic.power2.pow2 55 = 36028797018963968)
+    (call_lemma2_to64_rest_ensures_23 : vstd.arithmetic.power2.pow2 56 = 72057594037927936)
+    (call_lemma2_to64_rest_ensures_24 : vstd.arithmetic.power2.pow2 57 = 144115188075855872)
+    (call_lemma2_to64_rest_ensures_25 : vstd.arithmetic.power2.pow2 58 = 288230376151711744)
+    (call_lemma2_to64_rest_ensures_26 : vstd.arithmetic.power2.pow2 59 = 576460752303423488)
+    (call_lemma2_to64_rest_ensures_27 : vstd.arithmetic.power2.pow2 60 = 1152921504606846976)
+    (call_lemma2_to64_rest_ensures_28 : vstd.arithmetic.power2.pow2 61 = 2305843009213693952)
+    (call_lemma2_to64_rest_ensures_29 : vstd.arithmetic.power2.pow2 62 = 4611686018427387904)
+    (call_lemma2_to64_rest_ensures_30 : vstd.arithmetic.power2.pow2 63 = 9223372036854775808)
+    (call_lemma2_to64_rest_ensures_31 : vstd.arithmetic.power2.pow2 64 = 18446744073709551616)
+    (assume_39 : True → (layer_a.specs.field_specs_u64.p 0 > 0))
+    (assume_40 : True → (layer_a.specs.field_specs_u64.mask51 = vstd.bits.low_bits_mask 51))
+    (assume_41 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (layer_a.specs.field_specs_u64.u64_5_as_nat a * layer_a.specs.field_specs_u64.u64_5_as_nat a)) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_42 : True → (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i) ≥ 0))
+    (assume_43 : True → ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip ((Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat a) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_44 : True → ((Vermilion.emod (Vermilion.natClip ((Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)) * (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i))) (layer_a.specs.field_specs_u64.p 0)))) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i)) * Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i)))) (layer_a.specs.field_specs_u64.p 0))))
+    (assume_45 : True → ((vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i) * vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 i)) = vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 (Vermilion.natClip (i + 1))))) :
+    (Vermilion.emod (layer_a.specs.field_specs_u64.u64_5_as_nat (layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return a)) (layer_a.specs.field_specs_u64.p 0)) = (Vermilion.emod (Vermilion.natClip (vstd.arithmetic.power.pow (layer_a.specs.field_specs_u64.u64_5_as_nat limbs) (vstd.arithmetic.power2.pow2 (Vermilion.natClip (i + 1))))) (layer_a.specs.field_specs_u64.p 0)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value.ensures_92
+
+end layer_a.lemmas.field_lemmas.pow2k_lemmas.lemma_pow2k_loop_value
+

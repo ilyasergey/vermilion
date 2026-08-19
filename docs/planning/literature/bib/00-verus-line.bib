@@ -1,0 +1,263 @@
+% Verus itself, its concurrency lineage, robustness research, LLM tooling,
+% and systems verified with Verus. All entries verified against dblp/Crossref/
+% publisher records or the papers' own ACM reference blocks (2026-07-12),
+% unless marked with a "verify" note.
+
+@article{lattuada2023verus,
+  author    = {Andrea Lattuada and Travis Hance and Chanhee Cho and Matthias Brun and Isitha Subasinghe and Yi Zhou and Jon Howell and Bryan Parno and Chris Hawblitzel},
+  title     = {Verus: Verifying {Rust} Programs using Linear Ghost Types},
+  journal   = {Proc. ACM Program. Lang.},
+  volume    = {7},
+  number    = {OOPSLA1},
+  articleno = {85},
+  pages     = {286--315},
+  year      = {2023},
+  doi       = {10.1145/3586037}
+}
+
+@inproceedings{lattuada2024verus-sosp,
+  author    = {Andrea Lattuada and Travis Hance and Jay Bosamiya and Matthias Brun and Chanhee Cho and Hayley LeBlanc and Pranav Srinivasan and Reto Achermann and Tej Chajed and Chris Hawblitzel and Jon Howell and Jacob R. Lorch and Oded Padon and Bryan Parno},
+  title     = {Verus: A Practical Foundation for Systems Verification},
+  booktitle = {Proceedings of the ACM SIGOPS 30th Symposium on Operating Systems Principles (SOSP '24)},
+  pages     = {438--454},
+  publisher = {ACM},
+  year      = {2024},
+  doi       = {10.1145/3694715.3695952},
+  note      = {Distinguished Artifact Award}
+}
+
+@inproceedings{hance2023ironsync,
+  author    = {Travis Hance and Yi Zhou and Andrea Lattuada and Reto Achermann and Alex Conway and Ryan Stutsman and Gerd Zellweger and Chris Hawblitzel and Jon Howell and Bryan Parno},
+  title     = {Sharding the State Machine: Automated Modular Reasoning for Complex Concurrent Systems},
+  booktitle = {17th USENIX Symposium on Operating Systems Design and Implementation (OSDI 23)},
+  pages     = {911--929},
+  publisher = {USENIX Association},
+  year      = {2023}
+}
+
+@phdthesis{hance2024thesis,
+  author = {Travis Hance},
+  title  = {Verifying Concurrent Systems Code},
+  school = {Carnegie Mellon University},
+  year   = {2024},
+  number = {CMU-CS-24-146},
+  note   = {Definitive description of VerusSync; Honorable Mention, CMU SCS Dissertation Award}
+}
+
+@article{hance2023leaf,
+  author    = {Travis Hance and Jon Howell and Oded Padon and Bryan Parno},
+  title     = {Leaf: Modularity for Temporary Sharing in Separation Logic},
+  journal   = {Proc. ACM Program. Lang.},
+  volume    = {7},
+  number    = {OOPSLA2},
+  articleno = {223},
+  year      = {2023},
+  doi       = {10.1145/3622798}
+}
+
+@article{hance2026verusbelt,
+  author    = {Travis Hance and Laila Elbeheiry and Yusuke Matsushita and Derek Dreyer},
+  title     = {{VerusBelt}: A Semantic Foundation for {Verus}'s Proof-Oriented Extensions to the {Rust} Type System},
+  journal   = {Proc. ACM Program. Lang.},
+  volume    = {10},
+  number    = {PLDI},
+  articleno = {247},
+  year      = {2026},
+  doi       = {10.1145/3808325},
+  note      = {Distinguished Paper and Distinguished Artifact}
+}
+
+@inproceedings{zhou2023mariposa,
+  author    = {Yi Zhou and Jay Bosamiya and Yoshiki Takashima and Jessica Li and Marijn J. H. Heule and Bryan Parno},
+  title     = {Mariposa: Measuring {SMT} Instability in Automated Program Verification},
+  booktitle = {Formal Methods in Computer-Aided Design (FMCAD 2023)},
+  pages     = {178--188},
+  publisher = {TU Wien Academic Press},
+  year      = {2023},
+  doi       = {10.34727/2023/isbn.978-3-85448-060-0_26}
+}
+
+@inproceedings{zhou2024pruning,
+  author    = {Yi Zhou and Jay Bosamiya and Jessica Li and Marijn J. H. Heule and Bryan Parno},
+  title     = {Context Pruning for More Robust {SMT}-based Program Verification},
+  booktitle = {Formal Methods in Computer-Aided Design (FMCAD 2024)},
+  pages     = {1--11},
+  publisher = {TU Wien Academic Press},
+  year      = {2024},
+  doi       = {10.34727/2024/isbn.978-3-85448-065-5_12}
+}
+
+@inproceedings{zhou2025cazamariposas,
+  author    = {Yi Zhou and Amar Shah and Zhengyao Lin and Marijn J. H. Heule and Bryan Parno},
+  title     = {Cazamariposas: Automated Instability Debugging in {SMT}-Based Program Verification},
+  booktitle = {Automated Deduction -- CADE 30},
+  series    = {LNCS},
+  volume    = {15943},
+  pages     = {75--94},
+  publisher = {Springer},
+  year      = {2025},
+  doi       = {10.1007/978-3-031-99984-0_5}
+}
+
+@inproceedings{cho2024proofactions,
+  author    = {Chanhee Cho and Yi Zhou and Jay Bosamiya and Bryan Parno},
+  title     = {A Framework for Debugging Automated Program Verification Proofs via Proof Actions},
+  booktitle = {Computer Aided Verification (CAV 2024), Part I},
+  series    = {LNCS},
+  volume    = {14681},
+  pages     = {348--361},
+  publisher = {Springer},
+  year      = {2024},
+  doi       = {10.1007/978-3-031-65627-9_17},
+  note      = {ProofPlumber; CAV Distinguished Paper}
+}
+
+@misc{bai2025tunable,
+  author = {Alexander Y. Bai and Chris Hawblitzel and Andrea Lattuada},
+  title  = {Tunable Automation in Automated Program Verification},
+  year   = {2025},
+  note   = {arXiv:2512.03926; WIP paper at VSTTE 2025; no archival proceedings entry yet}
+}
+
+@article{yang2025autoverus,
+  author  = {Chenyuan Yang and Xuheng Li and Md Rakib Hossain Misu and Jianan Yao and Weidong Cui and Yeyun Gong and Chris Hawblitzel and Shuvendu K. Lahiri and Jacob R. Lorch and Shuai Lu and Fan Yang and Ziqiao Zhou and Shan Lu},
+  title   = {{AutoVerus}: Automated Proof Generation for {Rust} Code},
+  journal = {Proc. ACM Program. Lang.},
+  volume  = {9},
+  number  = {OOPSLA2},
+  pages   = {3454--3482},
+  year    = {2025},
+  doi     = {10.1145/3763174},
+  note    = {Distinguished Artifact}
+}
+
+@inproceedings{chen2025safe,
+  author    = {Tianyu Chen and Shuai Lu and Shan Lu and Yeyun Gong and Chenyuan Yang and Xuheng Li and Md Rakib Hossain Misu and Hao Yu and Nan Duan and Peng Cheng and Fan Yang and Shuvendu K. Lahiri and Tao Xie and Lidong Zhou},
+  title     = {Automated Proof Generation for {Rust} Code via Self-Evolution},
+  booktitle = {International Conference on Learning Representations (ICLR 2025)},
+  year      = {2025},
+  note      = {SAFE; arXiv:2410.15756}
+}
+
+@inproceedings{aggarwal2025alphaverus,
+  author    = {Pranjal Aggarwal and Bryan Parno and Sean Welleck},
+  title     = {{AlphaVerus}: Bootstrapping Formally Verified Code Generation through Self-Improving Translation and Treefinement},
+  booktitle = {Proceedings of the 42nd International Conference on Machine Learning (ICML 2025)},
+  year      = {2025},
+  note      = {arXiv:2412.06176}
+}
+
+@misc{bursuc2025vericoding,
+  author = {Sergiu Bursuc and Theodore Ehrenborg and Shaowei Lin and others},
+  title  = {A Benchmark for Vericoding: Formally Verified Program Synthesis},
+  year   = {2025},
+  note   = {arXiv:2509.22908; 12,504 specs incl. 2,334 Verus/Rust tasks}
+}
+
+@inproceedings{sun2024anvil,
+  author    = {Xudong Sun and Wenjie Ma and Jiawei Tyler Gu and Zicheng Ma and Tej Chajed and Jon Howell and Andrea Lattuada and Oded Padon and Lalith Suresh and Adriana Szekeres and Tianyin Xu},
+  title     = {Anvil: Verifying Liveness of Cluster Management Controllers},
+  booktitle = {18th USENIX Symposium on Operating Systems Design and Implementation (OSDI 24)},
+  pages     = {649--666},
+  publisher = {USENIX Association},
+  year      = {2024},
+  note      = {Jay Lepreau Best Paper Award}
+}
+
+@inproceedings{zhou2024verismo,
+  author    = {Ziqiao Zhou and Anjali and Weiteng Chen and Sishuai Gong and Chris Hawblitzel and Weidong Cui},
+  title     = {{VeriSMo}: A Verified Security Module for Confidential {VMs}},
+  booktitle = {18th USENIX Symposium on Operating Systems Design and Implementation (OSDI 24)},
+  pages     = {599--614},
+  publisher = {USENIX Association},
+  year      = {2024},
+  note      = {Jay Lepreau Best Paper Award}
+}
+
+@inproceedings{leblanc2025power,
+  author    = {Hayley LeBlanc and Jacob R. Lorch and Chris Hawblitzel and Cheng Huang and Yiheng Tao and Nickolai Zeldovich and Vijay Chidambaram},
+  title     = {{PoWER} Never Corrupts: Tool-Agnostic Verification of Crash Consistency and Corruption Detection},
+  booktitle = {19th USENIX Symposium on Operating Systems Design and Implementation (OSDI 25)},
+  pages     = {839--857},
+  publisher = {USENIX Association},
+  year      = {2025},
+  note      = {CapybaraKV; Distinguished Artifact Award}
+}
+
+@inproceedings{lin2025verdict,
+  author    = {Zhengyao Lin and Michael McLoughlin and Pratap Singh and Rory Brennan-Jones and Paul Hitchcox and Joshua Gancher and Bryan Parno},
+  title     = {Towards Practical, End-to-End Formally Verified {X.509} Certificate Validators with {Verdict}},
+  booktitle = {34th USENIX Security Symposium},
+  pages     = {5035--5052},
+  publisher = {USENIX Association},
+  year      = {2025}
+}
+
+@inproceedings{cai2025vest,
+  author    = {Yi Cai and Pratap Singh and Zhengyao Lin and Jay Bosamiya and Joshua Gancher and Milijana Surbatovich and Bryan Parno},
+  title     = {Vest: Verified, Secure, High-Performance Parsing and Serialization for {Rust}},
+  booktitle = {34th USENIX Security Symposium},
+  pages     = {6917--6935},
+  publisher = {USENIX Association},
+  year      = {2025}
+}
+
+@inproceedings{singh2025owlc,
+  author    = {Pratap Singh and Joshua Gancher and Bryan Parno},
+  title     = {{OwlC}: Compiling Security Protocols to Verified, Secure, High-Performance Libraries},
+  booktitle = {34th USENIX Security Symposium},
+  pages     = {5071--5090},
+  publisher = {USENIX Association},
+  year      = {2025},
+  note      = {Distinguished Artifact Award}
+}
+
+@inproceedings{zhang2025cortenmm,
+  author    = {Junyang Zhang and Xiangcan Xu and Yonghao Zou and Zhe Tang and Xinyi Wan and Kang Hu and Siyuan Wang and Wenbo Xu and Di Wang and Hao Chen and Lin Huang and Shoumeng Yan and Yuval Tamir and Yingwei Luo and Xiaolin Wang and Huashan Yu and Zhenlin Wang and Hongliang Tian and Diyu Zhou},
+  title     = {{CortenMM}: Efficient Memory Management with Strong Correctness Guarantees},
+  booktitle = {Proceedings of the ACM SIGOPS 31st Symposium on Operating Systems Principles (SOSP '25)},
+  pages     = {1082--1098},
+  publisher = {ACM},
+  year      = {2025},
+  doi       = {10.1145/3731569.3764836},
+  note      = {Best Paper Award}
+}
+
+@inproceedings{chen2025atmosphere,
+  author    = {Xiangdong Chen and Zhaofeng Li and Jerry Zhang and Vikram Narayanan and Anton Burtsev},
+  title     = {Atmosphere: Practical Verified Kernels with {Rust} and {Verus}},
+  booktitle = {Proceedings of the ACM SIGOPS 31st Symposium on Operating Systems Principles (SOSP '25)},
+  pages     = {752--767},
+  publisher = {ACM},
+  year      = {2025},
+  doi       = {10.1145/3731569.3764821}
+}
+
+@inproceedings{peng2025asterinas,
+  author    = {Yuke Peng and Hongliang Tian and Junyang Zhang and Ruihan Li and Chengjun Chen and Jianfeng Jiang and Jinyi Xian and Xiaolin Wang and Chenren Xu and Diyu Zhou and Yingwei Luo and Shoumeng Yan and Yinqian Zhang},
+  title     = {Asterinas: A {Linux} {ABI}-Compatible, {Rust}-Based Framekernel {OS} with a Small and Sound {TCB}},
+  booktitle = {USENIX Annual Technical Conference (ATC 25)},
+  pages     = {307--323},
+  publisher = {USENIX Association},
+  year      = {2025},
+  note      = {vostd (the Verus verification of OSTD) is repo-only: github.com/asterinas/vostd}
+}
+
+@inproceedings{hawblitzel2015ironfleet,
+  author    = {Chris Hawblitzel and Jon Howell and Manos Kapritsos and Jacob R. Lorch and Bryan Parno and Michael L. Roberts and Srinath T. V. Setty and Brian Zill},
+  title     = {{IronFleet}: Proving Practical Distributed Systems Correct},
+  booktitle = {Proceedings of the 25th Symposium on Operating Systems Principles (SOSP 2015)},
+  pages     = {1--17},
+  publisher = {ACM},
+  year      = {2015},
+  doi       = {10.1145/2815400.2815428}
+}
+
+@phdthesis{brun2022paging,
+  author = {Matthias Brun},
+  title  = {Verified Paging for x86-64 in {Rust}},
+  school = {ETH Z{\"u}rich},
+  year   = {2022},
+  type   = {Master's thesis},
+  note   = {ETH Research Collection 20.500.11850/594366; lineage of verified-nrkernel}
+}

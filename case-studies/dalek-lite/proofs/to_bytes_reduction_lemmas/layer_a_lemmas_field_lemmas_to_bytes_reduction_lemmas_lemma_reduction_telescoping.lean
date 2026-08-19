@@ -1,0 +1,694 @@
+import Vermilion.Obligations
+import to_bytes_reduction_lemmas.Specs
+
+set_option linter.unusedVariables false
+set_option linter.style.nameCheck false
+set_option linter.dupNamespace false
+set_option linter.unusedTactic false
+set_option linter.unreachableTactic false
+
+namespace layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_5 f3bd0762d549d9a1
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_5`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:66:12-68:27`
+- Rust/SST construct: Rust source assertion
+- AssertId: `5`
+- Statement hash: `f3bd0762d549d9a1`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index final_limbs vrml_i0⟩
+-/
+def assert_5_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 66
+  startColumn := 12
+  endLine := 68
+  endColumn := 27
+  assertId := "5"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping"
+  kind := "assert"
+  statementHash := "f3bd0762d549d9a1"
+}
+@[vrml_obligation] theorem assert_5
+    (input_limbs : (Vermilion.Seq Int))
+    (final_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (c0 : Int)
+    (c1 : Int)
+    (c2 : Int)
+    (c3 : Int)
+    (c4 : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.Seq.len final_limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len final_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index final_limbs vrml_i0))))
+    (requires_4 : Vermilion.inUnsignedRange 64 q)
+    (requires_5 : (Vermilion.Seq.index input_limbs 0 + (19 * q)) = ((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0))
+    (requires_6 : (Vermilion.Seq.index input_limbs 1 + c0) = ((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1))
+    (requires_7 : (Vermilion.Seq.index input_limbs 2 + c1) = ((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2))
+    (requires_8 : (Vermilion.Seq.index input_limbs 3 + c2) = ((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3))
+    (requires_9 : (Vermilion.Seq.index input_limbs 4 + c3) = ((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4))
+    (requires_10 : Vermilion.Seq.index final_limbs 0 < Vermilion.Bits.shl 64 1 51)
+    (requires_11 : Vermilion.Seq.index final_limbs 1 < Vermilion.Bits.shl 64 1 51)
+    (requires_12 : Vermilion.Seq.index final_limbs 2 < Vermilion.Bits.shl 64 1 51)
+    (requires_13 : Vermilion.Seq.index final_limbs 3 < Vermilion.Bits.shl 64 1 51)
+    (requires_14 : Vermilion.Seq.index final_limbs 4 < Vermilion.Bits.shl 64 1 51)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 51 > 0)
+    (call_lemma_pow2_adds_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 51))
+    (call_lemma_pow2_adds_1_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 102)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 102))
+    (call_lemma_pow2_adds_2_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 153)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 153))
+    (call_lemma_pow2_adds_3_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 204)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 204)) :
+    layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.Seq.index input_limbs 0 + Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * Vermilion.Seq.index input_limbs 1)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 102 * Vermilion.Seq.index input_limbs 2)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 153 * Vermilion.Seq.index input_limbs 3)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 204 * Vermilion.Seq.index input_limbs 4)) := by
+  iterate 13 (try first | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_extended_gcd]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.factorial]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.shifted_binomial_sum]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.number_theory_lemmas.product_of_multiples]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u8]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u16]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u32]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u64]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.pow_lemmas.pow2_sum_u128]; try norm_num) | (rw [layer_a.lemmas.common_lemmas.sum_lemmas.seq_sum]; try norm_num))
+  vrml [layer_a.specs.field_specs.sum_of_limbs_bounded, layer_a.backend.serial.u64.field.impl__5.add_req, vstd.arithmetic.power2.pow2, layer_a.specs.field_specs_u64.u64_5_as_nat, layer_a.specs.field_specs.spec_add_fe51_limbs, layer_a.specs.field_specs_u64.p, layer_a.specs.field_specs_u64.field_canonical, layer_a.specs.field_specs_u64.u64_5_as_field_canonical, layer_a.specs.field_specs.fe51_as_canonical_nat, layer_a.specs.field_specs.field_add, layer_a.backend.serial.u64.field.impl__5.obeys_add_spec, layer_a.backend.serial.u64.field.impl__5.add_spec, layer_a.specs.field_specs.fe51_as_nat, layer_a.specs.field_specs.u64_5_bounded, layer_a.specs.field_specs.fe51_limbs_bounded, layer_a.specs.field_specs_u64.mask51, layer_a.specs.field_specs_u64.spec_reduce, layer_a.backend.serial.u64.field.LOW_51_BIT_MASK, layer_a.backend.serial.u64.field.impl__8.sub_req, layer_a.specs.field_specs.field_sub, layer_a.backend.serial.u64.field.impl__8.obeys_sub_spec, layer_a.specs.field_specs.spec_sub_limbs, layer_a.backend.serial.u64.field.impl__8.sub_spec, layer_a.backend.serial.u64.field.impl__11.mul_req, layer_a.lemmas.field_lemmas.mul_lemmas.mul_term_product_bounds_spec, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_0_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c0_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c1_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c2_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c3_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_c4_val, layer_a.lemmas.field_lemmas.mul_lemmas.mul_ci_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_out_val_boundaries, layer_a.lemmas.field_lemmas.mul_lemmas.mul_return, layer_a.lemmas.field_lemmas.mul_lemmas.mul_boundary_spec, layer_a.specs.field_specs.field_mul, layer_a.backend.serial.u64.field.impl__11.obeys_mul_spec, layer_a.backend.serial.u64.field.impl__11.mul_spec, layer_a.lemmas.field_lemmas.negate_lemmas.all_neg_limbs_positive, layer_a.specs.field_specs_u64.sixteen_p_vec, layer_a.specs.field_specs_u64.pre_reduce_limbs, layer_a.specs.field_specs_u64.spec_negate, layer_a.backend.serial.u64.field.impl__13.neg_req, layer_a.specs.field_specs.field_neg, layer_a.backend.serial.u64.field.impl__13.obeys_neg_spec, layer_a.backend.serial.u64.field.impl__13.neg_spec, vstd.slice.len_returns_clause_autospec, layer_a.specs.core_specs.spec_load8_at, layer_a.specs.core_specs.u8_32_as_nat, layer_a.specs.field_specs_u64.compute_q_arr, layer_a.specs.field_specs_u64.compute_unmasked_limbs, layer_a.specs.field_specs_u64.compute_q_spec, layer_a.specs.field_specs_u64.reduce_with_q_spec, layer_a.specs.field_specs_u64.bit_arrange, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.bytes_match_limbs_packing, layer_a.lemmas.field_lemmas.pow2k_lemmas.term_product_bounds_spec, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_0_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.c0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c3_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.c4_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ci_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a2_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a3_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a4_0_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.carry_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.a0_2_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.ai_val_boundaries, layer_a.lemmas.field_lemmas.pow2k_lemmas.a1_1_val, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_return, layer_a.lemmas.field_lemmas.pow2k_lemmas.pow2k_loop_boundary_spec, vstd.bits.low_bits_mask, layer_a.specs.primality_specs.is_prime, layer_a.lemmas.common_lemmas.number_theory_lemmas.spec_mod_inverse, layer_a.specs.core_specs.word64_from_bytes, layer_a.specs.edwards_specs.edwards_x, layer_a.specs.edwards_specs.edwards_y, layer_a.specs.edwards_specs.edwards_z, layer_a.specs.edwards_specs.edwards_t, layer_a.specs.edwards_specs.edwards_point_limbs_bounded, layer_a.specs.field_specs.spec_fe51_as_bytes, layer_a.core_assumes.seq_from32, layer_a.specs.field_specs.as_bytes_post, layer_a.specs.field_specs.from_bytes_post, layer_a.core_assumes.seq_to_array_32, layer_a.specs.field_specs.field_element_from_bytes, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb0_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb1_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb2_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb3_byte_contribution, layer_a.lemmas.field_lemmas.limbs_to_bytes_lemmas.limb4_byte_contribution, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mul_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_div_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_close_mod_u8_t51_cond, layer_a.lemmas.field_lemmas.load8_lemmas.pow2_mul_div_mod_small_mod_u8_t51_cond, layer_a.specs.field_specs.field_inv, layer_a.specs.field_specs.field_square, layer_a.constants.SQRT_M1, layer_a.specs.field_specs.sqrt_m1, layer_a.specs.field_specs.is_negative, layer_a.specs.field_specs.nat_invsqrt, layer_a.specs.field_specs.field_abs, layer_a.specs.scalar52_specs.group_order]
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_5
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_10 29a45ef6840647f9
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_10`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:71:12-74:51`
+- Rust/SST construct: Rust source assertion
+- AssertId: `10`
+- Statement hash: `29a45ef6840647f9`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index final_limbs vrml_i0⟩
+-/
+def assert_10_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 71
+  startColumn := 12
+  endLine := 74
+  endColumn := 51
+  assertId := "10"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping"
+  kind := "assert"
+  statementHash := "29a45ef6840647f9"
+}
+@[vrml_obligation] theorem assert_10
+    (input_limbs : (Vermilion.Seq Int))
+    (final_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (c0 : Int)
+    (c1 : Int)
+    (c2 : Int)
+    (c3 : Int)
+    (c4 : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.Seq.len final_limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len final_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index final_limbs vrml_i0))))
+    (requires_4 : Vermilion.inUnsignedRange 64 q)
+    (requires_5 : (Vermilion.Seq.index input_limbs 0 + (19 * q)) = ((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0))
+    (requires_6 : (Vermilion.Seq.index input_limbs 1 + c0) = ((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1))
+    (requires_7 : (Vermilion.Seq.index input_limbs 2 + c1) = ((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2))
+    (requires_8 : (Vermilion.Seq.index input_limbs 3 + c2) = ((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3))
+    (requires_9 : (Vermilion.Seq.index input_limbs 4 + c3) = ((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4))
+    (requires_10 : Vermilion.Seq.index final_limbs 0 < Vermilion.Bits.shl 64 1 51)
+    (requires_11 : Vermilion.Seq.index final_limbs 1 < Vermilion.Bits.shl 64 1 51)
+    (requires_12 : Vermilion.Seq.index final_limbs 2 < Vermilion.Bits.shl 64 1 51)
+    (requires_13 : Vermilion.Seq.index final_limbs 3 < Vermilion.Bits.shl 64 1 51)
+    (requires_14 : Vermilion.Seq.index final_limbs 4 < Vermilion.Bits.shl 64 1 51)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 51 > 0)
+    (call_lemma_pow2_adds_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 51))
+    (call_lemma_pow2_adds_1_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 102)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 102))
+    (call_lemma_pow2_adds_2_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 153)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 153))
+    (call_lemma_pow2_adds_3_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 204)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 204))
+    (assert_5 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.Seq.index input_limbs 0 + Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * Vermilion.Seq.index input_limbs 1)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 102 * Vermilion.Seq.index input_limbs 2)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 153 * Vermilion.Seq.index input_limbs 3)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 204 * Vermilion.Seq.index input_limbs 4)))
+    (assume_21 : True)
+    (call_lemma_mul_is_commutative_ensures_0 : (vstd.arithmetic.power2.pow2 51 * Vermilion.Seq.index input_limbs 1) = (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51))
+    (call_lemma_mul_is_commutative_1_ensures_0 : (vstd.arithmetic.power2.pow2 102 * Vermilion.Seq.index input_limbs 2) = (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102))
+    (call_lemma_mul_is_commutative_2_ensures_0 : (vstd.arithmetic.power2.pow2 153 * Vermilion.Seq.index input_limbs 3) = (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153))
+    (call_lemma_mul_is_commutative_3_ensures_0 : (vstd.arithmetic.power2.pow2 204 * Vermilion.Seq.index input_limbs 4) = (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204)) :
+    layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = ((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_10
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_11 02e52ad1b62fee8a
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_11`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:81:12-83:67`
+- Rust/SST construct: Rust source assertion
+- AssertId: `11`
+- Statement hash: `02e52ad1b62fee8a`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index final_limbs vrml_i0⟩
+-/
+def assert_11_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 81
+  startColumn := 12
+  endLine := 83
+  endColumn := 67
+  assertId := "11"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping"
+  kind := "assert"
+  statementHash := "02e52ad1b62fee8a"
+}
+@[vrml_obligation] theorem assert_11
+    (input_limbs : (Vermilion.Seq Int))
+    (final_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (c0 : Int)
+    (c1 : Int)
+    (c2 : Int)
+    (c3 : Int)
+    (c4 : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.Seq.len final_limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len final_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index final_limbs vrml_i0))))
+    (requires_4 : Vermilion.inUnsignedRange 64 q)
+    (requires_5 : (Vermilion.Seq.index input_limbs 0 + (19 * q)) = ((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0))
+    (requires_6 : (Vermilion.Seq.index input_limbs 1 + c0) = ((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1))
+    (requires_7 : (Vermilion.Seq.index input_limbs 2 + c1) = ((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2))
+    (requires_8 : (Vermilion.Seq.index input_limbs 3 + c2) = ((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3))
+    (requires_9 : (Vermilion.Seq.index input_limbs 4 + c3) = ((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4))
+    (requires_10 : Vermilion.Seq.index final_limbs 0 < Vermilion.Bits.shl 64 1 51)
+    (requires_11 : Vermilion.Seq.index final_limbs 1 < Vermilion.Bits.shl 64 1 51)
+    (requires_12 : Vermilion.Seq.index final_limbs 2 < Vermilion.Bits.shl 64 1 51)
+    (requires_13 : Vermilion.Seq.index final_limbs 3 < Vermilion.Bits.shl 64 1 51)
+    (requires_14 : Vermilion.Seq.index final_limbs 4 < Vermilion.Bits.shl 64 1 51)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 51 > 0)
+    (call_lemma_pow2_adds_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 51))
+    (call_lemma_pow2_adds_1_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 102)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 102))
+    (call_lemma_pow2_adds_2_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 153)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 153))
+    (call_lemma_pow2_adds_3_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 204)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 204))
+    (assert_5 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.Seq.index input_limbs 0 + Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * Vermilion.Seq.index input_limbs 1)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 102 * Vermilion.Seq.index input_limbs 2)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 153 * Vermilion.Seq.index input_limbs 3)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 204 * Vermilion.Seq.index input_limbs 4)))
+    (assume_21 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = ((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204)))) :
+    (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = (((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204)) + (19 * q)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_11
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_15 6758d18ff3933aaf
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_15`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:88:12-90:78`
+- Rust/SST construct: Rust source assertion
+- AssertId: `15`
+- Statement hash: `6758d18ff3933aaf`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index final_limbs vrml_i0⟩
+-/
+def assert_15_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 88
+  startColumn := 12
+  endLine := 90
+  endColumn := 78
+  assertId := "15"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping"
+  kind := "assert"
+  statementHash := "6758d18ff3933aaf"
+}
+@[vrml_obligation] theorem assert_15
+    (input_limbs : (Vermilion.Seq Int))
+    (final_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (c0 : Int)
+    (c1 : Int)
+    (c2 : Int)
+    (c3 : Int)
+    (c4 : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.Seq.len final_limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len final_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index final_limbs vrml_i0))))
+    (requires_4 : Vermilion.inUnsignedRange 64 q)
+    (requires_5 : (Vermilion.Seq.index input_limbs 0 + (19 * q)) = ((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0))
+    (requires_6 : (Vermilion.Seq.index input_limbs 1 + c0) = ((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1))
+    (requires_7 : (Vermilion.Seq.index input_limbs 2 + c1) = ((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2))
+    (requires_8 : (Vermilion.Seq.index input_limbs 3 + c2) = ((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3))
+    (requires_9 : (Vermilion.Seq.index input_limbs 4 + c3) = ((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4))
+    (requires_10 : Vermilion.Seq.index final_limbs 0 < Vermilion.Bits.shl 64 1 51)
+    (requires_11 : Vermilion.Seq.index final_limbs 1 < Vermilion.Bits.shl 64 1 51)
+    (requires_12 : Vermilion.Seq.index final_limbs 2 < Vermilion.Bits.shl 64 1 51)
+    (requires_13 : Vermilion.Seq.index final_limbs 3 < Vermilion.Bits.shl 64 1 51)
+    (requires_14 : Vermilion.Seq.index final_limbs 4 < Vermilion.Bits.shl 64 1 51)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 51 > 0)
+    (call_lemma_pow2_adds_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 51))
+    (call_lemma_pow2_adds_1_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 102)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 102))
+    (call_lemma_pow2_adds_2_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 153)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 153))
+    (call_lemma_pow2_adds_3_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 204)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 204))
+    (assert_5 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.Seq.index input_limbs 0 + Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * Vermilion.Seq.index input_limbs 1)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 102 * Vermilion.Seq.index input_limbs 2)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 153 * Vermilion.Seq.index input_limbs 3)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 204 * Vermilion.Seq.index input_limbs 4)))
+    (assume_21 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = ((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204))))
+    (assert_11 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = (((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204)) + (19 * q)))
+    (assume_23 : True)
+    (call_lemma_mul_is_distributive_sub_other_way_ensures_0 : ((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51) = ((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) * vstd.arithmetic.power2.pow2 51) - (c0 * vstd.arithmetic.power2.pow2 51)))
+    (call_lemma_mul_is_distributive_add_other_way_ensures_0 : (((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) * vstd.arithmetic.power2.pow2 51) = (((c1 * vstd.arithmetic.power2.pow2 51) * vstd.arithmetic.power2.pow2 51) + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)))
+    (call_lemma_mul_is_associative_ensures_0 : (c1 * (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 51)) = ((c1 * vstd.arithmetic.power2.pow2 51) * vstd.arithmetic.power2.pow2 51)) :
+    ((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51) = (((c1 * vstd.arithmetic.power2.pow2 102) + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) - (c0 * vstd.arithmetic.power2.pow2 51)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_15
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_19 a515397dc5031cc8
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_19`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:104:12-106:80`
+- Rust/SST construct: Rust source assertion
+- AssertId: `19`
+- Statement hash: `a515397dc5031cc8`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index final_limbs vrml_i0⟩
+-/
+def assert_19_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 104
+  startColumn := 12
+  endLine := 106
+  endColumn := 80
+  assertId := "19"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping"
+  kind := "assert"
+  statementHash := "a515397dc5031cc8"
+}
+@[vrml_obligation] theorem assert_19
+    (input_limbs : (Vermilion.Seq Int))
+    (final_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (c0 : Int)
+    (c1 : Int)
+    (c2 : Int)
+    (c3 : Int)
+    (c4 : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.Seq.len final_limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len final_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index final_limbs vrml_i0))))
+    (requires_4 : Vermilion.inUnsignedRange 64 q)
+    (requires_5 : (Vermilion.Seq.index input_limbs 0 + (19 * q)) = ((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0))
+    (requires_6 : (Vermilion.Seq.index input_limbs 1 + c0) = ((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1))
+    (requires_7 : (Vermilion.Seq.index input_limbs 2 + c1) = ((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2))
+    (requires_8 : (Vermilion.Seq.index input_limbs 3 + c2) = ((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3))
+    (requires_9 : (Vermilion.Seq.index input_limbs 4 + c3) = ((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4))
+    (requires_10 : Vermilion.Seq.index final_limbs 0 < Vermilion.Bits.shl 64 1 51)
+    (requires_11 : Vermilion.Seq.index final_limbs 1 < Vermilion.Bits.shl 64 1 51)
+    (requires_12 : Vermilion.Seq.index final_limbs 2 < Vermilion.Bits.shl 64 1 51)
+    (requires_13 : Vermilion.Seq.index final_limbs 3 < Vermilion.Bits.shl 64 1 51)
+    (requires_14 : Vermilion.Seq.index final_limbs 4 < Vermilion.Bits.shl 64 1 51)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 51 > 0)
+    (call_lemma_pow2_adds_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 51))
+    (call_lemma_pow2_adds_1_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 102)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 102))
+    (call_lemma_pow2_adds_2_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 153)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 153))
+    (call_lemma_pow2_adds_3_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 204)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 204))
+    (assert_5 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.Seq.index input_limbs 0 + Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * Vermilion.Seq.index input_limbs 1)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 102 * Vermilion.Seq.index input_limbs 2)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 153 * Vermilion.Seq.index input_limbs 3)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 204 * Vermilion.Seq.index input_limbs 4)))
+    (assume_21 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = ((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204))))
+    (assert_11 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = (((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204)) + (19 * q)))
+    (assume_23 : True → (((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51) = (((c1 * vstd.arithmetic.power2.pow2 102) + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) - (c0 * vstd.arithmetic.power2.pow2 51))))
+    (assume_24 : True)
+    (call_lemma_mul_is_distributive_sub_other_way_1_ensures_0 : ((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) - c1) * vstd.arithmetic.power2.pow2 102) = ((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) * vstd.arithmetic.power2.pow2 102) - (c1 * vstd.arithmetic.power2.pow2 102)))
+    (call_lemma_mul_is_distributive_add_other_way_1_ensures_0 : (((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) * vstd.arithmetic.power2.pow2 102) = (((c2 * vstd.arithmetic.power2.pow2 51) * vstd.arithmetic.power2.pow2 102) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)))
+    (call_lemma_mul_is_associative_1_ensures_0 : (c2 * (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 102)) = ((c2 * vstd.arithmetic.power2.pow2 51) * vstd.arithmetic.power2.pow2 102)) :
+    ((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) - c1) * vstd.arithmetic.power2.pow2 102) = (((c2 * vstd.arithmetic.power2.pow2 153) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)) - (c1 * vstd.arithmetic.power2.pow2 102)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_19
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_23 bbf123c4f4dc7632
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_23`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:120:12-122:80`
+- Rust/SST construct: Rust source assertion
+- AssertId: `23`
+- Statement hash: `bbf123c4f4dc7632`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index final_limbs vrml_i0⟩
+-/
+def assert_23_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 120
+  startColumn := 12
+  endLine := 122
+  endColumn := 80
+  assertId := "23"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping"
+  kind := "assert"
+  statementHash := "bbf123c4f4dc7632"
+}
+@[vrml_obligation] theorem assert_23
+    (input_limbs : (Vermilion.Seq Int))
+    (final_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (c0 : Int)
+    (c1 : Int)
+    (c2 : Int)
+    (c3 : Int)
+    (c4 : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.Seq.len final_limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len final_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index final_limbs vrml_i0))))
+    (requires_4 : Vermilion.inUnsignedRange 64 q)
+    (requires_5 : (Vermilion.Seq.index input_limbs 0 + (19 * q)) = ((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0))
+    (requires_6 : (Vermilion.Seq.index input_limbs 1 + c0) = ((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1))
+    (requires_7 : (Vermilion.Seq.index input_limbs 2 + c1) = ((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2))
+    (requires_8 : (Vermilion.Seq.index input_limbs 3 + c2) = ((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3))
+    (requires_9 : (Vermilion.Seq.index input_limbs 4 + c3) = ((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4))
+    (requires_10 : Vermilion.Seq.index final_limbs 0 < Vermilion.Bits.shl 64 1 51)
+    (requires_11 : Vermilion.Seq.index final_limbs 1 < Vermilion.Bits.shl 64 1 51)
+    (requires_12 : Vermilion.Seq.index final_limbs 2 < Vermilion.Bits.shl 64 1 51)
+    (requires_13 : Vermilion.Seq.index final_limbs 3 < Vermilion.Bits.shl 64 1 51)
+    (requires_14 : Vermilion.Seq.index final_limbs 4 < Vermilion.Bits.shl 64 1 51)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 51 > 0)
+    (call_lemma_pow2_adds_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 51))
+    (call_lemma_pow2_adds_1_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 102)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 102))
+    (call_lemma_pow2_adds_2_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 153)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 153))
+    (call_lemma_pow2_adds_3_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 204)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 204))
+    (assert_5 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.Seq.index input_limbs 0 + Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * Vermilion.Seq.index input_limbs 1)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 102 * Vermilion.Seq.index input_limbs 2)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 153 * Vermilion.Seq.index input_limbs 3)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 204 * Vermilion.Seq.index input_limbs 4)))
+    (assume_21 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = ((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204))))
+    (assert_11 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = (((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204)) + (19 * q)))
+    (assume_23 : True → (((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51) = (((c1 * vstd.arithmetic.power2.pow2 102) + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) - (c0 * vstd.arithmetic.power2.pow2 51))))
+    (assume_24 : True → (((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) - c1) * vstd.arithmetic.power2.pow2 102) = (((c2 * vstd.arithmetic.power2.pow2 153) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)) - (c1 * vstd.arithmetic.power2.pow2 102))))
+    (assume_25 : True)
+    (call_lemma_mul_is_distributive_sub_other_way_2_ensures_0 : ((((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) - c2) * vstd.arithmetic.power2.pow2 153) = ((((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) * vstd.arithmetic.power2.pow2 153) - (c2 * vstd.arithmetic.power2.pow2 153)))
+    (call_lemma_mul_is_distributive_add_other_way_2_ensures_0 : (((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) * vstd.arithmetic.power2.pow2 153) = (((c3 * vstd.arithmetic.power2.pow2 51) * vstd.arithmetic.power2.pow2 153) + (Vermilion.Seq.index final_limbs 3 * vstd.arithmetic.power2.pow2 153)))
+    (call_lemma_mul_is_associative_2_ensures_0 : (c3 * (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 153)) = ((c3 * vstd.arithmetic.power2.pow2 51) * vstd.arithmetic.power2.pow2 153)) :
+    ((((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) - c2) * vstd.arithmetic.power2.pow2 153) = (((c3 * vstd.arithmetic.power2.pow2 204) + (Vermilion.Seq.index final_limbs 3 * vstd.arithmetic.power2.pow2 153)) - (c2 * vstd.arithmetic.power2.pow2 153)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_23
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_27 80e7fa83bc1f34a4
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_27`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:136:12-138:80`
+- Rust/SST construct: Rust source assertion
+- AssertId: `27`
+- Statement hash: `80e7fa83bc1f34a4`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index final_limbs vrml_i0⟩
+-/
+def assert_27_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 136
+  startColumn := 12
+  endLine := 138
+  endColumn := 80
+  assertId := "27"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping"
+  kind := "assert"
+  statementHash := "80e7fa83bc1f34a4"
+}
+@[vrml_obligation] theorem assert_27
+    (input_limbs : (Vermilion.Seq Int))
+    (final_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (c0 : Int)
+    (c1 : Int)
+    (c2 : Int)
+    (c3 : Int)
+    (c4 : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.Seq.len final_limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len final_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index final_limbs vrml_i0))))
+    (requires_4 : Vermilion.inUnsignedRange 64 q)
+    (requires_5 : (Vermilion.Seq.index input_limbs 0 + (19 * q)) = ((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0))
+    (requires_6 : (Vermilion.Seq.index input_limbs 1 + c0) = ((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1))
+    (requires_7 : (Vermilion.Seq.index input_limbs 2 + c1) = ((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2))
+    (requires_8 : (Vermilion.Seq.index input_limbs 3 + c2) = ((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3))
+    (requires_9 : (Vermilion.Seq.index input_limbs 4 + c3) = ((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4))
+    (requires_10 : Vermilion.Seq.index final_limbs 0 < Vermilion.Bits.shl 64 1 51)
+    (requires_11 : Vermilion.Seq.index final_limbs 1 < Vermilion.Bits.shl 64 1 51)
+    (requires_12 : Vermilion.Seq.index final_limbs 2 < Vermilion.Bits.shl 64 1 51)
+    (requires_13 : Vermilion.Seq.index final_limbs 3 < Vermilion.Bits.shl 64 1 51)
+    (requires_14 : Vermilion.Seq.index final_limbs 4 < Vermilion.Bits.shl 64 1 51)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 51 > 0)
+    (call_lemma_pow2_adds_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 51))
+    (call_lemma_pow2_adds_1_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 102)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 102))
+    (call_lemma_pow2_adds_2_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 153)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 153))
+    (call_lemma_pow2_adds_3_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 204)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 204))
+    (assert_5 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.Seq.index input_limbs 0 + Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * Vermilion.Seq.index input_limbs 1)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 102 * Vermilion.Seq.index input_limbs 2)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 153 * Vermilion.Seq.index input_limbs 3)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 204 * Vermilion.Seq.index input_limbs 4)))
+    (assume_21 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = ((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204))))
+    (assert_11 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = (((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204)) + (19 * q)))
+    (assume_23 : True → (((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51) = (((c1 * vstd.arithmetic.power2.pow2 102) + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) - (c0 * vstd.arithmetic.power2.pow2 51))))
+    (assume_24 : True → (((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) - c1) * vstd.arithmetic.power2.pow2 102) = (((c2 * vstd.arithmetic.power2.pow2 153) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)) - (c1 * vstd.arithmetic.power2.pow2 102))))
+    (assume_25 : True → (((((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) - c2) * vstd.arithmetic.power2.pow2 153) = (((c3 * vstd.arithmetic.power2.pow2 204) + (Vermilion.Seq.index final_limbs 3 * vstd.arithmetic.power2.pow2 153)) - (c2 * vstd.arithmetic.power2.pow2 153))))
+    (assume_26 : True)
+    (call_lemma_mul_is_distributive_sub_other_way_3_ensures_0 : ((((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4) - c3) * vstd.arithmetic.power2.pow2 204) = ((((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4) * vstd.arithmetic.power2.pow2 204) - (c3 * vstd.arithmetic.power2.pow2 204)))
+    (call_lemma_mul_is_distributive_add_other_way_3_ensures_0 : (((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4) * vstd.arithmetic.power2.pow2 204) = (((c4 * vstd.arithmetic.power2.pow2 51) * vstd.arithmetic.power2.pow2 204) + (Vermilion.Seq.index final_limbs 4 * vstd.arithmetic.power2.pow2 204)))
+    (call_lemma_mul_is_associative_3_ensures_0 : (c4 * (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 204)) = ((c4 * vstd.arithmetic.power2.pow2 51) * vstd.arithmetic.power2.pow2 204)) :
+    ((((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4) - c3) * vstd.arithmetic.power2.pow2 204) = (((c4 * vstd.arithmetic.power2.pow2 255) + (Vermilion.Seq.index final_limbs 4 * vstd.arithmetic.power2.pow2 204)) - (c3 * vstd.arithmetic.power2.pow2 204)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_27
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_28 07bb8cff721c2269
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_28`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:172:12-177:73`
+- Rust/SST construct: Rust source assertion
+- AssertId: `28`
+- Statement hash: `07bb8cff721c2269`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index final_limbs vrml_i0⟩
+-/
+def assert_28_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 172
+  startColumn := 12
+  endLine := 177
+  endColumn := 73
+  assertId := "28"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping"
+  kind := "assert"
+  statementHash := "07bb8cff721c2269"
+}
+@[vrml_obligation] theorem assert_28
+    (input_limbs : (Vermilion.Seq Int))
+    (final_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (c0 : Int)
+    (c1 : Int)
+    (c2 : Int)
+    (c3 : Int)
+    (c4 : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.Seq.len final_limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len final_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index final_limbs vrml_i0))))
+    (requires_4 : Vermilion.inUnsignedRange 64 q)
+    (requires_5 : (Vermilion.Seq.index input_limbs 0 + (19 * q)) = ((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0))
+    (requires_6 : (Vermilion.Seq.index input_limbs 1 + c0) = ((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1))
+    (requires_7 : (Vermilion.Seq.index input_limbs 2 + c1) = ((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2))
+    (requires_8 : (Vermilion.Seq.index input_limbs 3 + c2) = ((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3))
+    (requires_9 : (Vermilion.Seq.index input_limbs 4 + c3) = ((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4))
+    (requires_10 : Vermilion.Seq.index final_limbs 0 < Vermilion.Bits.shl 64 1 51)
+    (requires_11 : Vermilion.Seq.index final_limbs 1 < Vermilion.Bits.shl 64 1 51)
+    (requires_12 : Vermilion.Seq.index final_limbs 2 < Vermilion.Bits.shl 64 1 51)
+    (requires_13 : Vermilion.Seq.index final_limbs 3 < Vermilion.Bits.shl 64 1 51)
+    (requires_14 : Vermilion.Seq.index final_limbs 4 < Vermilion.Bits.shl 64 1 51)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 51 > 0)
+    (call_lemma_pow2_adds_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 51))
+    (call_lemma_pow2_adds_1_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 102)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 102))
+    (call_lemma_pow2_adds_2_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 153)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 153))
+    (call_lemma_pow2_adds_3_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 204)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 204))
+    (assert_5 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.Seq.index input_limbs 0 + Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * Vermilion.Seq.index input_limbs 1)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 102 * Vermilion.Seq.index input_limbs 2)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 153 * Vermilion.Seq.index input_limbs 3)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 204 * Vermilion.Seq.index input_limbs 4)))
+    (assume_21 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = ((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204))))
+    (assert_11 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = (((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204)) + (19 * q)))
+    (assume_23 : True → (((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51) = (((c1 * vstd.arithmetic.power2.pow2 102) + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) - (c0 * vstd.arithmetic.power2.pow2 51))))
+    (assume_24 : True → (((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) - c1) * vstd.arithmetic.power2.pow2 102) = (((c2 * vstd.arithmetic.power2.pow2 153) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)) - (c1 * vstd.arithmetic.power2.pow2 102))))
+    (assume_25 : True → (((((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) - c2) * vstd.arithmetic.power2.pow2 153) = (((c3 * vstd.arithmetic.power2.pow2 204) + (Vermilion.Seq.index final_limbs 3 * vstd.arithmetic.power2.pow2 153)) - (c2 * vstd.arithmetic.power2.pow2 153))))
+    (assume_26 : True → (((((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4) - c3) * vstd.arithmetic.power2.pow2 204) = (((c4 * vstd.arithmetic.power2.pow2 255) + (Vermilion.Seq.index final_limbs 4 * vstd.arithmetic.power2.pow2 204)) - (c3 * vstd.arithmetic.power2.pow2 204)))) :
+    (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = ((((((((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0) - (19 * q)) + ((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51)) + ((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) - c1) * vstd.arithmetic.power2.pow2 102)) + ((((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) - c2) * vstd.arithmetic.power2.pow2 153)) + ((((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4) - c3) * vstd.arithmetic.power2.pow2 204)) + (19 * q)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_28
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_29 4451b1054ec4b1b2
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_29`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:180:12-188:97`
+- Rust/SST construct: Rust source assertion
+- AssertId: `29`
+- Statement hash: `4451b1054ec4b1b2`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index final_limbs vrml_i0⟩
+-/
+def assert_29_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 180
+  startColumn := 12
+  endLine := 188
+  endColumn := 97
+  assertId := "29"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping"
+  kind := "assert"
+  statementHash := "4451b1054ec4b1b2"
+}
+@[vrml_obligation] theorem assert_29
+    (input_limbs : (Vermilion.Seq Int))
+    (final_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (c0 : Int)
+    (c1 : Int)
+    (c2 : Int)
+    (c3 : Int)
+    (c4 : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.Seq.len final_limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len final_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index final_limbs vrml_i0))))
+    (requires_4 : Vermilion.inUnsignedRange 64 q)
+    (requires_5 : (Vermilion.Seq.index input_limbs 0 + (19 * q)) = ((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0))
+    (requires_6 : (Vermilion.Seq.index input_limbs 1 + c0) = ((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1))
+    (requires_7 : (Vermilion.Seq.index input_limbs 2 + c1) = ((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2))
+    (requires_8 : (Vermilion.Seq.index input_limbs 3 + c2) = ((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3))
+    (requires_9 : (Vermilion.Seq.index input_limbs 4 + c3) = ((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4))
+    (requires_10 : Vermilion.Seq.index final_limbs 0 < Vermilion.Bits.shl 64 1 51)
+    (requires_11 : Vermilion.Seq.index final_limbs 1 < Vermilion.Bits.shl 64 1 51)
+    (requires_12 : Vermilion.Seq.index final_limbs 2 < Vermilion.Bits.shl 64 1 51)
+    (requires_13 : Vermilion.Seq.index final_limbs 3 < Vermilion.Bits.shl 64 1 51)
+    (requires_14 : Vermilion.Seq.index final_limbs 4 < Vermilion.Bits.shl 64 1 51)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 51 > 0)
+    (call_lemma_pow2_adds_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 51))
+    (call_lemma_pow2_adds_1_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 102)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 102))
+    (call_lemma_pow2_adds_2_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 153)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 153))
+    (call_lemma_pow2_adds_3_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 204)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 204))
+    (assert_5 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.Seq.index input_limbs 0 + Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * Vermilion.Seq.index input_limbs 1)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 102 * Vermilion.Seq.index input_limbs 2)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 153 * Vermilion.Seq.index input_limbs 3)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 204 * Vermilion.Seq.index input_limbs 4)))
+    (assume_21 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = ((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204))))
+    (assert_11 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = (((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204)) + (19 * q)))
+    (assume_23 : True → (((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51) = (((c1 * vstd.arithmetic.power2.pow2 102) + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) - (c0 * vstd.arithmetic.power2.pow2 51))))
+    (assume_24 : True → (((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) - c1) * vstd.arithmetic.power2.pow2 102) = (((c2 * vstd.arithmetic.power2.pow2 153) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)) - (c1 * vstd.arithmetic.power2.pow2 102))))
+    (assume_25 : True → (((((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) - c2) * vstd.arithmetic.power2.pow2 153) = (((c3 * vstd.arithmetic.power2.pow2 204) + (Vermilion.Seq.index final_limbs 3 * vstd.arithmetic.power2.pow2 153)) - (c2 * vstd.arithmetic.power2.pow2 153))))
+    (assume_26 : True → (((((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4) - c3) * vstd.arithmetic.power2.pow2 204) = (((c4 * vstd.arithmetic.power2.pow2 255) + (Vermilion.Seq.index final_limbs 4 * vstd.arithmetic.power2.pow2 204)) - (c3 * vstd.arithmetic.power2.pow2 204))))
+    (assert_28 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = ((((((((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0) - (19 * q)) + ((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51)) + ((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) - c1) * vstd.arithmetic.power2.pow2 102)) + ((((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) - c2) * vstd.arithmetic.power2.pow2 153)) + ((((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4) - c3) * vstd.arithmetic.power2.pow2 204)) + (19 * q))) :
+    (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = ((((((((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0) - (19 * q)) + (((c1 * vstd.arithmetic.power2.pow2 102) + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) - (c0 * vstd.arithmetic.power2.pow2 51))) + (((c2 * vstd.arithmetic.power2.pow2 153) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)) - (c1 * vstd.arithmetic.power2.pow2 102))) + (((c3 * vstd.arithmetic.power2.pow2 204) + (Vermilion.Seq.index final_limbs 3 * vstd.arithmetic.power2.pow2 153)) - (c2 * vstd.arithmetic.power2.pow2 153))) + (((c4 * vstd.arithmetic.power2.pow2 255) + (Vermilion.Seq.index final_limbs 4 * vstd.arithmetic.power2.pow2 204)) - (c3 * vstd.arithmetic.power2.pow2 204))) + (19 * q)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_29
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_30 7d646e9636269c28
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_30`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:198:12-200:75`
+- Rust/SST construct: Rust source assertion
+- AssertId: `30`
+- Statement hash: `7d646e9636269c28`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index final_limbs vrml_i0⟩
+-/
+def assert_30_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 198
+  startColumn := 12
+  endLine := 200
+  endColumn := 75
+  assertId := "30"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping"
+  kind := "assert"
+  statementHash := "7d646e9636269c28"
+}
+@[vrml_obligation] theorem assert_30
+    (input_limbs : (Vermilion.Seq Int))
+    (final_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (c0 : Int)
+    (c1 : Int)
+    (c2 : Int)
+    (c3 : Int)
+    (c4 : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.Seq.len final_limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len final_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index final_limbs vrml_i0))))
+    (requires_4 : Vermilion.inUnsignedRange 64 q)
+    (requires_5 : (Vermilion.Seq.index input_limbs 0 + (19 * q)) = ((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0))
+    (requires_6 : (Vermilion.Seq.index input_limbs 1 + c0) = ((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1))
+    (requires_7 : (Vermilion.Seq.index input_limbs 2 + c1) = ((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2))
+    (requires_8 : (Vermilion.Seq.index input_limbs 3 + c2) = ((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3))
+    (requires_9 : (Vermilion.Seq.index input_limbs 4 + c3) = ((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4))
+    (requires_10 : Vermilion.Seq.index final_limbs 0 < Vermilion.Bits.shl 64 1 51)
+    (requires_11 : Vermilion.Seq.index final_limbs 1 < Vermilion.Bits.shl 64 1 51)
+    (requires_12 : Vermilion.Seq.index final_limbs 2 < Vermilion.Bits.shl 64 1 51)
+    (requires_13 : Vermilion.Seq.index final_limbs 3 < Vermilion.Bits.shl 64 1 51)
+    (requires_14 : Vermilion.Seq.index final_limbs 4 < Vermilion.Bits.shl 64 1 51)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 51 > 0)
+    (call_lemma_pow2_adds_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 51))
+    (call_lemma_pow2_adds_1_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 102)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 102))
+    (call_lemma_pow2_adds_2_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 153)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 153))
+    (call_lemma_pow2_adds_3_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 204)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 204))
+    (assert_5 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.Seq.index input_limbs 0 + Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * Vermilion.Seq.index input_limbs 1)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 102 * Vermilion.Seq.index input_limbs 2)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 153 * Vermilion.Seq.index input_limbs 3)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 204 * Vermilion.Seq.index input_limbs 4)))
+    (assume_21 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = ((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204))))
+    (assert_11 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = (((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204)) + (19 * q)))
+    (assume_23 : True → (((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51) = (((c1 * vstd.arithmetic.power2.pow2 102) + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) - (c0 * vstd.arithmetic.power2.pow2 51))))
+    (assume_24 : True → (((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) - c1) * vstd.arithmetic.power2.pow2 102) = (((c2 * vstd.arithmetic.power2.pow2 153) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)) - (c1 * vstd.arithmetic.power2.pow2 102))))
+    (assume_25 : True → (((((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) - c2) * vstd.arithmetic.power2.pow2 153) = (((c3 * vstd.arithmetic.power2.pow2 204) + (Vermilion.Seq.index final_limbs 3 * vstd.arithmetic.power2.pow2 153)) - (c2 * vstd.arithmetic.power2.pow2 153))))
+    (assume_26 : True → (((((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4) - c3) * vstd.arithmetic.power2.pow2 204) = (((c4 * vstd.arithmetic.power2.pow2 255) + (Vermilion.Seq.index final_limbs 4 * vstd.arithmetic.power2.pow2 204)) - (c3 * vstd.arithmetic.power2.pow2 204))))
+    (assert_28 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = ((((((((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0) - (19 * q)) + ((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51)) + ((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) - c1) * vstd.arithmetic.power2.pow2 102)) + ((((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) - c2) * vstd.arithmetic.power2.pow2 153)) + ((((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4) - c3) * vstd.arithmetic.power2.pow2 204)) + (19 * q)))
+    (assert_29 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = ((((((((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0) - (19 * q)) + (((c1 * vstd.arithmetic.power2.pow2 102) + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) - (c0 * vstd.arithmetic.power2.pow2 51))) + (((c2 * vstd.arithmetic.power2.pow2 153) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)) - (c1 * vstd.arithmetic.power2.pow2 102))) + (((c3 * vstd.arithmetic.power2.pow2 204) + (Vermilion.Seq.index final_limbs 3 * vstd.arithmetic.power2.pow2 153)) - (c2 * vstd.arithmetic.power2.pow2 153))) + (((c4 * vstd.arithmetic.power2.pow2 255) + (Vermilion.Seq.index final_limbs 4 * vstd.arithmetic.power2.pow2 204)) - (c3 * vstd.arithmetic.power2.pow2 204))) + (19 * q))) :
+    (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = (((((Vermilion.Seq.index final_limbs 0 + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index final_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index final_limbs 4 * vstd.arithmetic.power2.pow2 204)) + (c4 * vstd.arithmetic.power2.pow2 255)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.assert_30
+
+-- vrml:begin layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.ensures_31 b08a7db21e9d8f5e
+/--
+Generated VC `layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.ensures_31`.
+
+- Rust source: `case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs:52:9-53:31`
+- Rust/SST construct: function postcondition (`ensures`)
+- AssertId: `31`
+- Statement hash: `b08a7db21e9d8f5e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.index input_limbs vrml_i0⟩ ⟨Vermilion.Seq.index final_limbs vrml_i0⟩
+-/
+def ensures_31_meta : Vermilion.ObligationMeta := {
+  rustFile := "case-studies/dalek-lite/upstream/curve25519-dalek/src/lemmas/field_lemmas/to_bytes_reduction_lemmas.rs"
+  startLine := 52
+  startColumn := 9
+  endLine := 53
+  endColumn := 31
+  assertId := "31"
+  functionName := "layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping"
+  kind := "ensures"
+  statementHash := "b08a7db21e9d8f5e"
+}
+@[vrml_obligation] theorem ensures_31
+    (input_limbs : (Vermilion.Seq Int))
+    (final_limbs : (Vermilion.Seq Int))
+    (q : Int)
+    (c0 : Int)
+    (c1 : Int)
+    (c2 : Int)
+    (c3 : Int)
+    (c4 : Int)
+    (requires_0 : Vermilion.Seq.len input_limbs = 5)
+    (requires_1 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len input_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index input_limbs vrml_i0))))
+    (requires_2 : Vermilion.Seq.len final_limbs = 5)
+    (requires_3 : (∀ (vrml_i0 : Int), (((0 ≤ vrml_i0) ∧ (vrml_i0 < Vermilion.Seq.len final_limbs)) → Vermilion.inUnsignedRange 64 (Vermilion.Seq.index final_limbs vrml_i0))))
+    (requires_4 : Vermilion.inUnsignedRange 64 q)
+    (requires_5 : (Vermilion.Seq.index input_limbs 0 + (19 * q)) = ((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0))
+    (requires_6 : (Vermilion.Seq.index input_limbs 1 + c0) = ((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1))
+    (requires_7 : (Vermilion.Seq.index input_limbs 2 + c1) = ((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2))
+    (requires_8 : (Vermilion.Seq.index input_limbs 3 + c2) = ((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3))
+    (requires_9 : (Vermilion.Seq.index input_limbs 4 + c3) = ((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4))
+    (requires_10 : Vermilion.Seq.index final_limbs 0 < Vermilion.Bits.shl 64 1 51)
+    (requires_11 : Vermilion.Seq.index final_limbs 1 < Vermilion.Bits.shl 64 1 51)
+    (requires_12 : Vermilion.Seq.index final_limbs 2 < Vermilion.Bits.shl 64 1 51)
+    (requires_13 : Vermilion.Seq.index final_limbs 3 < Vermilion.Bits.shl 64 1 51)
+    (requires_14 : Vermilion.Seq.index final_limbs 4 < Vermilion.Bits.shl 64 1 51)
+    (call_lemma_pow2_pos_ensures_0 : vstd.arithmetic.power2.pow2 51 > 0)
+    (call_lemma_pow2_adds_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 51)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 51))
+    (call_lemma_pow2_adds_1_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 102)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 102))
+    (call_lemma_pow2_adds_2_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 153)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 153))
+    (call_lemma_pow2_adds_3_ensures_0 : vstd.arithmetic.power2.pow2 (Vermilion.natClip (51 + 204)) = Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * vstd.arithmetic.power2.pow2 204))
+    (assert_5 : layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.natClip (Vermilion.Seq.index input_limbs 0 + Vermilion.natClip (vstd.arithmetic.power2.pow2 51 * Vermilion.Seq.index input_limbs 1)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 102 * Vermilion.Seq.index input_limbs 2)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 153 * Vermilion.Seq.index input_limbs 3)) + Vermilion.natClip (vstd.arithmetic.power2.pow2 204 * Vermilion.Seq.index input_limbs 4)))
+    (assume_21 : True → (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs = ((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204))))
+    (assert_11 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = (((((Vermilion.Seq.index input_limbs 0 + (Vermilion.Seq.index input_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index input_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index input_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index input_limbs 4 * vstd.arithmetic.power2.pow2 204)) + (19 * q)))
+    (assume_23 : True → (((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51) = (((c1 * vstd.arithmetic.power2.pow2 102) + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) - (c0 * vstd.arithmetic.power2.pow2 51))))
+    (assume_24 : True → (((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) - c1) * vstd.arithmetic.power2.pow2 102) = (((c2 * vstd.arithmetic.power2.pow2 153) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)) - (c1 * vstd.arithmetic.power2.pow2 102))))
+    (assume_25 : True → (((((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) - c2) * vstd.arithmetic.power2.pow2 153) = (((c3 * vstd.arithmetic.power2.pow2 204) + (Vermilion.Seq.index final_limbs 3 * vstd.arithmetic.power2.pow2 153)) - (c2 * vstd.arithmetic.power2.pow2 153))))
+    (assume_26 : True → (((((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4) - c3) * vstd.arithmetic.power2.pow2 204) = (((c4 * vstd.arithmetic.power2.pow2 255) + (Vermilion.Seq.index final_limbs 4 * vstd.arithmetic.power2.pow2 204)) - (c3 * vstd.arithmetic.power2.pow2 204))))
+    (assert_28 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = ((((((((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0) - (19 * q)) + ((((c1 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 1) - c0) * vstd.arithmetic.power2.pow2 51)) + ((((c2 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 2) - c1) * vstd.arithmetic.power2.pow2 102)) + ((((c3 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 3) - c2) * vstd.arithmetic.power2.pow2 153)) + ((((c4 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 4) - c3) * vstd.arithmetic.power2.pow2 204)) + (19 * q)))
+    (assert_29 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = ((((((((c0 * vstd.arithmetic.power2.pow2 51) + Vermilion.Seq.index final_limbs 0) - (19 * q)) + (((c1 * vstd.arithmetic.power2.pow2 102) + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) - (c0 * vstd.arithmetic.power2.pow2 51))) + (((c2 * vstd.arithmetic.power2.pow2 153) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)) - (c1 * vstd.arithmetic.power2.pow2 102))) + (((c3 * vstd.arithmetic.power2.pow2 204) + (Vermilion.Seq.index final_limbs 3 * vstd.arithmetic.power2.pow2 153)) - (c2 * vstd.arithmetic.power2.pow2 153))) + (((c4 * vstd.arithmetic.power2.pow2 255) + (Vermilion.Seq.index final_limbs 4 * vstd.arithmetic.power2.pow2 204)) - (c3 * vstd.arithmetic.power2.pow2 204))) + (19 * q)))
+    (assert_30 : (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = (((((Vermilion.Seq.index final_limbs 0 + (Vermilion.Seq.index final_limbs 1 * vstd.arithmetic.power2.pow2 51)) + (Vermilion.Seq.index final_limbs 2 * vstd.arithmetic.power2.pow2 102)) + (Vermilion.Seq.index final_limbs 3 * vstd.arithmetic.power2.pow2 153)) + (Vermilion.Seq.index final_limbs 4 * vstd.arithmetic.power2.pow2 204)) + (c4 * vstd.arithmetic.power2.pow2 255))) :
+    (layer_a.specs.field_specs_u64.u64_5_as_nat input_limbs + (19 * q)) = (layer_a.specs.field_specs_u64.u64_5_as_nat final_limbs + (c4 * vstd.arithmetic.power2.pow2 255)) := by
+  -- TODO(vermilion): automation failed; prove this obligation.
+  sorry
+-- vrml:end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping.ensures_31
+
+end layer_a.lemmas.field_lemmas.to_bytes_reduction_lemmas.lemma_reduction_telescoping
+

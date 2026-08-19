@@ -1,0 +1,174 @@
+% SMT-family / auto-active Rust verifiers: Prusti, Creusot, Flux, Kani,
+% VeriFast-for-Rust, RustHorn(Belt), Gillian-Rust, surveys.
+
+@article{astrauskas2019prusti,
+  author    = {Vytautas Astrauskas and Peter M{\"u}ller and Federico Poli and Alexander J. Summers},
+  title     = {Leveraging {Rust} Types for Modular Specification and Verification},
+  journal   = {Proc. ACM Program. Lang.},
+  volume    = {3},
+  number    = {OOPSLA},
+  articleno = {147},
+  year      = {2019},
+  doi       = {10.1145/3360573}
+}
+
+@inproceedings{astrauskas2022prusti-project,
+  author    = {Vytautas Astrauskas and Aurel B{\'i}l{\'y} and Jon{\'a}{\v s} Fiala and Zachary Grannan and Christoph Matheja and Peter M{\"u}ller and Federico Poli and Alexander J. Summers},
+  title     = {The {Prusti} Project: Formal Verification for {Rust}},
+  booktitle = {NASA Formal Methods (NFM 2022)},
+  series    = {LNCS},
+  volume    = {13260},
+  pages     = {88--108},
+  publisher = {Springer},
+  year      = {2022},
+  doi       = {10.1007/978-3-031-06773-0_5}
+}
+
+@inproceedings{denis2022creusot,
+  author    = {Xavier Denis and Jacques-Henri Jourdan and Claude March{\'e}},
+  title     = {Creusot: A Foundry for the Deductive Verification of {Rust} Programs},
+  booktitle = {Formal Methods and Software Engineering (ICFEM 2022)},
+  series    = {LNCS},
+  volume    = {13478},
+  pages     = {90--105},
+  publisher = {Springer},
+  year      = {2022},
+  doi       = {10.1007/978-3-031-17244-1_6}
+}
+
+@inproceedings{denis2023iterators,
+  author    = {Xavier Denis and Jacques-Henri Jourdan},
+  title     = {Specifying and Verifying Higher-order {Rust} Iterators},
+  booktitle = {Tools and Algorithms for the Construction and Analysis of Systems (TACAS 2023), Part II},
+  series    = {LNCS},
+  volume    = {13994},
+  pages     = {93--110},
+  publisher = {Springer},
+  year      = {2023},
+  doi       = {10.1007/978-3-031-30820-8_9}
+}
+
+@phdthesis{denis2023thesis,
+  author = {Xavier Denis},
+  title  = {Deductive Verification of {Rust} Programs},
+  school = {Universit{\'e} Paris-Saclay},
+  year   = {2023},
+  note   = {NNT 2023UPASG101; HAL tel-04517581}
+}
+
+@article{lehmann2023flux,
+  author    = {Nico Lehmann and Adam T. Geller and Niki Vazou and Ranjit Jhala},
+  title     = {Flux: Liquid Types for {Rust}},
+  journal   = {Proc. ACM Program. Lang.},
+  volume    = {7},
+  number    = {PLDI},
+  articleno = {169},
+  pages     = {1533--1557},
+  year      = {2023},
+  doi       = {10.1145/3591283}
+}
+
+@article{lehmann2025generic,
+  author  = {Nico Lehmann and Cole Kurashige and Nikhil Akiti and Niroop Krishnakumar and Ranjit Jhala},
+  title   = {Generic Refinement Types},
+  journal = {Proc. ACM Program. Lang.},
+  volume  = {9},
+  number  = {POPL},
+  pages   = {1446--1474},
+  year    = {2025},
+  doi     = {10.1145/3704885}
+}
+
+@inproceedings{vanhattum2022kani,
+  author    = {Alexa VanHattum and Daniel Schwartz-Narbonne and Nathan Chong and Adrian Sampson},
+  title     = {Verifying Dynamic Trait Objects in {Rust}},
+  booktitle = {44th International Conference on Software Engineering: Software Engineering in Practice (ICSE-SEIP 2022)},
+  pages     = {321--330},
+  publisher = {ACM},
+  year      = {2022},
+  doi       = {10.1145/3510457.3513031}
+}
+
+@misc{delmas2026kani,
+  author = {R{\'e}mi Delmas and Zyad Hassan and Qinheping Hu and Rahul Kumar and Felipe R. Monteiro and Thanh Nguyen and Adri{\'a}n Palacios and Celina Val and Michael Tautschnig and Justus Adam and Daniel Schwartz-Narbonne and Carolyn Zech},
+  title  = {Kani: A Model Checker for {Rust}},
+  year   = {2026},
+  note   = {arXiv:2607.01504; to appear, ASE 2026 Industry Showcase}
+}
+
+@inproceedings{matsushita2020rusthorn,
+  author    = {Yusuke Matsushita and Takeshi Tsukada and Naoki Kobayashi},
+  title     = {{RustHorn}: {CHC}-Based Verification for {Rust} Programs},
+  booktitle = {Programming Languages and Systems (ESOP 2020)},
+  series    = {LNCS},
+  volume    = {12075},
+  pages     = {484--514},
+  publisher = {Springer},
+  year      = {2020},
+  doi       = {10.1007/978-3-030-44914-8_18}
+}
+
+@article{matsushita2021rusthorn,
+  author    = {Yusuke Matsushita and Takeshi Tsukada and Naoki Kobayashi},
+  title     = {{RustHorn}: {CHC}-based Verification for {Rust} Programs},
+  journal   = {ACM Trans. Program. Lang. Syst.},
+  volume    = {43},
+  number    = {4},
+  articleno = {15},
+  year      = {2021},
+  doi       = {10.1145/3462205}
+}
+
+@inproceedings{matsushita2022rusthornbelt,
+  author    = {Yusuke Matsushita and Xavier Denis and Jacques-Henri Jourdan and Derek Dreyer},
+  title     = {{RustHornBelt}: A Semantic Foundation for Functional Verification of {Rust} Programs with Unsafe Code},
+  booktitle = {Proceedings of the 43rd ACM SIGPLAN International Conference on Programming Language Design and Implementation (PLDI 2022)},
+  pages     = {841--856},
+  publisher = {ACM},
+  year      = {2022},
+  doi       = {10.1145/3519939.3523704}
+}
+
+@article{ayoun2025gillian,
+  author  = {Sacha-{\'E}lie Ayoun and Xavier Denis and Petar Maksimovi{\'c} and Philippa Gardner},
+  title   = {A Hybrid Approach to Semi-automated {Rust} Verification},
+  journal = {Proc. ACM Program. Lang.},
+  volume  = {9},
+  number  = {PLDI},
+  pages   = {970--992},
+  year    = {2025},
+  doi     = {10.1145/3729289}
+}
+
+@misc{foroushaani2022verifast-rust,
+  author = {Nima Rahimi Foroushaani and Bart Jacobs},
+  title  = {Modular Formal Verification of {Rust} Programs with Unsafe Blocks},
+  year   = {2022},
+  note   = {arXiv:2212.12976; technical report, no peer-reviewed version as of July 2026}
+}
+
+@inproceedings{cook2026stdlib,
+  author    = {Byron Cook and R{\'e}mi Delmas and Zyad Hassan and Bart Jacobs and Ranjit Jhala and Rahul Kumar and Felipe R. Monteiro and Thanh Nguyen and Rebecca Rumbul and Michael Tautschnig and Celina Val and Carolyn Zech},
+  title     = {Verifying the {Rust} Standard Library},
+  booktitle = {NASA Formal Methods (NFM 2026)},
+  series    = {LNCS},
+  volume    = {16622},
+  pages     = {415--435},
+  publisher = {Springer},
+  year      = {2026},
+  doi       = {10.1007/978-3-032-28079-4_19}
+}
+
+@misc{leblanc2024survey,
+  author = {Alex Le Blanc and Patrick Lam},
+  title  = {Surveying the {Rust} Verification Landscape},
+  year   = {2024},
+  note   = {arXiv:2410.01981; preprint only}
+}
+
+@inproceedings{sarsko2022creusat,
+  author = {Sarek H{\o}verstad Skot{\aa}m},
+  title  = {{CreuSAT}: Using {Rust} and {Creusot} to Create the World's Fastest Deductively Verified {SAT} Solver},
+  year   = {2022},
+  note   = {Master's thesis, University of Oslo; verify bibliographic details}
+}

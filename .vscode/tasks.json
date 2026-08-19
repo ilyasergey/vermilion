@@ -1,0 +1,79 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Vermilion: regenerate VCs and re-check proofs",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/run_suite.sh",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": {
+        "owner": "vermilion",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "pattern": [
+          {
+            "regexp": "^error\\[vermilion\\]: (.*)$",
+            "message": 1
+          },
+          {
+            "regexp": "^\\s+--> (.*):(\\d+):(\\d+)$",
+            "file": 1,
+            "line": 2,
+            "column": 3
+          }
+        ]
+      }
+    },
+    {
+      "label": "Vermilion: watch current example",
+      "detail": "Keep the file of ${fileDirname} verified as you edit (re-judges only changed obligations)",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/vrml_watch.sh ${fileDirname} ${fileBasename}",
+      "isBackground": true,
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": {
+        "owner": "vermilion",
+        "fileLocation": ["relative", "${workspaceFolder}"],
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "^\\[vermilion watch\\] (initial run|\\d+ changed obligation)",
+          "endsPattern": "^\\[vermilion watch\\] (no semantic changes|all changed obligations verified|obligations failed|watching)"
+        },
+        "pattern": [
+          {
+            "regexp": "^error\\[vermilion\\]: (.*)$",
+            "message": 1
+          },
+          {
+            "regexp": "^\\s+--> (.*):(\\d+):(\\d+)$",
+            "file": 1,
+            "line": 2,
+            "column": 3
+          }
+        ]
+      }
+    },
+    {
+      "label": "Vermilion: build everything",
+      "type": "shell",
+      "command": "${workspaceFolder}/scripts/build.sh",
+      "group": "build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    }
+  ]
+}
