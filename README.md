@@ -22,6 +22,8 @@ readable Lean theorem statements, with Lean as the only verifier.
   sequential feature set is complete; the rest is scheduled in
   [DESIGN.md](DESIGN.md).
 
+![Vermilion in VS Code: verifying binary search, with the Lean proof twin and the Lean InfoView](docs/assets/vermilion-demo.gif)
+
 **New here? Take the [hands-on tutorial](docs/TUTORIAL.md)** — verify
 Rust through Lean, read the generated theorems, write an interactive
 proof, and watch Lean report a broken program on its exact source line,
