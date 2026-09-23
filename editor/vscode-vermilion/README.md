@@ -38,7 +38,9 @@ this extension brings the results into the editor:
   imported declaration, the matching Rust `use` target is highlighted and
   links to the dependency's exact span. Every function in the opened module
   gets a ✗ because no per-function obligations were emitted. This status
-  persists across editor repaint/focus changes;
+  persists across editor repaint/focus changes. This describes a fully
+  refused source; with per-function isolation, supported siblings can still
+  emit obligations and receive their own verdicts;
 - every rejected obligation gets a **red squiggle at its Rust span**, and
   its Problems-panel entry puts the caret **directly on the `sorry`
   awaiting your proof in the `proofs/` twin**; the command *Vermilion:
@@ -62,8 +64,9 @@ this extension brings the results into the editor:
   (*Vermilion: Go to Rust*) it returns from an obligation's block to that
   VC's exact position in the Rust source.
 
-Results appear only after a verification has run in this session — never
-from stale artifacts — and only for files open in the editor.
+Current stored verdicts appear immediately for files open in the editor.
+When the source is newer than its stored verdict, the result is marked stale
+and its checkmarks are withheld until verification runs again.
 
 Both emission layouts are understood transparently (the generated manifest
 records which one produced a directory): in the default per-function mode
@@ -84,8 +87,20 @@ an unambiguous owner.
 
 ## Install
 
+First complete the [build](../../README.md#quick-start). Install the **Lean 4**
+extension (`leanprover.lean4`) in VS Code for the Lean infoview. Then, from
+the repository root:
+
 ```console
 ./scripts/install_vscode_extension.sh
+code .
 ```
 
-(symlinks this folder into `~/.vscode/extensions`; reload VS Code once).
+The script links this folder into `~/.vscode/extensions`; no Node/npm build
+is needed. If VS Code is already running, use **Developer: Reload Window**.
+If the `code` command is unavailable, open the repository root through
+**File → Open Folder**. Open `examples/m1-pipeline/simple.rs` and run
+**Vermilion: Verify Current File** to try it.
+
+See the [development guide](../../docs/development.md#editor-and-proof-libraries)
+for native plugin setup and proof-library registration.

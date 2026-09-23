@@ -29,5 +29,5 @@ serializes the textual IR (`docs/ir.md`), `vrml_gen` (Lean) parses it and
 emits `generated/branching/` — one unit module per function, machine
 output, never committed — Lean
 judges every obligation, and `vrml_sync` maintains the user-editable
-`proofs/branching/` twins: byte-identical while automation succeeds and
+`proofs/branching/` twins: automatic proof bodies match while automation succeeds and
 nothing is edited; `sorry` plus a warning wherever a proof needs a human.

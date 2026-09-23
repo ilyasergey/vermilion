@@ -1,6 +1,7 @@
 # Sequential case studies: current coverage and blockers
 
-Updated: **2026-07-20**. This report expands the compact
+Documentation reconciled: **2026-09-23**, against the checked-in sources and
+dated receipts. No fresh suite run was performed. This report expands the compact
 [case-study registry](../../case-studies/README.md) with the feature gaps that
 explain every partial, blocked, or research-only result. The registry is the
 authority for acquired-study status; the
@@ -21,10 +22,11 @@ and the [progress ledger](progress.md) records features that have landed.
 | [sorting](../../case-studies/sorting/) | **Verified** | `sort_by`/`sorted_by`, uniqueness, and multiset equivalence; 12 automatic + 4 interactive VCs | — |
 | [imo-1988-6](../../case-studies/imo-1988-6/) | **Verified verbatim** | Vieta-jumping proof; 66 automatic + 1 interactive VC | —; isolated nonlinear queries and named-result joins have landed |
 | [power-of-2](../../case-studies/power-of-2/) | **Verified verbatim** | Recursive `pow2`/shift development; 40 automatic + 17 interactive VCs | —; isolated nonlinear queries and exact VIR clipping have landed |
-| [Percolator](../../case-studies/percolator/) | **Partially verified verbatim** | 28 unchanged production functions / 97 logical-or-evidence Lean obligations: policy and risk gates, codecs, bitmap reads, scalar saturation, and U256 construction/readback/bitwise basics | Generic spec applications used by `?`; std `Ord::min`/`max`; indexed fixed-array mutation; `BitNot`; polymorphic `Inhabited` ambiguity; per-function isolation. Whole `wide_math.rs` also hits upstream Verus visibility and unsupported core-API boundaries |
-| [Entry API](../../case-studies/entry-api/) | **Acquired / blocked** | Verbatim pinned source verifies 3/3 with Verus; Vermilion keeps an expected fail-closed probe | Generic opaque spec applications; std `HashMap::Entry` views/contracts; returned-`&mut` prophecy relations |
+| [Percolator](../../case-studies/percolator/) | **Partially verified verbatim** | The green runner covers 31 production bodies and 118 logical-or-evidence declarations, including the DL5 withdrawal, bounded-arithmetic, and bitmap-set additions | std `Ord::min/max`, `BitNot`, and the separate whole-`wide_math.rs` Verus boundary |
+| [Entry API](../../case-studies/entry-api/) | **Acquired / blocked** | Verbatim pinned source verifies 3/3 with Verus; Vermilion keeps an expected fail-closed probe | std `HashMap::Entry` views/contracts; returned-`&mut` prophecy relations |
 | [statics](../../case-studies/statics/) | **Acquired / outside the sequential gate** | Verbatim pinned source verifies 9/9 with Verus; Vermilion keeps an expected fail-closed probe | Globals and initialization semantics, followed by ghost memory and atomic protocols (M5/M6) |
-| [recursion](../../case-studies/recursion/) | **Investigation target, not a green gate** | The clean recursive core lowers; the upstream tutorial deliberately includes negative examples | `decreases_to!`; `via`/`#[via_fn]`; separation of intentional failures from a runnable positive subset |
+| Upstream recursion tutorial | **Historical investigation** | Excluded from supported coverage | A positive driver separated from intentional failures, then custom termination support |
+| [dalek-lite](../../case-studies/dalek-lite/) | **Partial acquisition** | 5,215 emitted obligation declarations; eight explicit proof holes remain in four units | Proof completion, declaration collisions, recorded lowering refusals, higher layers, and trusted-floor discharge; see [current status](../../case-studies/dalek-lite/README.md#current-verification-status) |
 | Aeneas-derived crypto targets | **Curve25519 verified; standalone AeneasVerif SHA-3 verified through `copy_to`** | Curve25519 has 38 checked obligations and the same-spec bridge. The separate standalone AeneasVerif `sha3.rs` target—not SymCrypt/SymCRust—is tracked as pristine and annotated copies; the source guard erases 86 regions, and unchanged default/dereference support, θ/ρ/π/χ/ι, `round`, `keccak_p`, `xor_byte_at`, `xor_lane`, `xor`, and `copy_to` verify as 198 Lean obligations in 25 twins. c164–c181 guard exact ranges, owner writeback, copying, checked loops, dereference views, and array suffixes. | Prove absorb/squeeze, sponge, six public functions, and the exact Aeneas SHA-3 spec bridge; public parity is 0/6. Broader source coverage and the separate modular-arithmetic library for ML-KEM follow |
 
 “Verified” means the named driver verifies end to end with Lean as the only
@@ -35,42 +37,32 @@ baseline exists but Vermilion deliberately refuses a required construct.
 
 ## Current checkpoint
 
-- The differential corpus is **180/180 verdict parity** with Verus and
-  **88/88 failure-span agreement**. The full suite has 48 green or
-  intentionally rejected example/case-study runners.
-- The original `vectors.rs` saturation goal is complete for every selected
-  default-isolation function: opaque spec functions, `Vec::set`, range
-  `for`, `Vec::pop`, condition-side mutable-reference resolution, and
-  `Seq::add` have all landed.
-- Merge sort, sorting, primes, IMO 1988 #6, and power-of-2 are green. The
-  next useful evidence comes from mixed real modules rather than another
-  unconditional syntax sweep.
-- Percolator is the first external-project acquisition: all 33 selected
-  bodies pass the pinned Verus baseline after contracts are added; 28 bodies
-  currently pass through Vermilion.
-- Entry API and statics are honest expected-refusal probes, not partially
-  verified claims. VS Code 0.9.7 highlights Entry API's importing `use`
-  target and links to the precise unsupported vstd span.
+The checked-in differential corpus contains 191 Rust source fixtures. Earlier
+180/180 verdict and 88/88 failure-span results are dated July measurements,
+not a receipt for the current tree. Run the
+[differential suite](../development.md#test-scopes) to obtain current results.
+
+The active benchmark is dalek-lite. The Aeneas SHA-3 push remains paused.
+Percolator's `run.sh` includes the three DL5 additions; its `explore.sh`
+contains two partial drivers, for `Ord` contracts and `BitNot`.
 
 ## Active blockers by driver
 
 ### Mixed real projects and Percolator
 
-The immediate tooling prerequisite is
-[per-function lowering isolation](../issues/per-function-lowering-isolation.md):
-one unsupported function must not hide supported siblings, but every refused
-function must still produce a source-mapped disposition. This is required
-before coverage percentages over large modules are meaningful.
+[Per-function lowering isolation](../issues/closed/per-function-lowering-isolation.md)
+has landed. Unsupported functions receive source-mapped dispositions while
+supported siblings continue through the pipeline.
 
-The remaining clean Percolator slices are independently pinned:
+The remaining Percolator drivers are:
 
-| Feature | Current driver | Tracking issue | Result when landed |
-|---|---|---|---|
-| Generic opaque spec applications with explicit type arguments | `withdrawal_question_mark.rs`; also Entry API's first prerequisite | [`spec_from` / `?`](../issues/lower-generic-spec-functions-used-by-question-mark.md) | Verbatim withdrawal body reaches Lean; Entry API advances to its std-specific layer |
-| Static `Ord::min`/`max` default-body contracts | `liquidation_fee_minmax.rs` | [`min`/`max` contracts](../issues/support-std-ord-min-max-default-body-contracts.md) | Verbatim liquidation-fee calculation reaches Lean |
-| Indexed mutation through `&mut [T; N]` | `active_bitmap_set.rs` | [fixed-array indexed mutation](../issues/support-indexed-mutation-of-fixed-size-arrays.md) | Bitmap set verifies; bitmap clear advances to `BitNot` |
-| Width-correct unary machine-integer `BitNot` | `active_bitmap_clear.rs` | [`BitNot`](../issues/support-bitnot.md) | Bitmap clear verifies once indexed mutation is also present |
-| Concrete typing before class synthesis | `bounded_arithmetic.rs` | [standalone twin elaboration](../issues/generated-twins-must-elaborate-without-hidden-typeclass-context.md) | Polymorphic `Option`/`Result` branches no longer leave `Inhabited ?m` stuck |
+- `liquidation_fee_minmax.rs`: [std `Ord` contracts](../issues/support-std-ord-min-max-default-body-contracts.md).
+- `active_bitmap_clear.rs`: [unary `BitNot`](../issues/support-bitnot.md).
+
+The former prerequisites are complete:
+[generic spec applications](../issues/closed/lower-generic-spec-functions-used-by-question-mark.md),
+[indexed mutation](../issues/closed/support-indexed-mutation-of-fixed-size-arrays.md),
+and [constructor typing](../issues/closed/generated-twins-must-elaborate-without-hidden-typeclass-context.md).
 
 The whole `wide_math.rs` boundary is separate from those Vermilion gaps.
 Upstream Verus first rejects private-field/public-constant visibility and,
@@ -83,14 +75,16 @@ core APIs. The verified claim therefore remains the ten selected
 
 The [Entry API issue](../issues/support-hashmap-entry-api.md) fixes the order:
 
-1. land generic opaque spec applications (the shared prerequisite above);
+1. generic opaque spec applications have landed (DL5); reassess the probe
+   to identify its current first refusal;
 2. model the relevant std Entry views and contracts in the vstd mirror;
 3. relate returned `&mut` final values back to the owning Entry and map;
 4. add positive and negative guards, then replace `explore.sh` with a green
    `run.sh` gate.
 
-The current refusal at the imported polymorphic `view` is deliberate. Entry
-mutation must not be approximated by an unconstrained fresh map.
+The original generic-`view` refusal predates DL5. A new probe result is needed
+to identify the current first diagnostic. Entry mutation must retain its
+contracts relating the old and final map.
 
 ### Statics and atomics
 
@@ -102,7 +96,8 @@ coverage.
 
 ### Recursion tutorial
 
-The upstream file mixes useful positive recursion examples with deliberate
+This is a historical investigation, excluded from supported coverage. The
+upstream file mixes useful positive recursion examples with deliberate
 failures (`test_triangle_fail`, `bogus`/`exploit_bogus`, and circular
 reasoning). Its clean core—triangle variants, Ackermann monotonicity, and
 mutual `is_even`/`is_odd`—already lowers. A future green driver must first
@@ -126,22 +121,14 @@ standalone AeneasVerif SHA-3, not SymCrypt/SymCRust, and public parity remains
 
 ## Ordered next work
 
-The [execution plan](../../plans/execution-plan.md) is authoritative. Its
-current order is:
+Follow the [execution plan](../../plans/execution-plan.md). Its active target
+is dalek-lite: resolve the current proof and lowering boundaries, then expand
+to higher layers and discharge the upstream trusted floor. The SHA-3 work is
+paused. The S2/S3 corpus drivers and remaining independent gaps stay in the
+queue; scalar `choose` itself already landed in DL2.
 
-1. continue unchanged SHA-3: absorb/squeeze, sponge and
-   six public functions, then the exact pinned external-spec bridge;
-2. S2 `bst_map.rs`: recursive `Box` datatypes, `Option::take`, `returns`,
-   sequential `&mut` returns, and `Map::union_prefer_right`;
-3. S3 choice/search: `choose`, boxed recursive enums with `decreases self`,
-   and legacy variant accessors;
-4. the independent Percolator, Entry API, and recursion gaps listed above;
-5. external sequential modules: Vest, pmemlog/verified-storage, Verdict,
-   IronKV marshalling, verified-nrkernel page tables, then Verus-Bench.
-
-Foundational VC generation, proof evolution, Lean start-up latency, and the
-remaining editor/experimentation work are parallel workstreams in that plan;
-they do not change the support classifications in this report.
+Foundational VC generation, proof evolution, Lean startup latency, and editor
+work have separate entries in that plan.
 
 ## Appendix: original `vectors.rs` saturation sweep
 

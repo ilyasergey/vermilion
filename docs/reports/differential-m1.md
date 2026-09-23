@@ -1,5 +1,9 @@
 # M1 differential verdict report
 
+This is a dated measurement record. Tool versions, counts, and timings below
+apply to the recorded runs. For current setup and scope, see the
+[development guide](../development.md) and [case-study registry](../../case-studies/README.md).
+
 Method: every case in `tests/differential/` runs twice — once through the
 pinned Verus with full SMT verification, once through the Vermilion pipeline
 (front end + direct SST adapter + Lean via `vrml_check`). A case passes when

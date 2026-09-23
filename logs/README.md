@@ -52,3 +52,5 @@ report under `docs/reports/`.
 - [2026-07-20 DL8 Layer Set A lowers, emits, and is judged end to end](2026-07-20-dalek-lite-dl8-layer-a.md)
 - [2026-07-21 dalek-lite handover: DL8 phase-2 twins committed + remaining-work map](2026-07-21-dalek-lite-handover.md)
 - [2026-08-19 Lean 4.33 + Veil removal](2026-08-19-lean-4.33-veil-removal.md)
+
+- [2026-09-23 README and documentation consistency](2026-09-23-documentation-consistency.md)

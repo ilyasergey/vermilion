@@ -29,7 +29,8 @@ design:
   did — the same escape hatch `reveal` gives Verus users.
 
 As in every example, `generated/` holds the machine attempts (untracked,
-overwritten each run) and `proofs/` is your editable twin: byte-identical
-while automation succeeds, `sorry` where it fails. A `sorry` placeholder
+overwritten each run) and `proofs/` is your editable twin: automatic
+proof bodies match while automation succeeds (imports can differ), with
+`sorry` where automation fails. A `sorry` placeholder
 is reclaimed automatically once automation catches up; only blocks you
 actually edited survive regeneration (while their statement hash matches).

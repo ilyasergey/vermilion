@@ -4,7 +4,7 @@
 simple.rs
   │ pinned Verus: rustc + macros + HIR→VIR + mode/ghost checks
   ▼
-finalized VIR crate (`VERMILION_VIR_EXPORT` bincode handoff, verus-patches/0001)
+finalized VIR crate (`VERUS_VIR_EXPORT` bincode handoff in the pinned fork)
   │ vermilion_direct/middle.rs → pinned vir simplify → prune → ast_to_sst_krate
   ▼
 pre-poly vir::sst::FunctionSst (real values, in process)

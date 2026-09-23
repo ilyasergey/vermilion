@@ -5,29 +5,22 @@ state: open
 github: 41
 ---
 
-Vermilion is still pinned to Lean 4.28.0, and the root Lake package still
-depends directly on Veil:
+## Current status
 
-- `lean-toolchain` is `leanprover/lean4:v4.28.0`.
-- `lakefile.lean` has a top-level `require veil from git ...`.
-- `lake-manifest.json` still resolves the Veil checkout and its 4.28-era
-  dependency graph.
+The implementation landed on Lean **4.33.0**, superseding the originally
+requested 4.32 target. `lean-toolchain`, `lakefile.lean`, and
+`lake-manifest.json` now use direct Mathlib and lean-smt dependencies; Veil
+and Loom are absent. See the
+[migration log](../../logs/2026-08-19-lean-4.33-veil-removal.md).
 
-That pin made sense for the initial bring-up, but it now blocks moving the
-project forward with the current Lean ecosystem. The next step is to upgrade
-the project to Lean 4.32 and stop depending on Veil as a root package
-dependency.
+The log records a successful build and extension tests, but leaves the final
+suite result unfilled after discovering a false-green acquisition checker.
+The current dalek-lite tree retains proof holes. This issue remains open for
+a successful suite receipt and resolution or explicit accounting of the
+remaining regressions; the toolchain migration itself is complete.
 
-This issue tracks the upgrade slice:
+## Original requested scope
 
-1. Move the workspace toolchain and Lake dependency set to Lean 4.32.
-2. Remove the direct `require veil` dependency from the root package.
-3. Import Lean-SMT for Lean 4.32 and use where needed: https://github.com/ufmg-smite/lean-smt
-4. Update build scripts, editor shims, and docs that still assume the 4.28
-   toolchain or Veil-managed dependency graph.
-5. Rebuild the suite and record any proof or tactic regressions introduced by
-   the upgrade.
-
-Definition of done: `lean-toolchain`, `lakefile.lean`, and `lake-manifest.json`
-all reflect Lean 4.32 without a direct Veil dependency, and the documented
-build/test workflow is back to green.
+Move the workspace from Lean 4.28 to the then-requested 4.32, remove the Veil
+carrier dependency, depend on lean-smt directly, update scripts/editor/docs,
+and record the build/test outcome. The implementation selected 4.33 instead.

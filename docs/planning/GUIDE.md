@@ -20,10 +20,9 @@ Completed and committed:
   statement hashes, source metadata, and no-op-preserving atomic emission;
 - M1a real source slice:
   [`../../examples/m1-pipeline/simple.rs`](../../examples/m1-pipeline/simple.rs)
-  verifies with the pinned Verus front end, its pre-poly SST translates into
-  [`../../examples/m1-pipeline/generated/simple.lean`](../../examples/m1-pipeline/generated/simple.lean),
-  and automatic, reconstructed-SMT, and interactive proofs build from
-  [`../../examples/m1-pipeline/proofs/simple.lean`](../../examples/m1-pipeline/proofs/simple.lean);
+  was verified through the pinned front end and pre-poly SST translation.
+  See [the pipeline example](../../examples/m1-pipeline/README.md) for current
+  commands that generate the statements and editable proof twins;
 - captured Verus SST and the implemented mapping documented in
   [`../pipeline/`](../pipeline/);
 - ported local execution plan and incremental-computation workstream under

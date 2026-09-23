@@ -1,5 +1,9 @@
 # Performance ledger
 
+This is a dated measurement record. Tool versions, counts, and timings below
+apply to the recorded runs. For current setup and scope, see the
+[development guide](../development.md) and [case-study registry](../../case-studies/README.md).
+
 Entries are append-only. Cold dependency compilation is separated from warm
 edit-loop measurements.
 

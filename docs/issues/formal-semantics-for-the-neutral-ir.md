@@ -37,7 +37,7 @@ Staged, smallest-versioned-surface first:
    `processStmt` fold with a weakest-precondition-style construction derived
    from that semantics, and prove it sound: every generated obligation, if
    discharged, implies the program satisfies its contract. Build on **Loom**
-   (already in the Lake dependency tree via Veil) or a similar Lean
+   (to be added as a direct dependency when this work starts) or a similar Lean
    program-logic framework rather than from scratch.
 3. **Push the boundary toward SST** as the IR grows, so more of the trusted
    Rust lowering comes under the semantics over time.

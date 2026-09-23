@@ -31,10 +31,10 @@ default `vrml` automation — and `vrml_sync` maintains the user-editable
 
 **Convention (same in every example):** `generated/` holds the machine's
 proof *attempts* and is overwritten every run; `proofs/` is the twin where
-*you* edit. The twins are byte-identical while automation succeeds and
-nothing is edited; automation failures appear in the twin as `sorry` with a
-warning; your hand-written proofs survive regeneration exactly as long as
+*you* edit. Automatic proof bodies match between the two trees while automation
+succeeds and nothing is edited (imports can differ); automation failures
+appear in the twin as `sorry` with a warning; your hand-written proofs survive regeneration exactly as long as
 their statement hashes are unchanged. Try it here: replace a `vrml` proof
 body in `proofs/widening/flags.lean` with an explicit tactic proof (e.g.
-`intro p q both; exact both.left` for `flags.assert_0`), rerun, and watch
+`intro both; exact both.left` for `flags.assert_0`), rerun, and watch
 `vrml_sync` report the twin `unchanged` while Lake kernel-checks your proof.

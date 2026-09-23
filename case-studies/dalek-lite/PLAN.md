@@ -38,8 +38,8 @@ or probe + docs), and flips the corresponding probe line in `explore.sh`.
 | DL5 | **`assume_specification` breadth**: qualified trait-method targets (`<u64 as Trait>::m`, `&mut`+`old()`) lower as-is with a new `guard_split` ladder rung for `Choice`-guard case splits; generic + const-generic targets ride on generic *uninterp spec fns* landing as one fixed generic symbol with explicit IR type args (#19, also unblocking percolator's `?` driver); constructor type-argument ascription fixes #18's stuck-`Inhabited` statements; `&str` lowers as `Vermilion.StrSlice` | `subtle_assumes.rs` 3/3, `core_assumes.rs` 1/1 (+2 contract-free), c186–c188 | **DONE 2026-07-20** |
 | DL6 | **`loop_isolation(false)`**: the (NLOOP) rule — the loop body keeps the enclosing hypotheses in front of the iteration facts (sound under the SSA-style havoc binders: outer facts about modified vars keep referring to pre-loop symbols); non-isolated `while` is recognized from ast_to_sst's canonical conditional-break prefix and reuses the while machinery; user breaks fail closed (Verus assumes nothing after a broken-out non-isolated loop); IR `(loop noniso …)` | `count_loop_isolation.rs` 5/5 automatic; c189/c190 | **DONE 2026-07-20** |
 | DL7 | **vstd drift assessment** (Jan `88f7396` → Jul pin): mechanical sweep of the crate's full vstd surface (383 import sites; 918 called lemma names; bits/arithmetic/seq/calc modules). **Verdict: zero vstd drift affects dalek-lite** — every reachable vstd symbol exists in our July vstd unchanged; the crate's 800+ own lemma layer is self-contained. The DL0 "drift point" was a misattribution: `lemma_mul_le` is crate-local, not vstd. Only accommodation at crate scale: the front-end mut-ref migration (`*x` → `*final(x)`), mechanical | `docs/reports/dalek-lite-vstd-drift.md` | **DONE 2026-07-20** |
-| DL8 | **Layer Set A acquisition**: the 9 field-representation/reduction modules end to end, whole files, per-function dispositions; publish the first automation-rate scoreboard vs CryptoProver's layer results | upstream `specs/field_specs*.rs`, `backend/serial/u64/field.rs`, … | 2026-07-20: cone lowers + emits end to end (416/454 fns, 5,215 obligations; linear `natclip`/`sclip` IR forms killed the from_bytes OOM; `(ranges …)` recursive guards; classical fallback for opaque-Prop `iteP` guards). Scoreboard: `docs/reports/dalek-lite-layer-a-scoreboard.md`. Whole-crate artifact routing still open (`whole-crate-acquisition-generated-root` issue) |
-| DL9 | **Scalar → Montgomery/Edwards → Ristretto ladder**: follow CryptoProver's own staging up the proof cone | upstream modules | blocked on DL2–DL8 |
+| DL8 | **Layer Set A acquisition**: the 9 field-representation/reduction modules end to end, whole files, per-function dispositions; publish the first automation-rate scoreboard vs CryptoProver's layer results | upstream `specs/field_specs*.rs`, `backend/serial/u64/field.rs`, … | **Partial.** Acquisition and whole-crate routing have landed; eight explicit proof holes remain in four units (2026-09-23 source audit). Resolve collisions/holes and record a fresh successful check. See [current status](README.md#current-verification-status) and [scoreboard](../../docs/reports/dalek-lite-layer-a-scoreboard.md). |
+| DL9 | **Scalar → Montgomery/Edwards → Ristretto ladder**: follow CryptoProver's own staging up the proof cone | upstream modules | pending DL8 proof completion and reassessment of refused functions |
 | DL10 | **Trusted-floor discharge**: port `axiom_*` statements to Lean theorems over Mathlib `ZMod`, following upstream's `docs/feasibility_lean_comparisons.md`; every proved axiom shrinks the trust base below both the human reference and CryptoProver | upstream `lemmas/**/axioms.rs` (48 admits) | independent; can start anytime |
 | DL11 | **The residual frontier**: attack the 3 Ristretto/Lizard nonlinear obligations interactively | upstream open admits | after DL9 |
 
@@ -50,8 +50,10 @@ M4 way — nothing enters the TCB).
 
 Layout: all probes live in `probes/` with twins in `probes/proofs/`
 (library `CaseDalekLite`) and machine output in `probes/generated/`
-(untracked); the case-study root is reserved for the eventual whole-crate
-acquisition (DL8+), which will follow the house verbatim-acquisition pattern.
+(untracked). The case-study root contains the Layer Set A acquisition, its
+tracked `proofs/` twins, and disposable `generated/` output. Mounted source
+files are verbatim; field-source accommodations are documented in the
+[scoreboard](../../docs/reports/dalek-lite-layer-a-scoreboard.md#verification-subject-fidelity).
 
 ## Deliberately not needed (user policy, 2026-07-20)
 
@@ -72,11 +74,10 @@ makes such artifacts droppable:
   when they arrive, accept the construct and discharge termination in the
   twin rather than lowering the script.
 
-What still needs real lowering is everything that changes what an obligation
-*says*: `choose` (DL2), `assume_specification` contracts (DL5), ghost
-bindings (landed), non-isolated loops (DL6 — the attribute changes which
-facts the loop body may assume, i.e. the hypotheses of its obligations, so
-it cannot be twin-discharged around).
+Semantic constructs have real lowering: `choose` (DL2),
+`assume_specification` contracts (DL5), ghost bindings, and non-isolated
+loops (DL6). Loop isolation changes which hypotheses the body may assume,
+so its semantics belong in lowering and VC generation.
 
 ## Interaction with the rest of the plan
 
@@ -84,8 +85,8 @@ it cannot be twin-discharged around).
   discharges that stage's first item; the summer-school driver stays the
   follow-up.
 - DL1 is the tracked issue "Isolate lowering failures per function in large
-  crates" and is also the outstanding M3/M4 coverage-scoreboard
-  prerequisite.
+  crates" and supplies the per-function dispositions needed for M3/M4 coverage
+  measurement; the broader measurement remains outstanding.
 - The paused Aeneas SHA-3 queue item is unaffected: nothing here touches
   `case-studies/aeneas/` (read-only per standing directive); its remaining
   slices resume by explicit user direction.

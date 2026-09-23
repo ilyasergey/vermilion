@@ -2,7 +2,7 @@
 
 [`power_of_2.rs`](power_of_2.rs) is a byte-for-byte copy of Verus's
 [`examples/power_of_2.rs`](https://github.com/verus-lang/verus/blob/c569645bd37b00b23d349ef64bafee0aa0a49242/examples/power_of_2.rs)
-at Vermilion's pinned Verus commit `c569645bd37b00b23d349ef64bafee0aa0a49242`
+at the acquisition source commit `c569645bd37b00b23d349ef64bafee0aa0a49242`
 (MIT). Its SHA-256 is
 `5d7ede0901bf72ad850515b7f0ef5cb24e88188b08147de091a90df00cb6132a`.
 `verify_verus.sh` checks byte identity and the upstream baseline: **18

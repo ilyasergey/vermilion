@@ -24,7 +24,7 @@ implemented behavior. Current status is authoritative in:
 - [`../../plans/execution-plan.md`](../../plans/execution-plan.md) — active plan;
 - [`../../plans/incremental-computation.md`](../../plans/incremental-computation.md)
   — incremental VC-generation workstream;
-- [`../../reports/`](../../reports/) — measured implementation reports/ledgers;
+- [`../reports/`](../reports/) — measured implementation reports/ledgers;
 - [`../../logs/`](../../logs/) — dated engineering record.
 
 As of the port, M0 infrastructure and the M1a single-function source slice are

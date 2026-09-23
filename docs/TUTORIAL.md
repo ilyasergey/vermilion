@@ -12,22 +12,21 @@ verdict you see comes from the Lean kernel.
 
 ## 0. One-time setup
 
-Prerequisites: `rustup`, `git`, and elan/Lake for Lean 4.33. Then, from the
+Prerequisites and native dependencies are listed in the
+[development guide](development.md#prerequisites). With Git, Python 3,
+`rustup`, elan/Lake, and the native toolchain installed, run from the
 repository root:
 
 ```console
 ./scripts/build.sh
 ```
 
-This single command builds the Rust workspace, **clones the pinned Verus
-checkout automatically** into `.verus-checkout` (commit `c569645bd37b0`),
-downloads the matching Z3, applies the 20-line VIR-export patch
-([verus-patches/](../verus-patches/README.md)), builds Verus with its own
-pinned toolchain, builds the direct SST adapter, and compiles the Lean
-libraries. The first run is slow (Verus + Mathlib); everything after
-is incremental. If you already have a Verus checkout you want to reuse, set
-`VERUS_CHECKOUT=/path/to/verus` once and the scripts will link it instead of
-cloning.
+This builds the Lean libraries and native solver bindings, the Rust workspace,
+the pinned Verus fork, and the direct SST adapter. Setup automatically clones
+Verus into the user cache and links it as `.verus-checkout`; the fork already
+contains the required export hook. The first build downloads dependencies and
+can take a while. See [build details](development.md#build) for reusing an
+existing Verus checkout and the files that pin dependency versions.
 
 ## 1. Verify a Rust function end to end
 
@@ -63,7 +62,7 @@ corpus), use `./scripts/run_suite.sh` — it prints numbered phase banners, and
 the differential phase shows a live progress bar with the current case and
 pipeline stage. Cold runs re-measure everything; unchanged cases replay
 instantly from the verdict cache. While iterating, the fast loop is
-`./scripts/run_suite.sh --smoke` (examples and pipeline contracts only), and
+`./scripts/run_suite.sh --smoke` (unit tests, examples, and pipeline contracts), and
 one case study runs by itself with
 `./scripts/run_suite.sh --case-study <name>`
 (`--list-case-studies` prints the names), and the Verus conformance corpus
@@ -138,8 +137,8 @@ Lake builds the twins as ordinary library modules and the editor resolves
 them); with `--per-file` it is the single `proofs/<name>.lean`. The
 rules are the same either way:
 
-- when automation proves everything and you edited nothing, the twin is
-  **byte-identical** to the generated module;
+- when automation proves everything and you edited nothing, automatic proof
+  bodies match the generated module (imports can differ);
 - where automation fails, the twin's proof body is **`sorry`**, with a
   warning telling you to prove it manually;
 - proofs you write in the twin **survive regeneration** for as long as their
@@ -182,13 +181,10 @@ function's unit module), and replace the `vrml` body of
 body after `:= by`).
 
 Rerun the example: `vrml_sync` reports the twin `unchanged` (your proof
-survived), the twin is kernel-checked, and the summary lists every goal you
-discharged interactively:
-
-```text
-✓ all 25 obligations verified — 24 automatic, 1 discharged interactively in your proofs twin: 🎉
-  • `looping.sum_below.invariant_preserve_0_3` — examples/m2-loops/proofs/looping/sum_below.lean:433
-```
+survived), the twin is kernel-checked, and the summary identifies
+`widening.flags.assert_0` as discharged interactively. For goals automation
+cannot solve, rerun with `--manual-proofs` so the completed twin determines
+the result.
 
 The VS Code infoview elaborates the twin live as you edit. There is no trusted escape hatch anywhere in this flow —
 `sorry` is a loud, warned-about hole, and everything else is checked by the
@@ -210,11 +206,12 @@ such a guard — e.g. a conditional on another Prop-valued spec fn — precedes
 the evidence block, so it is instead emitted under `open Classical in` and
 marked `noncomputable`; nothing goes classical silently.)
 
-Vermilion renders this boundary as another marker-delimited twin block, before
-the logical VCs:
+In the default per-function layout, Vermilion puts this marker-delimited
+block in the shared `Evidence.lean` twin, imported by the logical VC units
+(the per-file layout uses a `local instance` in the same module):
 
 ```lean
-@[vrml_evidence] noncomputable local instance vrml_evidence_decidable_prop
+@[vrml_evidence] noncomputable instance vrml_evidence_decidable_prop
     (p : Prop) : Decidable p := by
   sorry
 ```
@@ -226,7 +223,8 @@ links directly to this body. Fill it like an ordinary interactive obligation:
   exact Classical.propDecidable p
 ```
 
-That choice is explicit, local to the generated module, and kernel checked.
+That choice is explicit and kernel checked. Its instance is visible to the
+obligation modules importing `Evidence.lean`; the per-file instance is local.
 Vermilion may use the generated placeholder to see whether later logical VCs
 would pass *if* the dictionary existed, but the file is never reported as
 verified while the evidence block contains `sorry`. Once filled, the same
@@ -234,11 +232,11 @@ hash/staleness rules preserve the instance across regeneration, and the
 current-twin fast path checks the instance and all consuming theorems in one
 Lean elaboration. See the
 [`encode_bool` Rust driver](../case-studies/percolator/encode_bool_decidable.rs)
-and its [persistent Lean twin](../case-studies/percolator/proofs/encode_bool_decidable.lean)
+and its [persistent Lean twin](../case-studies/percolator/proofs/encode_bool_decidable/Evidence.lean)
 for the smallest complete example.
 
 **One Lean elaboration when the twin is current.** The twin is a *superset* of
-the generated module — its automatic blocks are byte-identical, its
+the generated module — its automatic proof bodies match, its
 interactive blocks are your proofs — so kernel-checking the twin already
 proves everything the generated-module check would. When a `--lib`
 `--manual-proofs` run finds a complete, up-to-date twin (every obligation's
@@ -302,7 +300,8 @@ parity between Verus's own SMT verification and the Lean backend on the
 corpus in [tests/differential/](../tests/differential/) — straight-line,
 branches, loops (including break/continue and decreases), recursion,
 collections, datatypes, traits/closures, vectors, specialty queries, and
-spec functions (currently 139/139 verdicts, 67/67 failure spans). Cases run
+spec functions. The [progress ledger](reports/progress.md) records dated
+measurements; run the harness for the current verdict totals. Cases run
 on a worker pool with a live progress bar; unchanged
 cases replay from the verdict cache without touching Verus or Lean.
 
@@ -322,7 +321,9 @@ obligations. Diagnostics land on Rust spans exactly as in step 4.
 
 ## 6½. Editor integration
 
-Install the bundled VS Code extension once:
+Build first, open the repository root in VS Code, and install the **Lean 4**
+extension (`leanprover.lean4`) for the infoview. Install the bundled Vermilion
+extension once:
 
 ```console
 ./scripts/install_vscode_extension.sh   # then reload VS Code
@@ -362,7 +363,9 @@ spans. When a run finishes:
   refusal uses the adapter's exact Rust span; if the rejected declaration is
   in a dependency, the matching `use` target is underlined and links to the
   dependency's exact span. Every function gets a red ✗ in that case because
-  lowering stopped before per-function obligations were emitted;
+  lowering stopped before per-function obligations were emitted. A partial
+  lowering result instead retains separate dispositions for refused functions
+  and verdicts for supported siblings;
 - one context-aware shortcut, **`⌘⇧J` / `Ctrl+Shift+J`** (*Vermilion: Go
   to Lean*, also in the editor right-click menu; scoped to Rust files so
   it shadows no editor default), jumps to the Lean side and opens it in
@@ -382,7 +385,7 @@ spans. When a run finishes:
 - the status bar reports the **active file**: a spinner while verifying,
   then `✓ <file> fully verified` or `✗ N failed in <file>`.
 
-Results appear only after a verification has run in this session, and only
+Current stored verdicts appear without rerunning verification, and only
 for files open in the editor — one file at a time for now.
 
 **Opening the generated `.lean` files is fast** thanks to a caching `lake`
@@ -405,7 +408,8 @@ module ownership and the runner target.
 
 ## 7. The supported fragment: from branches to bit vectors
 
-The examples exercise everything the fragment supports today (M2–M4):
+These examples exercise the M2–M4 feature slices. The
+[support guide](support.md) also links later case-study-driven additions:
 
 ```console
 ./examples/m2-branches/run.sh      # if/else joins, early returns, spec ite

@@ -238,8 +238,9 @@ property testing, model checking. Concretely, against each pain point above:
 
 ## The example, landed in Lean
 
-What the Vermilion backend actually emits for `increment` today (real output,
-[`examples/m1-pipeline/generated/simple.lean`](../../../../examples/m1-pipeline/generated/simple.lean)) —
+At the original M1 checkpoint, the backend emitted the following statement
+shape for `increment` (see the current reproduction instructions in
+[the pipeline example](../../../../examples/m1-pipeline/README.md)) —
 three named, span-annotated, hash-stamped theorems, one per obligation:
 
 ```lean
@@ -255,10 +256,10 @@ def ensures_2_statement : Prop :=         -- postcondition, AssertId 2
   ∀ (x : Int) …, (x + 1) = (x + 1)
 ```
 
-Each is discharged by the automation ladder (`vermilion` tactic), or explicitly — the repo's
-[`proofs/simple.lean`](../../../../examples/m1-pipeline/proofs/simple.lean) shows the same
-obligation proved three ways: by default automation, by reconstructed SMT
-(`smt (trust := false)`), and interactively with `omega`. Contrast with the Verus path: the
+The M1 snapshot demonstrated default automation, reconstructed SMT
+(`smt (trust := false)`), and an interactive `omega` proof. The current
+[pipeline example](../../../../examples/m1-pipeline/README.md) documents how
+to regenerate and inspect the proof twins; the current tactic is `vrml`. Contrast with the Verus path: the
 same three obligations exist only as labeled conjuncts inside one negated, fuel-guarded,
 poly-boxed SMT-LIB query, checkable by nothing but Z3's `unsat`.
 

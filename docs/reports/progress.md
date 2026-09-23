@@ -4,7 +4,32 @@ Milestone-by-milestone status. Linked from the top-level `README.md`; the
 staged plan for what is next is [target-projects.md](target-projects.md),
 and the case-study status table is [case-studies/README.md](../../case-studies/README.md).
 
-**Current checkpoint (2026-07-20):** language and automation slices through
+## Current documentation checkpoint (2026-09-23)
+
+- Lean is pinned to 4.33.0 with direct Mathlib and lean-smt dependencies;
+  [setup](../development.md) points to the authoritative pin files.
+- DL1–DL7 and whole-crate artifact routing have landed. `choose`, supported
+  non-isolated loops, generic opaque applications, and constructor type
+  ascription are supported within their documented boundaries.
+- The [dalek-lite field cone](../../case-studies/dalek-lite/README.md#current-verification-status)
+  remains partial: eight explicit proof holes occur in four checked-in units.
+  The later zero-`sorry` claim was invalidated by a checker invocation defect.
+- Percolator's green runner now includes withdrawal, bounded arithmetic, and
+  bitmap set; its two partial drivers still exercise `Ord` and `BitNot` gaps.
+- The differential directory currently contains 191 source fixtures. This is
+  an inventory count, not a new parity result. The earlier 180/180 and 88/88
+  figures below describe the recorded July checkpoint.
+- Aeneas SHA-3 remains paused after the recorded `copy_to` slice.
+
+No suite was rerun for this documentation audit. See the
+[execution plan](../../plans/execution-plan.md) for pending work.
+
+## Recorded checkpoint (2026-07-20)
+
+The following paragraphs and milestone table retain that checkpoint's counts
+and tool versions; later status is summarized above.
+
+**Recorded checkpoint:** language and automation slices through
 M4 plus the F/V saturation work are implemented; the differential corpus is
 180/180 with 88/88 failure-span agreement. The standalone
 **AeneasVerif/sha3.rs** acquisition—not SymCrypt/SymCRust SHA-3—preserves all
@@ -53,8 +78,8 @@ percentages remain unmeasured.
 | M1 span-mapped diagnostics | Complete | Colocated obligation manifests; `vrml_check` runs Lean and reports failures as rustc/Verus-style JSON at the exact Rust span (`examples/m1-diagnostics`) |
 | M1 incremental fingerprints | Complete | Span-insensitive semantic + location fingerprints per function; whitespace/move/body/contract edit matrix enforced by `scripts/test_incrementality.sh` |
 | M1 differential measurement | Complete | 12/12 verdict parity and 4/4 failure-span agreement between Verus and the Lean backend on the straight-line corpus (`scripts/run_differential.py`) — above the 95% gate |
-| Formal M1 straight-line gate | Complete | See the [tutorial](docs/TUTORIAL.md) for the end-to-end experience |
-| M2 Lean-side IR architecture | Complete | Rust serializes a versioned textual IR ([docs/ir.md](docs/ir.md)); the Lean library `Vermilion.Ir` lexes/parses it idiomatically and owns VC generation, emission, and manifests; VCs are theorems with one assumption per line |
+| Formal M1 straight-line gate | Complete | See the [tutorial](../TUTORIAL.md) for the end-to-end experience |
+| M2 Lean-side IR architecture | Complete | Rust serializes a versioned textual IR ([docs/ir.md](../ir.md)); the Lean library `Vermilion.Ir` lexes/parses it idiomatically and owns VC generation, emission, and manifests; VCs are theorems with one assumption per line |
 | M2 branches | Complete | `if`/`else` with guarded SSA joins, early returns in arms, spec-level `ite` (`Vermilion.iteP`); `examples/m2-branches` |
 | M2 loops + invariants | Complete | Verus-style loop isolation: entry/preserve obligations, havoc symbols, exit facts; the nonlinear `sum_below` bound carries a hand-written twin proof (`examples/m2-loops`, `--manual-proofs`) |
 | M2 break/continue | Complete | Verus's isolated-loop discharge at early exits: a `break` re-checks the at-exit invariants (`invariant` + loop `ensures`), a `continue` the at-entry invariants plus the measure; break-capable loops carry no negated condition (`examples/m2-break`) |
@@ -73,7 +98,7 @@ percentages remain unmeasured.
 | M3 systematic type facts | Complete | The recursive `typ_invariant` analogue at every value-introduction site: scalar ranges, quantified element/key facts for containers, generic-instantiated datatype field facts |
 | M3 traits | Complete (static dispatch + generic bounds) | Trait spec fns resolve to concrete impls; inherited contracts are checked at callers/impl bodies; generic trait bounds use universally quantified dictionary symbols (`examples/m3-traits`, `examples/m3-trait-bounds`). Dynamic dispatch fails closed |
 | M3 spec/exec closures | Complete | `spec_fn(T…) -> U` as the Lean arrow, spec closures as `fun`; exec closure bodies are checked in a scope and call contracts prove requires/assume ensures — no defunctionalization or axioms (`examples/m3-closures`, `examples/m3-exec-closures`) |
-| Soundness audit + trust doc | Complete (2026-07-13) | Fail-open `UnaryOpr` catch-all removed; ext-equality checked through datatype fields; `assert … by` blocks made check-and-discard (`(scope …)` + the `(SCOPE)` rule in [docs/vcgen.md](docs/vcgen.md)) — each fix pinned by a differential guard; assumptions enumerated in [docs/trust.md](docs/trust.md) |
+| Soundness audit + trust doc | Complete (2026-07-13) | Fail-open `UnaryOpr` catch-all removed; ext-equality checked through datatype fields; `assert … by` blocks made check-and-discard (`(scope …)` + the `(SCOPE)` rule in [docs/vcgen.md](../vcgen.md)) — each fix pinned by a differential guard; assumptions enumerated in [docs/trust.md](../trust.md) |
 | M3 exec closures | Complete | `ClosureInner` in a check-and-discard scope; `ClosureReq`/`ClosureEns` as fresh function-typed binders constrained by the assumed contract fact; call-site requires proved (`examples/m3-exec-closures`) |
 | M3 const generics | Complete | `const N: usize` as an `Int` value binder with arch-neutral `usize` bounds; literals substituted at instantiations; const-generic spec fns pass leading explicit `Int` args (`examples/m3-const-generics`) |
 | M3 broadcast use | Complete (single lemmas + registered groups) | A proven lemma's quantified fact is assumed at the use point; registered vstd groups resolve through V4 to droppable Lean lemma hints (`examples/m3-broadcast`, c137/c138) |
@@ -107,11 +132,11 @@ percentages remain unmeasured.
 | Standalone AeneasVerif SHA-3 through `copy_to` | Implementation milestone complete | Not SymCrypt/SymCRust; exact seven-file upstream Rust inventory; executable-token identity after erasing 86 typed regions; three byte-identical metadata files; default/dereference support, θ/ρ/π/χ/ι, `round`, `keccak_p`, `xor_byte_at`, `xor_lane`, `xor`, and `copy_to` verify as 198/198 obligations in 25 twins with no `sorry`; public parity remains 0/6 |
 | Concrete associated-output normalization | Complete (monomorphic) | Unique exact impl equations normalize before IR emission; c152/c153 pin positive/negative parity; abstract generic projection remains a dedicated lowering refusal |
 | Tuple-destructuring assignment | Complete for tuple patterns | Verus fork `7734d271a` admits rustc's evaluate-once synthetic declaration and component assignments; native compile/positive/negative tests and Vermilion c156/c157 pin simultaneous, nested, wildcard, and wrong-result behavior; no IR or VCGen change |
-| Exact unsigned `rotate_left` | Complete | Current Verus fork `0bb5732ae` retains modulo-width behavior for every unsigned type; Vermilion's registry resolves those calls to `Vermilion.Vstd.Rotate`; c158/c159 pin zero, width, oversized, variable and wrong-result behavior |
+| Exact unsigned `rotate_left` | Complete | Fork `0bb5732ae` at this checkpoint retains modulo-width behavior for every unsigned type; Vermilion's registry resolves those calls to `Vermilion.Vstd.Rotate`; c158/c159 pin zero, width, oversized, variable and wrong-result behavior |
 | Native u64 endian conversions | Complete | Fork ancestor `c329046d2`, retained by `0bb5732ae`, specifies `to_le_bytes`/`from_le_bytes` and normalizes const array lengths for assume-spec matching; `Vermilion.Vstd.Bytes` mirrors them; c160/c161 give positive/negative parity |
 | Canonical while setup + projected-write havoc | Complete | Pure setup prefixes are evaluated, false-arm borrow resolutions become loop-exit effects, and projected writes havoc a correctly typed root object; c162/c163 pin a mutating `while i < src.len()` |
 | Checked assertions in while-condition setup | Complete | Setup assertions are proved from type facts and invariants before the condition becomes available; short-circuit-arm checks retain guards and established checks become exit facts. Existing `Assert`/`Branch`/`Loop` IR and VCGen rules suffice; c170–c172 pin positive, negative-span, and short-circuit cases. |
-| Executable slice ranges and copying | Complete for scalar `Range`/`RangeFrom` shapes | Current fork `0bb5732ae` specifies immutable and mutable `usize`/`Range`/`RangeFrom` indexing. Vermilion recognizes only the exact core delegated contracts, normalizes their slice output, restores inherited bounds, relates the returned mutable view to its owner's prophecy, and composes ordinary `copy_from_slice`; c164–c169 and c173–c177 pin values, owner writeback, wrong results, bounds, and copy-length failures. |
+| Executable slice ranges and copying | Complete for scalar `Range`/`RangeFrom` shapes | Fork `0bb5732ae` at this checkpoint specifies immutable and mutable `usize`/`Range`/`RangeFrom` indexing. Vermilion recognizes only the exact core delegated contracts, normalizes their slice output, restores inherited bounds, relates the returned mutable view to its owner's prophecy, and composes ordinary `copy_from_slice`; c164–c169 and c173–c177 pin values, owner writeback, wrong results, bounds, and copy-length failures. |
 | Generated/proof editor `Specs` roots | Complete | Proof roots are auto-discovered; generated stems anywhere use an on-demand Lake overlay. Exact keccak-iota `impl__6_index` and a fresh non-test generated root are integration-tested |
 
 ## 2026-07-20 — standalone AeneasVerif SHA3 `copy_to` milestone
@@ -435,7 +460,7 @@ so a clean generated tree is materialized instead of replayed incompletely.
 - Verus pin moved to our fork (`ilyasergey/verus` branch `dev`): VIR export
   hook (env var now `VERUS_VIR_EXPORT`; patch overlay retired) +
   `debug_assert!`-as-static-assert (vstd 1972/0 under it).
-- Case studies: [curve25519](../../case-studies/curve25519/) verified (38
+- Case studies: [curve25519](../../case-studies/aeneas/curve25519/) verified (38
   obligations, 9 auto + 29 interactive; ring spec-bridge to the
   dalek/Aeneas `asNat` theorem — plan gate C0); SymCrypt `mont_mul`/
   `mod_reduce` verified in the aeneas probe suite with a kernel-checked

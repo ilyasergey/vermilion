@@ -35,14 +35,17 @@ smaller trust surface (kept in step with
    embedding choices summarized in the next section. User spec fns are
    *not* part of this surface: they are ordinary Lean definitions the
    kernel checks.
-5. **Lean itself plus the proof toolchain** — the kernel (the final
-   judge); for proofs found via `smt`, cvc5 with proof reconstruction
-   (`trust := false`, so the kernel still checks).
+5. **Lean's kernel and the axioms used by each proof.** The `smt` tactic
+   uses cvc5 with reconstruction (`trust := false`); solver output becomes
+   a Lean proof term checked by the kernel. Reconstruction does not establish
+   that imported theorems are axiom-free: dependency assumptions require a
+   separate axiom audit.
 6. **Glue** — `vrml_check`'s failure-to-obligation mapping and
    `vrml_sync`'s twin reconciliation can misreport locations or
    staleness but cannot make a false obligation pass the kernel.
 
-Not trusted: Verus's Z3 back end (never runs), the `vrml` automation (a
+Not trusted for the Lean verdict: Verus's Z3 back end (used in baseline and
+differential runs), the `vrml` automation (a
 failed tactic is a `sorry`, never a false accept), and the generated
 files themselves (regenerated and re-judged every run).
 
@@ -118,7 +121,8 @@ it as Lean `Prop`. A bare binder `p : Prop` therefore does not itself provide
 the `Decidable p` dictionary needed to elaborate `iteP p a b`. Vermilion does
 not silently install a global classical instance. The Lean generator derives
 a first-class `typeclass_evidence` obligation, emitted after spec definitions
-as a module-local instance and tracked in the manifest/twin like a logical VC.
+as a local instance in per-file mode or a shared imported `Evidence.lean`
+instance in per-function mode, tracked in the manifest/twin like a logical VC.
 
 The generated copy carries a conspicuous `sorry` so downstream VCs can be
 checked *contingently*. This does not make a verification succeed:
@@ -132,10 +136,13 @@ current twins make the classical choice explicit:
 exact Classical.propDecidable p
 ```
 
-The trust consequence is narrow and visible. Classical proposition choice is
-used only where the interactive dictionary says so; it is not an axiom and
-does not enter earlier executable spec definitions. The kernel checks the
-term. For each supported evidence producer, the trusted part is the
+This dictionary uses Lean's standard classical axioms, including choice;
+it introduces no project-specific axiom. The kernel checks the term under
+those axioms. Classical reasoning is also used by `chooseSpec` and by the
+explicit `open Classical in` / `noncomputable` fallback for spec definitions
+with opaque proposition guards. Evidence instances do not retroactively
+supply those earlier definitions. See the
+[typeclass-evidence policy](vcgen.md#typeclass-evidence-obligations). For each supported evidence producer, the trusted part is the
 generator's **evidence-demand analysis and placement**—that it finds every
 matching dictionary needed by rendered terms and does not accidentally use a
 placeholder in a reported-success path. The initial theorem-layer

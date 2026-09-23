@@ -400,9 +400,12 @@ BINOP     ::= add | sub | mul | ediv | emod
   statements Verus's discipline rejects (pinned by the m4-nonlinear
   example; not representable in the verdict-agreement corpus); when a quantified goal
   defeats the ladder, the settled workflow is an interactive proof in the
-  twin. `choose` fails closed for now.
+  twin. Scalar `choose` lowers to `Vermilion.chooseSpec` with conditional
+  characterizing hypotheses; tuple binders and unsupported bodies fail closed
+  (see [choice semantics](vcgen.md#choose-characterizing-hypotheses-the-choose-post-pass)).
 - Generated definitions avoid `noncomputable` unless the body forces it
-  (currently possibly-zero `ediv`/`emod`); `iteP` stays computable when its
+  (including `choose`, possibly-zero `ediv`/`emod`, and opaque-proposition
+  conditionals, transitively through calls); `iteP` stays computable when its
   guard has constructive `Decidable` evidence. Interactive proposition
   decision evidence is emitted only after spec definitions, so it cannot
   leak classical computation into them. Datatype accessors and

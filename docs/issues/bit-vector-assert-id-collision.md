@@ -45,3 +45,12 @@ collision_635d62c1` wrapper around the second block, marked with
 `-- vrml:user:begin/end` in
 `case-studies/dalek-lite/proofs/bit_lemmas/layer_a_lemmas_common_lemmas_bit_lemmas_lemma_or_bit.lean`.
 Remove that wrapper when the emitter emits unique ids.
+
+
+**Source audit (2026-09-23):** the current checked-in `square2`,
+`lemma_mul_boundary`, and `lemma_or_bit` twins each contain two explicit
+`sorry` bodies. The earlier statement that both `lemma_or_bit` obligations
+carry real proofs does not describe the current tree. The separate
+`lemma_pow2k_loop_boundary` unit also has two proof holes; those holes are not
+attributed to this collision without further investigation. See the
+[current case status](../../case-studies/dalek-lite/README.md#current-verification-status).

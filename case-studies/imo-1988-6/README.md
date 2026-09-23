@@ -2,7 +2,7 @@
 
 [`imo_1988_6.rs`](imo_1988_6.rs) is a byte-for-byte copy of Verus's
 [`examples/imo_1988_6.rs`](https://github.com/verus-lang/verus/blob/c569645bd37b00b23d349ef64bafee0aa0a49242/examples/imo_1988_6.rs)
-at Vermilion's pinned Verus commit `c569645bd37b00b23d349ef64bafee0aa0a49242`
+at the acquisition source commit `c569645bd37b00b23d349ef64bafee0aa0a49242`
 (MIT). Its SHA-256 is
 `6bb4485af7c9f8a8cd0910e793a70ffa1009c4fe8e64ea3a2d8a2f0527a4b7ce`.
 `verify_verus.sh` checks both the byte identity and Verus's baseline: **17

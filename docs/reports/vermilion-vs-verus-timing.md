@@ -1,5 +1,9 @@
 # Vermilion vs Verus — timing and capability
 
+This is a dated measurement record. Tool versions, counts, and timings below
+apply to the recorded runs. For current setup and scope, see the
+[development guide](../development.md) and [case-study registry](../../case-studies/README.md).
+
 Measured 2026-07-14. Best-of-3 wall time, end-to-end **to verdict**, on the
 same source file. Verus runs its full SMT verification (`rust_verify`,
 Z3); Vermilion runs the whole pipeline (shared front end `--no-verify` →

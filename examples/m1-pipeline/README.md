@@ -21,9 +21,9 @@ convention is the same in every example:
   Rust spans (`error[vermilion]: ...`).
 - **`proofs/simple/increment.lean` is the user-editable twin.** `vrml_sync` reconciles
   it with the fresh obligations on every run: when automation proves
-  everything and you edited nothing, it is **byte-identical** to the
-  generated module; where automation fails, the proof body becomes `sorry`
-  with a warning asking you to prove it manually; proofs you write survive
+  everything and you edited nothing, its automatic proof bodies match those
+  in the generated module (imports can differ). Where automation fails, the
+  proof body becomes `sorry` with a warning asking you to prove it manually; proofs you write survive
   regeneration for as long as their statement hash is unchanged, and go stale
   (replaced, with a warning) the moment the Rust code changes their VC.
   Lake kernel-checks this twin (`lake build M1Pipeline`).

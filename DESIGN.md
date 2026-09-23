@@ -108,11 +108,13 @@ combinations, or generated datatype-variant predicates. A bare Rust Boolean
 represented as `value : Prop`, or an unknown predicate application used as an
 `iteP` guard, does request evidence.
 
-Equivalent demands are deduplicated into one evidence block for the generated
-module. Rendering places that block after spec-function definitions and before
-the consuming logical theorems, so the instance cannot silently make earlier
-definitions classical and cannot escape into importing modules. Its generated
-body is a conspicuous placeholder: dependent VCs may be checked contingently,
+Equivalent demands are deduplicated. In per-file mode, evidence is a local
+instance after spec definitions and before consuming theorems. In per-function
+mode it is a plain instance in the shared `Evidence.lean` unit, visible to
+importing obligation modules. Spec definitions precede evidence in the
+import graph; opaque-proposition conditionals in those definitions receive
+a separate, explicit `open Classical in` / `noncomputable` fallback. The
+generated evidence body is a conspicuous placeholder: dependent VCs may be checked contingently,
 but `vrml_check` keeps the run red until the persistent twin supplies a
 kernel-checked dictionary. The representation itself is class-generic; this
 `Decidable` rule is only its first producer. The normative rule and lifecycle
@@ -191,16 +193,17 @@ in [docs/trust.md](docs/trust.md)):
    (build fails on a dangling registry name). User spec fns are *not* part
    of this trust surface: they are emitted as ordinary Lean definitions
    that the kernel checks.
-5. **Lean itself plus the proof toolchain** — the Lean kernel (the final
-   judge), and for proofs found via `smt`, cvc5 with proof reconstruction
-   (`trust := false`, so the kernel still checks); `grind`/`omega`/`simp`
-   are kernel-checked as usual.
+5. **Lean's kernel and the axioms used by each proof.** The `smt` tactic
+   uses cvc5 with reconstruction (`trust := false`), producing terms checked
+   by the kernel, as do `grind`/`omega`/`simp`. Imported theorem assumptions
+   still require a separate axiom audit.
 6. **Glue** — `vrml_check`'s mapping of Lean failures to obligations (line
    ranges in manifests) and `vrml_sync`'s block reconciliation. These can
    misreport locations or stale proofs but cannot make a false obligation
    pass the kernel.
 
-Not trusted: Verus's Z3 back end (never runs), the `vrml` automation
+Not trusted for the Lean verdict: Verus's Z3 back end (used in baseline and
+differential runs), the `vrml` automation
 tactics (a failed tactic is a `sorry`, never a false accept), and the
 generated files themselves (regenerated and re-judged every run).
 
@@ -225,6 +228,12 @@ discharge — is specified in [docs/vcgen.md](docs/vcgen.md). Tracked
 prominently in [plans/execution-plan.md](plans/execution-plan.md).
 
 ## Distance to Verus feature parity
+
+The [support guide](docs/support.md) links runnable examples and current
+boundaries. Later sequential slices include scalar `choose`, generic opaque
+specification applications, per-function lowering isolation, and supported
+non-isolated `while` loops. Their shape restrictions remain explicit in the
+[VC-generation policy](docs/vcgen.md).
 
 Implemented today (M1–M4 feature slices complete; gate-project coverage
 measurement for M3/M4 outstanding):
@@ -385,10 +394,10 @@ consequences of the Lean-native backend, not gaps):
 |---|---|
 | `&mut` returns, const-generic datatypes | M3 completion tail (arrays ✓, slices ✓, &mut fields ✓, const-generic spec fns ✓, mutual recursion ✓) |
 | wider vstd collection APIs (union/filter/agrees/…; extensional `=~=` already lands as `=` for Seq/Set/Multiset) | on demand, as corpus/gate projects require |
-| `#[verifier::loop_isolation(false)]`, dynamic dispatch (`dyn`), `DeepView`, unregistered/wider vstd broadcast groups (registered groups + single-lemma `use` ✓) | optional, M7 suite-disposition tail / on corpus demand |
+| dynamic dispatch (`dyn`), `DeepView`, unregistered/wider vstd broadcast groups (registered groups + single-lemma `use` ✓) | optional, M7 suite-disposition tail / on corpus demand |
 | fine-grained twin-proof staleness diagnostics, proof caching | optional (function-level staleness + a <5s edit loop already work) |
 | ring/`polyrith` rungs beyond the current `nlinarith` ladder, on demand (`AssertQuery{NonLinear}` isolated blocks ✓) | M4 tail |
-| generic bodyless spec-function applications with explicit type instantiations; standard `HashMap::entry` and returned-`&mut` contracts | sequential corpus growth |
+| standard `HashMap::entry` views and returned-`&mut` contracts | sequential corpus growth |
 | globals/statics and initialization; atomic ghost protocols | M5/M6 (statics case study) |
 | ghost memory: `PointsTo`, raw pointers, cells, invariants | M5 |
 | concurrency: tokenized state machines, atomics, PCM/storage protocols | M6 |

@@ -13,10 +13,10 @@ reference, all against an extensional `Map` view.
 
 Stage this rather than special-casing one method:
 
-1. land the existing generic opaque-spec-function issue (#19). The first
-   current refusal is vstd's polymorphic bodyless `view`; its type arguments
-   must stay explicit enough to preserve one generic symbol across differently
-   instantiated calls;
+1. **Completed prerequisite:** generic opaque specification applications
+   landed in DL5 ([#19](closed/lower-generic-spec-functions-used-by-question-mark.md)).
+   The original polymorphic `view` refusal is historical; rerun the Entry
+   probe before identifying its current first refusal;
 2. model the relevant std-spec contracts and Entry enum/view operations in
    the vstd mirror;
 3. extend returned-`&mut` prophecy handling so `final(value)` in

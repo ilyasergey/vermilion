@@ -35,5 +35,5 @@ serializes the textual IR (`docs/ir.md`), `vrml_gen` (Lean) emits
 `generated/looping/` — one unit module per function, machine output, never
 committed — Lean judges
 every obligation, and `vrml_sync` maintains the user-editable
-`proofs/looping/` twins: byte-identical while automation succeeds and
+`proofs/looping/` twins: automatic proof bodies match while automation succeeds and
 nothing is edited; `sorry` plus a warning wherever a proof needs a human.

@@ -42,7 +42,7 @@ its header cites the exact source lines. Extraction fidelity: verbatim where
 the construct allows it, distilled (and labeled) where a one-file probe
 needs a stand-in (e.g. the local `subtle` stub).
 
-## Measured probe matrix (2026-07-20, fork `0bb5732ae`)
+## Measured probe matrix (2026-07-20; fork advanced through `486008364`)
 
 Every probe passes the **pinned Verus with full SMT verification** first;
 the Vermilion column is the measured Lean-side boundary.
@@ -66,8 +66,8 @@ directly — `calc!` step justifications (the chain's claims stay as ordinary
 obligations; the `{}` scripts are droppable), inline `proof {}` lemma
 choreography (already ground hints), trigger annotations (preserved,
 unconsumed), `reveal_with_fuel` beyond ground instantiation, and
-`rlimit`/prover selection (ignored). Semantic constructs — `choose`,
-`assume_specification`, ghost bindings, non-isolated loops — still need real
+`rlimit`/prover selection (ignored). Semantic constructs such as `choose`,
+`assume_specification`, ghost bindings, and non-isolated loops require real
 lowering because they change what an obligation *says*, not how Z3 finds it.
 
 **vstd drift (DL7, measured): none affects this crate.** The full sweep
@@ -77,20 +77,21 @@ is self-contained. The DL0 note that `lemma_mul_le` was "gone at our pin"
 was a misattribution — it is dalek-lite's own helper, which a one-file
 probe simply cannot import (`wide_mul_control.rs`'s `<MODIFIED CODE>`
 swap to vstd's `lemma_mul_upper_bound` stands as a distillation
-artifact, not drift). The only crate-scale accommodation is the
-front-end mut-ref migration (`*x` → `*final(x)` in `&mut`
-postconditions), mechanical and labeled wherever acquisition hits it.
+artifact, not drift). The import-drift sweep did not establish source
+identity. The whole-cone
+acquisition also uses labeled field-source and boundary accommodations,
+documented in the [fidelity record](../../docs/reports/dalek-lite-layer-a-scoreboard.md#verification-subject-fidelity).
 
 ## Layer Set A acquisition (DL8, 2026-07-20)
 
-[`layer_a.rs`](layer_a.rs) mounts the field cone VERBATIM via `#[path]`
-into the pinned `upstream/` tree: `backend/serial/u64/field.rs` (through
+[`layer_a.rs`](layer_a.rs) mounts the lemma/spec cone via `#[path]`
+from the pinned `upstream/` tree, alongside `backend/serial/u64/field.rs` (through
 the tracked [`field_u64.rs`](field_u64.rs) copy carrying the labeled
 front-end accommodations), 13 field-lemma + 8 common-lemma files, and 5
 spec modules, with labeled distillation stubs for the out-of-cone edges
 (`subtle` compiled as a real extern rlib by [`run.sh`](run.sh)). The DL8
-push made the whole cone lower and emit end to end — 416/454 functions,
-5,215 obligations — after four frontier fixes (linear `natclip`/`sclip`
+push lowered 416/454 functions and emitted 5,215 obligations after four
+frontier fixes (linear `natclip`/`sclip`
 IR forms replacing the exponential clip expansion that OOM-killed
 `from_bytes`; classical fallback for opaque-Prop `iteP` guards;
 parameter range facts `(ranges …)` in recursive guards; two new
@@ -98,49 +99,45 @@ parameter range facts `(ranges …)` in recursive guards; two new
 cross-module recursive-spec-fn termination gap (issue filed), one from
 the substitution budget (`as_bytes`; sharing issue filed). Dispositions
 and the CryptoProver comparison live in
-`docs/reports/dalek-lite-layer-a-scoreboard.md`; artifact routing for
-whole-crate runs is tracked in the `whole-crate-acquisition-generated-root`
-issue.
+[the scoreboard](../../docs/reports/dalek-lite-layer-a-scoreboard.md).
+Whole-crate artifact routing has landed; its
+[issue](../../docs/issues/closed/whole-crate-acquisition-generated-root.md) is closed.
 
-## What is verified today (2026-08-19, Lean 4.33)
+## Current verification status
 
-Every claim below is a Lean theorem checked by the Lean kernel — Lean is
-the only verifier; Verus runs `--no-verify` as the front end.
+The acquisition contains 5,215 clause-level obligation declarations in 436
+checked-in Lean files, covering the lowered field cone. The recorded lowering
+result is 416 of 454 functions; 38 are refused. This is partial verification.
 
-**The whole acquired field cone is proven: 5,215 clause-level verification
-conditions across 416 functions, with zero `sorry`.** A VC is one `ensures`
-conjunct, `assert`, callee-precondition instance, or loop-invariant step,
-emitted as its own theorem in the per-function twins under
-[`proofs/`](proofs/) (library `CaseDalekLiteLayerA`, 436 unit modules).
-5,182 VCs (99.4%) close on the `vrml` automation ladder; the remaining 33
-carry hand-written interactive proofs in 20 unit twins — first-class
-verification per project policy, and the residue of what was a
-2,191-`sorry` interactive backlog at the DL8 handover (closed 2026-08-19 by
-the Lean 4.33 toolchain move, new kernel-checked `Bits`/`Seq` library
-lemmas, and 21 hand proofs; see
-`logs/2026-08-19-lean-4.33-veil-removal.md`).
+A source audit on 2026-09-23 found **eight explicit `sorry` bodies in four
+proof units**:
 
-What that covers, concretely: the crate's shipping field arithmetic modulo
-p = 2²⁵⁵ − 19 — `mul`, `square`/`pow2k`, `reduce`, `from_bytes`/`as_bytes`,
-negation, and the constant-time conditional operations in
-[`field_u64.rs`](field_u64.rs) — plus the 13 field-lemma, 8 common-lemma,
-and 5 spec modules written upstream to prove it, all verbatim from the pin.
-Functional-correctness contracts are the crate's own (limb bounds,
-`u64_5_as_nat` value identities, byte-encoding round trips), re-verified
-through the Lean kernel rather than Z3.
+- [`square2`](proofs/field_u64/layer_a_backend_serial_u64_field_impl__16_square2.lean): two;
+- [`lemma_pow2k_loop_boundary`](proofs/pow2k_lemmas/layer_a_lemmas_field_lemmas_pow2k_lemmas_lemma_pow2k_loop_boundary.lean): two;
+- [`lemma_mul_boundary`](proofs/field_lemmas_mul_lemmas/layer_a_lemmas_field_lemmas_mul_lemmas_lemma_mul_boundary.lean): two;
+- [`lemma_or_bit`](proofs/bit_lemmas/layer_a_lemmas_common_lemmas_bit_lemmas_lemma_or_bit.lean): two.
 
-**Not yet verified:** the 38/454 refused functions (37 blocked on the
-cross-module recursive-spec-fn termination gap, 1 on the substitution
-budget — span-mapped, issues filed); the crate's 48 `axiom_*` trusted
-floor, scheduled to be *proved* against Mathlib `ZMod` (DL10); and
-everything above the field layer — Scalar52, Montgomery/Edwards, Ristretto
-(DL9). One emitter defect keeps two `by (bit_vector)` VCs of
-`lemma_or_bit` under a marked namespace stopgap
-(`docs/issues/bit-vector-assert-id-collision.md`); their proofs are real.
+This count is a source inspection, not a fresh kernel-check or automation-rate
+measurement. The previous zero-`sorry` / 99.4%-automatic claim is withdrawn:
+[the migration log](../../logs/2026-08-19-lean-4.33-veil-removal.md#5b-a-false-green-in-the-acquisition-path-and-its-blast-radius)
+records a false-green checker invocation, and its final suite result was left
+unfilled. A fresh successful run is required before claiming the whole
+emitted cone verified. The [scoreboard](../../docs/reports/dalek-lite-layer-a-scoreboard.md)
+separates this status from the original machine-only baseline.
 
-The running comparison against CryptoProver (which verifies the same crate
-with Z3 and the axiom floor trusted) is
-[`docs/reports/dalek-lite-layer-a-scoreboard.md`](../../docs/reports/dalek-lite-layer-a-scoreboard.md).
+The subject is the field arithmetic and its supporting specification/lemma
+cone. The source accommodations and external boundary models are recorded in
+[the fidelity section](../../docs/reports/dalek-lite-layer-a-scoreboard.md#verification-subject-fidelity);
+`field_u64.rs` is an adapted copy, while mounted lemma/spec files come directly
+from the upstream pin.
+
+Remaining work includes the proof holes and
+[bit-vector declaration collisions](../../docs/issues/bit-vector-assert-id-collision.md),
+the refused functions (cross-module recursive-specification export and
+substitution-budget limits), the crate's trusted `axiom_*` floor, and the
+higher Scalar52, Montgomery/Edwards, and Ristretto layers. Kernel checking
+proves the emitted obligations under their hypotheses; upstream admits and
+external contracts remain trusted until separately discharged.
 
 ## Running
 

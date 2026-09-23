@@ -1,5 +1,9 @@
 # M0 calibration status
 
+This is a dated measurement record. Tool versions, counts, and timings below
+apply to the recorded runs. For current setup and scope, see the
+[development guide](../development.md) and [case-study registry](../../case-studies/README.md).
+
 Status: **infrastructure complete; exhaustive run deferred** on 2026-07-12 in
 favor of M1 VC-generation infrastructure.
 

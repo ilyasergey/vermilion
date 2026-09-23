@@ -25,7 +25,7 @@ serializes the textual IR (`docs/ir.md`), `vrml_gen` (Lean) emits
 `generated/seqadd/` — one unit module per function, machine output, never
 committed — Lean judges
 every obligation, and `vrml_sync` maintains the user-editable
-`proofs/seqadd/` twins: byte-identical to the generated modules while
+`proofs/seqadd/` twins: automatic proof bodies matching the generated attempts while
 automation succeeds and nothing is hand-edited; any obligation automation
 cannot close would appear there as a warned `sorry` for you to prove
 interactively (a first-class workflow, not a failure mode — your proof

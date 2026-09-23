@@ -1,5 +1,9 @@
 # M1 vertical-slice status
 
+This is a dated measurement record. Tool versions, counts, and timings below
+apply to the recorded runs. For current setup and scope, see the
+[development guide](../development.md) and [case-study registry](../../case-studies/README.md).
+
 ## Working end to end
 
 `scripts/run_suite.sh` (which absorbed the original `run_m1_pipeline.sh`; the alias was removed 2026-07-20) verifies a real `verus!` file with the pinned

@@ -2,7 +2,7 @@
 
 [`entry_api.rs`](entry_api.rs) is a byte-for-byte copy of Verus's
 [`examples/entry_api.rs`](https://github.com/verus-lang/verus/blob/c569645bd37b00b23d349ef64bafee0aa0a49242/examples/entry_api.rs)
-at Vermilion's pinned Verus commit `c569645bd37b00b23d349ef64bafee0aa0a49242`
+at the acquisition source commit `c569645bd37b00b23d349ef64bafee0aa0a49242`
 (MIT). Its SHA-256 is
 `23b6881384bf24931c618579a0d9e6a2d9fabbab8f28a6235a4073cc7060e2af`.
 `verify_verus.sh` checks byte identity and the baseline: **3 verified, 0
@@ -16,30 +16,21 @@ The file exercises three increasingly rich entry workflows over
 - matching `Entry::{Occupied,Vacant}`, including `get_mut` and a write
   through the returned reference.
 
-It is **not yet supported by Vermilion**. The first fail-closed boundary is
-vstd's generic, bodyless `view` specification:
+The study remains an expected-refusal probe. Its original generic bodyless
+`view` blocker was addressed by
+[generic specification applications](../../docs/issues/closed/lower-generic-spec-functions-used-by-question-mark.md)
+in DL5. That prerequisite's closure is not evidence that the complete Entry
+API works: Entry views, standard-library contracts, and returned-`&mut`
+relations to the owning map remain tracked by the
+[Entry-API issue](../../docs/issues/support-hashmap-entry-api.md).
 
-```text
-uninterpreted spec function view has type parameters (unsupported)
-```
+[`explore.sh`](explore.sh) runs with `--expect-unsupported`, succeeding only
+while the adapter refuses a required construct. It is included in the full
+suite's expected-refusal case-study runners. Run it to obtain the current
+first diagnostic; the pre-DL5 generic-`view` error is historical.
 
-This is the same representation problem tracked by
-[`lower-generic-spec-functions-used-by-question-mark.md`](../../docs/issues/lower-generic-spec-functions-used-by-question-mark.md):
-the IR must preserve one polymorphic symbol and its instantiated type
-arguments, rather than accidentally registering a call-instantiated
-monomorphic signature. Once that lands, the Entry contracts additionally
-exercise returned `&mut` prophecy values (`final(value)`), Entry enum views,
-and mutation of the owning map. The aggregate progression is tracked in the
-Entry-API issue under `docs/issues/`.
-
-`explore.sh` is intentionally not named `run.sh`, so this known boundary does
-not enter the green suite. It succeeds only while the adapter refuses the
-unsupported construct and will fail loudly when the fragment catches up.
-VS Code extension 0.9.7 treats the imported-vstd refusal as a module-level
-fragment result: `entry_api.rs` keeps an **outside the supported fragment**
-status and unsupported gutter marks, highlights its
-`vstd::std_specs::hash::*` import, and links that diagnostic to the adapter's
-precise span in `vstd/std_specs/hash.rs`.
+The VS Code extension distinguishes unsupported source from a failed Lean
+proof. See the [extension guide](../../editor/vscode-vermilion/README.md).
 
 ```console
 ./case-studies/entry-api/verify_verus.sh

@@ -8,60 +8,41 @@ authoritative in [the case-study registry](../case-studies/README.md) and
 
 ## Current baseline
 
-M1--M4 language and automation slices, the F-series sequential saturation
-push, and the V1--V4 vstd mirror are complete. The differential corpus is
-180/180 with 88/88 failure-span agreement. Current external/corpus evidence
-includes:
+M1–M4 feature slices, the F-series sequential work, and the V1–V4 vstd mirror
+have landed. Whole-project coverage gates remain incomplete. Current scope
+and dated evidence are recorded in the [case-study registry](../case-studies/README.md).
+The differential directory contains 191 source fixtures; a file count does
+not establish current verdict or span parity. Earlier measurements remain
+in the [progress ledger](../docs/reports/progress.md).
 
-- Percolator: 33 distinct copied bodies Verus-checked; 28 functions and 97
-  logical-or-evidence obligations verified in Lean, including ten
-  `wide_math.rs` functions;
-- verbatim IMO 1988 #6 and power-of-2 studies verified end to end;
-- the complete pinned Aeneas `sha3.rs` project acquired as pristine and
-  annotation-working copies; tuple-pattern parameters and custom tuple-keyed
-  `IndexMut` landed in the Verus/Vermilion combination; the annotation-erasure
-  and exact-inventory guard plus concrete associated-output normalization are
-  complete; tuple assignment, exact unsigned `rotate_left`, native endian
-  conversion, immutable/mutable ranges, copying, and checked loop-condition
-  setup have landed;
-  the unchanged permutation, byte helpers, `StateArray::xor`, and
-  `StateArray::copy_to` verify as 198/198 obligations in 25 twins, with 86
-  annotation regions erased back to pristine Rust and pinned Verus reporting
-  52 verified, 0 errors. This is standalone AeneasVerif/sha3.rs, not
-  SymCrypt/SymCRust SHA-3;
-- Entry API, statics, and recursion retained as explicit fail-closed or
-  investigation targets rather than being counted as supported.
-
-The remaining M3/M4 work is corpus expansion, gap closure driven by those
-programs, and measured gate coverage—not another unconditional syntax sweep.
+Percolator's green runner covers 31 production bodies, with two additional
+partial drivers. IMO 1988 #6 and power-of-2 have recorded complete proofs.
+Aeneas SHA-3 remains paused at its recorded `copy_to` slice. Entry API and
+statics are expected-refusal studies. The recursion tutorial is a historical
+investigation, excluded from current supported coverage.
 
 ## Ordered work queue
 
 ### 0. dalek-lite: the CryptoProver benchmark crate (user-directed 2026-07-20)
 
-The user paused the SHA-3 push and set the active target:
-`Beneficial-AI-Foundation/dalek-lite` (pin `de9ebf015`, BSD-3-Clause) — the
-production curve25519-dalek fork with a complete in-source Verus verification
-(~105k LOC, 121 files) and the subject of the CryptoProver paper. Goal:
-reproduce that result with a strictly smaller trusted base (Lean kernel
-instead of Z3; the 48-axiom trusted floor progressively proved against
-Mathlib). The acquisition, measured probe matrix, and the ordered **DL
-feature agenda** live in `case-studies/dalek-lite/{README,PLAN}.md`; the
-workflow directive is: implement each missing feature as one slice, update
-logs/docs/differential/examples/probes/README in that slice, commit, push,
-next. Measured on 2026-07-20: u128 widening core, `assume_specification` +
-external-type models, and `let ghost` already work (11 probe obligations
-green, one interactive); `choose` (24 upstream sites), `loop_isolation(false)`
-(2 sites), the `calc!` macro-span colocation defect (32 sites — a bug, not a
-construct gap: proof scripting gets no faithful lowering per the user's
-2026-07-20 policy, recorded in the case PLAN), and
-whole-run-abort-on-first-refusal are the measured blockers. DL order:
-per-function lowering isolation → `choose` → `calc!` colocation → Bits
-bridge for indexed operands → `assume_specification` breadth → non-isolated
-loops → vstd drift assessment (their pin `88f7396` is six months older than
-ours; first data point: `lemma_mul_le` → `lemma_mul_upper_bound`) → Layer
-Set A (9 field modules) with the automation-rate scoreboard → the module
-ladder → trusted-floor discharge → the 3 residual nonlinear obligations.
+The active target remains `Beneficial-AI-Foundation/dalek-lite` at
+`de9ebf015`. The [DL agenda](../case-studies/dalek-lite/PLAN.md) records the
+ordered work and the [case README](../case-studies/dalek-lite/README.md)
+records scope, source accommodations, and current proof status.
+
+DL1–DL7 and whole-crate artifact routing have landed. The field cone has
+5,215 obligation declarations across 436 checked-in Lean files, but eight
+explicit proof holes remain in four units. The zero-`sorry` claim was
+invalidated by the [checker investigation](../logs/2026-08-19-lean-4.33-veil-removal.md#5b-a-false-green-in-the-acquisition-path-and-its-blast-radius).
+Before reporting completion, resolve the proof holes and declaration
+collisions, run the acquisition with the working checker, and record the
+actual result. The 38 recorded lowering refusals remain separate from proof
+completion. Higher layers (DL9), trusted-floor discharge (DL10), and the
+nonlinear frontier (DL11) follow the case agenda.
+
+The comparison with CryptoProver must keep verification scope, source
+accommodations, and retained assumptions explicit. Replacing the solver does
+not itself discharge the upstream axiom floor or the trusted translation.
 
 ### 1. Verify the pinned Aeneas `sha3.rs` project — PAUSED (user, 2026-07-20)
 
@@ -136,8 +117,9 @@ differential guards.
 
 Drive `summer_school/chapter-1-22.rs` after S2. Add:
 
-1. `choose` as constructive proof input to an emitted `Classical.choose`
-   witness, guarded by the Verus-checked existence premise;
+1. scalar `choose` is already implemented by DL2; reassess the driver
+   against its supported binder/body shapes and conditional characterizing
+   hypotheses (see [VC policy](../docs/vcgen.md));
 2. boxed recursive enums with `decreases self`;
 3. legacy `#[is_variant]` accessors.
 
@@ -150,20 +132,17 @@ it.
 Schedule these as small, separately committed slices, ordered by a real driver
 becoming available:
 
-- unary `BitNot`, then Percolator bitmap clear after indexed array mutation;
-- indexed fixed-array mutation;
-- generic spec applications used by `?`;
+- unary `BitNot`, then Percolator bitmap clear (indexed mutation has landed);
 - std `Ord::min`/`max` default-body contracts;
-- concrete resolution of polymorphic `Option`/`Result` `Inhabited` ambiguity;
 - Entry API views and returned-`&mut` prophecy contracts;
-- `decreases_to!` and `via`/`#[via_fn]` for the recursion study;
+- `decreases_to!` and `via`/`#[via_fn]` when a new recursion driver is acquired;
 - const-generic datatypes;
 - `&mut` values escaping into data;
 - Map extensional equality (`=~=`/`=~~=`), only after a quotient or
   normalization design is agreed;
 - non-range iterators and richer `for` control flow only on corpus demand;
-- `loop_isolation(false)`, dynamic dispatch, and `DeepView` only on corpus
-  demand; do not infer their semantics from the isolated/static cases.
+- dynamic dispatch and `DeepView` only on corpus demand; supported
+  non-isolated `while` forms already landed in DL6.
 
 The synchronized issue corpus under `docs/issues/` is the implementation
 ledger for every clean feature or defect in this list.
@@ -228,8 +207,8 @@ never accept a stale proof against a changed theorem. Follow-ons:
 
 - allow already kernel-checked twin lemmas to become droppable hints for later
   obligations in the same program;
-- complete structured-hint handling for `calc!` and nested proof scripting
-  only when a corpus driver benefits;
+- keep `calc!` step scripts droppable; its claims already lower to scoped
+  assertions, with proof work available in the Lean twin;
 - redesign proof caching outside generated modules; the previous cache was
   removed as unsound/unstable and must not be revived by replaying stale
   verdicts.
@@ -275,8 +254,8 @@ and at least 95% suite coverage.
 ### M7 — temporal/liveness
 
 Add temporal reasoning and the Veil refinement bridge. Gate on an Anvil
-controller and 100% disposition of the Verus suite: direct pass,
-deterministically translated pass, or documented dropped-machinery behavior.
+controller and 100% disposition of the unmodified Verus suite: verified,
+unsupported with an explicit reason, or documented droppable proof scripting.
 
 ### M8 — project-level verification
 

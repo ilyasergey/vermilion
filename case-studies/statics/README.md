@@ -2,7 +2,7 @@
 
 [`statics.rs`](statics.rs) is a byte-for-byte copy of Verus's
 [`examples/statics.rs`](https://github.com/verus-lang/verus/blob/c569645bd37b00b23d349ef64bafee0aa0a49242/examples/statics.rs)
-at Vermilion's pinned Verus commit `c569645bd37b00b23d349ef64bafee0aa0a49242`
+at the acquisition source commit `c569645bd37b00b23d349ef64bafee0aa0a49242`
 (MIT). Its SHA-256 is
 `e16de160cb4e833da5731021d141f1184e2acd5467bfad99c1b0df1d287825e9`.
 `verify_verus.sh` checks byte identity and the baseline: **9 verified, 0

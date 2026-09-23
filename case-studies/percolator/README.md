@@ -42,7 +42,13 @@ complexity:
 | U256 representation + bitwise basics | [`wide_math_u256_basics.rs`](wide_math_u256_basics.rs) / [`proofs/wide_math_u256_basics/`](proofs/wide_math_u256_basics/) | [`new`, `from_u128`, `from_u64`, `lo`, `hi`, `is_zero`, `try_into_u128`, `bitand`, `bitor`](https://github.com/aeyakovenko/percolator/blob/143e68c4917ed0400a27b952f036a5677047cd84/src/wide_math.rs#L242-L429) | 10 | 40 |
 | Read-only active bitmap | [`active_bitmap_get.rs`](active_bitmap_get.rs) / [`proofs/active_bitmap_get/`](proofs/active_bitmap_get/) | `active_bitmap_is_empty` (bounded loop) and `active_bitmap_get` (array read, shift, mask) | 5 | 19 |
 
-That is 28 distinct production functions with unchanged executable bodies.
+The initial table covers 28 distinct production functions. DL5 added
+[`withdrawal_question_mark.rs`](withdrawal_question_mark.rs) (6 obligations),
+[`bounded_arithmetic.rs`](bounded_arithmetic.rs) (4), and
+[`active_bitmap_set.rs`](active_bitmap_set.rs) (11) to `run.sh`, bringing its
+scope to 31 distinct production functions. The current ten runner modules
+contain 118 logical-or-evidence obligation declarations. These are source
+inventory counts; the dated issue closures record the verification results.
 The contracts prove the complete codec truth tables, the unique
 caller-observation auto-crank case, opposite-side classification, bitmap
 emptiness, out-of-range fail-closed reads, exact bit extraction, Boolean
@@ -75,41 +81,27 @@ regeneration.
 
 ## Exact boundary found
 
-The remaining copied bodies all verify with Verus, but expose separate
-Vermilion gaps:
+The two remaining partial drivers in [`explore.sh`](explore.sh) are:
 
-| Driver | Upstream function | First Vermilion boundary |
-|---|---|---|
-| [`bounded_arithmetic.rs`](bounded_arithmetic.rs) | `adjust_u128` | standalone twin leaves a polymorphic `Option`/`Result` `Inhabited` metavariable stuck |
-| [`withdrawal_question_mark.rs`](withdrawal_question_mark.rs) | `apply_backing_provider_earnings_withdraw` | generic uninterpreted `spec_from` reached by `?` |
-| [`liquidation_fee_minmax.rs`](liquidation_fee_minmax.rs) | `liquidation_fee_from_raw_fee` | std `Ord::max/min` default-body contract |
-| [`active_bitmap_set.rs`](active_bitmap_set.rs) | `active_bitmap_set` | indexed assignment through `&mut [u64; 1]` |
-| [`active_bitmap_clear.rs`](active_bitmap_clear.rs) | `active_bitmap_clear` | unary fixed-width `BitNot`; indexed array mutation remains behind it |
+- [`liquidation_fee_minmax.rs`](liquidation_fee_minmax.rs):
+  [std `Ord::min/max` default-body contracts](../../docs/issues/support-std-ord-min-max-default-body-contracts.md).
+- [`active_bitmap_clear.rs`](active_bitmap_clear.rs):
+  [fixed-width unary `BitNot`](../../docs/issues/support-bitnot.md).
 
-[`explore.sh`](explore.sh) gates the four lowering refusals with
-`--expect-unsupported`:
+The runner uses `--expect-partial --manual-proofs`: supported siblings must
+verify, and each driver must retain a source-mapped lowering refusal.
 
 ```console
 ./case-studies/percolator/explore.sh
 ```
 
-The remaining Lean-statement defect is not presented as a negative
-verification test: `bounded_arithmetic.rs` has a true contract and remains a
-Verus-verified regression driver for the separate polymorphic-type ambiguity.
-Unlike the fixed evidence gap, `Inhabited ?m` does not yet identify a concrete
-class target for an interactive evidence obligation.
-
-The clean implementation items are tracked in the synchronized issue corpus:
-
-- [standalone generated-twin elaboration](../../docs/issues/generated-twins-must-elaborate-without-hidden-typeclass-context.md) (remaining polymorphic type ambiguity);
-- [generic spec functions used by `?`](../../docs/issues/lower-generic-spec-functions-used-by-question-mark.md);
-- [std `Ord::min/max` default bodies](../../docs/issues/support-std-ord-min-max-default-body-contracts.md);
-- [indexed fixed-array mutation](../../docs/issues/support-indexed-mutation-of-fixed-size-arrays.md);
-- [unary `BitNot`](../../docs/issues/support-bitnot.md);
-- [per-function lowering isolation](../../docs/issues/per-function-lowering-isolation.md).
-
-The Boolean/`Result` class-dictionary boundary was resolved by
-[interactive Lean typeclass evidence](../../docs/issues/closed/generate-interactive-lean-typeclass-evidence-obligations.md).
+Earlier prerequisites have landed:
+[generic spec applications used by `?`](../../docs/issues/closed/lower-generic-spec-functions-used-by-question-mark.md),
+[polymorphic constructor typing](../../docs/issues/closed/generated-twins-must-elaborate-without-hidden-typeclass-context.md),
+[indexed fixed-array mutation](../../docs/issues/closed/support-indexed-mutation-of-fixed-size-arrays.md),
+and [per-function lowering isolation](../../docs/issues/closed/per-function-lowering-isolation.md).
+The Boolean/`Result` dictionary boundary is handled by
+[interactive typeclass evidence](../../docs/issues/closed/generate-interactive-lean-typeclass-evidence-obligations.md).
 
 ## `wide_math.rs`: the exact current boundary
 
