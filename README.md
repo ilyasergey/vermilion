@@ -5,6 +5,23 @@ Vermilion is an experimental Lean 4 backend for the
 front and middle end and translates VIR-SST verification conditions into
 readable Lean theorem statements, with Lean as the only verifier.
 
+- **100% Verus-compatible.** The input is unmodified Verus source. There is
+  no Vermilion dialect and nothing to rewrite.
+- **Kernel-checked theorems.** Every verification condition becomes a Lean
+  theorem you can read, checked by the Lean kernel. The automation that
+  proves it is itself untrusted.
+- **Interactive proofs.** When automation fails, you write the proof
+  yourself, in an editable Lean file that survives re-runs of the pipeline.
+- **Lean-native automation.** Proof search uses `bv_decide`, `nlinarith`,
+  and Mathlib lemma libraries; Verus's SMT encodings are not reproduced.
+- **VS Code plugin.** A Dafny-style automated experience: verdicts appear on
+  the offending Rust line, and ⌘⇧J (Ctrl+Shift+J) jumps from a Rust fact to
+  its Lean counterpart and back.
+- **Missing compared to Verus.** Ghost memory (`PointsTo`, raw pointers,
+  cells), statics, and concurrency (atomics, tokenized state machines). The
+  sequential feature set is complete; the rest is scheduled in
+  [DESIGN.md](DESIGN.md).
+
 **New here? Take the [hands-on tutorial](docs/TUTORIAL.md)** — verify
 Rust through Lean, read the generated theorems, write an interactive
 proof, and watch Lean report a broken program on its exact source line,
