@@ -1,7 +1,12 @@
 # Aeneas corpus — detailed inventory notes
 
+**Status (2026-09-23):** SHA-3 work is paused while dalek-lite is active.
+Counts and verifier revisions below are recorded checkpoint evidence, not a
+fresh run. See the [status hub](README.md) for the active plan and current
+toolchain. Acquisition-source pins remain unchanged.
+
 *Supporting material for [README.md](README.md) and [PLAN.md](PLAN.md);
-for Vermilion-side progress see the plan's current-status table and the
+for Vermilion-side progress see the plan's recorded-status table and the
 [gap matrix](gap-matrix.md). First-hand observations combine a shallow clone
 of `AeneasVerif/aeneas` (master, 2026-07-17), a direct audit of standalone
 `AeneasVerif/sha3.rs` at `cb411d54…` (2026-07-19), and the published record;
@@ -117,7 +122,7 @@ work).
   `scalar_tac +nonLin`, `agrind`, WP-style `step`/`let* ⟨…⟩ ←` with
   `⦃…⦄` postconditions; maintained `proof-time.md`.
 
-### Standalone `sha3.rs` — exact next target
+### Standalone `sha3.rs`: paused target
 
 Audited repository: [AeneasVerif/sha3.rs](https://github.com/AeneasVerif/sha3.rs)
 at commit `cb411d54ee0b22f88b64c79963691ff63f3ad5b4` (2025-09-15), tree
@@ -167,7 +172,7 @@ Rust shapes the unchanged Vermilion study must preserve include:
   copy length/final-state contracts have now landed); and
 - an unconditional squeeze `loop` exited by `return`.
 
-Current Vermilion status: tuple-pattern function parameters, custom
+At the recorded July checkpoint: tuple-pattern function parameters, custom
 tuple-keyed mutable indexing, tuple-destructuring assignment, exact unsigned
 rotation, and native u64 little-endian conversion are no longer blockers.
 Pinned Verus commit `0bb5732ae…` contains the accumulated pattern/index work,
@@ -204,7 +209,7 @@ sub-slices, reconstructs the final owner through the returned-reference
 prophecy, and composes `copy_from_slice` without a new IR or VCGen rule.
 c173–c177 cover both mutable range forms, wrong writeback, bounds, and unequal
 lengths. c178–c181 add transparent dereference-view setup and exact immutable
-array suffix ranges. The current corpus is 180/180 verdict parity with 88/88
+array suffix ranges. The recorded July corpus result is 180/180 verdict parity with 88/88
 failure-span agreement.
 
 Current probes cover only the custom state/round boundary and the iterator
@@ -220,7 +225,7 @@ named-result erasure, executable edits, missing/extra source files, and
 malformed or mis-typed regions, as specified in
 [PLAN.md](PLAN.md#what-unmodified-requires).
 
-The current standalone checkpoint is 52 verified / 0 errors in pinned Verus
+The recorded standalone checkpoint is 52 verified / 0 errors in pinned Verus
 and 198/198 kernel-checked Vermilion obligations across 25 proof twins with no
 `sorry`. This covers unchanged Keccak-p, `StateArray::xor`, and
 `StateArray::copy_to`, but not absorb, squeeze, sponge, six public entry

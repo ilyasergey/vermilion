@@ -1,5 +1,10 @@
 # curve25519 — dalek `Scalar52::mul_internal`, same spec as Aeneas
 
+**Status (2026-09-23):** SHA-3 work is paused while dalek-lite is active.
+Counts and verifier revisions below are recorded checkpoint evidence, not a
+fresh run. See the [status hub](../README.md) for the active plan and current
+toolchain. Acquisition-source pins remain unchanged.
+
 The first verified-crypto acquisition of the
 [Aeneas subsumption plan](../PLAN.md) (target T1, complete as of
 2026-07-19):

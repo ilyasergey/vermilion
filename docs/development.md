@@ -91,7 +91,8 @@ progress bar:
 ```
 
 For an interactive edit loop outside the editor, keep one source under
-watch. Only obligations whose statement hashes change are re-judged:
+watch. The watcher detects changed obligation hashes and rechecks all
+obligations in each affected function:
 
 ```console
 ./scripts/vrml_watch.sh examples/m1-pipeline simple.rs

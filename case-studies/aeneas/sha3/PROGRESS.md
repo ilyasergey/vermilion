@@ -1,5 +1,10 @@
 # SHA3 parity progress ledger
 
+**Status (2026-09-23):** SHA-3 work is paused while dalek-lite is active.
+Counts and verifier revisions below are recorded checkpoint evidence, not a
+fresh run. See the [status hub](../README.md) for the active plan and current
+toolchain. Acquisition-source pins remain unchanged.
+
 This file records reproducible milestone evidence for the unchanged scalar
 `AeneasVerif/sha3.rs` acquisition. The normative scope and completion gates
 are in [PARITY_SCOPE.md](PARITY_SCOPE.md) and [../PLAN.md](../PLAN.md); source

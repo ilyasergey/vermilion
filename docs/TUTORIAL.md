@@ -313,11 +313,17 @@ For an interactive edit loop, keep one source under watch:
 ./scripts/vrml_watch.sh examples/m1-pipeline simple.rs
 ```
 
-Every save reruns the front half (Verus front end → IR → `vrml_gen`) and
-has Lean re-judge **only the obligations whose statement hash changed** —
-whitespace and moves are recognized as "no semantic changes" in well under a
-second, and a one-function edit re-verifies just that function's changed
-obligations. Diagnostics land on Rust spans exactly as in step 4.
+Every save reruns the front half (Verus front end → IR → `vrml_gen`).
+The watcher compares obligation names and statement hashes with its previous
+manifest. It passes each affected function to `vrml_check --only`, which
+rechecks that function's obligations, including unchanged siblings within the
+function. If no statement hashes change, the watcher skips this checking
+step. Diagnostics land on Rust spans as in step 4.
+
+This watch selection is separate from the checker's experimental verdict
+cache, which is disabled by default. See the
+[incrementality plan](../plans/incremental-computation.md) for implemented
+behavior and remaining work.
 
 ## 6½. Editor integration
 

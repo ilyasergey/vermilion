@@ -1,5 +1,10 @@
 # Pinned upstream source
 
+**Status (2026-09-23):** SHA-3 work is paused while dalek-lite is active.
+Counts and verifier revisions below are recorded checkpoint evidence, not a
+fresh run. See the [status hub](../README.md) for the active plan and current
+toolchain. Acquisition-source pins remain unchanged.
+
 The standalone SHA-3 case study targets
 [`AeneasVerif/sha3.rs`](https://github.com/AeneasVerif/sha3.rs). This is
 **not** the Microsoft SymCrypt/SymCRust SHA-3 codebase, which is a separate
@@ -70,14 +75,14 @@ tests with 1 ignored test and no failures. The clean pinned Lean build also
 completed successfully (6,822 targets), including
 `Shars.Verification.Sponge` and the top-level `Shars` package.
 
-Vermilion currently pins its Verus fork at
+The recorded July verification used Vermilion's Verus fork at
 `0bb5732ae6afa6eabf3843e34bc554223b67be8f`. That fork commit is not part of
 the upstream SHA-3 identity above; it records the local toolchain capabilities
 for tuple-pattern contract/lowering/erasure support and custom tuple-keyed
 mutable indexing plus tuple-destructuring assignment and exact unsigned
 `rotate_left` specifications. It additionally specifies native u64
 little-endian conversions and normalizes const array lengths for assume-spec
-signature matching. The current pin also specifies immutable and mutable
+signature matching. That checkpoint pin also specifies immutable and mutable
 `usize`/`Range<usize>`/`RangeFrom<usize>` slice indexing, including exact
 returned subviews and final-owner writeback. Vermilion pairs those contracts
 with exact views, inherited bounds, its existing returned-reference prophecy,

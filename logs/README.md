@@ -54,3 +54,4 @@ report under `docs/reports/`.
 - [2026-08-19 Lean 4.33 + Veil removal](2026-08-19-lean-4.33-veil-removal.md)
 
 - [2026-09-23 README and documentation consistency](2026-09-23-documentation-consistency.md)
+- [2026-09-23 remaining documentation corrections](2026-09-23-documentation-followup.md)

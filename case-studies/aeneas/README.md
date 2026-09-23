@@ -1,11 +1,20 @@
 # Aeneas artefacts in Vermilion: status and reach assessment
 
-*Research and case-study hub. Current checkpoint: 2026-07-20.*
+**Status reconciliation (2026-09-23):** the SHA-3 verification effort is
+paused; dalek-lite is the active target in the [project plan](../../plans/execution-plan.md).
+Verification counts, timings, and fork revisions below describe recorded
+checkpoints, chiefly 2026-07-20; they are not a fresh run on the current tree.
+The current Vermilion verifier pin is selected by
+[`setup_verus.sh`](../../scripts/setup_verus.sh); see [setup details](../../docs/development.md#build).
+Acquisition-source pins remain unchanged. Remaining SHA-3 steps apply when
+that effort resumes. This documentation update does not resume it.
+
+*Research and case-study hub. Recorded checkpoint: 2026-07-20.*
 
 **Project goal: subsume the Lean-backed Aeneas crypto artefacts** — verify
 curve25519, standalone SHA-3/SHAKE, and the SymCRust ML-KEM scalar core
 against the same external Lean specifications, with zero added axioms. The
-active target is now precise: verify
+paused SHA-3 target is to verify
 [AeneasVerif/sha3.rs](https://github.com/AeneasVerif/sha3.rs) as a standalone
 case study under this folder and keep its pinned upstream tree byte-for-byte
 available as the comparison baseline. The verification files may add Verus
@@ -22,7 +31,7 @@ The operative roadmap and feature summary are in **[PLAN.md](PLAN.md)**.
 This folder already contains the verified [curve25519](curve25519/) study and
 the historical [probe suite](probes/); it is not analysis-only.
 
-**Current headline:** curve25519 is complete (38 obligations and a same-spec
+**Recorded verification checkpoint:** curve25519 is complete (38 obligations and a same-spec
 bridge), and the unchanged standalone AeneasVerif SHA3 scalar implementation
 through `StateArray::copy_to` is verified. Default/dereference support,
 θ/ρ/π/χ/ι, `round`, `keccak_p`, `xor_byte_at`, `xor_lane`, `xor`, and
@@ -37,7 +46,7 @@ bounds and final-owner writeback. The ordinary `copy_from_slice` contract now
 composes with that prophecy relation. Checked arithmetic in loop-condition
 setup is proved before assuming the condition and short-circuit checks remain
 guarded. Transparent dereference-view setup and immutable array suffix ranges
-are now parity-tested. The full regression is 180/180 verdict parity and 88/88
+are now parity-tested. The recorded July regression result is 180/180 verdict parity and 88/88
 failure-span agreement. Absorb/squeeze, sponge, the six public entry points,
 and the exact `Sha3.Spec` bridge remain open, so public same-spec parity is
 0/6;
@@ -155,7 +164,7 @@ upstream mathematical abstraction.
 
 | Aeneas artifact | Blocking gap (tracked where) |
 |---|---|
-| **unchanged-execution standalone AeneasVerif sha3.rs / Keccak (not SymCrypt)** | The complete local [sha3.rs project](sha3/)—Cargo metadata and every file under `src/`—is tracked as separate pristine and verification copies. `vrml_source_guard` enforces exact upstream inventory/metadata and executable Rust token identity after erasing 86 typed annotations; only colocated Lean artefacts are exempted. Unchanged default/dereference support, θ/ρ/π/χ/ι, `round`, `keccak_p`, `xor_byte_at`, `xor_lane`, `xor`, and `copy_to` verify as 198/198 Lean obligations across 25 proof-twin units with no `sorry`; pinned Verus reports 52 verified, 0 errors. c164–c181 cover exact slice/array ranges, prophecy writeback, copying, and dereference loop setup; the corpus is 180/180 with 88/88 failure-span agreement. Remaining gates are absorb/squeeze, sponge, the six public functions, and a bridge importing generated `algos.Specs` plus pinned `Sha3.Spec` directly. Public same-spec parity is 0/6. See [sha3/PARITY_SCOPE.md](sha3/PARITY_SCOPE.md), [PLAN.md](PLAN.md#features-required-for-unchanged-sha3rs), and [sha3/PROGRESS.md](sha3/PROGRESS.md). |
+| **unchanged-execution standalone AeneasVerif sha3.rs / Keccak (not SymCrypt)** | The complete local [sha3.rs project](sha3/)—Cargo metadata and every file under `src/`—is tracked as separate pristine and verification copies. `vrml_source_guard` enforces exact upstream inventory/metadata and executable Rust token identity after erasing 86 typed annotations; only colocated Lean artefacts are exempted. Unchanged default/dereference support, θ/ρ/π/χ/ι, `round`, `keccak_p`, `xor_byte_at`, `xor_lane`, `xor`, and `copy_to` verify as 198/198 Lean obligations across 25 proof-twin units with no `sorry`; pinned Verus reports 52 verified, 0 errors. c164–c181 cover exact slice/array ranges, prophecy writeback, copying, and dereference loop setup; the recorded July corpus result is 180/180 with 88/88 failure-span agreement. Remaining gates are absorb/squeeze, sponge, the six public functions, and a bridge importing generated `algos.Specs` plus pinned `Sha3.Spec` directly. Public same-spec parity is 0/6. See [sha3/PARITY_SCOPE.md](sha3/PARITY_SCOPE.md), [PLAN.md](PLAN.md#features-required-for-unchanged-sha3rs), and [sha3/PROGRESS.md](sha3/PROGRESS.md). |
 | **Hashmap** (the ICFP'22 flagship) | recursive heap datatypes (`Box`ed list enums) + `Option<&mut T>` returns + `std::mem::replace` — exactly the S2 saturation slice ([target-projects.md](../../docs/reports/target-projects.md), "recursive heap datatypes / `Box` / `returns` / `&mut` returns") plus the returned-`&mut` prophecy already demanded by [entry-api](../entry-api/) |
 | **AVL tree** | same S2 slice (`Option<Box<Node>>`, deep `&mut` through fields, `mem::replace` rotations); traits/`i8` parts already land |
 | **BST/TreeSet** | the reborrowed loop cursor `current = &mut node.right` — data-escaping `&mut`, the hardest S2 corner |

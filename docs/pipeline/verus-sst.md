@@ -28,6 +28,9 @@ The capture [`artifacts/simple-sst.vir`](artifacts/simple-sst.vir) comes from
 | `Return`, `ens_exps`, `AssertId 2` | theorem `ensures_2` |
 | span, construct, `AssertId` | doc comment and `ObligationMeta` |
 
-The lowering supports only these forms and fails closed on unknown nodes,
-avoiding silent reinterpretation of wider Verus programs; the same fail-closed
-rule applies to the IR parser on the Lean side (`docs/ir.md`).
+This table explains the captured example; it is not the complete supported
+fragment. See the [support guide](../support.md) for runnable feature examples
+and the [IR specification](../ir.md) for the full boundary. Unsupported forms
+receive explicit refusals, while supported sibling functions can continue
+through per-function lowering isolation. The Lean IR parser also rejects
+unknown forms.

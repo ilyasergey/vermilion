@@ -1,6 +1,11 @@
 # Aeneas subsumption gap matrix
 
-*Current checkpoint: 2026-07-20. The next gate is the unchanged standalone
+**Status (2026-09-23):** SHA-3 work is paused while dalek-lite is active.
+Counts and verifier revisions below are recorded checkpoint evidence, not a
+fresh run. See the [status hub](README.md) for the active plan and current
+toolchain. Acquisition-source pins remain unchanged.
+
+*Recorded checkpoint: 2026-07-20. When work resumes, the next gate is the unchanged standalone
 `AeneasVerif/sha3.rs` scalar library, not a plain-array replacement.*
 
 This is the standalone **AeneasVerif/sha3.rs** artefact, not Microsoft SymCrypt/SymCRust
@@ -20,7 +25,7 @@ SHA-3. SymCrypt remains a separate ML-KEM track.
 | Concrete associated output | Vermilion normalizes a unique monomorphic impl equation such as `Index::Output = Lane` before binder lowering. c152 verifies 11/11, c153 rejects the wrong assertion at line 39, and an abstract generic projection remains fail-closed. |
 | Private-state/index contracts and unchanged ι | The actual annotated `verification/src/algos.rs` adds only a closed `View`, `IndexSpecImpl`, index/reference contracts, and the `iota` contract. Vermilion verifies 12/12 obligations in four proof-twin units; c154/c155 bring the corpus to 154/154 with 74/74 failure-span agreement. |
 | Tuple-destructuring assignment | Fork `7734d271a…` accepts rustc's evaluate-once assignment desugaring. Native Verus compile/positive/negative tests and Vermilion c156/c157 pin swap, nested tuple, wildcard, and wrong-result semantics; that milestone was 156/156 with 75/75 failure-span agreement and is superseded by the rotation row below. |
-| Exact unsigned rotation | Retained by current fork `0bb5732ae…`; Vermilion mirrors every unsigned `rotate_left` at stable `Vermilion.Vstd.Rotate.u*_rotate_left` paths. c158/c159 pin exact modulo-width behavior. |
+| Exact unsigned rotation | Retained by checkpoint fork `0bb5732ae…`; Vermilion mirrors every unsigned `rotate_left` at stable `Vermilion.Vstd.Rotate.u*_rotate_left` paths. c158/c159 pin exact modulo-width behavior. |
 | Unchanged ρ loop contract and proof | A recursive remaining-loop spec exposes exactly one executable iteration at each unfold. The body verifies 17/17 obligations (13 automatic, 4 interactive); its historical ι+ρ checkpoint was 29/29 after erasing 42 regions and is superseded by the full permutation row below. |
 | Unchanged Keccak-p and prefix XOR | Default, θ/ρ/π/χ/ι, `round`, the 24-round `keccak_p` loop, `xor_byte_at`, `xor_lane`, and `StateArray::xor` all verify against recursive implementation models. The project is 169/169 obligations in 22 twins with no `sorry`; pinned Verus reports 47/0. |
 | Native u64 endian conversion and byte mutation | Fork ancestor `c329046d2…`, retained by `0bb5732ae…`, adds exact `to_le_bytes`/`from_le_bytes` contracts and const-array assume-spec matching; `Vermilion.Vstd.Bytes` mirrors them. c160/c161 pin parity, and unchanged `xor_byte_at`/`xor_lane` verify. |

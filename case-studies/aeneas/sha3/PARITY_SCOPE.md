@@ -1,5 +1,10 @@
 # SHA3 parity scope and completion ledger
 
+**Status (2026-09-23):** SHA-3 work is paused while dalek-lite is active.
+Counts and verifier revisions below are recorded checkpoint evidence, not a
+fresh run. See the [status hub](../README.md) for the active plan and current
+toolchain. Acquisition-source pins remain unchanged.
+
 This case study targets the standalone
 [`AeneasVerif/sha3.rs`](https://github.com/AeneasVerif/sha3.rs) repository at
 commit `cb411d54ee0b22f88b64c79963691ff63f3ad5b4`. It is an Aeneas case study;
@@ -32,7 +37,7 @@ They remain in both local copies and remain source-guarded because the acquired
 artefact is the complete upstream `src/` tree. Verifying them later would be a
 separately labelled stretch result.
 
-## Current checkpoint (2026-07-20)
+## Recorded checkpoint (2026-07-20)
 
 The unchanged executable implementation is verified through
 `StateArray::copy_to`. Pinned Verus reports **52 verified, 0 errors**.

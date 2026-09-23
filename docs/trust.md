@@ -1,14 +1,15 @@
 # What you trust when Vermilion says "verified"
 
-Every obligation Vermilion emits is a Lean theorem checked by the Lean
-kernel — the machine automation (`vrml`) and your interactive twin proofs
-are **not** trusted; if they close a goal, the kernel re-checks it. What
-*is* trusted is the translation that produced the theorem statements and
-the conventions of the shallow embedding. This document enumerates those
-trust assumptions and the argument for each, so they can be reviewed —
-and eventually discharged by the planned foundational VC generator
-([docs/vcgen.md](vcgen.md), the normative generation policy, records the
-soundness obligations that effort must prove).
+Vermilion expresses verification obligations as Lean theorem statements.
+A successful result requires kernel-checked proofs for every in-scope
+obligation and required evidence, with no unresolved holes. Automation and
+interactive proofs both produce terms for the kernel to check.
+
+The translation, embedding conventions, and checking/reporting path remain
+trusted. This document enumerates their responsibilities and the evidence
+for them. The planned foundational VC generator would discharge part of the
+translation trust; [the normative VC policy](vcgen.md) specifies its
+soundness obligations.
 
 ## The trusted computing base
 
@@ -40,14 +41,29 @@ smaller trust surface (kept in step with
    a Lean proof term checked by the kernel. Reconstruction does not establish
    that imported theorems are axiom-free: dependency assumptions require a
    separate axiom audit.
-6. **Glue** — `vrml_check`'s failure-to-obligation mapping and
-   `vrml_sync`'s twin reconciliation can misreport locations or
-   staleness but cannot make a false obligation pass the kernel.
+6. **Checking and reporting**: `vrml_check`, the runners, and `vrml_sync`
+   must select all required obligations, check the current statements and
+   proof twins, reject unresolved evidence and proof holes, and propagate
+   failures. These components cannot change the kernel's logical rules, but
+   a bug can skip a check or report success without an accepted proof.
 
-Not trusted for the Lean verdict: Verus's Z3 back end (used in baseline and
-differential runs), the `vrml` automation (a
-failed tactic is a `sorry`, never a false accept), and the generated
-files themselves (regenerated and re-judged every run).
+The kernel checks a proof of the particular statement it receives, under
+that proof's axioms. It does not establish that the statement corresponds to
+the source, that every required obligation was checked, or that the reported
+verdict reflects those checks. A failed tactic or `sorry` must therefore be
+rejected by the checking/reporting path before success is reported.
+
+The [August checker investigation](../logs/2026-08-19-lean-4.33-veil-removal.md#5b-a-false-green-in-the-acquisition-path-and-its-blast-radius)
+exposed this distinction: a missing checker executable produced no diagnostic
+records, and the whole-crate runner incorrectly treated the empty result as
+success. The runner was corrected, but the incident invalidated earlier
+success claims; a fresh complete receipt is required for the affected study.
+
+Verus's Z3 results are used for baselines and differential comparisons, not
+as evidence for the Lean verdict. Proof-search tactics need not be trusted
+when their output is checked by the kernel. Generated files and cached
+results are artifacts whose completeness and freshness the checker must
+validate.
 
 The rest of this page enumerates the *semantic assumptions* components
 1–4 make — the specific claims a reviewer (or the future foundational
@@ -55,9 +71,10 @@ generator) must accept or discharge.
 
 ## The fail-closed principle
 
-Anything the lowering does not recognize aborts translation with an
-explicit `unsupported SST …` error — a program outside the fragment is
-rejected, never silently mistranslated. There are **no identity
+Unsupported constructs receive explicit source-mapped refusal diagnostics.
+Per-function isolation lets supported siblings continue; a refused function
+is never counted as verified. Fully refused inputs abort without emitting
+logical obligations. There are **no identity
 catch-alls**: unary operators, statement forms, expression forms, binder
 forms, and IR heads all dispatch explicitly (audited 2026-07-13 after a
 fail-open `UnaryOpr` catch-all was found and removed — `Box`/`Unbox`/

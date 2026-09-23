@@ -197,15 +197,17 @@ in [docs/trust.md](docs/trust.md)):
    uses cvc5 with reconstruction (`trust := false`), producing terms checked
    by the kernel, as do `grind`/`omega`/`simp`. Imported theorem assumptions
    still require a separate axiom audit.
-6. **Glue** — `vrml_check`'s mapping of Lean failures to obligations (line
-   ranges in manifests) and `vrml_sync`'s block reconciliation. These can
-   misreport locations or stale proofs but cannot make a false obligation
-   pass the kernel.
+6. **Checking and reporting**: the runners, `vrml_check`, and `vrml_sync`
+   must cover every required obligation, check current proof artifacts,
+   reject holes, and propagate failures. A bug here can report success
+   without an accepted proof even though the kernel's logical rules remain
+   sound. The [trust document](docs/trust.md#the-trusted-computing-base)
+   records the false-green checker incident and its consequence for receipts.
 
-Not trusted for the Lean verdict: Verus's Z3 back end (used in baseline and
-differential runs), the `vrml` automation
-tactics (a failed tactic is a `sorry`, never a false accept), and the
-generated files themselves (regenerated and re-judged every run).
+Verus's Z3 verdict is used only for baselines and differential comparisons.
+Proof-search tactics are untrusted when the kernel checks their output.
+Generated artifacts and cached results require completeness and freshness
+checks; their mere existence does not establish verification.
 
 For annotation-preserving external case studies, source identity is a
 separate pre-verification gate. The SHA-3 `vrml_source_guard` requires every
@@ -387,8 +389,10 @@ consequences of the Lean-native backend, not gaps):
 - **counterexample display** — an SMT-model feature with no Lean
   counterpart; reframed as an optional future exploration (e.g.
   instantiation hints from failed `grind` runs), not a parity item.
-- **discharger ladder, watch mode** — landed in M2 (see Progress in the
-  README); only proof caching remains, an optional performance item.
+- **discharger ladder and watch mode** have landed. Watch mode selects
+  functions containing changed obligation hashes. Experimental verdict
+  caching and future persistent workers are distinguished in the
+  [incrementality plan](plans/incremental-computation.md).
 
 | Missing | Milestone |
 |---|---|

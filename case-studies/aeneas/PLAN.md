@@ -1,8 +1,13 @@
 # Subsuming Aeneas artefacts — execution plan
 
+**Status (2026-09-23):** SHA-3 work is paused while dalek-lite is active.
+Counts and verifier revisions below are recorded checkpoint evidence, not a
+fresh run. See the [status hub](README.md) for the active plan and current
+toolchain. Acquisition-source pins remain unchanged.
+
 *Companion to [README.md](README.md), the detailed
 [corpus notes](corpus-notes.md), and the measured
-[gap matrix](gap-matrix.md). Current checkpoint: 2026-07-20.*
+[gap matrix](gap-matrix.md). Recorded checkpoint: 2026-07-20.*
 
 ## Goal and success criterion
 
@@ -15,11 +20,11 @@ axioms. The three targets are:
    scalar SHA-3/SHAKE library; and
 3. the SymCRust ML-KEM scalar core.
 
-Targets 2 and 3 are distinct: the active SHA3 case study is the standalone
+Targets 2 and 3 are distinct: the paused SHA3 case study is the standalone
 **AeneasVerif/sha3.rs** repository, not Microsoft SymCrypt/SymCRust SHA-3.
 Their sources, proof claims, and evidence must never be conflated.
 
-For the next target, “same artefact” means that the executable Rust remains
+For the SHA-3 target, “same artefact” means that the executable Rust remains
 unchanged. We may add Verus contracts, loop invariants, decreases clauses,
 spec/ghost definitions, and proof annotations to the files. A port to a
 plain-array implementation, or any change to an executable expression, type,
@@ -30,7 +35,7 @@ same external specifications, the source and specification revisions are
 pinned, the axiom audit is clean, and the proof/automation cost is reported
 against the upstream Aeneas proof.
 
-## Current status
+## Recorded verification status
 
 | Target or prerequisite | Status on 2026-07-20 |
 |---|---|
@@ -42,16 +47,16 @@ against the upstream Aeneas proof.
 | Tuple-pattern function parameters | **Landed** in fork commit `1fc6a46d156165be82c1ab3377c25f8a0925929f` (building on `35f326826…`). Verus lowering and executable erasure introduce entry destructuring for flat/nested/wildcard/mutable patterns, including contracts. Verus function regressions pass 11/11. |
 | Custom tuple-keyed `IndexMut` and returned `&mut` | **Landed** in the same fork pin plus Vermilion's returned-reference propagation. Differential c150/c151 give positive/negative parity; c150 verifies all 11 Lean obligations and c151 is rejected at the same assertion as Verus. At that milestone the corpus was 150/150 with 72/72 failure-span agreement. |
 | Tuple-destructuring assignment | **Landed** in fork commit `7734d271ad796ba134200fd2fa8ac1e706200342`. Verus translates rustc's evaluate-once synthetic tuple declaration plus ordinary component assignments, preserving simultaneous swap semantics and erasure. Native positive/negative tests and c156/c157 pin that milestone; exact rotation below has since cleared its next boundary. |
-| Exact unsigned `rotate_left` | **Landed** in fork history and retained by current fork `0bb5732ae6afa6eabf3843e34bc554223b67be8f`; Vermilion mirrors it through `Vermilion.Vstd.Rotate`. Each unsigned width reduces the shift modulo its bit width and handles the zero case without an invalid full-width shift. Verus native tests plus c158/c159 cover variable, zero, width, oversized, and wrong-result cases. |
+| Exact unsigned `rotate_left` | **Landed** in fork history and retained by checkpoint fork `0bb5732ae6afa6eabf3843e34bc554223b67be8f`; Vermilion mirrors it through `Vermilion.Vstd.Rotate`. Each unsigned width reduces the shift modulo its bit width and handles the zero case without an invalid full-width shift. Verus native tests plus c158/c159 cover variable, zero, width, oversized, and wrong-result cases. |
 | Native u64 little-endian conversion | **Landed** in ancestor fork commit `c329046d2…` and retained by `0bb5732ae…`: exact vstd contracts for native `to_le_bytes`/`from_le_bytes`, plus assume-spec const-array-length normalization. `Vermilion.Vstd.Bytes` supplies the matching definitions and c160/c161 pin positive/negative parity. |
 | Canonical while setup and projected-write havoc | **Landed in Vermilion.** Pure setup statements before Verus's boolean loop branch are evaluated, borrow resolutions are placed at loop exit, and writes such as `buf[i] = ...` havoc the correctly typed root object. c162/c163 exercise the actual slice-length mutation shape. |
 | Checked assertions in while-condition setup | **Landed in Vermilion.** Overflow and other setup assertions are proved from type facts plus invariants before the condition is assumed; short-circuit-arm assertions retain reachability guards, and established checks become exit facts. This composes existing `Assert`/`Branch`/`Loop` forms without a new IR or VCGen rule. c170–c172 pin success, matching failure span, and short-circuit behavior. |
 | Immutable executable slice ranges | **Landed.** The current fork retains the missing `RangeFrom<usize>` slice-index specification. Vermilion recognizes only the concrete core `Range`/`RangeFrom` delegated contracts, reconstructs their inherited bounds requirements, and returns the exact `Seq::subrange` view. c164–c169 pin correct range/suffix values, wrong results, and both out-of-bounds failures; that landing checkpoint was 168/168 with 82/82 failure-span agreement. |
 | Mutable slice ranges and `copy_from_slice` | **Landed.** Fork `0bb5732ae…` specifies mutable `usize`/`Range`/`RangeFrom` indexing, including initial subview and exact final-owner reconstruction. Vermilion normalizes only the matching core `SliceIndex::Output`, lowers the delegated `index_mut` contract through existing prophecy futures, restores inherited bounds, and composes the ordinary `copy_from_slice` length/final-state contract. c173–c177 prove both range forms and reject a wrong writeback, out-of-bounds range, and unequal copy lengths; that landing checkpoint was 176/176 with 86/86 span agreement. No IR or VCGen rule was added. |
-| Transparent dereference setup and immutable array ranges | **Landed in Vermilion.** The reserved `Deref::deref` and array-to-slice model calls may fold a model-transparent result equality; only the exact array-to-slice coercion may select that equality among multiple postconditions. Exact immutable array `Range`/`RangeFrom` indexing then delegates to the existing slice view. c178–c181 pin both correct results and matching wrong-result spans. Mutable array ranges remain fail-closed. The corpus is 180/180 with 88/88 span agreement. |
+| Transparent dereference setup and immutable array ranges | **Landed in Vermilion.** The reserved `Deref::deref` and array-to-slice model calls may fold a model-transparent result equality; only the exact array-to-slice coercion may select that equality among multiple postconditions. Exact immutable array `Range`/`RangeFrom` indexing then delegates to the existing slice view. c178–c181 pin both correct results and matching wrong-result spans. Mutable array ranges remain fail-closed. The recorded July corpus result is 180/180 with 88/88 span agreement. |
 | Concrete associated-output normalization | **Landed** in Vermilion: a unique monomorphic associated-type impl equation resolves `Self::Output` before binder lowering; generic/ambiguous projections remain fail-closed. c152 verifies 11/11 obligations, c153 fails at line 39 in both verifiers, and the generic refusal is suite-pinned. |
 | Per-function Lean emission and editor roots | **Landed and default** on 2026-07-19: one unit module per function plus one shared `Specs.lean`. All registered proof libraries discover new stems automatically. Generated stems anywhere in the repository are activated through an on-demand Lake overlay; the regression opens `keccak_iota/impl__6_index.lean` and resolves its sibling `generated.keccak_iota.Specs`. |
-| T2 `sha3.rs` | **Unchanged execution verified through `StateArray::copy_to`.** [`sha3/`](sha3/) tracks separate pristine and annotation-working copies of the exact Cargo metadata and full `src/` tree. The guard erases 86 typed regions while enforcing exact inventory and executable-token identity. Default/dereference support, θ/ρ/π/χ/ι, `round`, `keccak_p`, `xor_byte_at`, `xor_lane`, `xor`, and `copy_to` verify as 198/198 Lean obligations in 25 proof-twin units with no `sorry`; pinned Verus reports 52 verified, 0 errors. Absorb, squeeze, sponge, six public functions, and the exact external bridge remain open, so public same-spec parity is 0/6. The corpus is 180/180 with 88/88 span agreement. See [`sha3/PARITY_SCOPE.md`](sha3/PARITY_SCOPE.md). |
+| T2 `sha3.rs` | **Unchanged execution verified through `StateArray::copy_to`.** [`sha3/`](sha3/) tracks separate pristine and annotation-working copies of the exact Cargo metadata and full `src/` tree. The guard erases 86 typed regions while enforcing exact inventory and executable-token identity. Default/dereference support, θ/ρ/π/χ/ι, `round`, `keccak_p`, `xor_byte_at`, `xor_lane`, `xor`, and `copy_to` verify as 198/198 Lean obligations in 25 proof-twin units with no `sorry`; pinned Verus reports 52 verified, 0 errors. Absorb, squeeze, sponge, six public functions, and the exact external bridge remain open, so public same-spec parity is 0/6. The recorded July corpus result is 180/180 with 88/88 span agreement. See [`sha3/PARITY_SCOPE.md`](sha3/PARITY_SCOPE.md). |
 
 The current `sha3.rs` claim is intentionally bounded at unchanged Keccak-p,
 `xor`, and `copy_to`. The remaining absorb/squeeze/sponge bodies, public functions,
@@ -140,7 +145,7 @@ Ordered by dependency, not by estimated implementation effort:
 | P0 | Private-state/index/permutation contracts | The state wrapper and tuple-keyed references must expose exact logical state updates without changing their executable bodies. | **Landed through `copy_to`:** a closed `View`, `IndexSpecImpl`, clone/default, named-result index, and transparent `Deref`/`DerefMut` contracts support unchanged θ/ρ/π/χ/ι, `round`, `keccak_p`, and byte copying. c154/c155 retain the first positive/wrong-poststate guards; c178/c179 pin dereference-view loop setup. |
 | P0 | Tuple-destructuring assignment | `rho` updates `(x, y)` simultaneously from the old pair. | **Landed in the Verus fork:** rustc's existing assignment desugaring now lowers and erases; native compile/positive/negative tests plus Vermilion c156/c157 pin simultaneous and nested tuple semantics. No Vermilion IR or VCGen change was needed. |
 | P1 | Exact bit-operation models, especially `u64::rotate_left` | θ and ρ rotate 64-bit lanes by one and by table-driven `u32` offsets. | **Core model landed:** pinned Verus and `Vermilion.Vstd.Rotate` agree on exact modulo-width rotation for every unsigned width; c158/c159 test zero, width, oversized and wrong-result cases. Add only the SHA-3-specific rotation/state bridge lemmas required by the round proofs. Current scalar χ uses `x ^ u64::MAX`, not Rust unary `!`, so issue #21 is useful generally but is not a blocker for this revision. |
-| P1 | Little-endian byte conversion | `xor_byte_at`, `xor_lane`, and `copy_to` use `to_le_bytes`/`from_le_bytes`. | **Landed for the in-scope consumers:** current fork `0bb5732ae…` retains the native u64 conversions and Vermilion mirrors them in `Vermilion.Vstd.Bytes`; c160/c161 test both directions. Unchanged `xor_byte_at`, `xor_lane`, and `copy_to` are proved. Representation lemmas for the final external bridge remain. |
+| P1 | Little-endian byte conversion | `xor_byte_at`, `xor_lane`, and `copy_to` use `to_le_bytes`/`from_le_bytes`. | **Landed for the in-scope consumers:** checkpoint fork `0bb5732ae…` retains the native u64 conversions and Vermilion mirrors them in `Vermilion.Vstd.Bytes`; c160/c161 test both directions. Unchanged `xor_byte_at`, `xor_lane`, and `copy_to` are proved. Representation lemmas for the final external bridge remain. |
 | P1 | Executable slice/array ranges and `copy_from_slice` | Absorb/squeeze use `&bs[a..b]`, `&bs[a..]`, `&mut z[a..b]`, and partial final blocks. | **Landed for every shape reached through `copy_to`:** c164–c169 pin immutable slice views/bounds; fork `0bb5732ae…` plus Vermilion's prophecy/call machinery give exact mutable slice subviews, owner writeback, bounds, and final-copy contracts; c173–c177 pin those. c180/c181 add exact immutable array suffix delegation. Attempt unchanged absorb next and add a model only if it exposes a new in-scope shape. |
 | P1 | Remaining control-flow/item shapes | The file has nested local helper functions, nested `while`, short-circuit guards, and an unconditional `loop` exited by `return`; tuple assignment has landed. | **Nested helper plus checked `while` condition landed for `xor`:** c170–c172 pin pre-condition safety checks and short-circuit guarding. Probe the remaining unconditional squeeze-loop/return shape and attach its invariants/decreases. |
 | P1 | External FIPS 202 package and representation bridge | The final theorem must mention the same `Sha3.Spec` definitions as upstream, not a look-alike spec. | Build a checked module whose direct dependencies include generated `algos.Specs` and pinned `Sha3.Spec`. Prove representation and public-result equivalences directly between those imported definitions; never restate either side in a third bridge spec. Regenerate `algos.Specs` before each bridge build, pin/hash the external sources, and audit the exported theorems for zero added axioms. |

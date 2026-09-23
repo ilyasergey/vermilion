@@ -1,5 +1,10 @@
 # sha3.rs — standalone Aeneas parity target
 
+**Status (2026-09-23):** SHA-3 work is paused while dalek-lite is active.
+Counts and verifier revisions below are recorded checkpoint evidence, not a
+fresh run. See the [status hub](../README.md) for the active plan and current
+toolchain. Acquisition-source pins remain unchanged.
+
 This directory is the reproducible acquisition boundary for T2 of the
 [Aeneas subsumption plan](../PLAN.md). It targets the scalar `src/algos.rs`
 surface and the six SHA3/SHAKE correctness theorems proved upstream.
@@ -7,7 +12,7 @@ This is the standalone **AeneasVerif/sha3.rs** project, not Microsoft SymCrypt/S
 SHA-3. The normative theorem boundary and live 0/6 parity
 ledger are in [PARITY_SCOPE.md](PARITY_SCOPE.md).
 
-## Current stage
+## Recorded stage (paused)
 
 S0 acquisition metadata and integrity checking are present. The complete
 upstream source is stored twice with its original Cargo layout:
@@ -28,7 +33,7 @@ The repository root excludes both nested packages from Vermilion's Cargo
 workspace. This lets each exact upstream manifest remain unchanged and run as
 its own standalone package.
 
-The unchanged scalar implementation is now verified through
+The July checkpoint records verification of the unchanged scalar implementation through
 `StateArray::copy_to`.
 Annotations live directly in `verification/src/algos.rs`: the private-state
 view and indexing contracts, `StateArray::default`, θ/ρ/π/χ/ι, `round`, and
@@ -49,7 +54,7 @@ verification counts are unchanged.
 
 The source guard confirms that all seven upstream Rust files remain present
 and that erasing 86 typed annotation regions restores the pristine executable
-token streams. The supporting fork is pinned at
+token streams. The supporting fork at that checkpoint was
 `0bb5732ae6afa6eabf3843e34bc554223b67be8f`; it retains exact unsigned
 rotation, native u64 endian contracts, and the assume-spec array-length
 normalization required to attach those contracts to Rust's native methods,
@@ -64,7 +69,7 @@ and short-circuit guarding. c173–c177 add mutable `Range`/`RangeFrom` subviews
 inherited bounds, exact final-owner reconstruction, and ordinary
 `copy_from_slice` length/final-state composition. c178/c179 add transparent
 `Deref` view setup for the unchanged copy loop; c180/c181 add exact immutable
-array `RangeFrom` delegation and its negative parity case. The full corpus is
+array `RangeFrom` delegation and its negative parity case. The recorded July corpus result is
 **180/180 with 88/88 failure-span agreement**. This remains deliberately
 partial: absorb/squeeze, sponge, the six public entry points, and the exact
 external `Sha3.Spec` bridge are still outside the verified claim. The final

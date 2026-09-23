@@ -22,7 +22,7 @@ groups in `scalar.rs`/`scalar52_specs.rs`).
 | Explicitly imported vstd lemmas (`lemma_small_mod`, `lemma_mod_bound`, `lemma_mul_inequality`, `lemma_mul_is_associative`, `lemma2_to64`, `lemma2_to64_rest`, `lemma_pow2_adds`, `lemma_pow2_pos`, `lemma_pow2_unfold`, `lemma_pow2_strictly_increases`) | 10 | **all present** in our July vstd, signatures unchanged |
 | Named vstd spec fns (`pow2`, `pow`) | 2 | present |
 | `vstd::bits` per-width lemmas reached via globs (`lemma_u64_shl_is_mul`, `lemma_u64_shr_is_div`, `lemma_u64_pow2_no_overflow`, `lemma_u64_low_bits_mask_is_mod`, …) | 8 named at call sites | **all present** (macro-generated in `bits.rs`, both pins) |
-| All `lemma_*` **call sites** in the crate | 918 distinct names 907 | every name resolves to a crate-local declaration (804 `proof fn`s + macro instantiations in `lemmas/**`) or to our vstd; **zero unresolved** |
+| All `lemma_*` **call sites** in the crate | 918 distinct names (recorded sweep) | every name resolves to a crate-local declaration (804 `proof fn`s + macro instantiations in `lemmas/**`) or to our vstd; **zero unresolved** |
 
 ## The `lemma_mul_le` correction
 
@@ -37,19 +37,23 @@ either (the grep that suggested otherwise prefix-matched
 `lemma_mul_left_inequality`). The one-file probe could not import a
 crate-local lemma and swapped in vstd's `lemma_mul_upper_bound`, which
 is the correct *distillation* accommodation — but it is not vstd drift,
-and whole-crate acquisition (DL8+) needs no accommodation at all: the
-crate carries its own lemma layer.
+and that particular lemma needs no vstd substitution in the whole-crate
+acquisition: the crate carries its own lemma layer.
 
-## Verdict
+## Verdict and scope
 
-**No vstd drift affects dalek-lite.** Every vstd symbol the crate can
-name exists in our July vstd with an unchanged signature; the crate's
-own 800+ lemma layer is self-contained. DL8's Layer Set A acquisition
-can proceed verbatim with no per-case accommodation list. The only
-Verus-level accommodation measured anywhere in the probe series remains
-the *front-end* mut-ref migration (`*x` → `*final(x)` in
-`assume_specification` ensures, DL5 probes) — a syntax requirement of
-our newer pinned front end, labeled `<MODIFIED CODE>` where distilled
-probes hit it; whole files at crate scale will hit it wherever upstream
-wrote bare `*x` postconditions on `&mut` params, and each such site is
-a mechanical, meaning-preserving edit.
+The recorded sweep found no missing or changed vstd symbols in the surface
+it examined at these two pins. This is a symbol-resolution result. It does
+not establish source identity, complete front-end compatibility, or the
+absence of acquisition accommodations.
+
+The probe series encountered the front-end mutable-reference syntax migration
+(`*x` to `*final(x)` in postconditions). The subsequent Layer Set A acquisition
+also introduced labeled field-source and boundary accommodations. The
+[fidelity record](dalek-lite-layer-a-scoreboard.md#verification-subject-fidelity)
+lists them, including the adapted `field_u64.rs`; mounted lemma/spec files
+come directly from the upstream pin.
+
+The measurements here remain dated 2026-07-20. Current proof completion and
+remaining assumptions are recorded in the
+[case-study status](../../case-studies/dalek-lite/README.md#current-verification-status).

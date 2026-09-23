@@ -1,5 +1,10 @@
 # Crypto probes — historical measured gap assessment
 
+**Status (2026-09-23):** SHA-3 work is paused while dalek-lite is active.
+Counts and verifier revisions below are recorded checkpoint evidence, not a
+fresh run. See the [status hub](../README.md) for the active plan and current
+toolchain. Acquisition-source pins remain unchanged.
+
 Probe suite for [../PLAN.md](../PLAN.md): one file per crypto idiom, each an
 **unchanged executable body inside a modified verification file** from a real
 target — curve25519-dalek (via the Aeneas corpus),
@@ -11,7 +16,7 @@ invariants), and required local type scaffolding added around it. Two
 `*_noasserts.rs` files are
 explicitly labeled accommodations: byte-identical bodies minus
 `debug_assert!` lines. Since 2026-07-17 the pinned Verus is our fork
-(`ilyasergey/verus`, branch `dev`); current commit `0bb5732ae…` accepts
+(`ilyasergey/verus`, branch `dev`); checkpoint commit `0bb5732ae…` accepts
 `debug_assert!` as a statically checked assert, supports tuple-pattern
 parameters through contracts/lowering/erasure, and supports custom
 tuple-keyed `IndexMut` contracts and tuple-destructuring assignment. It also
@@ -53,7 +58,7 @@ findings: [../gap-matrix.md](../gap-matrix.md).
 | `symcrust_mont_mul` | SymCrypt Montgomery mul, verbatim | front-end | narrowed (fork accommodation landed): only the 4th assert refuses — spec arithmetic has no `&` on the `int`-promoted product; fork candidate: nonneg-`int` bitand |
 | `symcrust_mont_mul_noasserts` | same, asserts elided | lean | **Verified** — 10 obligations, 5 automatic + 5 interactive: `result < Q ∧ result·2^16 ≡ a·b (mod Q)` |
 | `keccak_iota` | sha3.rs ι round | lean | Historical annotation-light probe: concrete `Index::Output` normalization passes and 12 obligations are emitted, 10 intentionally unproved here. The actual annotated [`../sha3/verification/src/algos.rs`](../sha3/verification/src/algos.rs) now supplies the missing state/index contracts and verifies its 12/12 obligations. |
-| `keccak_rho` | sha3.rs ρ round | lean | Current fork `0bb5732ae…` retains tuple assignment and exact rotation; `Vermilion.Vstd.Rotate` clears the model boundary. This historical annotation-light probe lowers to 23 obligations with 9 intentionally open. The actual annotated [`../sha3/verification/src/algos.rs`](../sha3/verification/src/algos.rs) verifies unchanged `rho` as 17/17 obligations and composes it into verified `round`/`keccak_p`. |
+| `keccak_rho` | sha3.rs ρ round | lean | Checkpoint fork `0bb5732ae…` retains tuple assignment and exact rotation; `Vermilion.Vstd.Rotate` clears the model boundary. This historical annotation-light probe lowers to 23 obligations with 9 intentionally open. The actual annotated [`../sha3/verification/src/algos.rs`](../sha3/verification/src/algos.rs) verifies unchanged `rho` as 17/17 obligations and composes it into verified `round`/`keccak_p`. |
 | `keccak_chi` | sha3.rs χ round | lowering | Historical annotation-light measurement only. The actual working copy adds the permitted loop contract/decreases annotation and verifies unchanged χ as part of the current 198-obligation implementation-through-`copy_to` checkpoint. |
 | `sha3_compress_u64` | sha3.rs bit-packing | front-end | Verus/vstd: `ChunksExact`, `Enumerate` iterators unsupported |
 
