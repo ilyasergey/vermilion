@@ -57,8 +57,9 @@ cd vermilion
 ./examples/m1-pipeline/run.sh
 ```
 
-The build fetches the pinned Lean dependencies and Verus fork automatically;
-the first build can take a while. The example verifies
+The build fetches the pinned Lean dependencies, mathlib's precompiled cache,
+and the Verus fork automatically. The remaining compilation can take a while
+on the first build. The example verifies
 [`simple.rs`](examples/m1-pipeline/simple.rs) and reports the Lean verification
 results at the Rust source locations.
 

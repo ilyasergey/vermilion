@@ -7,6 +7,11 @@ set -euo pipefail
 repository="$(cd "$(dirname "$0")/.." && pwd)"
 cd "$repository"
 
+# Fetch mathlib's precompiled artifacts before Lake can rebuild dependencies
+# from source. The cache command reuses artifacts already downloaded locally.
+echo "== Mathlib build cache =="
+lake exe cache get
+
 # Lean comes first: building the libraries also produces the cvc5 native
 # plugin that `lake serve` (and therefore the VS Code Lean extension) loads at
 # startup, so the editor works as early as possible on a fresh machine.

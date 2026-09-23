@@ -26,10 +26,24 @@ From the repository root:
 ./scripts/build.sh
 ```
 
-This builds the Lean libraries and native solver bindings first, then the
-Rust workspace and tests, and finally the pinned Verus fork and direct SST
-adapter. The first build downloads dependencies and can take a while;
-subsequent builds are incremental.
+This first fetches mathlib's precompiled cache for the pinned dependencies,
+then builds the Lean libraries and native solver bindings, the Rust workspace
+and tests, and finally the pinned Verus fork and direct SST adapter. This
+avoids compiling mathlib from source on a fresh checkout. The remaining
+compilation can take a while on the first build; subsequent builds are
+incremental, and cache downloads are reused locally.
+
+When building Lean manually, fetch the cache before the first build, after
+removing `.lake`, or after changing dependency pins:
+
+```console
+lake exe cache get
+lake build
+```
+
+The [mathlib setup guide](https://leanprover-community.github.io/install/project.html)
+documents this cache command. If it fails, `scripts/build.sh` stops before
+compilation; fix the download problem and rerun the script.
 
 Verus is cloned into `${XDG_CACHE_HOME:-$HOME/.cache}/vermilion/verus` and
 linked as `.verus-checkout`. The setup script also downloads Verus's matching
