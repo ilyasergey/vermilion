@@ -159,7 +159,7 @@ per-occurrence ground hypothesis by the generator. -/
 theorem chooseSpec_spec {α : Type u} [Inhabited α] {p : α → Prop}
     (h : ∃ x, p x) : p (chooseSpec p) := by
   unfold chooseSpec
-  rw [dif_pos h]
+  rw [dite_eq_left h]
   exact Classical.choose_spec h
 
 /-- Interactive escape hatch: a guard that holds of every satisfying value

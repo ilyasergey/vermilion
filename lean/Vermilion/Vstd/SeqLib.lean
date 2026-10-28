@@ -138,13 +138,13 @@ theorem toMultiset_contains [Inhabited α] [DecidableEq α] (s : Seq α) (a : α
   constructor
   · rintro ⟨i, ⟨hi0, hilt⟩, rfl⟩
     have hb : i.toNat < s.length := by simp only [len] at hilt; omega
-    simp only [index, if_pos hi0, List.getD_eq_getElem s default hb]
+    simp only [index, ite_eq_left hi0, List.getD_eq_getElem s default hb]
     exact List.getElem_mem hb
   · intro h
     obtain ⟨n, hn, hval⟩ := List.mem_iff_getElem.mp h
     refine ⟨(n : Int), ⟨Int.natCast_nonneg n, ?_⟩, ?_⟩
     · simp only [len]; exact_mod_cast hn
-    · simp only [index, if_pos (Int.natCast_nonneg n), Int.toNat_natCast,
+    · simp only [index, ite_eq_left (Int.natCast_nonneg n), Int.toNat_natCast,
         List.getD_eq_getElem s default hn]; exact hval
 
 end Seq

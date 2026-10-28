@@ -55,7 +55,7 @@ theorem ext [Inhabited α] {a b : Seq α}
       simp only [len]
       exact_mod_cast hia
     have hi := h i h0 hlt
-    simp only [index, h0, if_true, Int.toNat_natCast] at hi
+    simp only [index, h0, ite_true, Int.toNat_natCast] at hi
     rwa [List.getD_eq_getElem _ _ hia, List.getD_eq_getElem _ _ hib] at hi
 
 @[simp, grind =] theorem index_push_last [Inhabited α] (xs : Seq α) (x : α) :
@@ -77,7 +77,7 @@ strictly shrinks the sequence term, so it cannot loop. -/
 @[simp, grind =] theorem index_push_prefix [Inhabited α] (xs : Seq α) (x : α) (i : Int)
     (low : 0 ≤ i) (high : i < xs.len) :
     (xs.push x).index i = xs.index i := by
-  simp only [push, index, len, if_pos low] at *
+  simp only [push, index, len, ite_eq_left low] at *
   have : i.toNat < xs.length := by omega
   simp [List.getD, List.getElem?_append_left this]
 
@@ -91,11 +91,11 @@ still fire first wherever their discharge succeeds. -/
 @[simp 900] theorem index_push [Inhabited α] (xs : Seq α) (x : α) (i : Int) :
     (xs.push x).index i = if i = xs.len then x else xs.index i := by
   by_cases h : i = xs.len
-  · simpa [h] using index_push_last xs x
+  · simp [h, index_push_last xs x]
   · rcases (by omega : i < xs.len ∨ xs.len ≤ i) with hlt | hge
     · rcases (by omega : 0 ≤ i ∨ i < 0) with h0 | h0
       · simp [index_push_prefix xs x i h0 hlt, h]
-      · simp only [index, if_neg (by omega : ¬ 0 ≤ i)]
+      · simp only [index, ite_eq_right (by omega : ¬ 0 ≤ i)]
         simp [h]
     · -- past the end on both sides: both reads are the default
       have hgt : xs.len < i := by omega
@@ -103,7 +103,7 @@ still fire first wherever their discharge succeeds. -/
       have hxs : xs.length < i.toNat := by simp only [len] at hgt hnn; omega
       have happ : (xs ++ [x]).length ≤ i.toNat := by
         simp only [List.length_append, List.length_cons, List.length_nil]; omega
-      simp only [index, push, if_pos (by omega : (0:Int) ≤ i), if_neg h,
+      simp only [index, push, ite_eq_left (by omega : (0:Int) ≤ i), ite_eq_right h,
         List.getD_eq_getElem?_getD,
         List.getElem?_eq_none happ, List.getElem?_eq_none (Nat.le_of_lt hxs)]
 
@@ -122,7 +122,7 @@ def new [Inhabited α] (n : Int) (f : Int → α) : Seq α :=
   have hb : i.toNat < ((List.range n.toNat).map
       (fun j : Nat => f (Int.ofNat j))).length := by
     simpa using hi
-  rw [new, index, if_pos low, List.getD_eq_getElem?_getD,
+  rw [new, index, ite_eq_left low, List.getD_eq_getElem?_getD,
     List.getElem?_eq_getElem hb, Option.getD_some, List.getElem_map,
     List.getElem_range]
   exact congrArg f (Int.toNat_of_nonneg low)
@@ -156,7 +156,7 @@ def update (xs : Seq α) (i : Int) (x : α) : Seq α :=
 @[simp] theorem index_update_same [Inhabited α] (xs : Seq α) (i : Int) (x : α)
     (low : 0 ≤ i) (high : i < xs.len) : (xs.update i x).index i = x := by
   have hb : i.toNat < xs.length := by simp only [len] at high; omega
-  simp only [update, index, if_pos low, List.getD_eq_getElem?_getD,
+  simp only [update, index, ite_eq_left low, List.getD_eq_getElem?_getD,
     List.getElem?_set_self hb, Option.getD_some]
 
 /-- Reading any other slot is unchanged. -/
@@ -164,10 +164,10 @@ def update (xs : Seq α) (i : Int) (x : α) : Seq α :=
     (x : α) (j : Int) (hne : j ≠ i) : (xs.update j x).index i = xs.index i := by
   by_cases hi : 0 ≤ i
   · by_cases hj : 0 ≤ j
-    · simp only [update, index, if_pos hi, if_pos hj, List.getD_eq_getElem?_getD,
+    · simp only [update, index, ite_eq_left hi, ite_eq_left hj, List.getD_eq_getElem?_getD,
         List.getElem?_set_ne (show j.toNat ≠ i.toNat by omega)]
-    · simp only [update, if_neg hj]
-  · simp only [index, if_neg hi]
+    · simp only [update, ite_eq_right hj]
+  · simp only [index, ite_eq_right hi]
 
 /-- Contiguous slice (vstd `Seq::subrange`; the view of `Vec::pop`'s tail and
 of slice ranges): elements at positions `[i, j)`. In range (`0 ≤ i ≤ j ≤ len`)
@@ -189,8 +189,8 @@ def subrange (xs : Seq α) (i j : Int) : Seq α :=
   have hik : 0 ≤ i + k := by omega
   have hlt : k.toNat < (j - i).toNat := by omega
   have hidx : i.toNat + k.toNat = (i + k).toNat := by omega
-  simp only [subrange, index, if_pos klow, if_pos hik,
-    List.getD_eq_getElem?_getD, List.getElem?_take, if_pos hlt,
+  simp only [subrange, index, ite_eq_left klow, ite_eq_left hik,
+    List.getD_eq_getElem?_getD, List.getElem?_take, ite_eq_left hlt,
     List.getElem?_drop, hidx]
 
 /-- Concatenation (vstd `Seq::add`, the spec `+` on sequences). -/
@@ -209,7 +209,7 @@ rules below `grind` closes concatenation goals immediately instead. -/
 @[simp, grind =] theorem index_add_left [Inhabited α] (s1 s2 : Seq α) (i : Int)
     (low : 0 ≤ i) (high : i < s1.len) : (s1.add s2).index i = s1.index i := by
   have hb : i.toNat < s1.length := by simp only [len] at high; omega
-  simp only [add, index, if_pos low, List.getD_eq_getElem?_getD,
+  simp only [add, index, ite_eq_left low, List.getD_eq_getElem?_getD,
     List.getElem?_append_left hb]
 
 /-- Indexing the right part of a concatenation. -/
@@ -221,11 +221,11 @@ rules below `grind` closes concatenation goals immediately instead. -/
   -- Unfold `len` before `index`: once `index`'s `ite` is in the goal,
   -- rewriting `len` underneath it desynchronizes the guard proposition from
   -- the `Decidable` instance baked into the `ite` (type-incorrect target on
-  -- Lean ≥ 4.33), and the `if_pos` rewrites stop matching.
+  -- Lean ≥ 4.33), and the `ite_eq_left` rewrites stop matching.
   simp only [add, len] at *
   simp only [index]
   have hidx : i.toNat - s1.length = (i - (s1.length : Int)).toNat := by omega
-  rw [if_pos hi, if_pos hd, List.getD_eq_getElem?_getD, List.getD_eq_getElem?_getD,
+  rw [ite_eq_left hi, ite_eq_left hd, List.getD_eq_getElem?_getD, List.getD_eq_getElem?_getD,
     List.getElem?_append_right (by omega), hidx]
 
 /-- An empty-span subrange is the empty sequence. -/
@@ -259,7 +259,7 @@ theorem subrange_push [Inhabited α] (s : Seq α) (i j : Int)
   have hstep : (j + 1 - i).toNat = (j - i).toNat + 1 := by omega
   have hdrop : (j - i).toNat < (s.drop i.toNat).length := by
     simp only [List.length_drop]; omega
-  rw [if_pos (by omega : (0:Int) ≤ j), hstep, List.take_add_one,
+  rw [ite_eq_left (by omega : (0:Int) ≤ j), hstep, List.take_add_one,
     List.getElem?_eq_getElem hdrop]
   have hidx : (s.drop i.toNat)[(j - i).toNat] = s[j.toNat] := by
     rw [List.getElem_drop]; congr 1; omega

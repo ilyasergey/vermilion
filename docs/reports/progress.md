@@ -6,7 +6,7 @@ and the case-study status table is [case-studies/README.md](../../case-studies/R
 
 ## Current documentation checkpoint (2026-09-23)
 
-- Lean is pinned to 4.33.0 with direct Mathlib and lean-smt dependencies;
+- Lean is pinned to 4.34.0 with direct Mathlib and lean-smt dependencies;
   [setup](../development.md) points to the authoritative pin files.
 - DL1–DL7 and whole-crate artifact routing have landed. `choose`, supported
   non-isolated loops, generic opaque applications, and constructor type

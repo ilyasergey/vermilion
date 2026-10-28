@@ -30,13 +30,13 @@ def proofGlobs (roots : Array String × Array String) : Array Glob :=
 -- Mathlib backs the proof libraries and the ladder's arithmetic rungs; its
 -- release tag is what pins the Lean toolchain (keep lean-toolchain in step).
 require mathlib from git
-  "https://github.com/leanprover-community/mathlib4.git" @ "v4.33.0"
+  "https://github.com/leanprover-community/mathlib4.git" @ "v4.34.0"
 
 -- lean-smt provides the ladder's final `smt` rung (cvc5 + kernel-checked
--- reconstruction). Pinned to the upstream main commit for Lean v4.33.0.
+-- reconstruction). Pinned to the upstream main commit for Lean v4.34.0.
 require smt from git
   "https://github.com/ufmg-smite/lean-smt.git" @
-  "21aa44ce022fa37e0e40ff571ddde9b052a81c0c"
+  "2956f2966ff443b27a86fe2a4fb82dc56efafc51"
 
 package vermilion where
   preferReleaseBuild := true
