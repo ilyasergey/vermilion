@@ -220,6 +220,8 @@ pub enum Expr {
     URange(u32, Box<Expr>),
     /// `Vermilion.inSignedRange bits e`
     SRange(u32, Box<Expr>),
+    /// `Vermilion.isUnicodeScalar e`
+    CharRange(Box<Expr>),
     /// `Vermilion.natClip e` — Verus `nat` clipping (saturation at zero).
     /// A dedicated form so the operand occurs ONCE: expanding to
     /// `iteP (e ≥ 0) e 0` duplicates `e` and nested nat arithmetic grows
@@ -228,6 +230,9 @@ pub enum Expr {
     /// `Vermilion.sclip bits e` — signed two's-complement clipping at the
     /// given width; single-occurrence for the same reason as `NatClip`.
     SignedClip(u32, Box<Expr>),
+    /// `Vermilion.charClip e` — Verus's underspecified clipping to a Unicode
+    /// scalar value, represented by a kernel-checked choice in Lean.
+    CharClip(Box<Expr>),
     /// `Vermilion.Seq.len s`
     SeqLen(Box<Expr>),
     /// `Vermilion.Seq.push s x`

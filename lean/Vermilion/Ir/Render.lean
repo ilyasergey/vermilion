@@ -355,6 +355,42 @@ def SpecFn.needsPropDecidable (specFn : SpecFn) : Bool :=
     if binder.ty == .prop then binder.name :: names else names) []
   specFn.body.needsDecidableEvidence propVariables
 
+/-- Does this recursive spec fn's body contain a short-circuit `a && b` whose
+`b` calls the fn itself and whose guard `a` is not constructively decidable?
+Recursive bodies render exactly those conjunctions as the dependent
+`if _h : a then b else False`, which needs `Decidable a`, so such a
+definition is rendered under `open Classical in`. It does not go
+`noncomputable`: the conjunction is a Prop, erased by the compiler, and an
+`iteP` that branches on it is already caught by `needsPropDecidable`. -/
+def SpecFn.needsAndGuardDecidable (specFn : SpecFn) : Bool :=
+  let propVariables := specFn.binders.foldl (fun names binder =>
+    if binder.ty == .prop then binder.name :: names else names) []
+  specFn.isRecursive &&
+    specFn.body.needsDecidableEvidence propVariables
+      (andGuards := some specFn.id.qualified)
+
+/-- Does this recursive spec fn recurse on a `subrange` along a `Seq.len`
+measure: a measure mentions `Seq.len p` and a self-call passes a `subrange`
+for `p` (`count (prefix.subrange 1 prefix.len)`)? Only then does a
+termination goal measure the length of a subrange, which `omega` closes once
+`Seq.len`/`Seq.subrange` unfold to list lengths. Both operations are
+recognized in their structural and their registry (`vstdApply`) forms. -/
+def SpecFn.recursesOnSubrange (specFn : SpecFn) : Bool :=
+  let lengthOf (name : String) : Expr → Bool
+    | .seqLen (.var v) | .vstdApply _ "Vermilion.Seq.len" #[.var v] => v == name
+    | _ => false
+  let isSubrange : Expr → Bool
+    | .seqSubrange .. | .vstdApply _ "Vermilion.Seq.subrange" _ => true
+    | _ => false
+  let measured := specFn.binders.filter fun binder =>
+    specFn.decreases.any (·.anySubterm (lengthOf binder.name))
+  !measured.isEmpty && specFn.body.anySubterm fun
+    | .apply id _ args =>
+      id.qualified == specFn.id.qualified &&
+        (specFn.binders.zip args).any fun (binder, arg) =>
+          measured.contains binder && isSubrange arg
+    | _ => false
+
 /-- The qualified names of the spec fns whose emitted definitions must be
 `noncomputable`: uninterpreted ones (rendered `opaque`), bodies that are
 classical themselves (`chooseSpec`, possibly-zero `ediv`/`emod`), and —
@@ -404,11 +440,15 @@ def renderSpecFn (specFn : SpecFn) (forceClassical : Bool := false) :
   -- `iteP (is_negative a) …`) additionally needs the classical fallback
   -- instance in scope: `open Classical in` before the definition, and the
   -- definition goes `noncomputable`. Recursive definitions render
-  -- their conditionals dependently (`if _h : c then …`) so the equation
-  -- compiler sees the branch hypotheses in the termination goals, with
-  -- `termination_by` from the Verus-checked decreases measures.
+  -- their conditionals, and each short-circuit `&&` guarding a self-call,
+  -- dependently (`if _h : c then …`) so the equation compiler sees the branch
+  -- hypotheses in the termination goals, with `termination_by` from the
+  -- Verus-checked decreases measures. A `&&` guard that `Decidable`
+  -- synthesis cannot see through gets `open Classical in` as well, without
+  -- the definition becoming `noncomputable` (`needsAndGuardDecidable`).
   let recursive := specFn.isRecursive
   let propDec := specFn.needsPropDecidable
+  let andGuardDec := specFn.needsAndGuardDecidable
   let classical := specFn.body.needsClassical || forceClassical || propDec
   let mut out := ""
   -- Navigation marker: the editor's Lean→Rust jump (⌘⇧J) reads the
@@ -433,7 +473,11 @@ def renderSpecFn (specFn : SpecFn) (forceClassical : Bool := false) :
       out := out ++ s!" ({leanSegment binder.name} : {binder.ty.render})"
     out := out ++ s!" : {specFn.ret.render}\n"
     return out
-  if (recursive && classical) || propDec then
+  -- Only classical recursive definitions and definitions with a guard
+  -- `Decidable` synthesis cannot see through get the classical instance in
+  -- scope; every other definition elaborates with constructive instances
+  -- alone (#25).
+  if (recursive && classical) || propDec || andGuardDec then
     out := out ++ "open Classical in\n"
   let marker := if classical then "noncomputable def" else "def"
   out := out ++ s!"{marker} {specFn.id.qualified}"
@@ -449,7 +493,9 @@ def renderSpecFn (specFn : SpecFn) (forceClassical : Bool := false) :
     out := out ++ s!" \{{leanSegment param} : Type} [Inhabited {leanSegment param}]"
   for binder in specFn.binders do
     out := out ++ s!" ({leanSegment binder.name} : {binder.ty.render})"
-  let body := if recursive then specFn.body.renderBody else specFn.body.renderTop
+  let body :=
+    if recursive then specFn.body.renderBody specFn.id.qualified
+    else specFn.body.renderTop
   -- A recursive definition must terminate on ALL Int inputs, but a
   -- Verus nat/machine-typed parameter's range is a typing fact our Int
   -- embedding does not carry into the binder types. Guard the body on the
@@ -484,10 +530,18 @@ def renderSpecFn (specFn : SpecFn) (forceClassical : Bool := false) :
     -- `Int.emod_lt_of_pos` — `omega` cannot bound `a % b` by a VARIABLE
     -- `b`; and a `natClip`ped measure (`binomial (natClip (n-1)) …`)
     -- surfaces an `iteP` the ladder splits before finishing with `omega`.
+    -- Recursion on a `subrange` along a `Seq.len` measure additionally
+    -- unfolds both to list lengths (`recursesOnSubrange`); every other
+    -- definition keeps the list without that rung.
+    let subrangeRung :=
+      if specFn.recursesOnSubrange then
+        "(simp only [Vermilion.Seq.len, Vermilion.Seq.subrange, \
+List.length_take, List.length_drop] at *; omega) | "
+      else ""
     out := out ++
       "decreasing_by all_goals first | omega | (simp_all; omega) | \
-(simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | \
-(simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all\n"
+(simp_all; exact ⟨Int.emod_lt_of_pos _ (by omega), by omega⟩) | " ++
+      subrangeRung ++ "(simp_all [Vermilion.iteP]; split_ifs <;> omega) | simp_all\n"
   return out
 
 /-- Header of every generated module: imports plus linter silencing.

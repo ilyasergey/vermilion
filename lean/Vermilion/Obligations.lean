@@ -70,7 +70,7 @@ def callRequiresVC (context calleeRequires : Prop) : Prop :=
 macro "vrml_norm" : tactic =>
   `(tactic|
     (try simp only [Vermilion.inUnsignedRange, Vermilion.inSignedRange,
-      Vermilion.natClip, Vermilion.sclip, Vermilion.iteP,
+      Vermilion.isUnicodeScalar, Vermilion.natClip, Vermilion.sclip, Vermilion.iteP,
       Int.reducePow, Nat.reducePow] at *))
 
 /-- Linear side-condition solver used by the collection simp rung. Unfold

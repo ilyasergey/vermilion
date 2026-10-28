@@ -124,6 +124,8 @@ partial def Expr.constructivelyDecidable
     | _ => true
   -- Variant predicates have generated `Decidable` instances.
   | .isVariant .. => true
+  -- Unicode scalar membership is a finite disjunction of integer comparisons.
+  | .charRange _ => true
   -- Other predicate-producing applications need evidence unless a producer
   -- can establish their class dictionaries structurally.
   | _ => false
@@ -135,44 +137,56 @@ the theorem layer collects module-wide `Decidable` evidence from it
 (`collectEvidenceObligations`), and `renderSpecFn` — whose definitions
 PRECEDE the evidence — renders an affected definition with
 `open Classical in` and `noncomputable` instead (dalek-lite DL8:
-`iteP (is_negative a) …` in a spec-fn body). -/
+`iteP (is_negative a) …` in a spec-fn body).
+
+With `andGuards := some f` (`f` the recursive spec fn being defined), a
+conjunction whose right operand calls `f` and whose left operand is not
+constructively decidable counts too: recursive spec-fn bodies render such a
+short-circuit `a && b` as the dependent `if _h : a then b else False`, which
+needs `Decidable a` (`Expr.callsSelf`, `SpecFn.needsAndGuardDecidable`). -/
 partial def Expr.needsDecidableEvidence
-    (propVariables : List String) : Expr → Bool
+    (propVariables : List String) (andGuards : Option String := none) :
+    Expr → Bool
   | .ite condition thenValue elseValue =>
     !condition.constructivelyDecidable propVariables ||
-      condition.needsDecidableEvidence propVariables ||
-      thenValue.needsDecidableEvidence propVariables ||
-      elseValue.needsDecidableEvidence propVariables
-  | .binary _ lhs rhs =>
-    lhs.needsDecidableEvidence propVariables ||
-      rhs.needsDecidableEvidence propVariables
-  | .not value => value.needsDecidableEvidence propVariables
-  | .urange _ value | .srange _ value | .natClip value | .sclip _ value
+      condition.needsDecidableEvidence propVariables andGuards ||
+      thenValue.needsDecidableEvidence propVariables andGuards ||
+      elseValue.needsDecidableEvidence propVariables andGuards
+  | .binary op lhs rhs =>
+    (op == .and && rhs.callsSelf andGuards &&
+        !lhs.constructivelyDecidable propVariables) ||
+      lhs.needsDecidableEvidence propVariables andGuards ||
+      rhs.needsDecidableEvidence propVariables andGuards
+  | .not value => value.needsDecidableEvidence propVariables andGuards
+  | .urange _ value | .srange _ value | .charRange value
+  | .natClip value | .sclip _ value | .charClip value
   | .seqLen value
   | .seqToMultiset value | .fieldOf _ _ _ value | .isVariant _ _ value =>
-    value.needsDecidableEvidence propVariables
+    value.needsDecidableEvidence propVariables andGuards
   | .seqPush lhs rhs | .seqIndex lhs rhs | .seqAdd lhs rhs
   | .seqNew lhs rhs | .bitOp _ _ _ lhs rhs =>
-    lhs.needsDecidableEvidence propVariables ||
-      rhs.needsDecidableEvidence propVariables
+    lhs.needsDecidableEvidence propVariables andGuards ||
+      rhs.needsDecidableEvidence propVariables andGuards
   | .seqUpdate first second third | .seqSubrange first second third =>
-    first.needsDecidableEvidence propVariables ||
-      second.needsDecidableEvidence propVariables ||
-      third.needsDecidableEvidence propVariables
+    first.needsDecidableEvidence propVariables andGuards ||
+      second.needsDecidableEvidence propVariables andGuards ||
+      third.needsDecidableEvidence propVariables andGuards
   | .vstdApply _ _ args | .coll _ args | .apply _ _ args
-  | .ctor _ _ _ args => args.any (Expr.needsDecidableEvidence propVariables)
+  | .ctor _ _ _ args =>
+    args.any (Expr.needsDecidableEvidence propVariables andGuards)
   | .quant _ binders triggers body =>
     let nested := binders.foldl (fun names binder =>
       if binder.ty == .prop then binder.name :: names else names) propVariables
-    triggers.any (fun group => group.any (Expr.needsDecidableEvidence nested)) ||
-      body.needsDecidableEvidence nested
+    triggers.any (fun group =>
+        group.any (Expr.needsDecidableEvidence nested andGuards)) ||
+      body.needsDecidableEvidence nested andGuards
   | .lambda binders body =>
     let nested := binders.foldl (fun names binder =>
       if binder.ty == .prop then binder.name :: names else names) propVariables
-    body.needsDecidableEvidence nested
+    body.needsDecidableEvidence nested andGuards
   | .callFn callee args =>
-    callee.needsDecidableEvidence propVariables ||
-      args.any (Expr.needsDecidableEvidence propVariables)
+    callee.needsDecidableEvidence propVariables andGuards ||
+      args.any (Expr.needsDecidableEvidence propVariables andGuards)
   | _ => false
 
 private def Obligation.needsDecidableEvidence (obligation : Obligation) : Bool :=
@@ -406,7 +420,8 @@ partial def Expr.collectChoose : Expr → Array (Binder × Expr)
   | .binary _ lhs rhs => lhs.collectChoose ++ rhs.collectChoose
   | .not e => e.collectChoose
   | .ite c t f => c.collectChoose ++ t.collectChoose ++ f.collectChoose
-  | .urange _ e | .srange _ e | .natClip e | .sclip _ e => e.collectChoose
+  | .urange _ e | .srange _ e | .charRange e
+  | .natClip e | .sclip _ e | .charClip e => e.collectChoose
   | .seqLen e | .seqToMultiset e => e.collectChoose
   | .seqPush a b | .seqIndex a b | .seqNew a b | .seqAdd a b =>
     a.collectChoose ++ b.collectChoose

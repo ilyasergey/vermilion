@@ -32,8 +32,10 @@ def Expr.mapChildren (f : Expr → Expr) : Expr → Expr
   | .ite c t e => .ite (f c) (f t) (f e)
   | .urange bits e => .urange bits (f e)
   | .srange bits e => .srange bits (f e)
+  | .charRange e => .charRange (f e)
   | .natClip e => .natClip (f e)
   | .sclip bits e => .sclip bits (f e)
+  | .charClip e => .charClip (f e)
   | .seqLen s => .seqLen (f s)
   | .seqPush s x => .seqPush (f s) (f x)
   | .seqIndex s i => .seqIndex (f s) (f i)
@@ -59,7 +61,8 @@ def Expr.mapChildren (f : Expr → Expr) : Expr → Expr
 /-- Fold `f` over every immediate subexpression (trigger groups included). -/
 def Expr.foldChildren {α : Type} (f : α → Expr → α) (init : α) : Expr → α
   | .binary _ lhs rhs => f (f init lhs) rhs
-  | .not e | .urange _ e | .srange _ e | .natClip e | .sclip _ e => f init e
+  | .not e | .urange _ e | .srange _ e | .charRange e | .natClip e | .sclip _ e
+  | .charClip e => f init e
   | .ite c t e => f (f (f init c) t) e
   | .seqLen s | .seqToMultiset s => f init s
   | .seqPush a b | .seqIndex a b | .seqAdd a b | .seqNew a b => f (f init a) b
@@ -73,6 +76,11 @@ def Expr.foldChildren {α : Type} (f : α → Expr → α) (init : α) : Expr �
   | .lambda _ body => f init body
   | .callFn callee args => args.foldl f (f init callee)
   | _ => init
+
+/-- Does `e` or any of its subexpressions (trigger groups included)
+satisfy `p`? -/
+partial def Expr.anySubterm (p : Expr → Bool) (e : Expr) : Bool :=
+  p e || e.foldChildren (fun found child => found || child.anySubterm p) false
 
 /-- The names bound by the construct at the root of `e` (their scope is
 every child: body and trigger groups alike); empty for non-binders. -/

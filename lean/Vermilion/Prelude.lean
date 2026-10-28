@@ -159,7 +159,7 @@ per-occurrence ground hypothesis by the generator. -/
 theorem chooseSpec_spec {α : Type u} [Inhabited α] {p : α → Prop}
     (h : ∃ x, p x) : p (chooseSpec p) := by
   unfold chooseSpec
-  rw [dif_pos h]
+  rw [dite_eq_left h]
   exact Classical.choose_spec h
 
 /-- Interactive escape hatch: a guard that holds of every satisfying value
@@ -171,6 +171,60 @@ theorem chooseSpec_guard {α : Type u} [Inhabited α] {p G : α → Prop}
   split
   · exact himp _ (Classical.choose_spec ‹_›)
   · exact hdef
+
+/-! Rust `char` values and clipping. -/
+
+/-- The exact Rust/Verus Unicode-scalar range:
+`[0, 0xD7FF] ∪ [0xE000, 0x10FFFF]`. -/
+def isUnicodeScalar (x : Int) : Prop :=
+  (0 ≤ x ∧ x ≤ 0xD7FF) ∨ (0xE000 ≤ x ∧ x ≤ 0x10FFFF)
+
+private theorem charClip_exists (x : Int) :
+    ∃ y, isUnicodeScalar y ∧ (isUnicodeScalar x → y = x) := by
+  by_cases h : isUnicodeScalar x
+  · exact ⟨x, h, fun _ => rfl⟩
+  · refine ⟨0, ?_, fun hx => (h hx).elim⟩
+    simp [isUnicodeScalar]
+
+/-- Verus `charClip`: an arbitrary Unicode scalar when the operand is outside
+the scalar range, and exactly the operand when it is already a scalar. The
+choice is kernel-checked and preserves Verus's intentional underspecification. -/
+noncomputable def charClip (x : Int) : Int :=
+  chooseSpec (fun y => isUnicodeScalar y ∧ (isUnicodeScalar x → y = x))
+
+/-- Characterization matching Verus's `charClip` prelude axiom. -/
+theorem charClip_spec (x : Int) :
+    isUnicodeScalar (charClip x) ∧ (isUnicodeScalar x → charClip x = x) := by
+  unfold charClip
+  exact chooseSpec_spec (charClip_exists x)
+
+@[simp] theorem charClip_of_isUnicodeScalar {x : Int} (h : isUnicodeScalar x) :
+    charClip x = x :=
+  (charClip_spec x).2 h
+
+@[simp, grind] theorem charClip_isUnicodeScalar (x : Int) :
+    isUnicodeScalar (charClip x) :=
+  (charClip_spec x).1
+
+/-- Expanded range form used by source-level inequalities after VC
+normalization has unfolded `isUnicodeScalar`. -/
+@[simp] theorem charClip_range (x : Int) :
+    (0 ≤ charClip x ∧ charClip x ≤ 0xD7FF) ∨
+      (0xE000 ≤ charClip x ∧ charClip x ≤ 0x10FFFF) := by
+  simpa [isUnicodeScalar] using charClip_isUnicodeScalar x
+
+-- `@[grind]` would select the normalized inequalities as patterns, which
+-- never occur as terms; trigger on the clip itself, as Verus's own
+-- `char_clip` axiom does (`:pattern ((char_clip i))`).
+grind_pattern charClip_range => charClip x
+
+/-- Expanded identity form matching normalized source-level cast guards. -/
+@[simp, grind] theorem charClip_eq_of_range {x : Int}
+    (h : (0 ≤ x ∧ x ≤ 0xD7FF) ∨
+      (0xE000 ≤ x ∧ x ≤ 0x10FFFF)) :
+    charClip x = x := by
+  apply charClip_of_isUnicodeScalar
+  simpa [isUnicodeScalar] using h
 
 /-! ## Machine bit operations (M4, Lean-native)
 

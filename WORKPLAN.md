@@ -13,7 +13,7 @@ The [case-study registry](case-studies/README.md) records scope and blockers;
 - [VC-generation policy](docs/vcgen.md) is normative. The current translator
   remains trusted; [foundational VC generation](docs/issues/formal-semantics-for-the-neutral-ir.md)
   is planned.
-- [`lean-toolchain`](lean-toolchain) pins Lean 4.33.0; Mathlib and lean-smt are
+- [`lean-toolchain`](lean-toolchain) pins Lean 4.34.0; Mathlib and lean-smt are
   direct Lake dependencies. Veil and Loom are absent from the dependency tree.
 - The active target is [dalek-lite](case-studies/dalek-lite/README.md).
   Its field-cone acquisition is partial; the current proof-hole inventory and

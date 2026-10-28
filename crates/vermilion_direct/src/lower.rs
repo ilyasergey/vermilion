@@ -81,6 +81,7 @@ enum RangeConstraint {
     Unsigned(u32),
     Signed(u32),
     Nat,
+    Char,
 }
 
 /// Range constraint carried by an integer type, if any.
@@ -89,6 +90,7 @@ fn range_constraint(typ: &Typ) -> Option<RangeConstraint> {
         TypX::Int(IntRange::U(bits)) => Some(RangeConstraint::Unsigned(*bits)),
         TypX::Int(IntRange::I(bits)) => Some(RangeConstraint::Signed(*bits)),
         TypX::Int(IntRange::Nat) => Some(RangeConstraint::Nat),
+        TypX::Int(IntRange::Char) => Some(RangeConstraint::Char),
         // usize/isize: Verus verifies for a symbolic architecture word of
         // 32 or 64 bits; the arch-neutral facts (valid on both) are the
         // 64-bit bounds. Programs pinning a 32-bit arch may prove more in
@@ -104,6 +106,7 @@ fn range_proposition(constraint: &RangeConstraint, subject: Expr) -> Expr {
         RangeConstraint::Unsigned(bits) => Expr::URange(*bits, Box::new(subject)),
         RangeConstraint::Signed(bits) => Expr::SRange(*bits, Box::new(subject)),
         RangeConstraint::Nat => Expr::binary(BinOp::Le, Expr::Int("0".to_owned()), subject),
+        RangeConstraint::Char => Expr::CharRange(Box::new(subject)),
     }
 }
 
@@ -525,7 +528,8 @@ fn resolve_typ(ctx: ExpCtx<'_>, typ: &Typ) -> Typ {
 ///
 /// - machine-integer types: the value's own `urange`/`srange`;
 /// - `Seq`/`Vec`: elements in bounds satisfy the element facts,
-///   `∀ i, 0 ≤ i ∧ i < len s → facts(s[i])`;
+///   `∀ i, 0 ≤ i ∧ i < len s → facts(s[i])`, except that Verus does not
+///   propagate the Unicode-scalar invariant through `Seq<char>` indexing;
 /// - `Set`/`Multiset`: contained elements satisfy the element facts;
 /// - `Map`: contained keys' values satisfy the value facts;
 /// - datatypes: field facts through the accessors, recursively and with
@@ -571,6 +575,13 @@ fn type_facts_rec(
         return type_facts_rec(ctx, inner, subject, depth, visited);
     }
     if let Some(constraint) = range_constraint(typ) {
+        // Verus carries the scalar invariant for a direct `char` value, but
+        // its SMT encoding does not expose that invariant after projecting a
+        // `char` out of a container. Do not strengthen the exported VC with a
+        // fact that Verus itself could not use.
+        if depth > 0 && matches!(constraint, RangeConstraint::Char) {
+            return Ok(Vec::new());
+        }
         return Ok(vec![range_proposition(&constraint, subject.clone())]);
     }
     // Bound-variable names for the quantified container facts: reserved
@@ -1488,7 +1499,8 @@ fn reserve_expr_names(expr: &Expr, taken: &mut std::collections::HashSet<String>
             reserve_expr_names(b, taken);
         }
         Expr::Not(a) | Expr::URange(_, a) | Expr::SRange(_, a)
-        | Expr::NatClip(a) | Expr::SignedClip(_, a) | Expr::SeqLen(a)
+        | Expr::CharRange(a) | Expr::NatClip(a) | Expr::SignedClip(_, a)
+        | Expr::CharClip(a) | Expr::SeqLen(a)
         | Expr::SeqToMultiset(a) | Expr::FieldOf(_, _, _, a)
         | Expr::IsVariant(_, _, a) => reserve_expr_names(a, taken),
         Expr::Ite(a, b, c) | Expr::SeqUpdate(a, b, c)
@@ -1822,7 +1834,7 @@ fn lower_clip(range: &IntRange, operand: Expr) -> Result<Expr, String> {
         }
         IntRange::I(bits) => Ok(Expr::SignedClip(*bits, Box::new(operand))),
         IntRange::ISize => Ok(Expr::SignedClip(64, Box::new(operand))),
-        IntRange::Char => Err("unsupported `char` clipping (Unicode scalar-value gap)".to_owned()),
+        IntRange::Char => Ok(Expr::CharClip(Box::new(operand))),
     }
 }
 
@@ -1865,6 +1877,9 @@ fn lower_exp_impl(ctx: ExpCtx<'_>, env: &Env, exp: &Exp) -> Result<Expr, String>
             }
         }
         ExpX::Const(Constant::Int(value)) => Ok(Expr::Int(value.to_string())),
+        ExpX::Const(Constant::Char(value)) => {
+            Ok(Expr::Int(u32::from(*value).to_string()))
+        }
         // Boolean expressions live in Prop.
         ExpX::Const(Constant::Bool(true)) => Ok(Expr::True),
         ExpX::Const(Constant::Bool(false)) => Ok(Expr::False),
@@ -3365,8 +3380,10 @@ fn expr_size_capped(expr: &Expr, cap: i64) -> i64 {
             Expr::Not(a)
             | Expr::URange(_, a)
             | Expr::SRange(_, a)
+            | Expr::CharRange(a)
             | Expr::NatClip(a)
             | Expr::SignedClip(_, a)
+            | Expr::CharClip(a)
             | Expr::SeqLen(a)
             | Expr::SeqToMultiset(a)
             | Expr::FieldOf(_, _, _, a)

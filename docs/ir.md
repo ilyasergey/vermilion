@@ -154,8 +154,10 @@ expr      ::= (var STRING)
             | (ite expr expr expr)                              ; M2
             | (urange INT expr)                                 ; inUnsignedRange
             | (srange INT expr)                                 ; inSignedRange
+            | (charrange expr)                                  ; Unicode scalar
             | (natclip expr)                                    ; Vermilion.natClip (DL8)
             | (sclip INT expr)                                  ; Vermilion.sclip (DL8)
+            | (charclip expr)                                   ; Vermilion.charClip
             | (seqlen expr) | (seqpush expr expr)               ; M2, Vermilion.Seq
             | (seqindex expr expr) | (seqempty type)            ; M2, Vermilion.Seq
             | (sequpdate expr expr expr)                        ; legacy structural form
@@ -234,8 +236,9 @@ BINOP     ::= add | sub | mul | ediv | emod
   conditional expansions restate their operand, and nested `nat`
   arithmetic then grows exponentially in the clip depth (dalek-lite DL8,
   `from_bytes`). `usize`/`isize` use the project's architecture-neutral
-  64-bit convention. `char` clipping fails closed because Unicode scalar
-  values are not one contiguous range.
+  64-bit convention. `char` values carry the exact disjoint Unicode-scalar
+  invariant, and `char` clipping uses a kernel-checked choice that always
+  returns a scalar and is the identity on scalar inputs.
 - vstd collections keep their vstd operation names structurally: `Seq` is a
   Lean `List`, `Set` a `Finset`, `Multiset` a Mathlib `Multiset`, and `Map`
   a finite key set plus a total lookup function (indexing off the domain is
@@ -464,9 +467,12 @@ BINOP     ::= add | sub | mul | ediv | emod
   (contained elements), `Map` (values at contained keys); datatype field
   facts through the accessors (generic-instantiated, sound unguarded
   because wrong-variant access returns `default`, of which every such
-  fact holds; recursive datatypes unroll once). The quantified facts are
-  plain hypotheses — the ladder instantiates them without trigger
-  machinery, and goals beyond it go interactive in the twin.
+  fact holds; recursive datatypes unroll once). A direct `char` carries
+  its Unicode-scalar fact, but nested `char` projections do not: Verus
+  does not expose that invariant through `Seq<char>` indexing. The
+  quantified facts are plain hypotheses — the ladder instantiates them
+  without trigger machinery, and goals beyond it go interactive in the
+  twin.
 - Spec closures are genuine Lean functions: `spec_fn(T…) -> U` lowers to
   the arrow type, `|x| e` to `fun x => e`, and application of a
   `spec_fn`-typed value to plain application — no defunctionalization, no

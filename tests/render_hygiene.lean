@@ -64,6 +64,12 @@ private def withTrigger : Expr :=
     binder.name == "end_1" && trigger == "end_1" && body == lt (var "end_1") (var "end_")
   | _ => false
 
+-- The `char` range and clipping nodes are traversed like every other
+-- operator: their operands are part of the scope.
+#guard (forallInt "end" (conj (.charRange (var "end"))
+    (eq (.charClip (var "end_")) (var "end")))).hygienic.render ==
+  "(∀ (end_1 : Int), (Vermilion.isUnicodeScalar end_1 ∧ (Vermilion.charClip end_ = end_1)))"
+
 -- `choose` and `lambda` binders are scopes of the same kind.
 #guard (Expr.choose { name := "end", ty := .int } #[] (eq (var "end") (var "end_"))).hygienic ==
   .choose { name := "end_1", ty := .int } #[] (eq (var "end_1") (var "end_"))

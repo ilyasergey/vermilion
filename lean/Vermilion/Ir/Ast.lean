@@ -25,7 +25,8 @@ def leanReservedWords : List String :=
    "let", "fun", "match", "where", "calc", "at", "in",
    "open", "section", "namespace", "variable", "example", "theorem",
    "def", "deriving", "instance", "class", "structure", "inductive",
-   "abbrev", "axiom", "mutual", "macro", "notation", "attribute", "if"]
+   "abbrev", "axiom", "mutual", "macro", "notation", "attribute", "if",
+   "prefix", "infix", "infixl", "infixr", "postfix"]
 
 /-- Sanitize one name segment into a valid Lean identifier chunk. -/
 def leanSegment (raw : String) : String :=
@@ -142,6 +143,8 @@ inductive Expr where
   | urange (bits : Nat) (e : Expr)
   /-- `Vermilion.inSignedRange bits e` -/
   | srange (bits : Nat) (e : Expr)
+  /-- `Vermilion.isUnicodeScalar e` -/
+  | charRange (e : Expr)
   /-- `Vermilion.natClip e` — Verus `nat` clipping (saturation at zero).
   Dedicated single-occurrence form: the conditional expansion
   `iteP (e ≥ 0) e 0` restates `e`, and nested nat arithmetic then grows
@@ -150,6 +153,9 @@ inductive Expr where
   /-- `Vermilion.sclip bits e` — signed two's-complement clipping at the
   given width; single-occurrence for the same reason as `natClip`. -/
   | sclip (bits : Nat) (e : Expr)
+  /-- `Vermilion.charClip e` — Verus's underspecified clipping to a Unicode
+  scalar value, represented by a kernel-checked choice. -/
+  | charClip (e : Expr)
   /-- `Vermilion.Seq.len s` -/
   | seqLen (s : Expr)
   /-- `Vermilion.Seq.push s x` -/
@@ -223,6 +229,37 @@ inductive Expr where
   triggers are preserved as metadata like `quant`'s. -/
   | choose (binder : Binder) (triggers : Array (Array Expr)) (body : Expr)
   deriving Repr, BEq, Inhabited
+
+/-- Qualified names of the spec fns an expression applies (pre-order). -/
+partial def Expr.applies : Expr → Array String
+  | .apply id _ args =>
+    args.foldl (fun acc arg => acc ++ arg.applies) #[id.qualified]
+  | .quant _ _ _ body => body.applies
+  | .lambda _ body => body.applies
+  | .choose _ _ body => body.applies
+  | .callFn callee args =>
+    args.foldl (fun acc arg => acc ++ arg.applies) callee.applies
+  | .binary _ lhs rhs => lhs.applies ++ rhs.applies
+  | .not e => e.applies
+  | .ite c t f => c.applies ++ t.applies ++ f.applies
+  | .urange _ e | .srange _ e | .charRange e | .natClip e | .sclip _ e
+  | .charClip e => e.applies
+  | .seqLen e | .seqToMultiset e => e.applies
+  | .seqPush a b | .seqIndex a b | .seqNew a b | .seqAdd a b => a.applies ++ b.applies
+  | .seqUpdate a b c | .seqSubrange a b c => a.applies ++ b.applies ++ c.applies
+  | .vstdApply _ _ args => args.foldl (fun acc arg => acc ++ arg.applies) #[]
+  | .bitOp _ _ _ a b => a.applies ++ b.applies
+  | .coll _ args | .ctor _ _ _ args =>
+    args.foldl (fun acc arg => acc ++ arg.applies) #[]
+  | .fieldOf _ _ _ e | .isVariant _ _ e => e.applies
+  | _ => #[]
+
+/-- Does `e` apply `self`, the recursive spec fn being defined (`none`
+outside recursive bodies)? A recursive body renders a short-circuit
+`lhs && e` dependently exactly when it does (`Expr.renderD`), and only then
+needs `Decidable lhs` (`Expr.needsDecidableEvidence`'s `andGuards`). -/
+def Expr.callsSelf (self : Option String) (e : Expr) : Bool :=
+  self.any (e.applies.contains ·)
 
 structure Span where
   file : String

@@ -182,6 +182,19 @@ generic-instantiated.
 - **Assumption:** these facts are *no stronger than* Verus's own
   `has_type` axioms for the same type — Verus assumes exactly the same
   about every well-typed value.
+- `char` is the exception to recursive propagation: a direct `char`
+  binder carries the Unicode-scalar fact, but container and datatype
+  projections do not. Differential
+  [c193](../tests/differential/c193_char_range_ok.rs) /
+  [c194](../tests/differential/c194_char_seq_index_range_wrong.rs) pin
+  Verus's behavior for direct and `Seq<char>`-indexed values so this backend
+  cannot silently strengthen it.
+- `char` clipping (`Vermilion.charClip`) is a definition by choice, not an
+  axiom: its two characterizing facts (the result is a scalar; a scalar input
+  is unchanged) are theorems. Differential
+  [c195](../tests/differential/c195_char_clip_ok.rs) /
+  [c196](../tests/differential/c196_char_clip_unspecified_wrong.rs) check that
+  exactly those facts, and no particular value for a non-scalar, are provable.
 - Datatype field facts are emitted **unguarded** (no `is_variant`
   condition). Sound because a wrong-variant accessor returns `default`,
   and every emitted fact holds of `default`: integer defaults are `0`

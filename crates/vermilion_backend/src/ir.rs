@@ -62,6 +62,11 @@ fn write_expr(out: &mut String, expr: &Expr) {
             write_expr(out, inner);
             out.push(')');
         }
+        Expr::CharRange(inner) => {
+            out.push_str("(charrange ");
+            write_expr(out, inner);
+            out.push(')');
+        }
         Expr::NatClip(inner) => {
             out.push_str("(natclip ");
             write_expr(out, inner);
@@ -69,6 +74,11 @@ fn write_expr(out: &mut String, expr: &Expr) {
         }
         Expr::SignedClip(bits, inner) => {
             write!(out, "(sclip {bits} ").unwrap();
+            write_expr(out, inner);
+            out.push(')');
+        }
+        Expr::CharClip(inner) => {
+            out.push_str("(charclip ");
             write_expr(out, inner);
             out.push(')');
         }
