@@ -40,6 +40,7 @@ by `./scripts/build.sh`. Each case study was run alone from a clean cache
 | vec-uninterp | 20 | 1 | 4.5 s |
 | vec-pop-uninterp | 21 | 3 | 4.5 s |
 | binary-search | 37 | 15 | 5.2 s |
+| sorting | 46 | 16 | 5.6 s |
 | imo-1988-6 | 127 | 67 | 5.9 s |
 | vec-reverse | 31 | 20 | 8.1 s |
 | power-of-2 | 212 | 57 | 8.1 s |
@@ -102,6 +103,11 @@ Three further data points, measured with the same `lean` command line and
 
 ## The task
 
+The task has a main part and an optional stretch goal. Do the main part
+first.
+
+### Main part: the verification time
+
 Find out where the time in `./case-studies/percolator/run.sh` actually goes,
 cold and warm, and make the run substantially faster without changing what is
 verified. We have deliberately not written down what we think the cause is, or
@@ -133,6 +139,38 @@ Constraints that must hold afterwards:
 - No absolute paths in emitted artifacts or tool plumbing.
 - The `proofs/` twins of the case studies are user-owned; they are not to be
   edited to make the run faster.
+
+### Stretch goal: the trusted computing base
+
+Vermilion's claim is that a green run means every obligation is a theorem
+checked by the Lean kernel, and that what has to be trusted beyond the kernel
+is small and written down. [docs/trust.md](../trust.md) and the "Trusted
+computing base" section of [DESIGN.md](../../DESIGN.md) are the project's own
+account of that base. The stretch goal has three parts, in order; do as many
+as your time allows.
+
+1. **Characterise the trusted computing base yourself.** Start from the
+   question "what has to be correct for a green `run.sh` on `percolator` to
+   mean that the Rust satisfies its contracts?" and answer it from the code
+   and the artifacts of a run (the exported VIR, the textual IR, the generated
+   Lean, the manifests, the checker's outputs), not from the documents. Then
+   compare your answer with `docs/trust.md`: what it lists that you would not
+   have, what you found that it does not list, and where you disagree with its
+   sizing of a component. Point at evidence where you can: an obligation
+   statement, a lowering rule, a runner branch.
+2. **Propose how to decrease it.** Rank the candidate reductions by how much
+   trust each removes against what it would cost, and say for each what the
+   evidence of success would be: which test, which proof, which measurement.
+   The question is what should leave the trusted base first, not what is
+   easiest to remove.
+3. **Optionally, take a step.** Pick one item from your ranking and
+   implement it, or enough of it to show that the approach holds up, with
+   evidence. Keep it on the same branch as a separate commit from the
+   performance work, under the same constraints as above.
+
+We will read this part for the quality of the argument rather than its
+length. A precise two-page characterisation with a ranking we can argue
+with is worth more than a long survey.
 
 ## Reproducing the measurements
 
