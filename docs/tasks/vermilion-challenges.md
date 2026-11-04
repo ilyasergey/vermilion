@@ -136,3 +136,35 @@ We will read this for the quality of the argument, not for its length.
 
 **Where to look.** The policy the Lean theorem generation follows is written
 up in the [VC-generation document](../vcgen.md).
+
+## How to Submit
+
+You will receive an invitation to a private copy of this repository under
+`ilyasergey/vermilion-challenge-<your name>`, with write access. Work there:
+clone it, make a branch, commit your changes, and open a pull request against
+its `main`. Put the write-ups in the pull request as Markdown files, under
+`docs/tasks/`, so everything is reviewed in one place. Keep the two
+challenges on separate commits, and the optional step of the second challenge
+on its own commit.
+
+```console
+git clone git@github.com:ilyasergey/vermilion-challenge-<your name>.git
+cd vermilion-challenge-<your name>
+./scripts/build.sh
+git checkout -b <your branch>
+```
+
+```console
+git push -u origin <your branch>
+gh pr create --base main --fill
+```
+
+Do not fork the public Vermilion repository, with the Fork button or with
+`gh repo fork`: a fork of a public repository is always public, and your
+solution would be visible to everyone, including other people doing the
+same challenges.
+
+If you work with a coding agent, you can point it at this document. It
+contains everything the agent needs: what the project is, where the problems
+are, how the measurements were taken, which constraints the result must
+satisfy, and how to submit.
