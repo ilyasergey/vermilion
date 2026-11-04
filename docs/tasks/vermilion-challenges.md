@@ -139,13 +139,13 @@ up in the [VC-generation document](../vcgen.md).
 
 ## How to Submit
 
-This document, and the starting point for your work, is the `performance-task`
+This document, and the starting point for your work, is the `vermilion-challenge`
 branch of the public repository. Work in a private copy of the repository
 under your own GitHub account, and share it with us. Clone the public
 repository, check out that branch, create a private repository from the clone,
 and give the user `ilyasergey` read access. Then make a branch from
-`performance-task`, commit your changes, and open a pull request against
-`performance-task` in your private copy; send us the link to the pull request.
+`vermilion-challenge`, commit your changes, and open a pull request against
+`vermilion-challenge` in your private copy; send us the link to the pull request.
 Put the write-ups in the pull request as Markdown files under `docs/tasks/`,
 so everything is reviewed in one place. Keep the two challenges on separate
 commits, and the optional step of the second challenge on its own commit.
@@ -153,7 +153,7 @@ commits, and the optional step of the second challenge on its own commit.
 ```console
 git clone git@github.com:ilyasergey/vermilion.git
 cd vermilion
-git checkout performance-task
+git checkout vermilion-challenge
 gh repo create <your login>/vermilion-challenge --private --source=. --push
 gh api -X PUT repos/<your login>/vermilion-challenge/collaborators/ilyasergey -f permission=pull
 ./scripts/build.sh
@@ -162,7 +162,7 @@ git checkout -b <your branch>
 
 ```console
 git push -u origin <your branch>
-gh pr create --base performance-task --fill
+gh pr create --base vermilion-challenge --fill
 ```
 
 Do not fork the public Vermilion repository, with the Fork button or with
