@@ -1,39 +1,44 @@
-# R&D task: verification time of the `percolator` case study
+# Vermilion challenges
 
-## Context
+Two open problems in Vermilion, written up as tasks for candidates. The
+first is the main task; the second is a stretch goal to take as far as time
+allows. Both are real: nothing below has been solved, and we have
+deliberately not written down what we think the answers are.
+
+## What Vermilion is
 
 Vermilion is a Lean 4 backend for the [Verus](https://github.com/verus-lang/verus)
-verifier. Verus elaborates the annotated Rust, Vermilion lowers the resulting
-verification conditions to Lean theorem statements, and Lean is the only
-verifier: an automation tactic (`vrml`) attempts each theorem, and whatever it
-cannot close is proved interactively in a user-owned twin file under
-`proofs/`. Every verdict is a kernel-checked Lean theorem.
+verifier. Verus elaborates annotated Rust and places the verification
+conditions; Vermilion lowers them to a small textual IR, generates one Lean
+theorem per condition, and lets Lean decide. An automation tactic (`vrml`)
+attempts every theorem; whatever it cannot close is proved interactively in a
+user-owned twin file under `proofs/` that survives re-runs. Every verdict is a
+theorem checked by the Lean kernel, and the Lean side is the only verifier:
+Verus runs with its own SMT verification disabled.
 
-Start with [README.md](../../README.md), the [tutorial](../TUTORIAL.md), and the
-[development guide](../development.md). The pipeline that every example and
+Start with [README.md](../../README.md), the [tutorial](../TUTORIAL.md), and
+the [development guide](../development.md). The pipeline every example and
 case study runs is [scripts/run_example.sh](../../scripts/run_example.sh); the
 Lean checker it calls is `vrml_check`
 ([crates/vermilion_backend/src/bin/vrml_check.rs](../../crates/vermilion_backend/src/bin/vrml_check.rs)).
+The case studies, each with its own `run.sh`, are registered in
+[case-studies/README.md](../../case-studies/README.md).
 
-## The case study
+## Challenge 1: verification time
 
-[case-studies/percolator](../../case-studies/percolator/) verifies verbatim
-production slices of a `no_std` risk engine: 10 Rust files, 31 upstream
-functions, 118 obligations, all verified. The proof twins under
-`case-studies/percolator/proofs/` are complete, so a run only has to confirm
-that nothing has drifted and kernel-check the twins. The functions are simple
-(enum encode/decode pairs, bit-mask reads, saturating arithmetic, a U256
-representation); most obligations are closed by automation in one step.
+### The problem
 
-It is the slowest fully verified case study in the repository by a wide
-margin, and the work it does does not justify the time.
+Vermilion is slow relative to the work it does. Verus with Z3 checks a file in
+well under a second; the same file through Vermilion takes several seconds
+even when every obligation is trivial and every proof is already written.
+The cost grows with the number of verified functions rather than with their
+difficulty, and it is paid again on every run, including runs where nothing
+has changed.
 
-## Measurements
-
-All numbers below were taken on 2026-11-04 at commit `8c3fa74`
-(Lean `v4.33.0`), on an Apple M5 Max (18 cores, 128 GB), with the project built
-by `./scripts/build.sh`. Each case study was run alone from a clean cache
-(`run.sh --clean-env`).
+Every number below was taken on 2026-11-04 at commit `8c3fa74`
+(Lean `v4.33.0`), on an Apple M5 Max (18 cores, 128 GB), with the project
+built by `./scripts/build.sh`. Each case study was run alone from a clean
+cache (`run.sh --clean-env`).
 
 | Case study | Rust LOC | Obligations | Wall time |
 |---|---:|---:|---:|
@@ -49,7 +54,15 @@ by `./scripts/build.sh`. Each case study was run alone from a clean cache
 | merge-sort (verbatim) | 184 | 60 | 10.4 s |
 | **percolator** | **956** | **118** | **61.7 s** |
 
-The same study, measured in more detail:
+Two things stand out. The floor is high: a study with one obligation takes
+4.5 s. And the worst case is far from the floor: `percolator`, which verifies
+verbatim production slices of a `no_std` risk engine (10 Rust files, 31
+upstream functions, enum codecs, bit-mask reads, saturating arithmetic, a
+U256 representation; most obligations closed by automation in one step),
+takes a minute. It is the study we use as the measured instance below, but
+the challenge is the pipeline, not that study.
+
+### Measurements on the worst case
 
 | Scenario | Wall | User CPU | System CPU |
 |---|---:|---:|---:|
@@ -101,18 +114,12 @@ Three further data points, measured with the same `lean` command line and
 - Nineteen copies of the import-only file launched at once finish in 4.7 s
   wall time.
 
-## The task
+### The task
 
-The task has a main part and an optional stretch goal. Do the main part
-first.
-
-### Main part: the verification time
-
-Find out where the time in `./case-studies/percolator/run.sh` actually goes,
-cold and warm, and make the run substantially faster without changing what is
-verified. We have deliberately not written down what we think the cause is, or
-what to do about it. Part of the task is to establish the cause with evidence,
-and part is to decide what to change.
+Find out where Vermilion's time actually goes, cold and warm, and make the
+pipeline substantially faster without changing what is verified. Part of the
+task is to establish the causes with evidence, and part is to decide what to
+change.
 
 What we expect to receive:
 
@@ -121,8 +128,9 @@ What we expect to receive:
    the number of units, or the number of cores; and what the system-time share
    is spent on. Reproducible commands over claims.
 2. **A change** to the repository, on a branch, with before/after numbers for
-   `percolator` taken by the same method, plus the same numbers for two of the
-   small case studies above so we can see the effect on the common case.
+   `percolator` and for two of the small case studies taken by the same
+   method, so we can see the effect on both the worst case and the common
+   case.
 3. **A short write-up** (one or two pages) of what you found, what you
    changed, what you considered and rejected, and what cost remains and why.
 
@@ -138,41 +146,9 @@ Constraints that must hold afterwards:
   passes today still pass.
 - No absolute paths in emitted artifacts or tool plumbing.
 - The `proofs/` twins of the case studies are user-owned; they are not to be
-  edited to make the run faster.
+  edited to make a run faster.
 
-### Stretch goal: the trusted computing base
-
-Vermilion's claim is that a green run means every obligation is a theorem
-checked by the Lean kernel, and that what has to be trusted beyond the kernel
-is small and written down. [docs/trust.md](../trust.md) and the "Trusted
-computing base" section of [DESIGN.md](../../DESIGN.md) are the project's own
-account of that base. The stretch goal has three parts, in order; do as many
-as your time allows.
-
-1. **Characterise the trusted computing base yourself.** Start from the
-   question "what has to be correct for a green `run.sh` on `percolator` to
-   mean that the Rust satisfies its contracts?" and answer it from the code
-   and the artifacts of a run (the exported VIR, the textual IR, the generated
-   Lean, the manifests, the checker's outputs), not from the documents. Then
-   compare your answer with `docs/trust.md`: what it lists that you would not
-   have, what you found that it does not list, and where you disagree with its
-   sizing of a component. Point at evidence where you can: an obligation
-   statement, a lowering rule, a runner branch.
-2. **Propose how to decrease it.** Rank the candidate reductions by how much
-   trust each removes against what it would cost, and say for each what the
-   evidence of success would be: which test, which proof, which measurement.
-   The question is what should leave the trusted base first, not what is
-   easiest to remove.
-3. **Optionally, take a step.** Pick one item from your ranking and
-   implement it, or enough of it to show that the approach holds up, with
-   evidence. Keep it on the same branch as a separate commit from the
-   performance work, under the same constraints as above.
-
-We will read this part for the quality of the argument rather than its
-length. A precise two-page characterisation with a ranking we can argue
-with is worth more than a long survey.
-
-## Reproducing the measurements
+### Reproducing the measurements
 
 ```console
 ./scripts/build.sh
@@ -192,3 +168,42 @@ PS4='+$(perl -MTime::HiRes=time -e "printf \"%.2f\", time") ' \
 
 The `LEAN_PATH` the checker uses is cached in `.vermilion/lean-path` after any
 run; the shared `Specs` oleans live under `.vermilion/olean/`.
+
+## Challenge 2: the trusted computing base
+
+### The problem
+
+Vermilion's claim is that a green run means every obligation is a theorem
+checked by the Lean kernel, and that what has to be trusted beyond the kernel
+is small and written down. [docs/trust.md](../trust.md) and the "Trusted
+computing base" section of [DESIGN.md](../../DESIGN.md) are the project's own
+account of that base. Whether that account is complete, whether its sizing of
+each component is right, and what should leave the base first are open
+questions.
+
+### The task
+
+Three parts, in order; do as many as your time allows.
+
+1. **Characterise the trusted computing base yourself.** Start from the
+   question "what has to be correct for a green `run.sh` on a case study to
+   mean that the Rust satisfies its contracts?" and answer it from the code
+   and the artifacts of a run (the exported VIR, the textual IR, the generated
+   Lean, the manifests, the checker's outputs), not from the documents. Then
+   compare your answer with `docs/trust.md`: what it lists that you would not
+   have, what you found that it does not list, and where you disagree with its
+   sizing of a component. Point at evidence where you can: an obligation
+   statement, a lowering rule, a runner branch.
+2. **Propose how to decrease it.** Rank the candidate reductions by how much
+   trust each removes against what it would cost, and say for each what the
+   evidence of success would be: which test, which proof, which measurement.
+   The question is what should leave the trusted base first, not what is
+   easiest to remove.
+3. **Optionally, take a step.** Pick one item from your ranking and
+   implement it, or enough of it to show that the approach holds up, with
+   evidence. Keep it on the same branch as a separate commit from the
+   performance work, under the same constraints as Challenge 1.
+
+We will read this part for the quality of the argument rather than its
+length. A precise two-page characterisation with a ranking we can argue
+with is worth more than a long survey.
