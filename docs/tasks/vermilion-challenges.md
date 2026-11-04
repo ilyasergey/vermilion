@@ -1,11 +1,11 @@
-# Vermilion challenges
+# Vermilion Challenges
 
 This document describes two open problems in Vermilion. The first is the
 main task. The second is a stretch goal, to take as far as your time allows.
 Neither is solved, and we have deliberately not written down what we think
 the answers are.
 
-## What Vermilion does
+## What Vermilion Does
 
 [Vermilion](../../README.md) is an experimental Lean backend for [Verus](https://github.com/verus-lang/verus),
 a verifier for Rust. Verus checks annotated Rust by generating verification
@@ -24,7 +24,7 @@ programs we verify this way. There is also a
 runs the pipeline, verdicts appear on the Rust lines they concern, and one
 shortcut jumps from an assertion to its Lean proof and back.
 
-## Challenge 1: Vermilion is slow
+## Challenge 1: Vermilion Is Slow
 
 Verus checks a typical file in under a second. Vermilion takes several
 seconds for the same file, even when every obligation is trivial and every
@@ -103,7 +103,7 @@ file from a clean cache and writes the trace to a file:
 PS4='+$(perl -MTime::HiRes=time -e "printf \"%.2f\", time") ' bash -x scripts/run_example.sh case-studies/percolator enum_codecs.rs --lib CasePercolator --manual-proofs --clean-env 2> trace.log
 ```
 
-## Challenge 2: what do you have to trust?
+## Challenge 2: What Do You Have to Trust?
 
 Vermilion's claim is that a green run means every obligation is a theorem
 checked by the Lean kernel, and that whatever you trust beyond the kernel is
