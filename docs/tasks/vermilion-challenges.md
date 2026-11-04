@@ -139,17 +139,20 @@ up in the [VC-generation document](../vcgen.md).
 
 ## How to Submit
 
-You will receive an invitation to a private copy of this repository under
-`ilyasergey/vermilion-challenge-<your name>`, with write access. Work there:
-clone it, make a branch, commit your changes, and open a pull request against
-its `main`. Put the write-ups in the pull request as Markdown files, under
-`docs/tasks/`, so everything is reviewed in one place. Keep the two
-challenges on separate commits, and the optional step of the second challenge
-on its own commit.
+Work in a private copy of the repository under your own GitHub account, and
+share it with us. Clone the public repository, create a private repository
+from the clone, and give the user `ilyasergey` read access. Then make a
+branch, commit your changes, and open a pull request against the `main` of
+your private copy; send us the link to the pull request. Put the write-ups in
+the pull request as Markdown files under `docs/tasks/`, so everything is
+reviewed in one place. Keep the two challenges on separate commits, and the
+optional step of the second challenge on its own commit.
 
 ```console
-git clone git@github.com:ilyasergey/vermilion-challenge-<your name>.git
-cd vermilion-challenge-<your name>
+git clone git@github.com:ilyasergey/vermilion.git
+cd vermilion
+gh repo create <your login>/vermilion-challenge --private --source=. --push
+gh api -X PUT repos/<your login>/vermilion-challenge/collaborators/ilyasergey -f permission=pull
 ./scripts/build.sh
 git checkout -b <your branch>
 ```
@@ -162,7 +165,8 @@ gh pr create --base main --fill
 Do not fork the public Vermilion repository, with the Fork button or with
 `gh repo fork`: a fork of a public repository is always public, and your
 solution would be visible to everyone, including other people doing the
-same challenges.
+same challenges. The repository created above is a plain copy, not a fork,
+and stays private.
 
 If you work with a coding agent, you can point it at this document. It
 contains everything the agent needs: what the project is, where the problems
