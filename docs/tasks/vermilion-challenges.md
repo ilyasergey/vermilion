@@ -7,7 +7,7 @@ the answers are.
 
 ## What Vermilion does
 
-[Vermilion](../../README.md) is a Lean backend for [Verus](https://github.com/verus-lang/verus),
+[Vermilion](../../README.md) is an experimental Lean backend for [Verus](https://github.com/verus-lang/verus),
 a verifier for Rust. Verus checks annotated Rust by generating verification
 conditions and handing them to an SMT solver. Vermilion keeps the Verus front
 end and replaces the solver: every verification condition becomes a theorem
@@ -19,7 +19,10 @@ explicit trusted base than a solver gives.
 
 The [tutorial](../TUTORIAL.md) walks through the workflow in about twenty
 minutes. The [case studies](../../case-studies/README.md) are the realistic
-programs we verify this way.
+programs we verify this way. There is also a
+[VS Code extension](../../README.md#vs-code-extension): saving a Rust file
+runs the pipeline, verdicts appear on the Rust lines they concern, and one
+shortcut jumps from an assertion to its Lean proof and back.
 
 ## Challenge 1: Vermilion is slow
 
@@ -27,7 +30,8 @@ Verus checks a typical file in under a second. Vermilion takes several
 seconds for the same file, even when every obligation is trivial and every
 proof is already written, and it pays that time again on every run, including
 runs where nothing has changed. The cost grows with the number of verified
-functions, not with how hard they are to prove.
+functions, not with how hard they are to prove. In the editor it is the delay
+between saving a file and seeing its verdicts, so it is felt on every edit.
 
 The worst case among our case studies is
 [percolator](../../case-studies/percolator/), a set of verbatim slices of a
