@@ -120,10 +120,5 @@ Three parts, in order:
 
 We will read this for the quality of the argument, not for its length.
 
-**Where to look.** A run leaves its intermediate artifacts under
-`.vermilion/` in the repository root (the exported Verus IR, the textual IR,
-the checker's outputs) and the generated Lean under the case study's
-`generated/` folder, next to the hand-maintained `proofs/`. The translation
-lives in the `vermilion_direct` crate, the Lean theorem generation under
-`lean/Vermilion/Ir/`, and the policy it follows in the
-[VC-generation document](../vcgen.md).
+**Where to look.** The policy the Lean theorem generation follows is written
+up in the [VC-generation document](../vcgen.md).
