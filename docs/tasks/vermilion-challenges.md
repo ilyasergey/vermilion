@@ -1,9 +1,9 @@
 # Vermilion challenges
 
-Two open problems in Vermilion, written up for candidates. The first is the
-main task. The second is a stretch goal; take it as far as your time allows.
-Neither has been solved, and we have not written down what we think the
-answers are.
+This document describes two open problems in Vermilion. The first is the
+main task. The second is a stretch goal, to take as far as your time allows.
+Neither is solved, and we have deliberately not written down what we think
+the answers are.
 
 ## What Vermilion does
 
