@@ -48,9 +48,19 @@ the time is on the Lean side: the Verus front end and the translation to Lean
 together take well under a second per file. The checker verifies each
 function's proof file in a separate Lean process, many at a time. A Lean file
 that does nothing except import Vermilion's prelude takes a little over a
-second by itself. The largest percolator file starts nineteen such processes,
-and the slowest of them took five times longer inside the run than it takes
-alone.
+second by itself.
+
+Within percolator, the time tracks the number of functions in a file. The
+slow ones are [enum_codecs.rs](../../case-studies/percolator/enum_codecs.rs)
+(nineteen encode and decode functions, one obligation each, about six seconds
+of wall time but nearly two minutes of summed process time),
+[wide_math_u256_basics.rs](../../case-studies/percolator/wide_math_u256_basics.rs)
+(ten functions, about four seconds and forty seconds respectively), and
+[policy_gates.rs](../../case-studies/percolator/policy_gates.rs) (eight
+functions, about three and a half seconds and half a minute). The files with
+one or two functions each finish in under two seconds. The slowest unit of
+`enum_codecs.rs`, a one-obligation proof file that automation closes in one
+step, took five times longer inside the run than it takes when run alone.
 
 **What we would like from you.** Find out where the time goes, cold and warm,
 and make the pipeline substantially faster without changing what is verified.
