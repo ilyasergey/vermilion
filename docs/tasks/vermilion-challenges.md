@@ -1,91 +1,125 @@
 # Vermilion Challenges
 
 This document describes two open problems in Vermilion. The first is the
-main task. The second is a stretch goal, to take as far as your time allows.
-Neither is solved, and we have deliberately not written down what we think
-the answers are.
+main task; the second is an optional stretch goal. We are interested in your
+diagnosis and reasoning, and have deliberately left the choice of approach
+open.
 
 ## What Vermilion Does
 
-[Vermilion](../../README.md) is an experimental Lean backend for [Verus](https://github.com/verus-lang/verus),
-a verifier for Rust. Verus checks annotated Rust by generating verification
-conditions and handing them to an SMT solver. Vermilion keeps the Verus front
-end and replaces the solver: every verification condition becomes a theorem
-in [Lean](https://lean-lang.org), an automation tactic tries to prove it, and
-whatever the automation cannot close is left for a person to prove
-interactively, in a proof file that survives re-runs of the pipeline. So
-"verified" means "checked by the Lean kernel", with a smaller and more
-explicit trusted base than a solver gives.
+[Vermilion](../../README.md) is an experimental [Lean](https://lean-lang.org)
+backend for [Verus](https://github.com/verus-lang/verus), a verifier for Rust.
+Verus checks annotated Rust by generating verification conditions and handing
+them to an SMT solver. Vermilion uses the Verus front end and generates Lean
+theorem statements for the resulting proof obligations. Automation tries to
+prove them; any remaining obligations can be proved interactively in proof
+files that survive subsequent runs of the pipeline.
+
+A successful run requires proofs checked by the Lean kernel. The aim is to
+reduce and make explicit what must be trusted to connect those proofs to the
+Rust program. Assessing that remaining trust is the subject of Challenge 2.
 
 The [tutorial](../TUTORIAL.md) walks through the workflow in about twenty
-minutes. The [case studies](../../case-studies/README.md) are the realistic
-programs we verify this way. There is also a
+minutes; the [development guide](../development.md#prerequisites) lists the
+build prerequisites. The [case studies](../../case-studies/README.md) are
+realistic programs we verify this way. There is also a
 [VS Code extension](../../README.md#vs-code-extension): saving a Rust file
-runs the pipeline, verdicts appear on the Rust lines they concern, and one
+runs the pipeline, results appear on the relevant Rust lines, and one
 shortcut jumps from an assertion to its Lean proof and back.
 
 ## Challenge 1: Vermilion Is Slow
 
-Verus checks a typical file in under a second. Vermilion takes several
-seconds for the same file, even when every obligation is trivial and every
-proof is already written, and it pays that time again on every run, including
-runs where nothing has changed. The cost grows with the number of verified
-functions, not with how hard they are to prove. In the editor it is the delay
-between saving a file and seeing its verdicts, so it is felt on every edit.
+In our measurements, Verus checks a typical case-study file in under a
+second. Vermilion takes several seconds for the same file, even when the
+obligations are simple and their proofs are already written. Much of that
+cost recurs when nothing has changed. In the editor, this is the delay between
+saving a file and seeing its verification results.
 
-The worst case among our case studies is
+Your task is to explain where the time goes and make the pipeline
+substantially faster without changing what is verified.
+
+### Starting observations
+
+The slowest case study in our measurements was
 [percolator](../../case-studies/percolator/), a set of verbatim slices of a
-production risk engine: ten Rust files, thirty-one functions, a little over a
-hundred obligations, nearly all of them closed by automation in one step.
-Verus verifies all of it in about three and a half seconds. Vermilion takes a
-minute from a clean cache and half a minute when nothing has changed, and
-while doing so it spends three times as much CPU time in the operating system
-as in its own code. At the other end, the smallest case study, one function
-with one obligation, still takes four and a half seconds.
+production risk engine. Its main runner covers ten Rust files and 31 distinct
+production functions, with a little over a hundred obligations.
+The checked functions also include compiler-generated functions, such as
+derived `clone` implementations. Most obligations close with a single
+automation step.
 
-Some observations from our own measuring, in case they help. Almost all of
-the time is on the Lean side: the Verus front end and the translation to Lean
-together take well under a second per file. The checker verifies each
-function's proof file in a separate Lean process, many at a time. A Lean file
-that does nothing except import Vermilion's prelude takes a little over a
-second by itself.
+Vermilion took about a minute with `--clean-env` and half a minute on an
+unchanged rerun. System CPU time was roughly three times user CPU time. The
+separate Verus comparison script took about three and a half seconds, though
+it covers two additional slices that Vermilion does not yet support. At the
+other end, a case study with one function and one obligation still took four
+and a half seconds. Treat these figures as starting observations and establish
+a baseline on your own machine.
 
-Within percolator, the time tracks the number of functions in a file. The
-slow ones are [enum_codecs.rs](../../case-studies/percolator/enum_codecs.rs)
-(nineteen encode and decode functions, one obligation each, about six seconds
-of wall time but nearly two minutes of summed process time),
-[wide_math_u256_basics.rs](../../case-studies/percolator/wide_math_u256_basics.rs)
-(ten functions, about four seconds and forty seconds respectively), and
-[policy_gates.rs](../../case-studies/percolator/policy_gates.rs) (eight
-functions, about three and a half seconds and half a minute). The files with
-one or two functions each finish in under two seconds. The slowest unit of
-`enum_codecs.rs`, a one-obligation proof file that automation closes in one
-step, took five times longer inside the run than it takes when run alone.
+Almost all of the measured time was on the Lean side: the Verus front end
+and translation to Lean together took well under a second per file. The
+checker verifies each function's proof file in a separate Lean process, with
+many running concurrently. A Lean file that only imports Vermilion's prelude
+took a little over a second on its own.
 
-**What we would like from you.** Find out where the time goes, cold and warm,
-and make the pipeline substantially faster without changing what is verified.
-Three things: a diagnosis backed by measurements (which costs are paid per
-process, per file, or per obligation, and how they scale with the size of the
-Lean environment, the number of functions, and the number of cores); a change
-on a branch, with before-and-after numbers for percolator and for a couple of
-the small case studies; and a short write-up of what you found, what you
-changed, what you considered and rejected, and what cost remains.
+Within percolator, checking time grew with the number of function proof files:
 
-**Constraints.** Lean stays the only verifier, and every obligation stays a
-kernel-checked theorem: nothing may be skipped on the strength of a cached
-verdict the kernel has not re-established for the current statement.
-Verdicts and diagnostics do not change, the two emission modes still agree
-(there is a [script](../../scripts/test_emission_modes.sh) for that), the
-[smoke suite](../development.md#test-scopes) and every case study that passes
-today still pass, and the case studies' proof files are not edited to make
-runs faster.
+- [enum_codecs.rs](../../case-studies/percolator/enum_codecs.rs): 19 proof
+  files, comprising twelve encode/decode functions and seven derived `clone`
+  implementations, with one obligation each. Checking took about six seconds
+  of wall time; the sum of the per-file elapsed times was nearly two minutes.
+- [wide_math_u256_basics.rs](../../case-studies/percolator/wide_math_u256_basics.rs):
+  ten proof files, about four seconds of wall time and forty seconds of summed
+  elapsed time.
+- [policy_gates.rs](../../case-studies/percolator/policy_gates.rs): eight
+  proof files, about three and a half seconds of wall time and half a minute
+  of summed elapsed time.
 
-**Measuring.** Each case study has a `run.sh`. Its `--clean-env` flag starts
-from a clean cache, and running it a second time gives the warm number. The
-Lean checker writes one timing line per function to `.vermilion/<file>-twin.log`,
-and the percolator folder has a `verify_verus.sh` that runs the Verus side for
-comparison. The commands below build everything and take the numbers quoted
-above.
+The elapsed times overlap because the processes run concurrently; their sum
+is not a measure of CPU time. Files with one or two function proof files each
+finished in under two seconds. The slowest proof file in `enum_codecs.rs`
+took five times longer during the concurrent run than when checked alone,
+despite containing only one obligation closed by a single automation step.
+
+### Expected result
+
+1. **A diagnosis backed by measurements.** Identify the costs paid per
+   process, source file, or obligation, on both clean and unchanged runs.
+   Investigate how they depend on the size of the Lean environment, the number
+   of functions, and the number of available cores.
+2. **An implementation with before-and-after results.** Make your changes on
+   a branch and measure their effect on percolator and at least two small
+   case studies. Record the revisions, commands, hardware, and number of runs
+   so that someone else can reproduce the comparison.
+3. **A short write-up.** Explain what you found, what you changed, which
+   alternatives you considered and rejected, and what costs remain.
+
+### Constraints
+
+- Lean remains the only verifier, and every obligation remains a
+  kernel-checked theorem. No obligation may be skipped on the strength of a
+  cached verdict that the kernel has not re-established for the current
+  statement.
+- Verification results and diagnostics must be preserved. Both emission
+  modes, one Lean file per function and one per Rust source file, must still
+  agree. Use the [emission-mode check](../../scripts/test_emission_modes.sh)
+  to check this.
+- The [smoke suite](../development.md#test-scopes) and every case study that
+  passes on the starting revision must still pass.
+- Do not edit the case studies' proof files to make runs faster.
+
+### How to measure
+
+Use each case study's `run.sh`. For this task, a **clean run** uses
+`--clean-env`, which removes generated output and selected pipeline caches.
+It retains the built toolchain and dependencies and does not clear operating
+system caches. A **warm run** repeats the command without `--clean-env` and
+without changing any inputs. Keep build time separate from verification time.
+
+The Lean checker writes per-function elapsed times to
+`.vermilion/<source-stem>-twin.log`. Percolator also has a `verify_verus.sh`
+for comparison; account for its additional slices when comparing totals.
+Run these commands from the repository root:
 
 ```console
 ./scripts/build.sh
@@ -95,83 +129,92 @@ cat .vermilion/enum_codecs-twin.log
 time ./case-studies/percolator/verify_verus.sh
 ```
 
-Every run follows [scripts/run_example.sh](../../scripts/run_example.sh).
-Tracing it is the quickest way to time its phases; this times one percolator
-file from a clean cache and writes the trace to a file:
+The case-study runner calls
+[scripts/run_example.sh](../../scripts/run_example.sh) for each source file.
+To locate its phases, you can trace one percolator file with timestamps:
 
 ```console
-PS4='+$(perl -MTime::HiRes=time -e "printf \"%.2f\", time") ' bash -x scripts/run_example.sh case-studies/percolator enum_codecs.rs --lib CasePercolator --manual-proofs --clean-env 2> trace.log
+PS4='+$(perl -MTime::HiRes=time -e "printf \"%.2f\", time") ' \
+  bash -x scripts/run_example.sh case-studies/percolator enum_codecs.rs \
+  --lib CasePercolator --manual-proofs --clean-env 2> trace.log
 ```
+
+This trace requires Perl and adds timing overhead. Use untraced runs for the
+before-and-after comparison.
 
 ## Challenge 2: What Do You Have to Trust?
 
-Vermilion's claim is that a green run means every obligation is a theorem
-checked by the Lean kernel, and that whatever you trust beyond the kernel is
-small and written down. The [trust document](../trust.md) is our own account
-of that trusted base, and the [design overview](../../DESIGN.md#trusted-computing-base)
-summarises it. Whether the account is complete, whether it sizes each
-component correctly, and what should leave the trusted base first are open
-questions.
+This is an optional stretch goal. Take it as far as your time allows.
 
-Three parts, in order:
+Vermilion's claim is that a successful run means every obligation has a proof
+checked by the Lean kernel, and that the remaining trusted components and
+assumptions are small and documented. The [trust document](../trust.md) is our
+own account of that trusted base, and the
+[design overview](../../DESIGN.md#trusted-computing-base) summarises it. Your
+task is to assess that account independently and identify ways to reduce the
+trusted base.
 
-1. **Characterise the trusted base yourself.** Start from the question "what
-   has to be correct for a green run on a case study to mean that the Rust
-   satisfies its contracts?" and answer it from the code and the artifacts of
-   a run, not from our documents. Then compare your answer with the trust
-   document: what it lists that you would not have, what you found that it
-   does not list, and where you disagree with how it sizes a component. Point
-   at evidence where you can: an obligation statement, a translation rule, a
-   branch in a runner script.
-2. **Propose how to shrink it.** Rank the candidate reductions by how much
-   trust each removes against what it would cost, and say for each what
-   evidence of success would look like: a test, a proof, a measurement. The
-   question is what should leave the trusted base first, not what is easiest
-   to remove.
-3. **Optionally, take a step.** Implement one item from your ranking, or
-   enough of it to show that the approach holds up, as a separate commit
-   under the same constraints as the first challenge.
+Work through these parts in order:
 
-We will read this for the quality of the argument, not for its length.
+1. **Characterise the trusted base yourself.** Start from the question:
+   "What has to be correct for a successful run on a case study to mean that
+   the Rust satisfies its contracts?" Build your answer from the code and run
+   artifacts before comparing it with our documents. Explain any omissions,
+   components you would exclude, or disagreements about the scope of a
+   component's responsibility. Support your argument with concrete evidence,
+   such as an obligation statement, a translation rule, or a branch in a
+   runner script.
+2. **Propose how to shrink it.** Rank possible reductions by the trust they
+   remove and the effort they require. For each, explain what evidence would
+   establish success, and what a test, proof, or measurement would actually
+   demonstrate. Justify which reduction should come first.
+3. **Optionally, implement one reduction.** Complete one item from your
+   ranking, or build a prototype sufficient to assess its feasibility. Put
+   this work in a separate commit and follow the constraints from Challenge 1.
 
-**Where to look.** The policy the Lean theorem generation follows is written
-up in the [VC-generation document](../vcgen.md).
+The [VC-generation document](../vcgen.md) describes the policy for generating
+Lean obligations and provides another reference for your investigation.
+Keep the write-up focused: we will assess the argument and its evidence.
 
 ## How to Submit
 
-This document, and the starting point for your work, is the `vermilion-challenge`
-branch of the public repository. Work in a private copy of the repository
-under your own GitHub account, and share it with us. Clone the public
-repository, check out that branch, create a private repository from the clone,
-and give the user `ilyasergey` read access. Then make a branch from
-`vermilion-challenge`, commit your changes, and open a pull request against
-`vermilion-challenge` in your private copy; send us the link to the pull request.
-Put the write-ups in the pull request as Markdown files under `docs/tasks/`,
-so everything is reviewed in one place. Keep the two challenges on separate
-commits, and the optional step of the second challenge on its own commit.
+Start from the `vermilion-challenge` branch of the public repository. Work in
+a private copy under your own GitHub account and invite `ilyasergey` as a
+collaborator. Submit a pull request within that private repository, targeting
+its `vermilion-challenge` branch, and send us the link.
+
+Use a standalone private repository. GitHub keeps
+[forks of public repositories public](https://docs.github.com/en/pull-requests/reference/forks#visibility-of-forks),
+which would expose your solution to other participants. Do not use the Fork
+button or `gh repo fork`.
+
+The commands below assume GitHub CLI (`gh`) is installed and authenticated,
+and Git access over SSH is configured. Replace `YOUR_LOGIN` with your GitHub
+login and `YOUR_BRANCH` with your chosen working branch name. Renaming the
+original remote to `upstream` leaves `origin` available for your private copy:
 
 ```console
-git clone git@github.com:ilyasergey/vermilion.git
+git clone --branch vermilion-challenge git@github.com:ilyasergey/vermilion.git
 cd vermilion
-git checkout vermilion-challenge
-gh repo create <your login>/vermilion-challenge --private --source=. --push
-gh api -X PUT repos/<your login>/vermilion-challenge/collaborators/ilyasergey -f permission=pull
+git remote rename origin upstream
+gh repo create YOUR_LOGIN/vermilion-challenge \
+  --private --source=. --remote=origin --push
+gh api -X PUT repos/YOUR_LOGIN/vermilion-challenge/collaborators/ilyasergey
 ./scripts/build.sh
-git checkout -b <your branch>
+git checkout -b YOUR_BRANCH
 ```
+
+Put your write-ups in Markdown files under `docs/tasks/` and include them in
+the pull request. Keep work on the two challenges in separate commits, with
+any implementation for Challenge 2 in its own commit. Once your changes and
+write-ups are committed:
 
 ```console
-git push -u origin <your branch>
-gh pr create --base vermilion-challenge --fill
+git push -u origin YOUR_BRANCH
+gh pr create --repo YOUR_LOGIN/vermilion-challenge \
+  --base vermilion-challenge --head YOUR_BRANCH --fill
 ```
 
-Do not fork the public Vermilion repository, with the Fork button or with
-`gh repo fork`: a fork of a public repository is always public, and your
-solution would be visible to everyone, including other people doing the
-same challenges. The repository created above is a plain copy, not a fork,
-and stays private.
-
-If you work with a coding agent, you can point it at this document. It
-contains everything the agent needs: what the project is, where the problems
-are, how the measurements were taken, which constraints the result must
-satisfy, and how to submit.
+You may use a coding agent. This document gives it the task scope, constraints,
+measurement commands, and submission instructions; your write-up should
+explain the reasoning behind the submitted work.
