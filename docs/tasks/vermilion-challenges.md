@@ -97,16 +97,16 @@ despite containing only one obligation closed by a single automation step.
 ### Constraints
 
 - Lean remains the only verifier, and every obligation remains a
-  kernel-checked theorem. No obligation may be skipped on the strength of a
-  cached verdict that the kernel has not re-established for the current
+  kernel-checked theorem (e.g., you should not replace Lean checking by uncertified call to an SMT solver). No obligation may be skipped, the validity of every verificaiton condition must be re-established for the current
   statement.
-- Verification results and diagnostics must be preserved. Both emission
-  modes, one Lean file per function and one per Rust source file, must still
-  agree. Use the [emission-mode check](../../scripts/test_emission_modes.sh)
-  to check this.
+- Preserve existing verification behavior in both supported output layouts:
+  per-function and per-source-file. Run the
+  [emission-mode check](../../scripts/test_emission_modes.sh) to check that
+  the layouts agree on obligations, verification outcomes, and per-obligation
+  diagnostic status.
 - The [smoke suite](../development.md#test-scopes) and every case study that
   passes on the starting revision must still pass.
-- Do not edit the case studies' proof files to make runs faster.
+- Do not edit the case studies' specifications or code to make them faster.
 
 ### How to measure
 
