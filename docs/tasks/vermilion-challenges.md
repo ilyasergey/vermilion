@@ -185,7 +185,7 @@ its `vermilion-challenge` branch, and send us the link.
 
 Use a standalone private repository. GitHub keeps
 [forks of public repositories public](https://docs.github.com/en/pull-requests/reference/forks#visibility-of-forks),
-which would expose your solution to other participants. Do not use the Fork
+which would expose your solution to others. Do not use the Fork
 button or `gh repo fork`.
 
 The commands below assume GitHub CLI (`gh`) is installed and authenticated,
