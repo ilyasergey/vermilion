@@ -33,15 +33,15 @@ def call_requires_0_meta : Vermilion.ObligationMeta := {
   vrml [vstd.relations.reflexive, vstd.relations.antisymmetric, vstd.relations.transitive, vstd.relations.strongly_connected, vstd.relations.total_ordering, vstd.relations.sorted_by, Vermilion.Seq.toMultiset_add, Vermilion.Seq.toMultiset_contains, Vermilion.Seq.toMultiset_len, Vermilion.Seq.toMultiset_push]
 -- vrml:end multiset.sorted_by_leq.call_requires_0
 
--- vrml:begin multiset.sorted_by_leq.assert_1 a7db120ee902eb55
+-- vrml:begin multiset.sorted_by_leq.assert_1 554fbf169a555ea8
 /--
 Generated VC `multiset.sorted_by_leq.assert_1`.
 
 - Rust source: `case-studies/sorting/multiset.rs:35:12-35:43`
 - Rust/SST construct: Rust source assertion
 - AssertId: `1`
-- Statement hash: `a7db120ee902eb55`
-- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x⟩
+- Statement hash: `554fbf169a555ea8`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0⟩
 -/
 def assert_1_meta : Vermilion.ObligationMeta := {
   rustFile := "case-studies/sorting/multiset.rs"
@@ -52,33 +52,26 @@ def assert_1_meta : Vermilion.ObligationMeta := {
   assertId := "1"
   functionName := "multiset.sorted_by_leq"
   kind := "assert"
-  statementHash := "a7db120ee902eb55"
+  statementHash := "554fbf169a555ea8"
 }
 @[vrml_obligation] theorem assert_1
     (no_param : Int)
     (call_lemma_sort_by_ensures_ensures_0 : Vermilion.Seq.toMultiset (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) = Vermilion.Seq.toMultiset (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))))
     (call_lemma_sort_by_ensures_ensures_1 : vstd.relations.sorted_by (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) (fun (x : Int) (y : Int) => (x ≤ y)))
-    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x)))) :
+    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x_vrml_0 : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x_vrml_0) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0)))) :
     vstd.relations.sorted_by (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5) (fun (x : Int) (y : Int) => (x ≤ y)) := by
-  simp only [vstd.relations.sorted_by, Vermilion.Seq.push, Vermilion.Seq.empty,
-    Vermilion.Seq.len, List.nil_append, List.cons_append, List.singleton_append,
-    List.append_assoc, List.length_cons, List.length_nil]
-  intro i j hij
-  obtain ⟨⟨hi, hij'⟩, hj⟩ := hij
-  have hiu : i < 5 := by omega
-  interval_cases i <;> interval_cases j <;>
-    simp_all [Vermilion.Seq.index, Vermilion.Seq.push, Vermilion.Seq.empty]
+  vrml [vstd.relations.reflexive, vstd.relations.antisymmetric, vstd.relations.transitive, vstd.relations.strongly_connected, vstd.relations.total_ordering, vstd.relations.sorted_by, Vermilion.Seq.toMultiset_add, Vermilion.Seq.toMultiset_contains, Vermilion.Seq.toMultiset_len, Vermilion.Seq.toMultiset_push]
 -- vrml:end multiset.sorted_by_leq.assert_1
 
--- vrml:begin multiset.sorted_by_leq.assert_2 033a8c96d4618135
+-- vrml:begin multiset.sorted_by_leq.assert_2 bfc77fa99b941c96
 /--
 Generated VC `multiset.sorted_by_leq.assert_2`.
 
 - Rust source: `case-studies/sorting/multiset.rs:37:12-37:64`
 - Rust/SST construct: Rust source assertion
 - AssertId: `2`
-- Statement hash: `033a8c96d4618135`
-- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x⟩
+- Statement hash: `bfc77fa99b941c96`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0⟩
 -/
 def assert_2_meta : Vermilion.ObligationMeta := {
   rustFile := "case-studies/sorting/multiset.rs"
@@ -89,27 +82,27 @@ def assert_2_meta : Vermilion.ObligationMeta := {
   assertId := "2"
   functionName := "multiset.sorted_by_leq"
   kind := "assert"
-  statementHash := "033a8c96d4618135"
+  statementHash := "bfc77fa99b941c96"
 }
 @[vrml_obligation] theorem assert_2
     (no_param : Int)
     (call_lemma_sort_by_ensures_ensures_0 : Vermilion.Seq.toMultiset (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) = Vermilion.Seq.toMultiset (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))))
     (call_lemma_sort_by_ensures_ensures_1 : vstd.relations.sorted_by (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) (fun (x : Int) (y : Int) => (x ≤ y)))
-    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x))))
+    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x_vrml_0 : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x_vrml_0) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0))))
     (assert_1 : vstd.relations.sorted_by (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5) (fun (x : Int) (y : Int) => (x ≤ y))) :
     Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4 := by
   vrml [vstd.relations.reflexive, vstd.relations.antisymmetric, vstd.relations.transitive, vstd.relations.strongly_connected, vstd.relations.total_ordering, vstd.relations.sorted_by, Vermilion.Seq.toMultiset_add, Vermilion.Seq.toMultiset_contains, Vermilion.Seq.toMultiset_len, Vermilion.Seq.toMultiset_push]
 -- vrml:end multiset.sorted_by_leq.assert_2
 
--- vrml:begin multiset.sorted_by_leq.assert_3 b452e3125405c13e
+-- vrml:begin multiset.sorted_by_leq.assert_3 df373af8b506387f
 /--
 Generated VC `multiset.sorted_by_leq.assert_3`.
 
 - Rust source: `case-studies/sorting/multiset.rs:38:12-38:71`
 - Rust/SST construct: Rust source assertion
 - AssertId: `3`
-- Statement hash: `b452e3125405c13e`
-- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x⟩
+- Statement hash: `df373af8b506387f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0⟩
 -/
 def assert_3_meta : Vermilion.ObligationMeta := {
   rustFile := "case-studies/sorting/multiset.rs"
@@ -120,28 +113,28 @@ def assert_3_meta : Vermilion.ObligationMeta := {
   assertId := "3"
   functionName := "multiset.sorted_by_leq"
   kind := "assert"
-  statementHash := "b452e3125405c13e"
+  statementHash := "df373af8b506387f"
 }
 @[vrml_obligation] theorem assert_3
     (no_param : Int)
     (call_lemma_sort_by_ensures_ensures_0 : Vermilion.Seq.toMultiset (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) = Vermilion.Seq.toMultiset (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))))
     (call_lemma_sort_by_ensures_ensures_1 : vstd.relations.sorted_by (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) (fun (x : Int) (y : Int) => (x ≤ y)))
-    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x))))
+    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x_vrml_0 : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x_vrml_0) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0))))
     (assert_1 : vstd.relations.sorted_by (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5) (fun (x : Int) (y : Int) => (x ≤ y)))
     (assert_2 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) :
     Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5 := by
   vrml [vstd.relations.reflexive, vstd.relations.antisymmetric, vstd.relations.transitive, vstd.relations.strongly_connected, vstd.relations.total_ordering, vstd.relations.sorted_by, Vermilion.Seq.toMultiset_add, Vermilion.Seq.toMultiset_contains, Vermilion.Seq.toMultiset_len, Vermilion.Seq.toMultiset_push]
 -- vrml:end multiset.sorted_by_leq.assert_3
 
--- vrml:begin multiset.sorted_by_leq.assert_4 808ec17e611d2dd6
+-- vrml:begin multiset.sorted_by_leq.assert_4 1ed5ad87c0fd39a9
 /--
 Generated VC `multiset.sorted_by_leq.assert_4`.
 
 - Rust source: `case-studies/sorting/multiset.rs:39:12-39:68`
 - Rust/SST construct: Rust source assertion
 - AssertId: `4`
-- Statement hash: `808ec17e611d2dd6`
-- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x⟩
+- Statement hash: `1ed5ad87c0fd39a9`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0⟩
 -/
 def assert_4_meta : Vermilion.ObligationMeta := {
   rustFile := "case-studies/sorting/multiset.rs"
@@ -152,13 +145,13 @@ def assert_4_meta : Vermilion.ObligationMeta := {
   assertId := "4"
   functionName := "multiset.sorted_by_leq"
   kind := "assert"
-  statementHash := "808ec17e611d2dd6"
+  statementHash := "1ed5ad87c0fd39a9"
 }
 @[vrml_obligation] theorem assert_4
     (no_param : Int)
     (call_lemma_sort_by_ensures_ensures_0 : Vermilion.Seq.toMultiset (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) = Vermilion.Seq.toMultiset (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))))
     (call_lemma_sort_by_ensures_ensures_1 : vstd.relations.sorted_by (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) (fun (x : Int) (y : Int) => (x ≤ y)))
-    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x))))
+    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x_vrml_0 : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x_vrml_0) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0))))
     (assert_1 : vstd.relations.sorted_by (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5) (fun (x : Int) (y : Int) => (x ≤ y)))
     (assert_2 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4)
     (assert_3 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5) :
@@ -168,15 +161,15 @@ def assert_4_meta : Vermilion.ObligationMeta := {
   decide
 -- vrml:end multiset.sorted_by_leq.assert_4
 
--- vrml:begin multiset.sorted_by_leq.call_requires_5_0 1fc507301001c015
+-- vrml:begin multiset.sorted_by_leq.call_requires_5_0 357f61c3c0571b1e
 /--
 Generated VC `multiset.sorted_by_leq.call_requires_5_0`.
 
 - Rust source: `case-studies/sorting/multiset.rs:41:5-41:69`
 - Rust/SST construct: call lemma_sorted_unique
 - AssertId: `5_0`
-- Statement hash: `1fc507301001c015`
-- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x⟩
+- Statement hash: `357f61c3c0571b1e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0⟩
 -/
 def call_requires_5_0_meta : Vermilion.ObligationMeta := {
   rustFile := "case-studies/sorting/multiset.rs"
@@ -187,13 +180,13 @@ def call_requires_5_0_meta : Vermilion.ObligationMeta := {
   assertId := "5_0"
   functionName := "multiset.sorted_by_leq"
   kind := "call_requires"
-  statementHash := "1fc507301001c015"
+  statementHash := "357f61c3c0571b1e"
 }
 @[vrml_obligation] theorem call_requires_5_0
     (no_param : Int)
     (call_lemma_sort_by_ensures_ensures_0 : Vermilion.Seq.toMultiset (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) = Vermilion.Seq.toMultiset (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))))
     (call_lemma_sort_by_ensures_ensures_1 : vstd.relations.sorted_by (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) (fun (x : Int) (y : Int) => (x ≤ y)))
-    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x))))
+    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x_vrml_0 : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x_vrml_0) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0))))
     (assert_1 : vstd.relations.sorted_by (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5) (fun (x : Int) (y : Int) => (x ≤ y)))
     (assert_2 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4)
     (assert_3 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5)
@@ -202,15 +195,15 @@ def call_requires_5_0_meta : Vermilion.ObligationMeta := {
   vrml [vstd.relations.reflexive, vstd.relations.antisymmetric, vstd.relations.transitive, vstd.relations.strongly_connected, vstd.relations.total_ordering, vstd.relations.sorted_by, Vermilion.Seq.toMultiset_add, Vermilion.Seq.toMultiset_contains, Vermilion.Seq.toMultiset_len, Vermilion.Seq.toMultiset_push]
 -- vrml:end multiset.sorted_by_leq.call_requires_5_0
 
--- vrml:begin multiset.sorted_by_leq.call_requires_5_1 8de8c3eef1acd9ba
+-- vrml:begin multiset.sorted_by_leq.call_requires_5_1 a84c91de656dc475
 /--
 Generated VC `multiset.sorted_by_leq.call_requires_5_1`.
 
 - Rust source: `case-studies/sorting/multiset.rs:41:5-41:69`
 - Rust/SST construct: call lemma_sorted_unique
 - AssertId: `5_1`
-- Statement hash: `8de8c3eef1acd9ba`
-- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x⟩
+- Statement hash: `a84c91de656dc475`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0⟩
 -/
 def call_requires_5_1_meta : Vermilion.ObligationMeta := {
   rustFile := "case-studies/sorting/multiset.rs"
@@ -221,13 +214,13 @@ def call_requires_5_1_meta : Vermilion.ObligationMeta := {
   assertId := "5_1"
   functionName := "multiset.sorted_by_leq"
   kind := "call_requires"
-  statementHash := "8de8c3eef1acd9ba"
+  statementHash := "a84c91de656dc475"
 }
 @[vrml_obligation] theorem call_requires_5_1
     (no_param : Int)
     (call_lemma_sort_by_ensures_ensures_0 : Vermilion.Seq.toMultiset (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) = Vermilion.Seq.toMultiset (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))))
     (call_lemma_sort_by_ensures_ensures_1 : vstd.relations.sorted_by (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) (fun (x : Int) (y : Int) => (x ≤ y)))
-    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x))))
+    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x_vrml_0 : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x_vrml_0) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0))))
     (assert_1 : vstd.relations.sorted_by (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5) (fun (x : Int) (y : Int) => (x ≤ y)))
     (assert_2 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4)
     (assert_3 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5)
@@ -236,15 +229,15 @@ def call_requires_5_1_meta : Vermilion.ObligationMeta := {
   vrml [vstd.relations.reflexive, vstd.relations.antisymmetric, vstd.relations.transitive, vstd.relations.strongly_connected, vstd.relations.total_ordering, vstd.relations.sorted_by, Vermilion.Seq.toMultiset_add, Vermilion.Seq.toMultiset_contains, Vermilion.Seq.toMultiset_len, Vermilion.Seq.toMultiset_push]
 -- vrml:end multiset.sorted_by_leq.call_requires_5_1
 
--- vrml:begin multiset.sorted_by_leq.call_requires_5_2 1934e8553bf4b514
+-- vrml:begin multiset.sorted_by_leq.call_requires_5_2 832d9719ef1f727f
 /--
 Generated VC `multiset.sorted_by_leq.call_requires_5_2`.
 
 - Rust source: `case-studies/sorting/multiset.rs:41:5-41:69`
 - Rust/SST construct: call lemma_sorted_unique
 - AssertId: `5_2`
-- Statement hash: `1934e8553bf4b514`
-- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x⟩
+- Statement hash: `832d9719ef1f727f`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0⟩
 -/
 def call_requires_5_2_meta : Vermilion.ObligationMeta := {
   rustFile := "case-studies/sorting/multiset.rs"
@@ -255,13 +248,13 @@ def call_requires_5_2_meta : Vermilion.ObligationMeta := {
   assertId := "5_2"
   functionName := "multiset.sorted_by_leq"
   kind := "call_requires"
-  statementHash := "1934e8553bf4b514"
+  statementHash := "832d9719ef1f727f"
 }
 @[vrml_obligation] theorem call_requires_5_2
     (no_param : Int)
     (call_lemma_sort_by_ensures_ensures_0 : Vermilion.Seq.toMultiset (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) = Vermilion.Seq.toMultiset (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))))
     (call_lemma_sort_by_ensures_ensures_1 : vstd.relations.sorted_by (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) (fun (x : Int) (y : Int) => (x ≤ y)))
-    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x))))
+    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x_vrml_0 : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x_vrml_0) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0))))
     (assert_1 : vstd.relations.sorted_by (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5) (fun (x : Int) (y : Int) => (x ≤ y)))
     (assert_2 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4)
     (assert_3 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5)
@@ -270,15 +263,15 @@ def call_requires_5_2_meta : Vermilion.ObligationMeta := {
   vrml [vstd.relations.reflexive, vstd.relations.antisymmetric, vstd.relations.transitive, vstd.relations.strongly_connected, vstd.relations.total_ordering, vstd.relations.sorted_by, Vermilion.Seq.toMultiset_add, Vermilion.Seq.toMultiset_contains, Vermilion.Seq.toMultiset_len, Vermilion.Seq.toMultiset_push]
 -- vrml:end multiset.sorted_by_leq.call_requires_5_2
 
--- vrml:begin multiset.sorted_by_leq.call_requires_5_3 662e72903fb4872e
+-- vrml:begin multiset.sorted_by_leq.call_requires_5_3 e4f0ee98ff96b917
 /--
 Generated VC `multiset.sorted_by_leq.call_requires_5_3`.
 
 - Rust source: `case-studies/sorting/multiset.rs:41:5-41:69`
 - Rust/SST construct: call lemma_sorted_unique
 - AssertId: `5_3`
-- Statement hash: `662e72903fb4872e`
-- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x⟩
+- Statement hash: `e4f0ee98ff96b917`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0⟩
 -/
 def call_requires_5_3_meta : Vermilion.ObligationMeta := {
   rustFile := "case-studies/sorting/multiset.rs"
@@ -289,13 +282,13 @@ def call_requires_5_3_meta : Vermilion.ObligationMeta := {
   assertId := "5_3"
   functionName := "multiset.sorted_by_leq"
   kind := "call_requires"
-  statementHash := "662e72903fb4872e"
+  statementHash := "e4f0ee98ff96b917"
 }
 @[vrml_obligation] theorem call_requires_5_3
     (no_param : Int)
     (call_lemma_sort_by_ensures_ensures_0 : Vermilion.Seq.toMultiset (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) = Vermilion.Seq.toMultiset (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))))
     (call_lemma_sort_by_ensures_ensures_1 : vstd.relations.sorted_by (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) (fun (x : Int) (y : Int) => (x ≤ y)))
-    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x))))
+    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x_vrml_0 : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x_vrml_0) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0))))
     (assert_1 : vstd.relations.sorted_by (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5) (fun (x : Int) (y : Int) => (x ≤ y)))
     (assert_2 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4)
     (assert_3 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5)
@@ -304,15 +297,15 @@ def call_requires_5_3_meta : Vermilion.ObligationMeta := {
   vrml [vstd.relations.reflexive, vstd.relations.antisymmetric, vstd.relations.transitive, vstd.relations.strongly_connected, vstd.relations.total_ordering, vstd.relations.sorted_by, Vermilion.Seq.toMultiset_add, Vermilion.Seq.toMultiset_contains, Vermilion.Seq.toMultiset_len, Vermilion.Seq.toMultiset_push]
 -- vrml:end multiset.sorted_by_leq.call_requires_5_3
 
--- vrml:begin multiset.sorted_by_leq.assert_6 e2fbc2d536931a45
+-- vrml:begin multiset.sorted_by_leq.assert_6 5b18853e9112556e
 /--
 Generated VC `multiset.sorted_by_leq.assert_6`.
 
 - Rust source: `case-studies/sorting/multiset.rs:42:12-42:38`
 - Rust/SST construct: Rust source assertion
 - AssertId: `6`
-- Statement hash: `e2fbc2d536931a45`
-- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x⟩
+- Statement hash: `5b18853e9112556e`
+- Triggers (Verus, for future e-matching): ⟨Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0⟩
 -/
 def assert_6_meta : Vermilion.ObligationMeta := {
   rustFile := "case-studies/sorting/multiset.rs"
@@ -323,13 +316,13 @@ def assert_6_meta : Vermilion.ObligationMeta := {
   assertId := "6"
   functionName := "multiset.sorted_by_leq"
   kind := "assert"
-  statementHash := "e2fbc2d536931a45"
+  statementHash := "5b18853e9112556e"
 }
 @[vrml_obligation] theorem assert_6
     (no_param : Int)
     (call_lemma_sort_by_ensures_ensures_0 : Vermilion.Seq.toMultiset (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) = Vermilion.Seq.toMultiset (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))))
     (call_lemma_sort_by_ensures_ensures_1 : vstd.relations.sorted_by (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) (fun (x : Int) (y : Int) => (x ≤ y)))
-    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x))))
+    (call_lemma_sort_by_ensures_ensures_2 : (∀ (x_vrml_0 : Int), ((¬ Vermilion.Seq.contains (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) x_vrml_0) → (¬ Vermilion.Seq.contains (Vermilion.Seq.sortBy (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4) (fun (x : Int) (y : Int) => (x ≤ y))) x_vrml_0))))
     (assert_1 : vstd.relations.sorted_by (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5) (fun (x : Int) (y : Int) => (x ≤ y)))
     (assert_2 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 3) 1) 5) 2) 4)
     (assert_3 : Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5 = Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.push (Vermilion.Seq.empty : Vermilion.Seq Int) 1) 2) 3) 4) 5)
