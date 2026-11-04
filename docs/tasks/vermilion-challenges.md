@@ -66,13 +66,28 @@ Verdicts and diagnostics do not change, the two emission modes still agree
 today still pass, and the case studies' proof files are not edited to make
 runs faster.
 
-**Measuring.** Build everything with `./scripts/build.sh`. Each case study
-has a `run.sh`; `--clean-env` starts it from a clean cache, and running it a
-second time gives the warm number. The Lean checker writes one timing line
-per function to `.vermilion/<file>-twin.log`, and the percolator folder has a
-`verify_verus.sh` that runs the Verus side for comparison. Every run follows
-[scripts/run_example.sh](../../scripts/run_example.sh); tracing it with
-`bash -x` is the quickest way to time its phases.
+**Measuring.** Each case study has a `run.sh`. Its `--clean-env` flag starts
+from a clean cache, and running it a second time gives the warm number. The
+Lean checker writes one timing line per function to `.vermilion/<file>-twin.log`,
+and the percolator folder has a `verify_verus.sh` that runs the Verus side for
+comparison. The commands below build everything and take the numbers quoted
+above.
+
+```console
+./scripts/build.sh
+time ./case-studies/percolator/run.sh --clean-env
+time ./case-studies/percolator/run.sh
+cat .vermilion/enum_codecs-twin.log
+time ./case-studies/percolator/verify_verus.sh
+```
+
+Every run follows [scripts/run_example.sh](../../scripts/run_example.sh).
+Tracing it is the quickest way to time its phases; this times one percolator
+file from a clean cache and writes the trace to a file:
+
+```console
+PS4='+$(perl -MTime::HiRes=time -e "printf \"%.2f\", time") ' bash -x scripts/run_example.sh case-studies/percolator enum_codecs.rs --lib CasePercolator --manual-proofs --clean-env 2> trace.log
+```
 
 ## Challenge 2: what do you have to trust?
 
