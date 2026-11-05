@@ -5,6 +5,14 @@ main task; the second is an optional stretch goal. We are interested in your
 diagnosis and reasoning, and have deliberately left the choice of approach
 open.
 
+Plan on about one working day for Challenge 1 and up to one more day for
+Challenge 2. Setting up the build does not count towards that time. These are
+budgets, not deadlines: if you run out of time, stop and submit what you have,
+with a write-up that says where you stopped and what you would do next. A
+partial result with a clear diagnosis is worth more to us than a complete one
+without an explanation. Please tell us roughly how long you spent on each
+challenge.
+
 ## What Vermilion Does
 
 [Vermilion](../../README.md) is an experimental [Lean](https://lean-lang.org)
@@ -97,8 +105,10 @@ despite containing only one obligation closed by a single automation step.
 ### Constraints
 
 - Lean remains the only verifier, and every obligation remains a
-  kernel-checked theorem (e.g., you should not replace Lean checking by uncertified call to an SMT solver). No obligation may be skipped, the validity of every verificaiton condition must be re-established for the current
-  statement.
+  kernel-checked theorem (e.g., you should not replace Lean checking by an
+  uncertified call to an SMT solver). No obligation may be skipped, and the
+  validity of every verification condition must be re-established for the
+  current statement.
 - Preserve existing verification behavior in both supported output layouts:
   per-function and per-source-file. Run the
   [emission-mode check](../../scripts/test_emission_modes.sh) to check that
@@ -144,7 +154,9 @@ before-and-after comparison.
 
 ## Challenge 2: What Do You Have to Trust?
 
-This is an optional stretch goal. Take it as far as your time allows.
+This is an optional stretch goal, budgeted at up to one day. Parts 1 and 2
+below should fit in that time. Part 3 usually will not, so attempt it only
+once the first two are done.
 
 Vermilion's claim is that a successful run means every obligation has a proof
 checked by the Lean kernel, and that the remaining trusted components and
@@ -176,6 +188,36 @@ The [VC-generation document](../vcgen.md) describes the policy for generating
 Lean obligations and provides another reference for your investigation.
 Keep the write-up focused: we will assess the argument and its evidence.
 
+## Using Coding Agents
+
+You may use coding agents, and we expect them to help with much of the
+mechanical work: building the project and fixing setup problems, finding
+where things happen in the code, writing measurement scripts and running them
+repeatedly, prototyping and iterating on an implementation, and running the
+test suites. You can point an agent at this document; it describes the task
+scope, constraints, measurement commands, and submission steps.
+
+Some parts we want to come from you. The write-ups should be your own
+writing: the diagnosis, the reasons behind your choices, the alternatives you
+rejected, and, for Challenge 2, the characterisation and the ranking. Using an
+agent to proofread or to look up a reference is fine; having it draft the
+argument is not. An agent can propose an approach, but choosing it is your
+decision, and you should be ready to explain and defend every change and
+every number in the submission in a follow-up conversation. Check any
+measurement an agent reports before you rely on it.
+
+Include a short AI use statement, `docs/tasks/AI-USE.md`, in your pull
+request. It should say:
+
+- which tools and models you used;
+- for each deliverable (the measurements, the implementation, each
+  write-up), what the agent did and what you did yourself;
+- any point where an agent's output was wrong or misleading, and how you
+  noticed.
+
+A few paragraphs are enough. Using agents does not count against you. We ask
+for an accurate account so that we know whose reasoning we are reading.
+
 ## How to Submit
 
 Start from the `vermilion-challenge` branch of the public repository. Work in
@@ -204,8 +246,8 @@ gh api -X PUT repos/YOUR_LOGIN/vermilion-challenge/collaborators/ilyasergey
 git checkout -b YOUR_BRANCH
 ```
 
-Put your write-ups in Markdown files under `docs/tasks/` and include them in
-the pull request. Keep work on the two challenges in separate commits, with
+Put your write-ups and the AI use statement in Markdown files under
+`docs/tasks/` and include them in the pull request. Keep work on the two challenges in separate commits, with
 any implementation for Challenge 2 in its own commit. Once your changes and
 write-ups are committed:
 
@@ -214,7 +256,3 @@ git push -u origin YOUR_BRANCH
 gh pr create --repo YOUR_LOGIN/vermilion-challenge \
   --base vermilion-challenge --head YOUR_BRANCH --fill
 ```
-
-You may use a coding agent. This document gives it the task scope, constraints,
-measurement commands, and submission instructions; your write-up should
-explain the reasoning behind the submitted work.
