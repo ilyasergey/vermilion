@@ -1,31 +1,42 @@
 # Vermilion Challenges
 
-This document describes two open problems in Vermilion. The first is the
-main task; the second is an optional stretch goal. We are interested in your
-diagnosis and reasoning, and have deliberately left the choice of approach
-open.
+[Vermilion](../../README.md) is an experimental verifier for Rust that checks
+proofs using [Lean](https://lean-lang.org), a proof assistant. It uses the
+front end of [Verus](https://github.com/verus-lang/verus) to process Rust
+programs and their specifications.
 
-Plan on about one working day for Challenge 1 and up to one more day for
-Challenge 2. Setting up the build does not count towards that time; budget
-about an hour for it separately. The first build fetches Lean and Mathlib
-artifacts and clones and compiles a pinned version of Verus, so most of that
-hour is downloading and compiling, and it varies with your machine and
-connection. You can start it and read the documentation while it runs. These
-are budgets, not deadlines: if you run out of time, stop and submit what you
-have, with a write-up that says where you stopped and what you would do next.
-A partial result with a clear diagnosis is worth more to us than a complete
-one without an explanation. Please tell us roughly how long you spent on each
-challenge.
+This document describes two Challenges aimed to increase Vermilion's usability
+and deacrease it trusted code base. Challenge 1 asks you to find out why
+Vermilion is slow and make it faster. Challenge 2 asks you to work out what has
+to be trusted when Vermilion says a program is verified, and how to reduce that
+trust. Choose either Challenge 1 or Challenge 2. You only need to complete one,
+but feel free to try the other for fun if you have time.
+
+Plan for about one working day on your chosen challenge. Allow an extra hour
+for the first build, which downloads Lean and Mathlib artifacts and builds
+Verus. The time depends on your machine and connection. You can read the
+documentation while it runs.
+
+If you reach your time budget, stop and submit what you have. Explain where you
+stopped and what you would do next. A partial result with a clear diagnosis
+leads to a more interesting discussion than a complete solution without an
+explanation. In your write-up, please include roughly how long you spent.
+
+**Contents**
+
+- [What Vermilion Does](#what-vermilion-does)
+- [Challenge 1: Vermilion Is Slow](#challenge-1-vermilion-is-slow)
+- [Challenge 2: What Do You Have to Trust?](#challenge-2-what-do-you-have-to-trust)
+- [Using Coding Agents](#using-coding-agents)
+- [How to Submit](#how-to-submit)
 
 ## What Vermilion Does
 
-[Vermilion](../../README.md) is an experimental [Lean](https://lean-lang.org)
-backend for [Verus](https://github.com/verus-lang/verus), a verifier for Rust.
-Verus checks annotated Rust by generating verification conditions and handing
-them to an SMT solver. Vermilion uses the Verus front end and generates Lean
-theorem statements for the resulting proof obligations. Automation tries to
-prove them; any remaining obligations can be proved interactively in proof
-files that survive subsequent runs of the pipeline.
+Verus checks Verus-annotated Rust by generating verification conditions and
+handing them to an SMT solver. Vermilion generates its proof obligations as Lean
+theorem statements. Automation tries to prove them; any remaining obligations
+can be proved interactively in proof files that survive subsequent runs of the
+pipeline.
 
 A successful run requires proofs checked by the Lean kernel. The aim is to
 reduce and make explicit what must be trusted to connect those proofs to the
@@ -41,11 +52,12 @@ shortcut jumps from an assertion to its Lean proof and back.
 
 ## Challenge 1: Vermilion Is Slow
 
-In our measurements, Verus checks a typical case-study file in under a
-second. Vermilion takes several seconds for the same file, even when the
-obligations are simple and their proofs are already written. Much of that
-cost recurs when nothing has changed. In the editor, this is the delay between
-saving a file and seeing its verification results.
+In our measurements, Verus checks a typical case study file in under a second.
+Vermilion takes several seconds (or tens of seconds) for the same file, even
+when the obligations are simple and their proofs are already present in Lean
+companion files. Much of that cost recurs when nothing has changed. In the
+editor, this is the delay between saving a file and seeing its verification
+results.
 
 Your task is to explain where the time goes and make the pipeline
 substantially faster without changing what is verified.
@@ -53,45 +65,24 @@ substantially faster without changing what is verified.
 ### Starting observations
 
 The slowest case study in our measurements was
-[percolator](../../case-studies/percolator/), a set of verbatim slices of a
-production risk engine. Its main runner covers ten Rust files and 31 distinct
-production functions, with a little over a hundred obligations.
-The checked functions also include compiler-generated functions, such as
-derived `clone` implementations. Most obligations close with a single
-automation step.
+[percolator](../../case-studies/percolator/), a set of slices from a production
+risk engine. Its runner covers ten Rust files and 31 production functions,
+plus derived functions, with a little over a hundred obligations. Most close
+with a single automation step.
 
 Vermilion took about a minute with `--clean-env` and half a minute on an
 unchanged rerun. System CPU time was roughly three times user CPU time. The
-separate Verus comparison script took about three and a half seconds, though
-it covers two additional slices that Vermilion does not yet support. At the
-other end, a case study with one function and one obligation still took four
-and a half seconds. Treat these figures as starting observations and establish
-a baseline on your own machine.
+Verus comparison took about three and a half seconds, though it covers two
+additional slices. A case study with just one obligation still took four and
+a half seconds. Establish a baseline on your own machine.
 
-Almost all of the measured time was on the Lean side: the Verus front end
-and translation to Lean together took well under a second per file. The
-checker verifies each function's proof file in a separate Lean process, with
-many running concurrently. A Lean file that only imports Vermilion's prelude
-took a little over a second on its own.
-
-Within percolator, checking time grew with the number of function proof files:
-
-- [enum_codecs.rs](../../case-studies/percolator/enum_codecs.rs): 19 proof
-  files, comprising twelve encode/decode functions and seven derived `clone`
-  implementations, with one obligation each. Checking took about six seconds
-  of wall time; the sum of the per-file elapsed times was nearly two minutes.
-- [wide_math_u256_basics.rs](../../case-studies/percolator/wide_math_u256_basics.rs):
-  ten proof files, about four seconds of wall time and forty seconds of summed
-  elapsed time.
-- [policy_gates.rs](../../case-studies/percolator/policy_gates.rs): eight
-  proof files, about three and a half seconds of wall time and half a minute
-  of summed elapsed time.
-
-The elapsed times overlap because the processes run concurrently; their sum
-is not a measure of CPU time. Files with one or two function proof files each
-finished in under two seconds. The slowest proof file in `enum_codecs.rs`
-took five times longer during the concurrent run than when checked alone,
-despite containing only one obligation closed by a single automation step.
+Almost all of the measured time was on the Lean side. The checker launches
+separate Lean processes for function proof files, many concurrently. Importing
+Vermilion's prelude alone took a little over a second. In
+[enum_codecs.rs](../../case-studies/percolator/enum_codecs.rs), checking 19
+proof files took about six seconds; the slowest file took five times longer
+in that run than alone. Summed per-file elapsed times overlap and do not
+measure CPU time.
 
 ### Expected result
 
@@ -103,16 +94,32 @@ despite containing only one obligation closed by a single automation step.
    a branch and measure their effect on percolator and at least two small
    case studies. Record the revisions, commands, hardware, and number of runs
    so that someone else can reproduce the comparison.
-3. **A short write-up.** Explain what you found, what you changed, which
-   alternatives you considered and rejected, and what costs remain.
+3. **A short write-up.** Write a Markdown report in `docs/tasks/write-up.md`.
+   Explain what you found, what you changed, which alternatives you considered
+   and rejected, and what costs remain. Include the AI use section described
+   below.
+
+### Stretch goals
+
+If you have time left, investigate either or both:
+
+1. **VC generation.** Measure the cost of constructing verification conditions
+   and rendering Lean code as programs and obligations grow. Look for repeated
+   work or duplication in terms and hypotheses. Could reducing it make
+   generation or subsequent checking faster?
+2. **VC solving.** Find expensive obligations after accounting for startup and
+   imports. Separate proof search from elaboration and kernel checking.
+   Investigate changes to automation or the form of the obligations, using
+   examples that exercise proof search as well as existing proofs.
+
+Show a measured example and explain which optimisation you would try.
+Implementation is optional for these goals. If you try a change, measure its
+effect on both that phase and the full pipeline.
 
 ### Constraints
 
-- Lean remains the only verifier, and every obligation remains a
-  kernel-checked theorem (e.g., you should not replace Lean checking by an
-  uncertified call to an SMT solver). No obligation may be skipped, and the
-  validity of every verification condition must be re-established for the
-  current statement.
+- Lean remains the only verifier. Every obligation must have a kernel-checked
+  proof of its current statement (even if it has been proven externally, e.g., via an SMT solver)
 - Preserve existing verification behavior in both supported output layouts:
   per-function and per-source-file. Run the
   [emission-mode check](../../scripts/test_emission_modes.sh) to check that
@@ -121,6 +128,8 @@ despite containing only one obligation closed by a single automation step.
 - The [smoke suite](../development.md#test-scopes) and every case study that
   passes on the starting revision must still pass.
 - Do not edit the case studies' specifications or code to make them faster.
+- Changes to generated statements must preserve their meaning. Update the
+  [VC generation policy](../vcgen.md) with any change to VC generation.
 
 ### How to measure
 
@@ -143,54 +152,117 @@ cat .vermilion/enum_codecs-twin.log
 time ./case-studies/percolator/verify_verus.sh
 ```
 
-The case-study runner calls
-[scripts/run_example.sh](../../scripts/run_example.sh) for each source file.
-To locate its phases, you can trace one percolator file with timestamps:
-
-```console
-PS4='+$(perl -MTime::HiRes=time -e "printf \"%.2f\", time") ' \
-  bash -x scripts/run_example.sh case-studies/percolator enum_codecs.rs \
-  --lib CasePercolator --manual-proofs --clean-env 2> trace.log
-```
-
-This trace requires Perl and adds timing overhead. Use untraced runs for the
-before-and-after comparison.
+The runner calls [scripts/run_example.sh](../../scripts/run_example.sh) for
+each source file. Use it to locate the pipeline's phases. Keep profiling or
+shell-tracing overhead out of the before-and-after comparison.
 
 ## Challenge 2: What Do You Have to Trust?
 
-This is an optional stretch goal, budgeted at up to one day. Parts 1 and 2
-below should fit in that time. Part 3 usually will not, so attempt it only
-once the first two are done.
+Vermilion reports success after checking Lean proofs. What else has to be
+correct for that result to mean that the Rust program satisfies its
+contracts? Your task is to identify those dependencies and propose how to
+reduce them. Also design a test suite for bugs that could lead to an incorrect
+verification result. This is an investigation and design task; implementing
+the tests or changing the verifier is optional.
 
-Vermilion's claim is that a successful run means every obligation has a proof
-checked by the Lean kernel, and that the remaining trusted components and
-assumptions are small and documented. The [trust document](../trust.md) is our
-own account of that trusted base, and the
-[design overview](../../DESIGN.md#trusted-computing-base) summarises it. Your
-task is to assess that account independently and identify ways to reduce the
-trusted base.
+### Starting points
 
-Work through these parts in order:
+Choose a small [case study](../../case-studies/README.md) and follow a run
+from the Rust source to the reported result.
+[Binary search](../../case-studies/binary-search/binary_search.rs) is one
+option: it has loop invariants and arithmetic checks, with existing Lean
+proofs. Use one or two obligations to examine the translation in detail.
+State which parts of your conclusions apply only to the example and which
+apply to the pipeline as a whole.
 
-1. **Characterise the trusted base yourself.** Start from the question:
-   "What has to be correct for a successful run on a case study to mean that
-   the Rust satisfies its contracts?" Build your answer from the code and run
-   artifacts before comparing it with our documents. Explain any omissions,
-   components you would exclude, or disagreements about the scope of a
-   component's responsibility. Support your argument with concrete evidence,
-   such as an obligation statement, a translation rule, or a branch in a
-   runner script.
-2. **Propose how to shrink it.** Rank possible reductions by the trust they
-   remove and the effort they require. For each, explain what evidence would
-   establish success, and what a test, proof, or measurement would actually
-   demonstrate. Justify which reduction should come first.
-3. **Optionally, implement one reduction.** Complete one item from your
-   ranking, or build a prototype sufficient to assess its feasibility. Put
-   this work in a separate commit and follow the constraints from Challenge 1.
+Build your account from code and run artifacts before comparing it with the
+[trust document](../trust.md) and the
+[design overview](../../DESIGN.md#trusted-computing-base). Those documents
+describe our view of the trusted base; you may disagree with them. The
+[textual IR](../ir.md) and [VC-generation policy](../vcgen.md) describe the
+translation boundary and the intended rules for generating obligations.
 
-The [VC-generation document](../vcgen.md) describes the policy for generating
-Lean obligations and provides another reference for your investigation.
-Keep the write-up focused: we will assess the argument and its evidence.
+### Expected result
+
+1. **An account of the trusted base.** Explain what each component must get
+   right for the final result to hold. Support your account with code
+   locations and artifacts from your run. Include the assumptions of the
+   Lean proofs and the connection between their statements and the Rust
+   contracts. Explain why you include or exclude each component you discuss.
+2. **A comparison with the documentation.** Identify omissions or claims you
+   would change, with evidence. If you agree with a claim, explain what you
+   checked. Separate confirmed findings from questions you could not settle
+   in the available time. You do not need to find a bug to complete the task.
+3. **A plan to reduce trust.** Rank possible reductions by what they remove
+   and the effort they require. Develop your preferred option far enough
+   that someone could start implementing it: identify the code to change,
+   the property to establish, and the assumptions that would remain. Explain
+   what a test or proof would demonstrate and where its guarantee would end.
+4. **A test-suite design for the trusted base.** Choose plausible bugs in the
+   components you identified, especially ones that could make an incorrect
+   program appear verified. For each, describe a test input and expected
+   result, and explain how you would establish that expectation independently
+   of the code under test. Include valid cases as well as cases that must be
+   rejected. Explain how you would check that the tests catch the intended
+   bugs, for example by deliberately introducing one. State what remains
+   untested and where comparison with Verus could miss bugs shared by both
+   tools.
+
+Put these results in a short Markdown report in `docs/tasks/write-up.md`.
+Record the revision and commands used, and include enough evidence for
+someone else to follow your argument. Include the AI use section described
+below.
+
+### Stretch goals
+
+If you have time left, implement a few of your proposed tests or prototype
+one reduction in trust. For the tests, demonstrate a bug they catch, using an
+actual fault or a deliberate mutation. For a Lean proof, state the theorem
+and inspect its assumptions. For a new check, give an example it rejects and
+a valid example it still accepts. Explain which part of the original trust
+claim has changed and what remains unverified.
+
+Put implementation work in a separate commit. A prototype can leave parts of
+the design unfinished, provided the write-up identifies them. Adding tests
+alone does not establish that a component can be removed from the trusted
+base; explain what confidence those tests provide.
+
+### Constraints
+
+- Lean remains the only verifier. Every obligation must have a kernel-checked
+  proof of its current statement; none may be skipped or weakened. New
+  unproved assumptions do not count as a reduction in trust.
+- Keep the baseline case studies' code and specifications unchanged. Put
+  deliberately failing examples in separate test files and record how to run
+  them.
+- If you change the pipeline, preserve both per-function and per-source-file
+  output. Run the [emission-mode check](../../scripts/test_emission_modes.sh),
+  the [smoke suite](../development.md#test-scopes), and the case studies that
+  pass on your starting revision.
+- Update the [VC-generation policy](../vcgen.md) with any change to VC
+  generation, and update the trust documentation for any implemented
+  reduction.
+
+### How to investigate
+
+For binary search, run these commands from the repository root:
+
+```console
+./scripts/build.sh
+./case-studies/binary-search/run.sh --clean-env
+```
+
+Compare the Rust source with the emitted IR and the Lean statements under
+`case-studies/binary-search/generated/`. Follow an obligation into its
+`proofs/` companion and through the checker. Inspect the manifest and the
+runner's exit status to see how the individual checks become a reported
+result. The case-study runner delegates to
+[scripts/run_example.sh](../../scripts/run_example.sh).
+
+For a property you think the pipeline enforces, try a small failing example
+in a separate test file. Record the expected outcome and check the actual
+diagnostics and exit status. Use such experiments to test specific claims;
+explain what still rests on reading the code or accepting an assumption.
 
 ## Using Coding Agents
 
@@ -201,26 +273,26 @@ repeatedly, prototyping and iterating on an implementation, and running the
 test suites. You can point an agent at this document; it describes the task
 scope, constraints, measurement commands, and submission steps.
 
-Some parts we want to come from you. The write-ups should be your own
-writing: the diagnosis, the reasons behind your choices, the alternatives you
-rejected, and, for Challenge 2, the characterisation and the ranking. Using an
-agent to proofread or to look up a reference is fine; having it draft the
-argument is not. An agent can propose an approach, but choosing it is your
-decision, and you should be ready to explain and defend every change and
-every number in the submission in a follow-up conversation. Check any
-measurement an agent reports before you rely on it.
+Some parts we want to come from you. The write-ups should be your own writing:
+the diagnosis, the reasons behind your choices, the alternatives you rejected,
+and, for Challenge 2, the trust analysis and reasoning behind the test-suite
+design. Using an agent to proofread or to look up a reference is fine; having it
+com up with the argument is not okay. An agent can propose an approach, but
+choosing it is your decision, and you should be ready to explain and defend
+every change and every number in the submission in a follow-up conversation.
+Check any measurement an agent reports before you rely on it.
 
-Include a short AI use statement, `docs/tasks/AI-USE.md`, in your pull
-request. It should say:
+Include an `## AI use` section in `docs/tasks/write-up.md`. It should say:
 
 - which tools and models you used;
-- for each deliverable (the measurements, the implementation, each
-  write-up), what the agent did and what you did yourself;
+- for each deliverable you submit, what the agent did and what you did
+  yourself;
 - any point where an agent's output was wrong or misleading, and how you
   noticed.
 
-A few paragraphs are enough. Using agents does not count against you. We ask
-for an accurate account so that we know whose reasoning we are reading.
+A few paragraphs are enough. If you did not use AI tools, say so in this
+section. Using agents does not count against you. We ask for an accurate
+account so that we know whose reasoning we are reading.
 
 ## How to Submit
 
@@ -250,10 +322,15 @@ gh api -X PUT repos/YOUR_LOGIN/vermilion-challenge/collaborators/ilyasergey
 git checkout -b YOUR_BRANCH
 ```
 
-Put your write-ups and the AI use statement in Markdown files under
-`docs/tasks/` and include them in the pull request. Keep work on the two challenges in separate commits, with
-any implementation for Challenge 2 in its own commit. Once your changes and
-write-ups are committed:
+State which challenge you chose in the pull request and include
+`docs/tasks/write-up.md`. The report should cover your chosen challenge's
+expected results, roughly how long you spent, and any unfinished work. Keep
+the `## AI use` section in that file. If you tried both challenges, describe
+them in separate sections of the same report.
+
+Include any measurement scripts, experiments, or implementation needed to
+reproduce your results. For Challenge 2, keep optional implementation work
+in its own commit. Once your work is committed:
 
 ```console
 git push -u origin YOUR_BRANCH
