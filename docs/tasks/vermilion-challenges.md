@@ -6,11 +6,15 @@ diagnosis and reasoning, and have deliberately left the choice of approach
 open.
 
 Plan on about one working day for Challenge 1 and up to one more day for
-Challenge 2. Setting up the build does not count towards that time. These are
-budgets, not deadlines: if you run out of time, stop and submit what you have,
-with a write-up that says where you stopped and what you would do next. A
-partial result with a clear diagnosis is worth more to us than a complete one
-without an explanation. Please tell us roughly how long you spent on each
+Challenge 2. Setting up the build does not count towards that time; budget
+about an hour for it separately. The first build fetches Lean and Mathlib
+artifacts and clones and compiles a pinned version of Verus, so most of that
+hour is downloading and compiling, and it varies with your machine and
+connection. You can start it and read the documentation while it runs. These
+are budgets, not deadlines: if you run out of time, stop and submit what you
+have, with a write-up that says where you stopped and what you would do next.
+A partial result with a clear diagnosis is worth more to us than a complete
+one without an explanation. Please tell us roughly how long you spent on each
 challenge.
 
 ## What Vermilion Does
